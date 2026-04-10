@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yoji-t.github.io/yabata-jr/sitemap.xml
