@@ -1,0 +1,744 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>大会リンク</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="666a3606-bad6-4fbf-955e-4b28662af63f" class="page sans"><header><h1 class="page-title" dir="auto">大会リンク</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="ltr"><figure id="33e44831-32d3-8007-9fcf-c87e7d615438" class="image"><a href="https://i.gyazo.com/cd567f65289a2cfb127a9c9fdc01e351.jpg"><img src="https://i.gyazo.com/cd567f65289a2cfb127a9c9fdc01e351.jpg"/></a></figure></div><div style="display:contents" dir="ltr"><div id="fc27a459-288f-4bd1-8114-0214d40dcda1" class="collection-content"><h4 class="collection-title">各大会へのリンク一覧 (1)</h4><div class="collection-content-wrapper"><table class="collection-content"><thead><tr><th><span class="icon property-icon"><img src="https://www.notion.so/icons/font_gray.svg" style="width:14px;height:14px;display:block"/></span>Name</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/link_gray.svg" style="width:14px;height:14px;display:block"/></span>URL</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>運営大会</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/hashtag_gray.svg" style="width:14px;height:14px;display:block"/></span>sort</th></tr></thead><tbody><tr id="ea3303e2-9d2c-4938-b40c-097c61585f57"><td class="cell-title"><a href="https://www.notion.so/ea3303e29d2c4938b40c097c61585f57?pvs=21">北区少年野球連盟</a></td><td class="cell-I&lt;Nt"><a href="https://kitakubb.blogspot.com/" class="url-value">https://kitakubb.blogspot.com/</a></td><td class="cell-toQB">・北区春季大会<br/>・北区秋季大会<br/>・北区新人戦<br/>・くりくり少年野球選手権大会<br/>・ほほえみ育成少年野球大会</td><td class="cell-l&lt;;V">1</td></tr><tr id="3cf0c0d9-2ab3-40ae-999b-56c8bb2d1b46"><td class="cell-title"><a href="https://www.notion.so/3cf0c0d92ab340ae999b56c8bb2d1b46?pvs=21">北区軟式野球連盟</a></td><td class="cell-I&lt;Nt"><a href="https://knbb.az2.jp//" class="url-value">https://knbb.az2.jp//</a></td><td class="cell-toQB">・北区少年野球大会</td><td class="cell-l&lt;;V">8</td></tr><tr id="03245bbc-7b11-4744-90b0-18dec9c4932f"><td class="cell-title"><a href="https://www.notion.so/03245bbc7b11474490b018dec9c4932f?pvs=21">北区赤羽少年野球連盟</a></td><td class="cell-I&lt;Nt"><a href="https://www.facebook.com/AkabaneJuniorBaseball/" class="url-value">https://www.facebook.com/AkabaneJuniorBaseball/</a></td><td class="cell-toQB">・赤羽少年野球大会</td><td class="cell-l&lt;;V">2</td></tr><tr id="fa580932-e860-4d97-8e31-dd135130c7d9"><td class="cell-title"><a href="https://www.notion.so/fa580932e8604d978e31dd135130c7d9?pvs=21">北区志茂少年野球連盟</a></td><td class="cell-I&lt;Nt"><a href="https://shimoshonenyakyu.wixsite.com/sbba" class="url-value">https://shimoshonenyakyu.wixsite.com/sbba</a></td><td class="cell-toQB">・北区志茂少年野球大会</td><td class="cell-l&lt;;V">3</td></tr><tr id="00e3abec-d77d-4b1a-9a75-4471e57bde5c"><td class="cell-title"><a href="https://www.notion.so/00e3abecd77d4b1a9a754471e57bde5c?pvs=21">北区滝野川少年野球連盟</a></td><td class="cell-I&lt;Nt"><a href="https://k-matida.wixsite.com/website" class="url-value">https://k-matida.wixsite.com/website</a></td><td class="cell-toQB">・北区滝野川少年野球大会　※リンクが変更されているので注意</td><td class="cell-l&lt;;V">4</td></tr><tr id="6887180f-f622-4fc7-bac3-f37a92367eec"><td class="cell-title"><a href="https://www.notion.so/6887180ff6224fc7bac3f37a92367eec?pvs=21">浮間リーグ</a></td><td class="cell-I&lt;Nt"><a href="https://ukima-league.blogspot.com/" class="url-value">https://ukima-league.blogspot.com/</a></td><td class="cell-toQB">2023年、2024年に開催されている浮間リーグのサイト</td><td class="cell-l&lt;;V">5</td></tr><tr id="33640c18-7e7d-43b4-b531-e3a46ff2a6d4"><td class="cell-title"><a href="https://www.notion.so/33640c187e7d43b4b531e3a46ff2a6d4?pvs=21">浮間少年野球連盟</a></td><td class="cell-I&lt;Nt"><a href="https://ubba-info.blogspot.com/" class="url-value">https://ubba-info.blogspot.com/</a></td><td class="cell-toQB"></td><td class="cell-l&lt;;V">6</td></tr><tr id="3f30458f-d954-4104-88b9-884cad756dea"><td class="cell-title"><a href="https://www.notion.so/3f30458fd954410488b9884cad756dea?pvs=21">東京都軟式野球連盟</a></td><td class="cell-I&lt;Nt"><a href="https://www.tnbb.or.jp/msrc/100_sumaho_menu.php?USER=tokyo&amp;USERNO=100&amp;kirikae=SUMAHO&amp;Gamen=2nd&amp;Gsub=osirase" class="url-value">https://www.tnbb.or.jp/msrc/100_sumaho_menu.php?USER=tokyo&amp;USERNO=100&amp;kirikae=SUMAHO&amp;Gamen=2nd&amp;Gsub=osirase</a></td><td class="cell-toQB">・マクドナルドジュニアチャンピオンシップ</td><td class="cell-l&lt;;V"></td></tr><tr id="bd0363b9-0115-4837-a048-bd47f0578430"><td class="cell-title"><a href="https://www.notion.so/23-bd0363b901154837a048bd47f0578430?pvs=21">23区少年野球大会</a></td><td class="cell-I&lt;Nt"><a href="https://23bb.jp/" class="url-value">https://23bb.jp/</a></td><td class="cell-toQB">・東京ヤクルトスワローズカップ争奪東京23区少年軟式野球大会</td><td class="cell-l&lt;;V"></td></tr><tr id="e36d3a7d-e12f-4dd9-b1ce-c10db7a73d05"><td class="cell-title"><a href="https://www.notion.so/e36d3a7de12f4dd9b1cec10db7a73d05?pvs=21">文京区少年軟式野球連盟</a></td><td class="cell-I&lt;Nt"><a href="http://www.bsnbb.jp/" class="url-value">http://www.bsnbb.jp/</a></td><td class="cell-toQB">・オレンジボールカップ</td><td class="cell-l&lt;;V"></td></tr><tr id="3ef0e39c-4972-444b-91e4-42f8fb05887d"><td class="cell-title"><a href="https://www.notion.so/3ef0e39c4972444b91e442f8fb05887d?pvs=21">杉並区学童軟式野球連盟（ミサワホーム杯）</a></td><td class="cell-I&lt;Nt"><a href="https://sites.google.com/view/sgbl1978/%E3%82%B8%E3%83%A5%E3%83%8B%E3%82%A2%E3%83%99%E3%83%BC%E3%82%B9%E3%83%9C%E3%83%BC%E3%83%AB%E9%81%B8%E6%89%8B%E6%A8%A9%E5%A4%A7%E4%BC%9A" class="url-value">https://sites.google.com/view/sgbl1978/%E3%82%B8%E3%83%A5%E3%83%8B%E3%82%A2%E3%83%99%E3%83%BC%E3%82%B9%E3%83%9C%E3%83%BC%E3%83%AB%E9%81%B8%E6%89%8B%E6%A8%A9%E5%A4%A7%E4%BC%9A</a></td><td class="cell-toQB">ミサワホーム杯ジュニアベースボール選手権を運営</td><td class="cell-l&lt;;V"></td></tr><tr id="fe57b1e8-0a12-4b3a-8ba3-3c04fe4d4f5f"><td class="cell-title"><a href="https://www.notion.so/fe57b1e80a124b3a8ba33c04fe4d4f5f?pvs=21">ジャビットカップ</a></td><td class="cell-I&lt;Nt"><a href="https://www.giants.jp/G/tournament/tournament1/index.html" class="url-value">https://www.giants.jp/G/tournament/tournament1/index.html</a></td><td class="cell-toQB"></td><td class="cell-l&lt;;V"></td></tr><tr id="52bbb847-6263-4b76-9660-615a8626bc02"><td class="cell-title"><a href="https://www.notion.so/All-Japan-52bbb84762634b769660615a8626bc02?pvs=21">All Japan東京リーグ</a></td><td class="cell-I&lt;Nt"><a href="https://alljapanbaseball.net/tokyo1/" class="url-value">https://alljapanbaseball.net/tokyo1/</a></td><td class="cell-toQB"></td><td class="cell-l&lt;;V"></td></tr><tr id="619a5b61-4078-451d-b670-4b06ef557f15"><td class="cell-title"><a href="https://www.notion.so/619a5b614078451db6704b06ef557f15?pvs=21">ポップアスリート</a></td><td class="cell-I&lt;Nt"><a href="http://www.pop.co.jp/" class="url-value">http://www.pop.co.jp/</a></td><td class="cell-toQB">くら寿司トーナメント</td><td class="cell-l&lt;;V"></td></tr><tr id="4581dd93-1738-40ef-9c82-574cda2ccfb4"><td class="cell-title"><a href="https://www.notion.so/4581dd93173840ef9c82574cda2ccfb4?pvs=21">ベイサイドカップ</a></td><td class="cell-I&lt;Nt"><a href="https://baseball.daiwacorporation.co.jp/bayside-cup/" class="url-value">https://baseball.daiwacorporation.co.jp/bayside-cup/</a></td><td class="cell-toQB">ベイサイドカップ</td><td class="cell-l&lt;;V"></td></tr><tr id="4e1b0bf2-aabc-4c4b-a65f-c9d4dd8a5c46"><td class="cell-title"><a href="https://www.notion.so/2022-4e1b0bf2aabc4c4ba65fc9d4dd8a5c46?pvs=21">浮間リーグ2022</a></td><td class="cell-I&lt;Nt"><a href="https://toot2gem8smes.blogspot.com/p/blog-page_50.html?m=1" class="url-value">https://toot2gem8smes.blogspot.com/p/blog-page_50.html?m=1</a></td><td class="cell-toQB">2022リーグ終了にともない削除されたみたいです。</td><td class="cell-l&lt;;V"></td></tr><tr id="8f646422-1376-463f-b216-8f587616c9d1"><td class="cell-title"><a href="https://www.notion.so/8f6464221376463fb2168f587616c9d1?pvs=21">北区城北少年野球連盟</a></td><td class="cell-I&lt;Nt"><a href="https://m.facebook.com/kitakujohoku/" class="url-value">https://m.facebook.com/kitakujohoku/</a></td><td class="cell-toQB">・北区城北少年野球大会</td><td class="cell-l&lt;;V"></td></tr><tr id="0437216f-32a2-4038-b00b-63513e240ee7"><td class="cell-title"><a href="https://www.notion.so/0437216f32a24038b00b63513e240ee7?pvs=21">ヴァージンリーグ</a></td><td class="cell-I&lt;Nt"><a href="http://virgin89.919homepage.com/user/" class="url-value">http://virgin89.919homepage.com/user/</a></td><td class="cell-toQB"></td><td class="cell-l&lt;;V"></td></tr><tr id="3de46f39-627f-4bb3-b032-f7d38b99cfb4"><td class="cell-title"><a href="https://www.notion.so/3de46f39627f4bb3b032f7d38b99cfb4?pvs=21">戸田市少年野球連盟</a></td><td class="cell-I&lt;Nt"><a href="http://tdba.g1.xrea.com/" class="url-value">http://tdba.g1.xrea.com/</a></td><td class="cell-toQB">・戸田道満少年野球大会</td><td class="cell-l&lt;;V"></td></tr><tr id="4656f718-dca4-44e6-b477-acfda422ccc6"><td class="cell-title"><a href="https://www.notion.so/4656f718dca444e6b477acfda422ccc6?pvs=21">荒川竹の子育成大会</a></td><td class="cell-I&lt;Nt"><a href="https://arakawatakenoko.web.fc2.com/" class="url-value">https://arakawatakenoko.web.fc2.com/</a></td><td class="cell-toQB">荒川竹の子育成大会</td><td class="cell-l&lt;;V"></td></tr><tr id="f09357d6-b0a6-4636-818e-f88c6c9d3792"><td class="cell-title"><a href="https://www.notion.so/f09357d6b0a64636818ef88c6c9d3792?pvs=21">スーパーリーグ オブ トウキョウ</a></td><td class="cell-I&lt;Nt"><a href="http://slt.seesaa.net/" class="url-value">http://slt.seesaa.net/</a></td><td class="cell-toQB">スーパーリーグ</td><td class="cell-l&lt;;V"></td></tr><tr id="cc488be5-c774-4d7f-9a76-89868d8a5354"><td class="cell-title"><a href="https://www.notion.so/cc488be5c7744d7f9a7689868d8a5354?pvs=21">ジュニアフレンドカップ</a></td><td class="cell-I&lt;Nt"><a href="https://www.wingssince1977.com/" class="url-value">https://www.wingssince1977.com/</a></td><td class="cell-toQB">ジュニアフレンドカップ</td><td class="cell-l&lt;;V"></td></tr><tr id="2514a0df-2eae-49ad-b16a-643be44a2db3"><td class="cell-title"><a href="https://www.notion.so/2514a0df2eae49adb16a643be44a2db3?pvs=21">全日本軟式野球連盟（マクドナルド・トーナメント）</a></td><td class="cell-I&lt;Nt"><a href="https://jsbb.or.jp/tournaments/e-school.html" class="url-value">https://jsbb.or.jp/tournaments/e-school.html</a></td><td class="cell-toQB">全日本学童軟式野球大会マクドナルド・トーナメントを運営</td><td class="cell-l&lt;;V"></td></tr><tr id="19a05d12-984b-4eab-a079-ac918b1acce7"><td class="cell-title"><a href="https://www.notion.so/HP-19a05d12984b4eaba079ac918b1acce7?pvs=21">真中満杯公式HP</a></td><td class="cell-I&lt;Nt"><a href="https://www.gakudoumanakamitsurucup.org/" class="url-value">https://www.gakudoumanakamitsurucup.org/</a></td><td class="cell-toQB">・真中満杯争奪学童軟式野球大会</td><td class="cell-l&lt;;V"></td></tr><tr id="3984f4c1-d4df-4ce3-91e6-c380d7781688"><td class="cell-title"><a href="https://www.notion.so/WBC-3984f4c1d4df4ce391e6c380d7781688?pvs=21">（おまけ）WBC</a></td><td class="cell-I&lt;Nt"><a href="https://www.wbc2023.jp/" class="url-value">https://www.wbc2023.jp/</a></td><td class="cell-toQB">3/8からはじまるWBCの公式サイト</td><td class="cell-l&lt;;V"></td></tr><tr id="9c150399-6cb1-461c-81c1-d0913eb9fb00"><td class="cell-title"><a href="https://www.notion.so/9c1503996cb1461c81c1d0913eb9fb00?pvs=21">板橋少年軟式野球連盟</a></td><td class="cell-I&lt;Nt"><a href="https://itaren-55.sakura.ne.jp/index.html" class="url-value">https://itaren-55.sakura.ne.jp/index.html</a></td><td class="cell-toQB"></td><td class="cell-l&lt;;V"></td></tr><tr id="c8da0355-4c03-43e1-8728-a50585e8a098"><td class="cell-title"><a href="https://www.notion.so/c8da03554c0343e18728a50585e8a098?pvs=21">関東団地少年野球連盟東京支部　</a></td><td class="cell-I&lt;Nt"><a href="https://kjbb-tokyo.sakura.ne.jp/" class="url-value">https://kjbb-tokyo.sakura.ne.jp/</a></td><td class="cell-toQB"><strong>読売旗争奪関東少年野球大会、朝日旗争奪関東団地少年野球大会</strong></td><td class="cell-l&lt;;V"></td></tr><tr id="10b44831-32d3-802c-a5ec-d425fafbba84"><td class="cell-title"><a href="https://www.notion.so/10b4483132d3802ca5ecd425fafbba84?pvs=21">東京都スポーツ協会</a></td><td class="cell-I&lt;Nt"><a href="https://www.tokyo-sports.or.jp/juniorsport2.html" class="url-value">https://www.tokyo-sports.or.jp/juniorsport2.html</a></td><td class="cell-toQB">東京都スポーツ少年団大会</td><td class="cell-l&lt;;V"></td></tr><tr id="11944831-32d3-8078-a06c-c189167ddaab"><td class="cell-title"><a href="https://www.notion.so/SP-1194483132d38078a06cc189167ddaab?pvs=21">チャイルドスターSP（東京都城北少年野球大会）</a></td><td class="cell-I&lt;Nt"><a href="https://3jj2.childstar-sp.net/tokyo-johoku/" class="url-value">https://3jj2.childstar-sp.net/tokyo-johoku/</a></td><td class="cell-toQB">東京都城北少年野球大会</td><td class="cell-l&lt;;V">7</td></tr><tr id="13d44831-32d3-80e8-82ef-eaf5976a3ccd"><td class="cell-title"><a href="https://www.notion.so/13d4483132d380e882efeaf5976a3ccd?pvs=21">年中夢球杯</a></td><td class="cell-I&lt;Nt"><a href="https://alljapanbaseball.net/honma1/" class="url-value">https://alljapanbaseball.net/honma1/</a></td><td class="cell-toQB">年中夢球杯</td><td class="cell-l&lt;;V"></td></tr><tr id="16044831-32d3-8066-b73a-cbdc83c9a3ef"><td class="cell-title"><a href="https://www.notion.so/1604483132d38066b73acbdc83c9a3ef?pvs=21">中野区少年軟式野球交流大会</a></td><td class="cell-I&lt;Nt"><a href="https://nakanokouryuu.jsbb-nsbb.org/" class="url-value">https://nakanokouryuu.jsbb-nsbb.org/</a></td><td class="cell-toQB">中野区少年軟式野球交流大会</td><td class="cell-l&lt;;V"></td></tr><tr id="19e44831-32d3-8000-a890-cc33f3330241"><td class="cell-title"><a href="https://www.notion.so/19e4483132d38000a890cc33f3330241?pvs=21">宮本慎也杯</a></td><td class="cell-I&lt;Nt"><a href="http://miyamoto-cup.com/" class="url-value">http://miyamoto-cup.com/</a></td><td class="cell-toQB">宮本慎也杯</td><td class="cell-l&lt;;V"></td></tr><tr id="19e44831-32d3-8078-83ad-f5a6932334c6"><td class="cell-title"><a href="https://www.notion.so/19e4483132d3807883adf5a6932334c6?pvs=21">ミズノベースボールドリームカップ</a></td><td class="cell-I&lt;Nt"><a href="https://pridejapan.net/mizunodream-cup/jr-tournament/" class="url-value">https://pridejapan.net/mizunodream-cup/jr-tournament/</a></td><td class="cell-toQB">ミズノベースボールドリームカップ</td><td class="cell-l&lt;;V"></td></tr><tr id="23144831-32d3-80ea-a9de-e9a74ae38fc8"><td class="cell-title"><a href="https://www.notion.so/2314483132d380eaa9dee9a74ae38fc8?pvs=21">墨田区少年野球連盟</a></td><td class="cell-I&lt;Nt"><a href="https://sumida-sbb.org/competition-information/tokyo-metropolitan-school-baseball-tournament" class="url-value">https://sumida-sbb.org/competition-information/tokyo-metropolitan-school-baseball-tournament</a></td><td class="cell-toQB">東京都学童選抜野球大会</td><td class="cell-l&lt;;V"></td></tr><tr id="25c44831-32d3-808c-8acd-da3f390b48f9"><td class="cell-title"><a href="https://www.notion.so/25c4483132d3808c8acdda3f390b48f9?pvs=21">東京都北区城北大会</a></td><td class="cell-I&lt;Nt"><a href="https://www.facebook.com/johokutaikai" class="url-value">https://www.facebook.com/johokutaikai</a></td><td class="cell-toQB">東京都北区城北大会</td><td class="cell-l&lt;;V"></td></tr><tr id="2b944831-32d3-80d3-9bb2-e3a5b7a3af69"><td class="cell-title"><a href="https://www.notion.so/2b94483132d380d39bb2e3a5b7a3af69?pvs=21">学童選抜交流軟式野球大会</a></td><td class="cell-I&lt;Nt"><a href="https://www.edogawabb.org/?page_id=5327" class="url-value">https://www.edogawabb.org/?page_id=5327</a></td><td class="cell-toQB">学童選抜交流軟式野球大会（選抜チームの大会）</td><td class="cell-l&lt;;V"></td></tr><tr id="2c344831-32d3-803a-ae94-dfc1264061e5"><td class="cell-title"><a href="https://www.notion.so/2c34483132d3803aae94dfc1264061e5?pvs=21">大田区城南少年軟式野球連盟</a></td><td class="cell-I&lt;Nt"><a href="https://www.johnan-renmei.com/%E3%83%8A%E3%82%AC%E3%82%BB%E3%82%B1%E3%83%B3%E3%82%B3%E3%83%BC%E6%9D%AF/" class="url-value">https://www.johnan-renmei.com/%E3%83%8A%E3%82%AC%E3%82%BB%E3%82%B1%E3%83%B3%E3%82%B3%E3%83%BC%E6%9D%AF/</a></td><td class="cell-toQB">ナガセケンコー杯</td><td class="cell-l&lt;;V"></td></tr></tbody></table></div><br/><br/></div></div><div style="display:contents" dir="auto"><p id="13715170-6cf6-44c8-8cbf-4a09d62a87b0" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
