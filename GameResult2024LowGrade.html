@@ -1,0 +1,744 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>2024年の試合結果</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="dfdaf0c1-0c00-49cc-8dde-8bc9d0d69c91" class="page sans"><header><h1 class="page-title" dir="auto">2024年の試合結果</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h3 id="f06d8c70-012e-4564-b816-331d0c0801a2" class="">低学年チーム 2024年の成績</h3></div><div style="display:contents" dir="auto"><ul id="b141ec9a-cc20-49d0-a70a-d03c2f55ad38" class="bulleted-list"><li style="list-style-type:disc">47勝21敗1引き分け</li></ul></div><div style="display:contents" dir="auto"><ul id="5fda875d-7e03-4fd6-a195-854dfeda17a9" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">第39回滝野川大会新人戦優勝！！</mark></li></ul></div><div style="display:contents" dir="auto"><ul id="b0105921-5884-444d-8dff-652d3715da7f" class="bulleted-list"><li style="list-style-type:disc">ほほえみ育成少年野球大会第3位</li></ul></div><div style="display:contents" dir="auto"><ul id="b641e817-b736-4711-b4eb-812738e11487" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">第14回　真中満杯第3位！！</mark></li></ul></div><div style="display:contents" dir="auto"><ul id="1e3301fa-2cad-48e7-8f84-789d334120fb" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">スポーツ少年団北区大会優勝！！</mark></li></ul></div><div style="display:contents" dir="auto"><ul id="b7f93a31-1ead-480a-8b13-f9c97745bbbc" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">第46回北区少年野球選手権春季大会優勝！！</mark></li></ul></div><div style="display:contents" dir="auto"><ul id="ea02f6c2-86a4-450a-ae20-44835ef7de8c" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">志茂少年野球春季大会優勝</mark>！！</li></ul></div><div style="display:contents" dir="auto"><ul id="33726f07-1a23-450f-8663-340174389e79" class="bulleted-list"><li style="list-style-type:disc">春季赤羽少年野球大会第3位</li></ul></div><div style="display:contents" dir="auto"><ul id="b0554748-b677-416f-92f4-7b876f3c342c" class="bulleted-list"><li style="list-style-type:disc">北区大会（準決勝でミサワホーム杯と重なったため棄権）</li></ul></div><div style="display:contents" dir="auto"><ul id="4e302c75-4971-4125-a7b6-f9d20378db0e" class="bulleted-list"><li style="list-style-type:disc">ミサワホーム杯争奪ジュニアベースボール大会（チームとして初めてこの大会で1勝！）</li></ul></div><div style="display:contents" dir="auto"><ul id="10344831-32d3-804d-ba61-ca7393a1b30b" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">スポーツ少年団城北ブロック大会優勝！！</mark></li></ul></div><div style="display:contents" dir="auto"><ul id="11944831-32d3-809b-b3fb-cdd1639cd657" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">北区少年野球選手権秋季大会 準優勝！</mark></li></ul></div><div style="display:contents" dir="auto"><ul id="fcf30ab3-f06f-4c38-afb2-c97b45ee06e2" class="bulleted-list"><li style="list-style-type:disc">秋季赤羽少年野球大会３位</li></ul></div><div style="display:contents" dir="auto"><ul id="06716679-4128-42b8-a5ef-b82e4e069a85" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-red">秋季志茂大会優勝！！</mark></li></ul></div><div style="display:contents" dir="ltr"><div id="ee3f714f-c97d-486e-b61f-06cb37b56bb2" class="collection-content"><h4 class="collection-title">2024年試合結果（低学年） (1)</h4><div class="collection-content-wrapper"><table class="collection-content"><thead><tr><th><span class="icon property-icon"><img src="https://www.notion.so/icons/font_gray.svg" style="width:14px;height:14px;display:block"/></span>名前</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>日付</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>対戦相手</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>勝敗</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>点数</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>試合場所</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/hashtag_gray.svg" style="width:14px;height:14px;display:block"/></span>sort</th></tr></thead><tbody><tr id="b54c3dee-91c2-4fc7-b392-7d2211b9316e"><td class="cell-title"><a href="https://www.notion.so/11-26-b54c3dee91c24fc7b3927d2211b9316e?pvs=21">滝野川大会新人戦（東神稲田赤西）11月26日</a></td><td class="cell-z{zK"><time>2023年11月26日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-gray">東神・稲田・赤西</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">12-4</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">1</td></tr><tr id="1c12622e-cefc-43d2-8efe-1502f2dcc78b"><td class="cell-title"><a href="https://www.notion.so/12-3-1c12622ecefc43d28efe1502f2dcc78b?pvs=21">ヴァージンリーグ（城北メッツ）12月3日</a></td><td class="cell-z{zK"><time>2023年12月3日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-default">城北メッツ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">5-6</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">2</td></tr><tr id="c6c9f0e8-187f-4ff7-8460-3c0cbaadb085"><td class="cell-title"><a href="https://www.notion.so/12-10-c6c9f0e8187f4ff784603c0cbaadb085?pvs=21">滝野川大会新人戦（マッハブレーブス）12月10日</a></td><td class="cell-z{zK"><time>2023年12月10日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-gray">マッハブレーブス</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">14-3</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">3</td></tr><tr id="443c462c-75ea-49e0-8a48-f19c27b234d7"><td class="cell-title"><a href="https://www.notion.so/12-16-443c462c75ea49e08a48f19c27b234d7?pvs=21">滝野川大会新人戦（城北メッツ）12月16日</a></td><td class="cell-z{zK"><time>2023年12月16日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-default">城北メッツ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">7-0</td><td class="cell-YUbP"><span class="selected-value select-value-color-orange">北区中央公園グラウンド</span></td><td class="cell-{?o\">4</td></tr><tr id="62b455e0-3202-4f63-a641-f091fa41a569"><td class="cell-title"><a href="https://www.notion.so/12-17-62b455e032024f63a641f091fa41a569?pvs=21">滝野川大会新人戦（豊島堀船）12月17日</a></td><td class="cell-z{zK"><time>2023年12月17日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-green">豊島堀船</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">9-1</td><td class="cell-YUbP"><span class="selected-value select-value-color-orange">北区中央公園グラウンド</span></td><td class="cell-{?o\">5</td></tr><tr id="22d65701-df3f-4d62-9b46-818912269f23"><td class="cell-title"><a href="https://www.notion.so/1-8-22d65701df3f4d629b46818912269f23?pvs=21">ほほえみ育成少年野球大会（飛鳥ジュニア）1月8日</a></td><td class="cell-z{zK"><time>2024年1月8日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-orange">飛鳥ジュニア</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">11-4</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">浮間子どもスポーツ広場</span></td><td class="cell-{?o\">6</td></tr><tr id="7033f341-a56c-4c74-b2f4-33daee6443b2"><td class="cell-title"><a href="https://www.notion.so/1-14-7033f341a56c4c74b2f433daee6443b2?pvs=21">ほほえみ育成少年野球大会（ブルースカイズ）1月14日</a></td><td class="cell-z{zK"><time>2024年1月14日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-yellow">ブルースカイズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">9-6</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">浮間子どもスポーツ広場</span></td><td class="cell-{?o\">7</td></tr><tr id="07a7426a-7955-436a-bc87-032ca2b445ac"><td class="cell-title"><a href="https://www.notion.so/1-28-07a7426a7955436abc87032ca2b445ac?pvs=21">ほほえみ育成少年野球大会（豊島堀船）1月28日</a></td><td class="cell-z{zK"><time>2024年1月28日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-green">豊島堀船</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">1-6</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">浮間子どもスポーツ広場</span></td><td class="cell-{?o\">8</td></tr><tr id="c3660b57-73ab-49fd-a2f6-363d1956eff3"><td class="cell-title"><a href="https://www.notion.so/2-4-c3660b5773ab49fda2f6363d1956eff3?pvs=21">真中満杯（ジュニアファイターズ）2月4日</a></td><td class="cell-z{zK"><time>2024年2月4日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-green">ジュニアファイターズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">10-0</td><td class="cell-YUbP"><span class="selected-value select-value-color-brown">哲学堂公園</span></td><td class="cell-{?o\">9</td></tr><tr id="7fd9b9dc-fef9-4fd5-be25-c885419f3a1e"><td class="cell-title"><a href="https://www.notion.so/2-11-7fd9b9dcfef94fd5be25c885419f3a1e?pvs=21">練習試合（豊島ブレイズ）2月11日</a></td><td class="cell-z{zK"><time>2024年2月11日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-gray">豊島ブレイズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-red">引き分け</span></td><td class="cell-{G[N">8-8</td><td class="cell-YUbP"><span class="selected-value select-value-color-purple">豊島区立千川中学校</span></td><td class="cell-{?o\">10</td></tr><tr id="899aa50b-3478-4bb6-b2a3-d210a43a4488"><td class="cell-title"><a href="https://www.notion.so/2-12-899aa50b34784bb6b2a3d210a43a4488?pvs=21">真中満杯（鷺宮スタージョーズ）2月12日</a></td><td class="cell-z{zK"><time>2024年2月12日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-blue">鷺宮スタージョーズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">8-2</td><td class="cell-YUbP"><span class="selected-value select-value-color-brown">哲学堂公園</span></td><td class="cell-{?o\">11</td></tr><tr id="47dd994f-ffa0-4420-b1c7-30b6a4dd9c9d"><td class="cell-title"><a href="https://www.notion.so/2-18-47dd994fffa04420b1c730b6a4dd9c9d?pvs=21">真中満杯（中野セネタース）2月18日</a></td><td class="cell-z{zK"><time>2024年2月18日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-gray">中野セネタース</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">4-3</td><td class="cell-YUbP"><span class="selected-value select-value-color-brown">哲学堂公園</span></td><td class="cell-{?o\">12</td></tr><tr id="eb641886-bad9-46e9-9c17-d06c1b07b4ad"><td class="cell-title"><a href="https://www.notion.so/2-24-eb641886bad946e99c17d06c1b07b4ad?pvs=21">真中満杯（東部連合）2月24日</a></td><td class="cell-z{zK"><time>2024年2月24日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-blue">東部連合</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">1-9</td><td class="cell-YUbP"><span class="selected-value select-value-color-gray">上高田野球場</span></td><td class="cell-{?o\">13</td></tr><tr id="54b4bb6a-d92d-4c09-a942-a94b197d7afb"><td class="cell-title"><a href="https://www.notion.so/3-3-54b4bb6ad92d4c09a942a94b197d7afb?pvs=21">真中満杯（高輪台ファイターズ）3月3日</a></td><td class="cell-z{zK"><time>2024年3月3日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-purple">高輪台ファイターズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">9-8</td><td class="cell-YUbP"><span class="selected-value select-value-color-gray">上高田野球場</span></td><td class="cell-{?o\">14</td></tr><tr id="bb3e7348-c9dc-4ac1-992f-63dabe23ed84"><td class="cell-title"><a href="https://www.notion.so/3-9-bb3e7348c9dc4ac1992f63dabe23ed84?pvs=21">練習試合（梶山レッドスターズ）3月9日</a></td><td class="cell-z{zK"><time>2024年3月9日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-default">梶山レッドスターズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">17-1</td><td class="cell-YUbP"><span class="selected-value select-value-color-pink">赤塚体育館グラウンド</span></td><td class="cell-{?o\">15</td></tr><tr id="ad82f607-a6ba-4ccd-8067-defd9fab258b"><td class="cell-title"><a href="https://www.notion.so/3-10-ad82f607a6ba4ccd8067defd9fab258b?pvs=21">北区少年野球選手権春季大会（諏訪クラブ）3月10日</a></td><td class="cell-z{zK"><time>2024年3月10日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-purple">諏訪クラブ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">13-4</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">16</td></tr><tr id="fa516c19-dbde-40ca-bfd8-6bcab3b96c5a"><td class="cell-title"><a href="https://www.notion.so/3-17-fa516c19dbde40cabfd86bcab3b96c5a?pvs=21">北区少年野球選手権春季大会（王子ドルフィンズ）3月17日</a></td><td class="cell-z{zK"><time>2024年3月17日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-default">王子ドルフィンズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">11-0</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">浮間子どもスポーツ広場</span></td><td class="cell-{?o\">17</td></tr><tr id="e45232a5-3667-4854-b0e0-4c4d0cfe578b"><td class="cell-title"><a href="https://www.notion.so/BBC-3-20-e45232a536674854b0e04c4d0cfe578b?pvs=21">北区少年野球選手権春季大会（BBC）3月20日</a></td><td class="cell-z{zK"><time>2024年3月20日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-pink">BBC</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">14-2</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">18</td></tr><tr id="efc9bb77-2166-4b70-b638-40438dd3b0f1"><td class="cell-title"><a href="https://www.notion.so/3-24-efc9bb7721664b70b63840438dd3b0f1?pvs=21">北区少年野球選手権春期大会（西浮間イーグルス）3月24日</a></td><td class="cell-z{zK"><time>2024年3月24日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-red">西浮間イーグルス</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">11-2</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">19</td></tr><tr id="172992e5-9a40-40a9-b6f7-2c6503d974ed"><td class="cell-title"><a href="https://www.notion.so/3-31-172992e59a4040a9b6f72c6503d974ed?pvs=21">北区少年野球選手権春季大会（豊島堀船）3月31日</a></td><td class="cell-z{zK"><time>2024年3月31日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-green">豊島堀船</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">9-7</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">20</td></tr><tr id="1656c4a7-0d19-4534-8d40-18cea06a662a"><td class="cell-title"><a href="https://www.notion.so/4-6-1656c4a70d1945348d4018cea06a662a?pvs=21">浮間リーグ（西浮間イーグルス）4月6日</a></td><td class="cell-z{zK"><time>2024年4月6日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-red">西浮間イーグルス</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">14-3</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">浮間子どもスポーツ広場</span></td><td class="cell-{?o\">21</td></tr><tr id="3027a7e2-ad53-4770-bc89-149cddefc9e7"><td class="cell-title"><a href="https://www.notion.so/4-7-3027a7e2ad534770bc89149cddefc9e7?pvs=21">浮間リーグ（戸二小ジャガーズ）4月7日</a></td><td class="cell-z{zK"><time>2024年4月7日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-orange">戸二小ジャガーズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">5-7</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">浮間子どもスポーツ広場</span></td><td class="cell-{?o\">22</td></tr><tr id="1d3c284f-5713-4c9f-b498-78a28af0f0f8"><td class="cell-title"><a href="https://www.notion.so/4-13-1d3c284f57134c9fb49878a28af0f0f8?pvs=21">浮間リーグ（西浮間イーグルス）4月13日</a></td><td class="cell-z{zK"><time>2024年4月13日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-red">西浮間イーグルス</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">10-7</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">浮間子どもスポーツ広場</span></td><td class="cell-{?o\">23</td></tr><tr id="f7178c52-3b9c-4e3b-803e-7fc3c28b92d2"><td class="cell-title"><a href="https://www.notion.so/4-14-f7178c523b9c4e3b803e7fc3c28b92d2?pvs=21">北区少年野球選手権春季大会（王子ドルフィンズ）4月14日</a></td><td class="cell-z{zK"><time>2024年4月14日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-default">王子ドルフィンズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">9-0</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">24</td></tr><tr id="9b5a8471-117f-4920-88ef-c93579a3736f"><td class="cell-title"><a href="https://www.notion.so/4-21-9b5a8471117f492088efc93579a3736f?pvs=21">北区少年野球選手権春季大会（豊島堀船）4月21日</a></td><td class="cell-z{zK"><time>2024年4月21日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-green">豊島堀船</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">4-1</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">25</td></tr><tr id="9f9257bb-542b-4060-8771-61ed02869e2d"><td class="cell-title"><a href="https://www.notion.so/4-21-9f9257bb542b4060877161ed02869e2d?pvs=21">スポーツ少年団北区大会（赤西東神）4月21日</a></td><td class="cell-z{zK"><time>2024年4月21日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-default">赤西東神</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">9-1</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">26</td></tr><tr id="5c16ee76-37c5-460c-bfe2-0ad81081a13b"><td class="cell-title"><a href="https://www.notion.so/4-27-5c16ee7637c5460cbfe20ad81081a13b?pvs=21">浮間リーグ（長後ベアーズ）4月27日</a></td><td class="cell-z{zK"><time>2024年4月27日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-blue">長後ベアーズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">15-2</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">浮間子どもスポーツ広場</span></td><td class="cell-{?o\">27</td></tr><tr id="de34b2c0-190d-47e8-8f10-0321714cfd93"><td class="cell-title"><a href="https://www.notion.so/4-28-de34b2c0190d47e88f100321714cfd93?pvs=21">北区少年野球選手権春季大会（城北メッツ）4月28日</a></td><td class="cell-z{zK"><time>2024年4月28日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-default">城北メッツ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">9-4</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">28</td></tr><tr id="64a5370f-22a7-4f73-9db2-b336a29ce670"><td class="cell-title"><a href="https://www.notion.so/4-29-64a5370f22a74f739db2b336a29ce670?pvs=21">滝野川少年野球春季大会（城北メッツ）4月29日</a></td><td class="cell-z{zK"><time>2024年4月29日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-default">城北メッツ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">6-8</td><td class="cell-YUbP"><span class="selected-value select-value-color-orange">北区中央公園グラウンド</span></td><td class="cell-{?o\">29</td></tr><tr id="8b74c710-b264-4fc1-b653-7b16d70e0a5a"><td class="cell-title"><a href="https://www.notion.so/BBC-5-3-8b74c710b2644fc1b6537b16d70e0a5a?pvs=21">浮間リーグ（BBC）5月3日</a></td><td class="cell-z{zK"><time>2024年5月3日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-pink">BBC</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">8-7</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">浮間子どもスポーツ広場</span></td><td class="cell-{?o\">30</td></tr><tr id="2d902f92-819b-4808-bf6a-8c44b25da663"><td class="cell-title"><a href="https://www.notion.so/5-4-2d902f92819b4808bf6a8c44b25da663?pvs=21">浮間リーグ（十条イーグルス）5月4日</a></td><td class="cell-z{zK"><time>2024年5月4日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-purple">十条イーグルス</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">7-1</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">浮間子どもスポーツ広場</span></td><td class="cell-{?o\">31</td></tr><tr id="4e3d0864-53e1-4c67-8d4c-bda5644449d9"><td class="cell-title"><a href="https://www.notion.so/5-5-4e3d086453e14c678d4cbda5644449d9?pvs=21">志茂少年野球春季大会（諏訪クラブ）5月5日</a></td><td class="cell-z{zK"><time>2024年5月5日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-purple">諏訪クラブ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">10-3</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">32</td></tr><tr id="3d9ff209-f205-4bd3-ad95-7e269cf90bb7"><td class="cell-title"><a href="https://www.notion.so/5-11-3d9ff209f2054bd3ad957e269cf90bb7?pvs=21">浮間リーグ(マッハブレーブス)5月11日</a></td><td class="cell-z{zK"><time>2024年5月11日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-gray">マッハブレーブス</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">5-10</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">浮間子どもスポーツ広場</span></td><td class="cell-{?o\">33</td></tr><tr id="e2c7f21f-76c7-4f5c-b698-716af40d4196"><td class="cell-title"><a href="https://www.notion.so/5-12-e2c7f21f76c74f5cb698716af40d4196?pvs=21">志茂少年野球春季大会(赤西東神)5月12日</a></td><td class="cell-z{zK"><time>2024年5月12日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-default">赤西東神</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">10-0</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">34</td></tr><tr id="fae0b3ae-6370-41f4-826a-185fa21e1dfe"><td class="cell-title"><a href="https://www.notion.so/5-18-fae0b3ae637041f4826a185fa21e1dfe?pvs=21">志茂少年野球春季大会(王子ドルフィンズ)5月18日</a></td><td class="cell-z{zK"><time>2024年5月18日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-default">王子ドルフィンズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">13-0</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">35</td></tr><tr id="4a9cbf8c-da83-4c94-ae01-2a9975e8d9c9"><td class="cell-title"><a href="https://www.notion.so/5-19-4a9cbf8cda834c94ae012a9975e8d9c9?pvs=21">春季赤羽少年野球大会(飛鳥ジュニア)5月19日</a></td><td class="cell-z{zK"><time>2024年5月19日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-orange">飛鳥ジュニア</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">12-4</td><td class="cell-YUbP"><span class="selected-value select-value-color-red">赤羽自然観察公園</span></td><td class="cell-{?o\">36</td></tr><tr id="7fdf1f9f-9a5d-45d1-a45a-d98feea1ea55"><td class="cell-title"><a href="https://www.notion.so/5-26-7fdf1f9f9a5d45d1a45ad98feea1ea55?pvs=21">志茂少年野球春季大会(豊島堀船)5月26日</a></td><td class="cell-z{zK"><time>2024年5月26日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-green">豊島堀船</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">8-1</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">37</td></tr><tr id="7f98753e-99e3-4e64-bb00-c01a1610ade7"><td class="cell-title"><a href="https://www.notion.so/BBC-6-2-7f98753e99e34e64bb00c01a1610ade7?pvs=21">春季赤羽少年野球大会(BBC）6月2日</a></td><td class="cell-z{zK"><time>2024年6月2日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-pink">BBC</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">8-1</td><td class="cell-YUbP"><span class="selected-value select-value-color-red">赤羽自然観察公園</span></td><td class="cell-{?o\">38</td></tr><tr id="bd8d49b9-eeb9-42c6-b057-95d9713e11de"><td class="cell-title"><a href="https://www.notion.so/6-2-bd8d49b9eeb942c6b05795d9713e11de?pvs=21">春季赤羽少年野球大会(豊島堀船)6月2日</a></td><td class="cell-z{zK"><time>2024年6月2日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-green">豊島堀船</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">3-5</td><td class="cell-YUbP"><span class="selected-value select-value-color-red">赤羽自然観察公園</span></td><td class="cell-{?o\">39</td></tr><tr id="d8decfff-98b5-45c7-8be4-99561c93d865"><td class="cell-title"><a href="https://www.notion.so/6-15-d8decfff98b545c78be499561c93d865?pvs=21">練習試合：豊島ブレイズ6月15日</a></td><td class="cell-z{zK"><time>2024年6月15日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-gray">豊島ブレイズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">7-19</td><td class="cell-YUbP"><span class="selected-value select-value-color-blue">豊島区荒川グラウンド</span></td><td class="cell-{?o\">40</td></tr><tr id="654ca94a-dcf6-452c-8f2e-1a0ffb754c70"><td class="cell-title"><a href="https://www.notion.so/3-6-15-654ca94adcf6452c8f2e1a0ffb754c70?pvs=21">練習試合（3年生以下）豊島ブレイズ6月15日</a></td><td class="cell-z{zK"><time>2024年6月15日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-gray">豊島ブレイズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">0-8</td><td class="cell-YUbP"><span class="selected-value select-value-color-blue">豊島区荒川グラウンド</span></td><td class="cell-{?o\">41</td></tr><tr id="44fc4f18-88c5-4867-908d-745e9b3e0372"><td class="cell-title"><a href="https://www.notion.so/6-16-44fc4f1888c54867908d745e9b3e0372?pvs=21">練習試合：（向島ビーバーズ）6月16日</a></td><td class="cell-z{zK"><time>2024年6月16日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-brown">向島ビーバーズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">4-6</td><td class="cell-YUbP"><span class="selected-value select-value-color-default">豊島五丁目グリーンスポーツ広場</span></td><td class="cell-{?o\">42</td></tr><tr id="8b39fe86-be86-4c5f-9ea4-bd5d9e82c0b1"><td class="cell-title"><a href="https://www.notion.so/3-6-16-8b39fe86be864c5f9ea4bd5d9e82c0b1?pvs=21">練習試合（3年生以下）（向島ビーバーズ）6月16日</a></td><td class="cell-z{zK"><time>2024年6月16日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-brown">向島ビーバーズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">5-11</td><td class="cell-YUbP"><span class="selected-value select-value-color-default">豊島五丁目グリーンスポーツ広場</span></td><td class="cell-{?o\">43</td></tr><tr id="befe2e1e-518f-4fa5-acf1-a08dcf64c62c"><td class="cell-title"><a href="https://www.notion.so/6-29-befe2e1e518f4fa5acf1a08dcf64c62c?pvs=21">練習試合：（リトルモンキーズ）6月29日</a></td><td class="cell-z{zK"><time>2024年6月29日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-yellow">リトルモンキーズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">21-3</td><td class="cell-YUbP"><span class="selected-value select-value-color-pink">後楽公園少年野球場</span></td><td class="cell-{?o\">44</td></tr><tr id="86ab053a-57ff-4106-aec4-105580acb164"><td class="cell-title"><a href="https://www.notion.so/7-7-86ab053a57ff4106aec4105580acb164?pvs=21">練習試合：（レッドサンズ）7月7日</a></td><td class="cell-z{zK"><time>2024年7月7日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-blue">レッドサンズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">2-12</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">45</td></tr><tr id="3d9ce73c-f4d4-4047-8981-772bb2484784"><td class="cell-title"><a href="https://www.notion.so/3d9ce73cf4d440478981772bb2484784?pvs=21">北区大会：十条イーグルス</a></td><td class="cell-z{zK"><time>2024年7月20日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-purple">十条イーグルス</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">16-0</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">46</td></tr><tr id="c5bd3a22-ca57-48c3-8f5f-4c6a8045424a"><td class="cell-title"><a href="https://www.notion.so/c5bd3a22ca5748c38f5f4c6a8045424a?pvs=21">北区大会：西浮間イーグルス</a></td><td class="cell-z{zK"><time>2024年7月21日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-red">西浮間イーグルス</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">3-2</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">47</td></tr><tr id="6d9049c5-5ef0-44dc-a150-4ee487cc61be"><td class="cell-title"><a href="https://www.notion.so/6d9049c55ef044dca1504ee487cc61be?pvs=21">ミサワホーム杯：仲宿ファイターズ</a></td><td class="cell-z{zK"><time>2024年7月27日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-yellow">仲宿ファイターズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">12-5</td><td class="cell-YUbP"><span class="selected-value select-value-color-red">下高井戸運動場</span></td><td class="cell-{?o\">48</td></tr><tr id="c187de7f-0401-4cec-ba59-41675b1f72e6"><td class="cell-title"><a href="https://www.notion.so/c187de7f04014cecba5941675b1f72e6?pvs=21">ミサワホーム杯：国分寺ジュニアキング</a></td><td class="cell-z{zK"><time>2024年7月28日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-orange">国分寺ジュニアキング</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">2-9</td><td class="cell-YUbP"><span class="selected-value select-value-color-red">下高井戸運動場</span></td><td class="cell-{?o\">49</td></tr><tr id="6678db8f-9010-49ea-95f0-2540b73ad352"><td class="cell-title"><a href="https://www.notion.so/6678db8f901049ea95f02540b73ad352?pvs=21">浮間リーグ：豊島堀船</a></td><td class="cell-z{zK"><time>2024年9月1日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-green">豊島堀船</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">9-1</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">浮間子どもスポーツ広場</span></td><td class="cell-{?o\">50</td></tr><tr id="f3959af8-f36e-4cb6-b4a3-9c0611ff1038"><td class="cell-title"><a href="https://www.notion.so/f3959af8f36e4cb6b4a39c0611ff1038?pvs=21">浮間リーグ：若木ベースボールクラブ</a></td><td class="cell-z{zK"><time>2024年9月7日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-yellow">若木ベースボールクラブ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">7-3</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">浮間子どもスポーツ広場</span></td><td class="cell-{?o\">51</td></tr><tr id="a6f1508d-1d02-4f8e-94c3-51f104cafc18"><td class="cell-title"><a href="https://www.notion.so/a6f1508d1d024f8e94c351f104cafc18?pvs=21">スポーツ少年団城北ブロック大会：舎人スポーツ少年団</a></td><td class="cell-z{zK"><time>2024年9月8日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-purple">舎人スポーツ少年団</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">16-0</td><td class="cell-YUbP"><span class="selected-value select-value-color-orange">北区中央公園グラウンド</span></td><td class="cell-{?o\">52</td></tr><tr id="10244831-32d3-80b3-b5ef-d7ee3f99087c"><td class="cell-title"><a href="https://www.notion.so/1024483132d380b3b5efd7ee3f99087c?pvs=21">練習試合：荒川ジャンプ</a></td><td class="cell-z{zK"><time>2024年9月14日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-brown">荒川ジャンプ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">13-12</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">53</td></tr><tr id="10244831-32d3-80be-b95d-cc01c725dc2a"><td class="cell-title"><a href="https://www.notion.so/1024483132d380beb95dcc01c725dc2a?pvs=21">スポーツ少年団城北ブロック大会：トータスⅡ</a></td><td class="cell-z{zK"><time>2024年9月15日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-green">トータスⅡ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">5-3</td><td class="cell-YUbP"><span class="selected-value select-value-color-orange">北区中央公園グラウンド</span></td><td class="cell-{?o\">54</td></tr><tr id="10244831-32d3-805e-b453-d0512593d50f"><td class="cell-title"><a href="https://www.notion.so/1024483132d3805eb453d0512593d50f?pvs=21">北区大会：諏訪クラブ</a></td><td class="cell-z{zK"><time>2024年9月15日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-purple">諏訪クラブ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">9-0</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">55</td></tr><tr id="173b90b9-ad18-4baa-816a-533ebd4eb957"><td class="cell-title"><a href="https://www.notion.so/173b90b9ad184baa816a533ebd4eb957?pvs=21">北区大会：豊島堀船</a></td><td class="cell-z{zK"><time>2024年9月16日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-green">豊島堀船</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">8-0</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">56</td></tr><tr id="10844831-32d3-80ac-bc04-d8895accf148"><td class="cell-title"><a href="https://www.notion.so/1084483132d380acbc04d8895accf148?pvs=21">赤羽大会：赤西東神</a></td><td class="cell-z{zK"><time>2024年9月21日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-default">赤西東神</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">17-0</td><td class="cell-YUbP"><span class="selected-value select-value-color-red">赤羽自然観察公園</span></td><td class="cell-{?o\">57</td></tr><tr id="10a44831-32d3-80d7-abf8-de170704c8ca"><td class="cell-title"><a href="https://www.notion.so/10a4483132d380d7abf8de170704c8ca?pvs=21">赤羽大会：豊島堀船</a></td><td class="cell-z{zK"><time>2024年9月23日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-green">豊島堀船</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">8-2</td><td class="cell-YUbP"><span class="selected-value select-value-color-red">赤羽自然観察公園</span></td><td class="cell-{?o\">58</td></tr><tr id="10a44831-32d3-802a-a57d-e51660366092"><td class="cell-title"><a href="https://www.notion.so/BBC-10a4483132d3802aa57de51660366092?pvs=21">志茂大会：BBC</a></td><td class="cell-z{zK"><time>2024年9月23日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-pink">BBC</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">10-0</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">59</td></tr><tr id="11844831-32d3-80c8-993e-d864538b6ebe"><td class="cell-title"><a href="https://www.notion.so/1184483132d380c8993ed864538b6ebe?pvs=21">北区大会:城北メッツ</a></td><td class="cell-z{zK"><time>2024年9月29日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-default">城北メッツ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">0-11</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">60</td></tr><tr id="11844831-32d3-80da-b3da-d86ba74462c8"><td class="cell-title"><a href="https://www.notion.so/BBC-1184483132d380dab3dad86ba74462c8?pvs=21">赤羽大会:BBC</a></td><td class="cell-z{zK"><time>2024年9月29日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-pink">BBC</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">7-8</td><td class="cell-YUbP"><span class="selected-value select-value-color-red">赤羽自然観察公園</span></td><td class="cell-{?o\">61</td></tr><tr id="11d44831-32d3-801b-a8d7-ca6dd1d6db57"><td class="cell-title"><a href="https://www.notion.so/11d4483132d3801ba8d7ca6dd1d6db57?pvs=21">志茂大会：赤西東神</a></td><td class="cell-z{zK"><time>2024年10月12日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-default">赤西東神</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">9-0</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">62</td></tr><tr id="11d44831-32d3-80e8-934d-dddf77a016b1"><td class="cell-title"><a href="https://www.notion.so/B-11d4483132d380e8934ddddf77a016b1?pvs=21">志茂大会(Bチーム)：諏訪クラブ</a></td><td class="cell-z{zK"><time>2024年10月12日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-purple">諏訪クラブ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">0-18</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">63</td></tr><tr id="11e44831-32d3-80c1-a37c-e5489c91f79e"><td class="cell-title"><a href="https://www.notion.so/11e4483132d380c1a37ce5489c91f79e?pvs=21">スポーツ少年団東京都大会:高輪クラブ</a></td><td class="cell-z{zK"><time>2024年10月13日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-brown">高輪クラブ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">0ー7</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">駒沢オリンピック公園総合運動場</span></td><td class="cell-{?o\">64</td></tr><tr id="097d2773-2f0b-45e2-83b5-4376083fd386"><td class="cell-title"><a href="https://www.notion.so/097d27732f0b45e283b54376083fd386?pvs=21">浮間リーグ：美女木ボーイズ</a></td><td class="cell-z{zK"><time>2024年10月19日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-default">美女木ボーイズ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">0-10</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">浮間子どもスポーツ広場</span></td><td class="cell-{?o\">65</td></tr><tr id="cdb9b618-67d7-4036-b25f-c7d7be37c606"><td class="cell-title"><a href="https://www.notion.so/cdb9b61867d74036b25fc7d7be37c606?pvs=21">志茂大会：豊島堀船</a></td><td class="cell-z{zK"><time>2024年10月20日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-green">豊島堀船</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">5-2</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">66</td></tr><tr id="e377a402-1fd9-4c83-a18f-b756cd020852"><td class="cell-title"><a href="https://www.notion.so/e377a4021fd94c83a18fb756cd020852?pvs=21">浮間リーグ：諏訪クラブ</a></td><td class="cell-z{zK"><time>2024年10月26日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-purple">諏訪クラブ</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">3-10</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">浮間子どもスポーツ広場</span></td><td class="cell-{?o\">67</td></tr><tr id="6b21f23e-cfc9-4175-8cb8-62d19677f5d9"><td class="cell-title"><a href="https://www.notion.so/6b21f23ecfc941758cb862d19677f5d9?pvs=21">志茂大会：飛鳥ジュニア</a></td><td class="cell-z{zK"><time>2024年10月27日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-orange">飛鳥ジュニア</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-orange">勝ち</span></td><td class="cell-{G[N">9-2</td><td class="cell-YUbP"><span class="selected-value select-value-color-green">新荒川大橋野球場</span></td><td class="cell-{?o\">68</td></tr><tr id="65e3d762-5bea-4af7-ac71-6933c913f47e"><td class="cell-title"><a href="https://www.notion.so/65e3d7625bea4af7ac716933c913f47e?pvs=21">浮間リーグ：赤西東神</a></td><td class="cell-z{zK"><time>2024年10月27日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-default">赤西東神</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">3-13</td><td class="cell-YUbP"><span class="selected-value select-value-color-yellow">浮間子どもスポーツ広場</span></td><td class="cell-{?o\">69</td></tr><tr id="13444831-32d3-805d-9338-e03307982f7b"><td class="cell-title"><a href="https://www.notion.so/23-1344483132d3805d9338e03307982f7b?pvs=21">23区大会：山野レッドイーグルス</a></td><td class="cell-z{zK"><time>2024年11月3日</time></td><td class="cell-FKWE"><span class="selected-value select-value-color-gray">山野レッドイーグルス</span></td><td class="cell-Ez&gt;_"><span class="selected-value select-value-color-default">負け</span></td><td class="cell-{G[N">6-20</td><td class="cell-YUbP"><span class="selected-value select-value-color-blue">品川区民公園野球場</span></td><td class="cell-{?o\">70</td></tr></tbody></table></div><br/><br/></div></div><div style="display:contents" dir="auto"><p id="c1f4aca3-5581-4cf1-b4ee-421d60dc2797" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
