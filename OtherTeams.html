@@ -1,0 +1,743 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>対戦頂いたチーム様</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="34444831-32d3-80a3-96d6-e95494ad97e3" class="page sans"><header><h1 class="page-title" dir="auto">対戦頂いたチーム様</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h3 id="34444831-32d3-807c-94c1-d7df1fd8c79c" class="">赤西ナイン</h3></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-8026-9a60-d2731e8dc956"><a href="https://x.com/mo8zv7nfvdz4lmj" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">赤西ナイン (@Mo8ZV7nFvdZ4LMj) on X</div><div class="bookmark-description">東京都北区の西が丘地区、赤羽台西地区を活動拠点にしている少年野球チームです。  大きなチームではありませんが、アットホームな雰囲気で皆が協力しあって活動しています。体験や見学は随時、受け付けていますので一度、気軽に遊びに来て下さい。  #赤西ナイン #少年野球 #西が丘小 #赤羽台西小 #梅木小 #東京都北区 #赤羽</div></div><div class="bookmark-href"><img src="https://abs.twimg.com/favicons/twitter.3.ico" class="icon bookmark-icon"/>https://x.com/mo8zv7nfvdz4lmj</div></div><img src="https://pbs.twimg.com/profile_images/1089505184571506688/F0KojOCk_200x200.jpg" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-808b-92e7-fb1992f53ba3"><a href="https://akanishinine.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">ホーム</div></div><div class="bookmark-href"><img src="https://akanishinine.com/wp-content/uploads/2021/11/cropped-homeicon-192x192.png" class="icon bookmark-icon"/>https://akanishinine.com/</div></div></a></figure></div><div style="display:contents" dir="auto"><h3 id="34444831-32d3-801e-8e1b-e12a59efe132" class="">十条イーグルス</h3></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-80a0-8874-f794131e9d98"><a href="https://www.instagram.com/jujo.eagles/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">十条イーグルススポーツ少年団 (@jujo.eagles) • Instagram profile</div><div class="bookmark-description">124 Followers, 11 Following, 119 Posts - See Instagram photos and videos from 十条イーグルススポーツ少年団 (@jujo.eagles)</div></div><div class="bookmark-href"><img src="https://static.cdninstagram.com/rsrc.php/yr/r/rzWiSjZRxk5.webp" class="icon bookmark-icon"/>https://www.instagram.com/jujo.eagles/</div></div><img src="https://scontent-iad6-1.cdninstagram.com/v/t51.2885-19/120539296_1410479415817936_4096499710873009060_n.jpg?stp=dst-jpg_s100x100_tt6&amp;_nc_cat=100&amp;ccb=7-5&amp;_nc_sid=bf7eb4&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&amp;_nc_ohc=kZmWAzQSWNMQ7kNvwGtMu5O&amp;_nc_oc=Adp26IBQLcEeKeZoRCEYIZXMgYFbMkSuztDdLlKNNIUTuXnASl1JOJrgjMJqggfu5uE&amp;_nc_zt=24&amp;_nc_ht=scontent-iad6-1.cdninstagram.com&amp;_nc_ss=7a289&amp;oh=00_Af1P3x3Y8Ity90pw5ZRYCTHSZM_JpRai8unG8E0-iFlBtg&amp;oe=69E68C84" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="34444831-32d3-80dc-be6c-f7a7f8289141" class="">西浮間イーグルス</h3></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-808e-90f9-e593a95c977b"><a href="https://www.facebook.com/nishiukima/?locale=ja_JP" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">西浮間イーグルス</div><div class="bookmark-description">西浮間イーグルス - 「いいね！」432件 - 昭和50年（1975年）チーム創立 東京都北区浮間で活動している学童・少年軟式野球チームです。 （新入部員募集中！！いつでも見学・体験に来てください！）</div></div><div class="bookmark-href"><img src="https://z-m-static.xx.fbcdn.net/rsrc.php/y4/r/M6oWJ5INQpg.webp" class="icon bookmark-icon"/>https://www.facebook.com/nishiukima/?locale=ja_JP</div></div><img src="https://scontent-iad3-1.xx.fbcdn.net/v/t39.30808-1/305747089_497527295712203_8327431958305615403_n.jpg?stp=cp0_dst-jpg_e15_fr_q65_tt6&amp;cstp=mx381x381&amp;ctp=s381x381&amp;_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=3ab345&amp;_nc_ohc=wF1rM1bp1wkQ7kNvwGrveC4&amp;_nc_oc=Adp0xBjQX2ilX1R0lXT578cxJ1r1DnNSTl6TNtAUIBa2FQQZs2BfmI7l6eVIYMeoXmc&amp;_nc_ad=z-m&amp;_nc_cid=0&amp;_nc_zt=24&amp;_nc_rml=0&amp;_nc_ht=scontent-iad3-1.xx&amp;_nc_gid=lQdVJ5OyfVoiQZD1-h6InQ&amp;_nc_ss=7a389&amp;oh=00_Af3uahbViMoRUTMaDD0Ww3TQ-x-dc55pGkdcAZQR0gYhiw&amp;oe=69E69B6A" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-80d6-9db9-f52322d606ee"><a href="https://www.instagram.com/nishiukima_eagles/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">西浮間イーグルス (@nishiukima_eagles) • Instagram profile</div><div class="bookmark-description">555 Followers, 418 Following, 91 Posts - See Instagram photos and videos from 西浮間イーグルス (@nishiukima_eagles)</div></div><div class="bookmark-href"><img src="https://static.cdninstagram.com/rsrc.php/yr/r/rzWiSjZRxk5.webp" class="icon bookmark-icon"/>https://www.instagram.com/nishiukima_eagles/</div></div><img src="https://scontent-iad3-2.cdninstagram.com/v/t51.2885-19/424873565_404874935342910_3225474407937337262_n.jpg?stp=dst-jpg_s100x100_tt6&amp;_nc_cat=105&amp;ccb=7-5&amp;_nc_sid=bf7eb4&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&amp;_nc_ohc=WSfdrDqrIvgQ7kNvwELWF87&amp;_nc_oc=Adplq6YHyjBcZOubF1xt7QQeOVe_Vn05rQDyOo6BEehrHZy1zIOrrRuT82TPjoc4B6Q&amp;_nc_zt=24&amp;_nc_ht=scontent-iad3-2.cdninstagram.com&amp;_nc_ss=7a289&amp;oh=00_Af2dl5AyGCdgVC_rCJDF4HOGn0ZSvcgZD5RHZ3Q3W2p53w&amp;oe=69E6A1EB" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="34444831-32d3-80f5-a471-d13179a3571e" class="">船堀ダックスクラブ</h3></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-80e7-a14f-f60b83637760"><a href="https://www.instagram.com/funabori_daxclub_/?hl=ja" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">船堀DAXCLUB (@funabori_daxclub_) • Instagramプロフィール</div><div class="bookmark-description">フォロワー640人、フォロー中272人、投稿161件 ― 船堀DAXCLUBさん(@funabori_daxclub_)のInstagramの写真と動画をチェックしよう</div></div><div class="bookmark-href"><img src="https://static.cdninstagram.com/rsrc.php/yr/r/rzWiSjZRxk5.webp" class="icon bookmark-icon"/>https://www.instagram.com/funabori_daxclub_/?hl=ja</div></div><img src="https://scontent-iad6-1.cdninstagram.com/v/t51.2885-19/269736212_405910754656505_2458752781814998347_n.jpg?stp=dst-jpg_s100x100_tt6&amp;_nc_cat=106&amp;ccb=7-5&amp;_nc_sid=bf7eb4&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4zMjAuQzMifQ%3D%3D&amp;_nc_ohc=seSd2g2gveQQ7kNvwHHDE1H&amp;_nc_oc=Adq6JHxSDXKERhT3ivEqhe-VhT_z2OgVMsIEp4ry19sMihpiNO46FqnpQKMGDmNTzFU&amp;_nc_zt=24&amp;_nc_ht=scontent-iad6-1.cdninstagram.com&amp;_nc_ss=7a289&amp;oh=00_Af0O6rpqQKO_QMWne2COPVGN694dqsDpJT0jmtZ51EJRwA&amp;oe=69E6B249" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-80df-a9e7-da05c3e4f25e"><a href="http://www.daxclub.jp/info/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">船堀ダックスクラブ</div><div class="bookmark-description">本拠地は東京江戸川。活動内容は江戸川区大会、葛西大会、北支部大会などです。</div></div><div class="bookmark-href"><img src="http://www.daxclub.jp/favicon.ico" class="icon bookmark-icon"/>http://www.daxclub.jp/info/</div></div></a></figure></div><div style="display:contents" dir="auto"><h3 id="34444831-32d3-80a4-ad3a-efcde9b1824e" class="">諏訪クラブ</h3></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-80db-a959-f90a49032b9c"><a href="https://www.instagram.com/popular/%E8%AB%8F%E8%A8%AA%E3%82%AF%E3%83%A9%E3%83%96/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">諏訪クラブ</div></div><div class="bookmark-href"><img src="https://static.cdninstagram.com/rsrc.php/yr/r/rzWiSjZRxk5.webp" class="icon bookmark-icon"/>https://www.instagram.com/popular/%E8%AB%8F%E8%A8%AA%E3%82%AF%E3%83%A9%E3%83%96/</div></div><img src="https://scontent-iad3-1.cdninstagram.com/v/t51.71878-15/655221191_2070713730159655_1093255757455728206_n.jpg?stp=cmp1_dst-jpg_e35_s640x640_tt6&amp;_nc_cat=104&amp;ccb=7-5&amp;_nc_sid=18de74&amp;efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&amp;_nc_ohc=_7E0ZWJi_nYQ7kNvwFCm814&amp;_nc_oc=AdraY7guRy2h-L0u4xz6UwU3614fTCFAc74Krg1A6AskhL2upEQbfUupYAzMK-_f2RU&amp;_nc_zt=23&amp;_nc_ht=scontent-iad3-1.cdninstagram.com&amp;_nc_gid=-h4Edxm8ALifT9Q9XzcHZA&amp;_nc_ss=7a289&amp;oh=00_Af25hiyg-PRS3BukVRqziZhYZp1zDiMbXLP-EU5mxnFi3w&amp;oe=69E6A9DF" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="34444831-32d3-80b7-b213-d627e00ffa5b" class="">城北メッツ</h3></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-80a2-a60a-f37ca10a8063"><a href="https://www.facebook.com/jouhokumets/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">城北メッツ | Kita-ku Tokyo</div><div class="bookmark-description">城北メッツ, Kita-ku. 58 likes · 3 talking about this. 新しいFacebookのアカウントです。 旧アカウントは更新されませんのでご注意ください。 東京都北区を拠点に活動している学童少年野球チームです！ みなさま、フォローよろしくお願いします🙇  ⚾東京都北区少年野球連盟所属 ⚾選手募集中❗ ⚾北区以外の男の子女の子も大歓迎❗...</div></div><div class="bookmark-href"><img src="https://z-m-static.xx.fbcdn.net/rsrc.php/y4/r/M6oWJ5INQpg.webp" class="icon bookmark-icon"/>https://www.facebook.com/jouhokumets/</div></div><img src="https://scontent-iad3-1.xx.fbcdn.net/v/t39.30808-1/449842537_122097519734399931_6038007489573956849_n.jpg?stp=cp0_dst-jpg_e15_fr_q65_tt6&amp;cstp=mx200x200&amp;ctp=s200x200&amp;_nc_cat=101&amp;ccb=1-7&amp;_nc_sid=3ab345&amp;_nc_ohc=o7uxt2-dui4Q7kNvwGN4PJl&amp;_nc_oc=AdraP6MQpOtOlJocvHY6fh6CIGyFAvOh5tlJZEdEWOwL5EiT2uu1_CmEO_tc-mn6YWY&amp;_nc_ad=z-m&amp;_nc_cid=0&amp;_nc_zt=24&amp;_nc_rml=0&amp;_nc_ht=scontent-iad3-1.xx&amp;_nc_gid=-al1sPgazaawzRCLMkUXag&amp;_nc_ss=7a389&amp;oh=00_Af2qatFUJOTqHuGpCC6-6tGcYlrS7rsFHwJaw6uowwXPkw&amp;oe=69E6AF41" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-804f-a64a-f3a32effab7d"><a href="https://www.instagram.com/johokumets/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">城北メッツ (@johokumets) • Instagram profile</div><div class="bookmark-description">1,564 Followers, 1,264 Following, 379 Posts - See Instagram photos and videos from 城北メッツ (@johokumets)</div></div><div class="bookmark-href"><img src="https://static.cdninstagram.com/rsrc.php/yr/r/rzWiSjZRxk5.webp" class="icon bookmark-icon"/>https://www.instagram.com/johokumets/</div></div><img src="https://scontent-iad6-1.cdninstagram.com/v/t51.2885-19/329397100_130221046624519_4604012947501687657_n.jpg?stp=dst-jpg_s100x100_tt6&amp;_nc_cat=109&amp;ccb=7-5&amp;_nc_sid=bf7eb4&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy40NTUuQzMifQ%3D%3D&amp;_nc_ohc=Wxxgr7sMRQoQ7kNvwEpKHyX&amp;_nc_oc=AdqlooMCXkP3DvimNJBvGRRJRksg3pglz6AnNdQQ9NWvAH91MkSCUN7yzmRgXQrIijE&amp;_nc_zt=24&amp;_nc_ht=scontent-iad6-1.cdninstagram.com&amp;_nc_ss=7a289&amp;oh=00_Af08kiUSc0yVSyb-Dv57QsXwtT-5WlVsVRtoGxkF-bBBzQ&amp;oe=69E690F1" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="34444831-32d3-80ff-b940-eb44c1f766a0" class="">リトルフィッシュ</h3></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-80dc-97ea-ebfb446e8ef0"><a href="https://senju-little-fish.jimdofree.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">千住リトルフィッシュ</div><div class="bookmark-description">千住リトルフィッシュは、足立区千住で活動する少年野球チームです。</div></div><div class="bookmark-href"><img src="https://assets.jimstatic.com/s/img/favicon.ico" class="icon bookmark-icon"/>https://senju-little-fish.jimdofree.com/</div></div><img src="https://image.jimcdn.com/app/cms/image/transf/dimension=1920x10000:format=jpg/path/s149c0ad4398bf100/image/ie58017e73f990b86/version/1776260977/image.jpg" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-80bc-8ff0-dc1dff319343"><a href="https://www.instagram.com/little_fish_official/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">リトルフィッシュ　千住少年野球チーム (@little_fish_official) • Instagram profile</div><div class="bookmark-description">1,695 Followers, 1,858 Following, 125 Posts - See Instagram photos and videos from リトルフィッシュ　千住少年野球チーム (@little_fish_official)</div></div><div class="bookmark-href"><img src="https://static.cdninstagram.com/rsrc.php/yr/r/rzWiSjZRxk5.webp" class="icon bookmark-icon"/>https://www.instagram.com/little_fish_official/</div></div><img src="https://scontent-iad3-2.cdninstagram.com/v/t51.2885-19/109120439_777238809686698_8985470110703932478_n.jpg?stp=dst-jpg_s100x100_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=bf7eb4&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43ODAuQzMifQ%3D%3D&amp;_nc_ohc=_FwZZ4eCzKIQ7kNvwFxlVWv&amp;_nc_oc=Adq71xu3fQjz3gQsGf8WNU8XO1LnCncPQmlNRjyXfaR9raFoOUdQZdBUHxqWdvF69pQ&amp;_nc_zt=24&amp;_nc_ht=scontent-iad3-2.cdninstagram.com&amp;_nc_ss=7a289&amp;oh=00_Af3E6kglyc9dwvrkO_KwuZbNXDvL3LzJltrmzvMCHwIsPg&amp;oe=69E6BA7B" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="34444831-32d3-80a2-9288-f0642f9108b7" class="">大泉桜ファイターズ</h3></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-802c-8841-e8e208ef9ea6"><a href="https://www.facebook.com/oizumisakurafighters/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">大泉桜ファイターズ</div><div class="bookmark-description">大泉桜ファイターズ. 23 likes. 練馬区立小中一貫教育校大泉桜学園、大泉第一小学校、八坂小学校の3校による広域野球連合チーム</div></div><div class="bookmark-href"><img src="https://z-m-static.xx.fbcdn.net/rsrc.php/y4/r/M6oWJ5INQpg.webp" class="icon bookmark-icon"/>https://www.facebook.com/oizumisakurafighters/</div></div><img src="https://scontent-iad6-1.xx.fbcdn.net/v/t39.30808-1/415984166_122101459850175336_9156051301916502305_n.jpg?stp=cp0_dst-jpg_e15_fr_q65_tt6&amp;cstp=mx1479x1109&amp;ctp=s960x960&amp;_nc_cat=102&amp;ccb=1-7&amp;_nc_sid=3ab345&amp;_nc_ohc=nt_UDtAunQ0Q7kNvwFQssAK&amp;_nc_oc=AdpNQ64goqEzZXBMAx3YaFMs8ALi3iAkzNBDttrKk20dIP2uyQB5FUL72La38idw-cQ&amp;_nc_ad=z-m&amp;_nc_cid=0&amp;_nc_zt=24&amp;_nc_rml=0&amp;_nc_ht=scontent-iad6-1.xx&amp;_nc_gid=3EgY7-GgPaFZAJS5UeCv9Q&amp;_nc_ss=7a389&amp;oh=00_Af1jYsVYGAZei8cgSTpo-HEiZgVwGeNpK8WhNFzNgiDb4g&amp;oe=69E6AE6A" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="34444831-32d3-807b-b43c-e446580db268" class="">仲宿ファイターズ</h3></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-80e7-9343-e1721767ea11"><a href="https://www.facebook.com/nakajuku.fighters/?locale=ja_JP" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">仲宿ファイターズ</div><div class="bookmark-description">仲宿ファイターズ - 「いいね！」327件 · 1人が話題にしています - 東京都板橋区の少年軟式野球チームです</div></div><div class="bookmark-href"><img src="https://z-m-static.xx.fbcdn.net/rsrc.php/y4/r/M6oWJ5INQpg.webp" class="icon bookmark-icon"/>https://www.facebook.com/nakajuku.fighters/?locale=ja_JP</div></div><img src="https://scontent-iad6-1.xx.fbcdn.net/v/t39.30808-1/309061203_463044249185791_4992858205811260951_n.png?stp=dst-png&amp;cstp=mx420x424&amp;ctp=s420x424&amp;_nc_cat=100&amp;ccb=1-7&amp;_nc_sid=3ab345&amp;_nc_ohc=UMifBVSTZGkQ7kNvwHTE9IW&amp;_nc_oc=Ado23oaB7KnvBvQs07nr7Kg3jEXlD4IqdMbrc3sIqgYMpz9nLota0jCwk1ncr_PbjHY&amp;_nc_ad=z-m&amp;_nc_cid=0&amp;_nc_zt=24&amp;_nc_rml=0&amp;_nc_ht=scontent-iad6-1.xx&amp;_nc_gid=MxIpRrtU9TyYXkt2rHA2mQ&amp;_nc_ss=7a389&amp;oh=00_Af1vA1wwUON9PkkZXC5ox5FWSefBPVrNXp-8t3Wc9l6dtA&amp;oe=69E6BE3A" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-80a5-be31-c13e9de7a198"><a href="https://www.locker-room.info/hp/nakajukufighters" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">仲宿ファイターズ - 草野球ポータルサイト ロッカールーム</div><div class="bookmark-description">仲宿ファイターズのホームページです。ロッカールームでは野球、草野球などスポーツの成績を管理、ホームページも開設できます。是非、スポーツポータルサイト「ロッカールーム」をご利用ください。</div></div><div class="bookmark-href">https://www.locker-room.info/hp/nakajukufighters</div></div></a></figure></div><div style="display:contents" dir="auto"><h3 id="34444831-32d3-8017-95ec-f0b4c52dfe0c" class="">大塚ミスギホープ</h3></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-8015-a5f3-f331f17e3a05"><a href="https://www.instagram.com/otsukamisugihope/?hl=ja" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">大塚 ミスギホープ (@otsukamisugihope) • Instagramプロフィール</div><div class="bookmark-description">フォロワー235人、フォロー中61人、投稿138件 ― 大塚 ミスギホープさん(@otsukamisugihope)のInstagramの写真と動画をチェックしよう</div></div><div class="bookmark-href"><img src="https://static.cdninstagram.com/rsrc.php/yr/r/rzWiSjZRxk5.webp" class="icon bookmark-icon"/>https://www.instagram.com/otsukamisugihope/?hl=ja</div></div><img src="https://scontent-iad6-1.cdninstagram.com/v/t51.2885-19/398357334_6949313425107533_8333409584889354768_n.jpg?stp=dst-jpg_s100x100_tt6&amp;_nc_cat=102&amp;ccb=7-5&amp;_nc_sid=bf7eb4&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&amp;_nc_ohc=2qV3-rcTDAYQ7kNvwEAP4qq&amp;_nc_oc=AdoQ0sWKEIm0zv5NtUKQfiSMKV4NVbC8cP3gJ6IbjrcrMyuBfhCeukLPXElSc7Wm8CA&amp;_nc_zt=24&amp;_nc_ht=scontent-iad6-1.cdninstagram.com&amp;_nc_ss=7a289&amp;oh=00_Af1avQ0qHrMvxiWE44c0xXIjQH2wnmj4n8-4Ukyq1w53aA&amp;oe=69E6888B" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-8018-95b0-ca38fe1db90f"><a href="https://sites.google.com/site/otsukamisugihope/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">大塚ミスギホープ</div><div class="bookmark-description">ミスギからのお知らせ 大塚ミスギホープでは選手を絶賛募集しています。ミスギで野球をやってみたいという方は、まずは気軽に練習を見学、体験してみてください。お問い合わせは otsuka.misugi.hope@gmail.com までお気軽にお問い合わせください。体験の際はミスギ まずは体験を をぜひご覧ください。</div></div><div class="bookmark-href"><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUB9KDla-mQXc7nZZ78qPCpMufCDlHACs8JcCM7axSwlCOyLORPVQLl9g46ZzyqwHqQSvnD7HMxn9ZYbSPgOtyQaeGPHwEhMdfpbOWcpMAkSbMvmqjWHwrkjFYGKQ8HBxqehWnc0KD3S1VSF-fhyZt1z2-VYpjA7U6kYEi-9kIeHgY2hfrnQM1kOBmo" class="icon bookmark-icon"/>https://sites.google.com/site/otsukamisugihope/</div></div><img src="https://lh3.googleusercontent.com/sitesv/AA5AbUCvXVVmbGwkeCRE6hl3U6MdWhfT6ouG9T3NPmVHPEUh2vaKnq936YWMu9q1vhoS-3uz_ys9lPDnv4hWx0vygTZbAsxniCka8AgwLVy6QcjrWe5XzK2BxE9lVZlV_udqCbULPuaIRMtDQHx2xrlc2IF0oV6k=w16383" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="34444831-32d3-8055-8c48-f99a6643202e" class="">清瀬レッドライオンズ</h3></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-80a3-9744-e7646c1de7b5"><a href="https://www.instagram.com/kiyoseredlions/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">清瀬レッドライオンズ (@kiyoseredlions) • Instagram profile</div><div class="bookmark-description">989 Followers, 879 Following, 83 Posts - See Instagram photos and videos from 清瀬レッドライオンズ (@kiyoseredlions)</div></div><div class="bookmark-href"><img src="https://static.cdninstagram.com/rsrc.php/yr/r/rzWiSjZRxk5.webp" class="icon bookmark-icon"/>https://www.instagram.com/kiyoseredlions/</div></div><img src="https://scontent-iad6-1.cdninstagram.com/v/t51.2885-19/331074485_497460229257033_928469638957053581_n.jpg?stp=dst-jpg_s100x100_tt6&amp;_nc_cat=106&amp;ccb=7-5&amp;_nc_sid=bf7eb4&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&amp;_nc_ohc=UrMseu157_AQ7kNvwHwpZtM&amp;_nc_oc=AdqEp1DYsK30Tci1gbjQ7G3iDjsOGapVQe1Jcj1sToIlV44zvUK3VnNOQrH6-78vSis&amp;_nc_zt=24&amp;_nc_ht=scontent-iad6-1.cdninstagram.com&amp;_nc_ss=7a289&amp;oh=00_Af0Kl8iQSx1YZNPOC_tAl1XHyGNtHwA-SPJHb5IGYYCjuQ&amp;oe=69E68CAA" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-8009-9595-d4a17d42de89"><a href="http://www.redlions.tokyo/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">レッドライオンズ｜東京都清瀬市の少年野球チーム</div><div class="bookmark-description">レッドライオンズは東京都清瀬市で活動する少年野球チームです。長い歴史の中で全国大会にも出場経験があり、今も選手達は全国大会を目標に日々頑張っています。</div></div><div class="bookmark-href">http://www.redlions.tokyo/</div></div><img src="https://www.redlions.tokyo/images/visual1.jpg" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="34444831-32d3-8043-bbfa-d556cdfeefae" class="">青梅ドラゴンズ</h3></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-80d9-b19a-d0bf89809979"><a href="https://www.instagram.com/ome_dragons/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">青梅ドラゴンズ 公式  ｜  学童少年野球チーム (@ome_dragons) • Instagram profile</div><div class="bookmark-description">1,837 Followers, 1,755 Following, 360 Posts - See Instagram photos and videos from 青梅ドラゴンズ 公式  ｜  学童少年野球チーム (@ome_dragons)</div></div><div class="bookmark-href"><img src="https://static.cdninstagram.com/rsrc.php/yr/r/rzWiSjZRxk5.webp" class="icon bookmark-icon"/>https://www.instagram.com/ome_dragons/</div></div><img src="https://scontent-iad6-1.cdninstagram.com/v/t51.2885-19/275448406_676106673809481_2396436521349440757_n.jpg?stp=dst-jpg_s100x100_tt6&amp;_nc_cat=106&amp;ccb=7-5&amp;_nc_sid=bf7eb4&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&amp;_nc_ohc=NTHdNoDEXiEQ7kNvwH7LomN&amp;_nc_oc=AdpxqCxcytCZvnsGROIRWqp4okl23Z2SX9H1YHa9YqOSM85fVnFxs2XNxUeDlyVTUKI&amp;_nc_zt=24&amp;_nc_ht=scontent-iad6-1.cdninstagram.com&amp;_nc_ss=7a289&amp;oh=00_Af34Q5UBWNetCl_eaxIy0pUgSoAkADIYE3Sdda7r5Uk2Ow&amp;oe=69E690E6" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-80b7-914c-e5c6f5e5a30e"><a href="https://omedragons2013.89dream.jp/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">青梅ドラゴンズ</div><div class="bookmark-description">ドラゴンズは東京都青梅市を拠点とする&lt;br /&gt;軟式学童やきゅうチームです</div></div><div class="bookmark-href"><img src="https://omedragons2013.89dream.jp/favicon.ico" class="icon bookmark-icon"/>https://omedragons2013.89dream.jp/</div></div><img src="https://omedragons2013.89dream.jp/uploads/omedragons2013/site_page/0014/0c337f6ecc7c659b8545b430cf22ec0c.png" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="34444831-32d3-80a2-bd09-cd109a02bd2d" class="">玉川ラプターズ</h3></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-803d-993a-c7e891b06209"><a href="https://www.facebook.com/tamagawa.baseball.club/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">玉川ラプターズ 【玉川スポーツ少年団 野球部】</div><div class="bookmark-description">玉川ラプターズ 【玉川スポーツ少年団 野球部】. 97 likes · 4 talking about this. 玉川小学校を拠点に活動しています。 創部1976年と歴史は古く、 将来につながる基本技術の向上を目指しています。 『周りの人たちから応援される選手になろう！』...</div></div><div class="bookmark-href"><img src="https://z-m-static.xx.fbcdn.net/rsrc.php/y4/r/M6oWJ5INQpg.webp" class="icon bookmark-icon"/>https://www.facebook.com/tamagawa.baseball.club/</div></div><img src="https://scontent-iad3-2.xx.fbcdn.net/v/t39.30808-1/416326631_907662821063513_8944861210468719954_n.jpg?stp=cp0_dst-jpg_e15_fr_q65_tt6&amp;cstp=mx896x896&amp;ctp=s720x720&amp;_nc_cat=105&amp;ccb=1-7&amp;_nc_sid=3ab345&amp;_nc_ohc=VBHQM4LZxNUQ7kNvwGFVF-b&amp;_nc_oc=AdrluftlbJ-W5-ILAD_7OJR7trOGMdzbGTUtIFYggyEtAgLrv_gAgGgWU-sxEpFTeEs&amp;_nc_ad=z-m&amp;_nc_cid=0&amp;_nc_zt=24&amp;_nc_rml=0&amp;_nc_ht=scontent-iad3-2.xx&amp;_nc_gid=L7ZZGjdWe2Hiqj7Iw75l6w&amp;_nc_ss=7a389&amp;oh=00_Af1yz6F647zMZ7ivjxWcLW37F6ff6BzPnEILm33Rqk8ZvA&amp;oe=69E6BC26" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-80a4-bf24-e2539b8da08b"><a href="https://www.instagram.com/tamagawa_raptors/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">玉川ラプターズ【玉川スポーツ少年団 野球部】 (@tamagawa_raptors) • Instagram profile</div><div class="bookmark-description">1,255 Followers, 933 Following, 156 Posts - See Instagram photos and videos from 玉川ラプターズ【玉川スポーツ少年団 野球部】 (@tamagawa_raptors)</div></div><div class="bookmark-href"><img src="https://static.cdninstagram.com/rsrc.php/yr/r/rzWiSjZRxk5.webp" class="icon bookmark-icon"/>https://www.instagram.com/tamagawa_raptors/</div></div><img src="https://scontent-iad3-1.cdninstagram.com/v/t51.2885-19/417398698_636432621854976_9176264502002772903_n.jpg?stp=dst-jpg_s100x100_tt6&amp;_nc_cat=108&amp;ccb=7-5&amp;_nc_sid=bf7eb4&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy44OTYuQzMifQ%3D%3D&amp;_nc_ohc=3vEA32l88YkQ7kNvwG1eG4W&amp;_nc_oc=Ado408oiZnH500P9p3VbDyTUIaT4bDC60xCcCfnwcLKBaUvbEw5w2hKtmADJzQ0Q9xY&amp;_nc_zt=24&amp;_nc_ht=scontent-iad3-1.cdninstagram.com&amp;_nc_ss=7a289&amp;oh=00_Af0-jpHryDeHPbDDVjJ-aJwW-zFcFY1QztIpoQGsBFIjtA&amp;oe=69E693B7" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="34444831-32d3-80c6-93f9-c3a67612cdd8" class="">台東フェニックス</h3></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-800b-9a82-ceeda182b3b2"><a href="https://www.instagram.com/phoenix.8385/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">フェニックス (@phoenix.8385) • Instagram profile</div><div class="bookmark-description">635 Followers, 47 Following, 624 Posts - See Instagram photos and videos from フェニックス (@phoenix.8385)</div></div><div class="bookmark-href"><img src="https://static.cdninstagram.com/rsrc.php/yr/r/rzWiSjZRxk5.webp" class="icon bookmark-icon"/>https://www.instagram.com/phoenix.8385/</div></div><img src="https://scontent-iad3-1.cdninstagram.com/v/t51.82787-19/533500231_18079281299494947_4345763486017062036_n.jpg?stp=dst-jpg_s100x100_tt6&amp;_nc_cat=110&amp;ccb=7-5&amp;_nc_sid=bf7eb4&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&amp;_nc_ohc=JvBwmPL579oQ7kNvwGYmS3I&amp;_nc_oc=AdoeHa2KLIjOOltwE50SMTIJFGUpXvlYOy1plRHQzOnvxnNWUGVSkpI7ZpAhCqEfeuY&amp;_nc_zt=24&amp;_nc_ht=scontent-iad3-1.cdninstagram.com&amp;_nc_gid=aQrwT3WOy3w215fd7U_1Hg&amp;_nc_ss=7a289&amp;oh=00_Af0HrU7sTlnYVVa-ToQ7036UgJ_5g4ZOkRRfXZOBnjo8Vg&amp;oe=69E6B27E" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-80a8-846c-c46c3f6482a9"><a href="https://phoenixtaito.wixsite.com/phoenix-taito" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">台東区の少年野球チームフェニックスのホームページ</div><div class="bookmark-description">台東区の少年野球チーム フェニックスの公式サイトです。チーム構成、選手募集、戦績などを紹介しています。</div></div><div class="bookmark-href"><img src="https://www.wix.com/favicon.ico" class="icon bookmark-icon"/>https://phoenixtaito.wixsite.com/phoenix-taito</div></div></a></figure></div><div style="display:contents" dir="auto"><h3 id="34444831-32d3-80c3-b904-f4a7cb1d18cb" class="">東京ウィング</h3></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-8054-bfe7-ecfa57b1b056"><a href="https://www.instagram.com/wi1988ng/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">東京Ｗing小学部【東京都大田区】 (@wi1988ng) • Instagram profile</div><div class="bookmark-description">563 Followers, 300 Following, 524 Posts - See Instagram photos and videos from 東京Ｗing小学部【東京都大田区】 (@wi1988ng)</div></div><div class="bookmark-href"><img src="https://static.cdninstagram.com/rsrc.php/yr/r/rzWiSjZRxk5.webp" class="icon bookmark-icon"/>https://www.instagram.com/wi1988ng/</div></div><img src="https://scontent-iad3-2.cdninstagram.com/v/t51.2885-19/26864191_549120288802760_6212240718409236480_n.jpg?stp=dst-jpg_s100x100_tt6&amp;_nc_cat=111&amp;ccb=7-5&amp;_nc_sid=bf7eb4&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43NDEuQzMifQ%3D%3D&amp;_nc_ohc=-9W9YB-UUH4Q7kNvwEGKrdU&amp;_nc_oc=AdpYVazjQvdWqqHBh7riqqEeB0SDxUttbtRVKmImY_0guf52IwHAdzaSllENjkE2pI8&amp;_nc_zt=24&amp;_nc_ht=scontent-iad3-2.cdninstagram.com&amp;_nc_ss=7a289&amp;oh=00_Af2dGFj1vGkSjwfcWIw6O_cttitOLhUkX4GexsuhpxweRQ&amp;oe=69E69594" class="bookmark-image"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="34444831-32d3-800b-bfbf-c34c05210570"><a href="http://tokyowing.blog54.fc2.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">東京ウイング 小学部</div></div><div class="bookmark-href"><img src="http://tokyowing.blog54.fc2.com/favicon.ico" class="icon bookmark-icon"/>http://tokyowing.blog54.fc2.com/</div></div></a></figure></div><div style="display:contents" dir="auto"><p id="34444831-32d3-8036-acf4-fcbc8bce8ce2" class="">扇ターキーズ</p></div><div style="display:contents" dir="auto"><p id="34444831-32d3-80be-becc-ca3d972b3d1d" class="">鷺宮スタージョーズ</p></div><div style="display:contents" dir="auto"><p id="34444831-32d3-804d-9ae5-d649226724e4" class="">ジュニアヤンガース</p></div><div style="display:contents" dir="auto"><p id="34444831-32d3-80c3-a490-ddbbefcdc744" class="">西千タイガース</p></div><div style="display:contents" dir="auto"><p id="34444831-32d3-8019-b75c-d2196fd454b6" class="">中村ウィングス</p></div><div style="display:contents" dir="auto"><p id="34444831-32d3-80dc-a978-c037f73a2807" class="">成増第二ライオンズ</p></div><div style="display:contents" dir="auto"><p id="34444831-32d3-8017-9fdd-d32262a5c750" class="">高島エイト</p></div><div style="display:contents" dir="auto"><p id="34444831-32d3-8098-8818-ecef3998f2e1" class="">豊島堀船</p></div><div style="display:contents" dir="auto"><p id="34444831-32d3-8076-8c89-d909afb3a24f" class="">深川ジャイアンツ</p></div><div style="display:contents" dir="auto"><p id="34444831-32d3-8054-8090-efcc3cca7e8e" class="">駒込ベアーズ</p></div><div style="display:contents" dir="auto"><p id="34444831-32d3-8099-bcb4-e18a4faa1fe3" class="">台東ジャニーズ</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
