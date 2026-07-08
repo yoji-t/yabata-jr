@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>少年野球チーム 成績ダッシュボード</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+            background-color: #0b0f17;
+            color: #e2e8f0;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased p-4 md:p-8">
+
+    <header class="flex justify-between items-center border-b border-gray-800 pb-4 mb-6">
+        <div>
+            <h1 class="text-xl font-bold text-green-400">TeamHub Admin 風スコアボード</h1>
+            <p class="text-xs text-gray-400">2026年度 通算チーム・個人成績</p>
+        </div>
+        <div class="text-sm bg-gray-800 px-3 py-1 rounded text-gray-300">
+            更新日: 2026/07/08
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto space-y-8">
+
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-gray-900 border border-gray-800 p-4 rounded-xl flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-xl">👤</div>
+                <div>
+                    <p class="text-xs text-gray-400">首位打者</p>
+                    <p class="text-sm font-bold">田中 選手</p>
+                    <p class="text-lg font-extrabold text-green-400">.522</p>
+                </div>
+            </div>
+            <div class="bg-gray-900 border border-gray-800 p-4 rounded-xl flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-xl">👤</div>
+                <div>
+                    <p class="text-xs text-gray-400">最多打点</p>
+                    <p class="text-sm font-bold">佐藤 選手</p>
+                    <p class="text-lg font-extrabold text-green-400">22 <span class="text-xs font-normal text-gray-400">打点</span></p>
+                </div>
+            </div>
+            <div class="bg-gray-900 border border-gray-800 p-4 rounded-xl flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-xl">👤</div>
+                <div>
+                    <p class="text-xs text-gray-400">最多安打</p>
+                    <p class="text-sm font-bold">鈴木 選手</p>
+                    <p class="text-lg font-extrabold text-green-400">114 <span class="text-xs font-normal text-gray-400">安打</span></p>
+                </div>
+            </div>
+            <div class="bg-gray-900 border border-gray-800 p-4 rounded-xl flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-xl">👤</div>
+                <div>
+                    <p class="text-xs text-gray-400">本塁打王</p>
+                    <p class="text-sm font-bold">高橋 選手</p>
+                    <p class="text-lg font-extrabold text-green-400">8 <span class="text-xs font-normal text-gray-400">本</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="bg-gray-950 border border-gray-850 rounded-lg p-4">
+                <div class="flex justify-between items-center border-b border-gray-800 pb-2 mb-3">
+                    <h3 class="text-sm font-bold text-gray-300">打率 (AVG)</h3>
+                    <span class="text-xs text-green-500 font-semibold">Top 5</span>
+                </div>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex justify-between items-center py-1">
+                        <span class="text-gray-400">1 <span class="ml-2 text-white font-medium">田中</span></span>
+                        <span class="font-mono text-green-400 font-bold">.522</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">2 <span class="ml-2 text-white font-medium">鈴木</span></span>
+                        <span class="font-mono">.458</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">3 <span class="ml-2 text-white font-medium">渡辺</span></span>
+                        <span class="font-mono">.391</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">4 <span class="ml-2 text-white font-medium">佐藤</span></span>
+                        <span class="font-mono">.355</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">5 <span class="ml-2 text-white font-medium">伊藤</span></span>
+                        <span class="font-mono">.310</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-gray-950 border border-gray-850 rounded-lg p-4">
+                <div class="flex justify-between items-center border-b border-gray-800 pb-2 mb-3">
+                    <h3 class="text-sm font-bold text-gray-300">安打数 (H)</h3>
+                    <span class="text-xs text-green-500 font-semibold">Top 5</span>
+                </div>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex justify-between items-center py-1">
+                        <span class="text-gray-400">1 <span class="ml-2 text-white font-medium">鈴木</span></span>
+                        <span class="font-mono text-green-400 font-bold">114</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">2 <span class="ml-2 text-white font-medium">田中</span></span>
+                        <span class="font-mono">98</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">3 <span class="ml-2 text-white font-medium">佐藤</span></span>
+                        <span class="font-mono">85</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">4 <span class="ml-2 text-white font-medium">渡辺</span></span>
+                        <span class="font-mono">72</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">5 <span class="ml-2 text-white font-medium">中村</span></span>
+                        <span class="font-mono">61</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-gray-950 border border-gray-850 rounded-lg p-4">
+                <div class="flex justify-between items-center border-b border-gray-800 pb-2 mb-3">
+                    <h3 class="text-sm font-bold text-gray-300">打点 (RBI)</h3>
+                    <span class="text-xs text-green-500 font-semibold">Top 5</span>
+                </div>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex justify-between items-center py-1">
+                        <span class="text-gray-400">1 <span class="ml-2 text-white font-medium">佐藤</span></span>
+                        <span class="font-mono text-green-400 font-bold">22</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">2 <span class="ml-2 text-white font-medium">高橋</span></span>
+                        <span class="font-mono">19</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">3 <span class="ml-2 text-white font-medium">田中</span></span>
+                        <span class="font-mono">15</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">4 <span class="ml-2 text-white font-medium">鈴木</span></span>
+                        <span class="font-mono">14</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">5 <span class="ml-2 text-white font-medium">小林</span></span>
+                        <span class="font-mono">11</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-gray-950 border border-gray-850 rounded-lg p-4">
+                <div class="flex justify-between items-center border-b border-gray-800 pb-2 mb-3">
+                    <h3 class="text-sm font-bold text-gray-300">防御率 (ERA)</h3>
+                    <span class="text-xs text-green-500 font-semibold">投手成績</span>
+                </div>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex justify-between items-center py-1">
+                        <span class="text-gray-400">1 <span class="ml-2 text-white font-medium">山本</span></span>
+                        <span class="font-mono text-green-400 font-bold">1.85</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">2 <span class="ml-2 text-white font-medium">井上</span></span>
+                        <span class="font-mono">2.41</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">3 <span class="ml-2 text-white font-medium">加藤</span></span>
+                        <span class="font-mono">3.50</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-gray-950 border border-gray-850 rounded-lg p-4">
+                <div class="flex justify-between items-center border-b border-gray-800 pb-2 mb-3">
+                    <h3 class="text-sm font-bold text-gray-300">勝利数 (W)</h3>
+                    <span class="text-xs text-green-500 font-semibold">投手成績</span>
+                </div>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex justify-between items-center py-1">
+                        <span class="text-gray-400">1 <span class="ml-2 text-white font-medium">山本</span></span>
+                        <span class="font-mono text-green-400 font-bold">12 <span class="text-xs font-normal text-gray-400">勝</span></span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">2 <span class="ml-2 text-white font-medium">井上</span></span>
+                        <span class="font-mono">8 <span class="text-xs font-normal text-gray-400">勝</span></span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">3 <span class="ml-2 text-white font-medium">加藤</span></span>
+                        <span class="font-mono">5 <span class="text-xs font-normal text-gray-400">勝</span></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-gray-950 border border-gray-850 rounded-lg p-4">
+                <div class="flex justify-between items-center border-b border-gray-800 pb-2 mb-3">
+                    <h3 class="text-sm font-bold text-gray-300">盗塁数 (SB)</h3>
+                    <span class="text-xs text-green-500 font-semibold">Top 5</span>
+                </div>
+                <ul class="space-y-2 text-sm">
+                    <li class="flex justify-between items-center py-1">
+                        <span class="text-gray-400">1 <span class="ml-2 text-white font-medium">渡辺</span></span>
+                        <span class="font-mono text-green-400 font-bold">25</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">2 <span class="ml-2 text-white font-medium">鈴木</span></span>
+                        <span class="font-mono">18</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">3 <span class="ml-2 text-white font-medium">田中</span></span>
+                        <span class="font-mono">14</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">4 <span class="ml-2 text-white font-medium">吉田</span></span>
+                        <span class="font-mono">12</span>
+                    </li>
+                    <li class="flex justify-between items-center py-1 border-t border-gray-900">
+                        <span class="text-gray-400">5 <span class="ml-2 text-white font-medium">斎藤</span></span>
+                        <span class="font-mono">9</span>
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+
+        <section class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+            <h2 class="text-base font-bold mb-4 text-white">チーム通算成績サマリー</h2>
+            <div class="grid grid-cols-3 md:grid-cols-6 gap-4 text-center border-t border-b border-gray-800 py-4">
+                <div>
+                    <p class="text-xs text-gray-400">試合数 (G)</p>
+                    <p class="text-xl font-bold font-mono mt-1">74</p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-400">勝利 (W)</p>
+                    <p class="text-xl font-bold font-mono text-green-400 mt-1">35</p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-400">敗戦 (L)</p>
+                    <p class="text-xl font-bold font-mono text-red-400 mt-1">32</p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-400">引分 (D)</p>
+                    <p class="text-xl font-bold font-mono text-gray-400 mt-1">7</p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-400">チーム打率 (AVG)</p>
+                    <p class="text-xl font-bold font-mono mt-1">.247</p>
+                </div>
+                <div>
+                    <p class="text-xs text-gray-400">チーム防御率 (ERA)</p>
+                    <p class="text-xl font-bold font-mono mt-1">2.91</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-12 text-center text-xs text-gray-600">
+        &copy; 2026 Junior Baseball Team Stats Dashboard.
+    </footer>
+
+</body>
+</html>
