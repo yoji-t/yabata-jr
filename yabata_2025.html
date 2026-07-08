@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>少年野球スタッツダッシュボード</title>
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2b6cb0;
+            --accent-color: #e53e3e;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --text-color: #2d3748;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* 3列トップサマリー */
+        .top-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .summary-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid var(--secondary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .summary-card.team { border-left-color: #2b6cb0; }
+        .summary-card.batter { border-left-color: #319795; }
+        .summary-card.pitcher { border-left-color: #b7791f; }
+
+        .summary-card h3 {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #718096;
+        }
+
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        /* タブコントローラー */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .tab-btn {
+            background-color: #edf2f7;
+            border: none;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            white-space: nowrap;
+            transition: all 0.2s;
+            color: #4a5568;
+        }
+
+        .tab-btn.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* コンテンツセクション */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* ランキンググリッド */
+        .ranking-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .ranking-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .ranking-title {
+            background-color: #f7fafc;
+            padding: 10px 15px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--primary-color);
+        }
+
+        .ranking-list {
+            list-style: none;
+        }
+
+        .ranking-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 15px;
+            border-bottom: 1px solid #edf2f7;
+            font-size: 0.9rem;
+        }
+
+        .ranking-item:last-child {
+            border-bottom: none;
+        }
+
+        .rank-num {
+            font-weight: bold;
+            width: 20px;
+            color: #a0aec0;
+        }
+
+        .ranking-item:nth-child(1) .rank-num { color: #d69e2e; font-size: 1.1rem; }
+        .ranking-item:nth-child(2) .rank-num { color: #718096; }
+        .ranking-item:nth-child(3) .rank-num { color: #b7791f; }
+
+        .player-name {
+            flex-grow: 1;
+            margin-left: 10px;
+        }
+
+        .player-val {
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        /* チーム詳細テーブル */
+        .team-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .team-table th, .team-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .team-table th {
+            background-color: #edf2f7;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .team-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 10px; }
+            .stat-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>谷端ジュニア スポーツ少年団</h1>
+        <p>スタッツ＆ランキング ダッシュボード (全シーズン通算)</p>
+    </header>
+
+    <!-- トップサマリー -->
+    <div class="top-summary">
+        <!-- チーム戦績 -->
+        <div class="summary-card team">
+            <h3>チーム基本戦績</h3>
+            <div class="stat-grid">
+                <div class="stat-item"><span class="stat-label">試合数</span><span class="stat-value">116</span></div>
+                <div class="stat-item"><span class="stat-label">勝敗</span><span class="stat-value" style="color:var(--accent-color)">74勝 35敗 7分</span></div>
+                <div class="stat-item"><span class="stat-label">チーム打率</span><span class="stat-value">.287</span></div>
+                <div class="stat-item"><span class="stat-label">チーム防御率</span><span class="stat-value">2.91</span></div>
+            </div>
+        </div>
+        <!-- 三冠王（こうだい） -->
+        <div class="summary-card batter">
+            <h3>打撃部門トップ (こうだい)</h3>
+            <div class="stat-grid">
+                <div class="stat-item"><span class="stat-label">打率</span><span class="stat-value">.622</span></div>
+                <div class="stat-item"><span class="stat-label">本塁打</span><span class="stat-value">22 本</span></div>
+                <div class="stat-item"><span class="stat-label">打点</span><span class="stat-value">114 点</span></div>
+                <div class="stat-item"><span class="stat-label">OPS</span><span class="stat-value">1.972</span></div>
+            </div>
+        </div>
+        <!-- 投手トップ -->
+        <div class="summary-card pitcher">
+            <h3>主要投手スタッツ</h3>
+            <div class="stat-grid">
+                <div class="stat-item"><span class="stat-label">あおら (防御率)</span><span class="stat-value">1.87</span></div>
+                <div class="stat-item"><span class="stat-label">こうだい (防御率)</span><span class="stat-value">2.24</span></div>
+                <div class="stat-item"><span class="stat-label">こうだい (奪三振)</span><span class="stat-value">225 個</span></div>
+                <div class="stat-item"><span class="stat-label">あおら (奪三振)</span><span class="stat-value">121 個</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- タブメニュー -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'team-tab')">チーム成績</button>
+        <button class="tab-btn" onclick="openTab(event, 'batting-tab')">打撃ランキング</button>
+        <button class="tab-btn" onclick="openTab(event, 'pitching-tab')">投手ランキング</button>
+        <button class="tab-btn" onclick="openTab(event, 'fielding-tab')">守備ランキング</button>
+    </div>
+
+    <!-- 1. チーム成績タブ -->
+    <div id="team-tab" class="tab-content active">
+        <table class="team-table">
+            <thead><tr><th colspan="4">チーム詳細スタッツ</th></tr></thead>
+            <tbody>
+                <tr><td><strong>打数</strong> / 1997</td><td><strong>安打</strong> / 574</td><td><strong>単打</strong> / 402</td><td><strong>二塁打</strong> / 92</td></tr>
+                <tr><td><strong>三塁打</strong> / 38</td><td><strong>本塁打</strong> / 42</td><td><strong>打点</strong> / 509</td><td><strong>得点</strong> / 741</td></tr>
+                <tr><td><strong>四球</strong> / 588</td><td><strong>死球</strong> / 67</td><td><strong>三振</strong> / 504</td><td><strong>得点圏打率</strong> / .324</td></tr>
+                <tr><td><strong>出塁率</strong> / .463</td><td><strong>長打率</strong> / .435</td><td><strong>OPS</strong> / .898</td><td><strong>盗塁 (刺)</strong> / 948 (79)</td></tr>
+                <tr><td><strong>投球被安打</strong> / 471</td><td><strong>失点 (自責)</strong> / 455 (251)</td><td><strong>与四死球</strong> / 284 / 57</td><td><strong>チームWHIP</strong> / 1.46</td></tr>
+                <tr><td><strong>守備率</strong> / .865</td><td><strong>失策 (捕逸)</strong> / 243 (55)</td><td><strong>盗塁阻止 (率)</strong> / 49 (.124)</td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 2. 打撃ランキングタブ -->
+    <div id="batting-tab" class="tab-content">
+        <div class="ranking-grid">
+            <!-- 打率 -->
+            <div class="ranking-card">
+                <div class="ranking-title">打率</div>
+                <ul class="ranking-list">
+                    <li class="ranking-item"><span class="rank-num">1</span><span class="player-name">こうだい</span><span class="player-val">.622</span></li>
+                    <li class="ranking-item"><span class="rank-num">2</span><span class="player-name">あおら</span><span class="player-val">.385</span></li>
+                    <li class="ranking-item"><span class="rank-num">3</span><span class="player-name">たくみ</span><span class="player-val">.297</span></li>
+                    <li class="ranking-item"><span class="rank-num">4</span><span class="player-name">こうせい</span><span class="player-val">.288</span></li>
+                    <li class="ranking-item"><span class="rank-num">5</span><span class="player-name">もりと</span><span class="player-val">.273</span></li>
+                </ul>
+            </div>
+            <!-- 本塁打 -->
+            <div class="ranking-card">
+                <div class="ranking-title">本塁打</div>
+                <ul class="ranking-list">
+                    <li class="ranking-item"><span class="rank-num">1</span><span class="player-name">こうだい</span><span class="player-val">22</span></li>
+                    <li class="ranking-item"><span class="rank-num">2</span><span class="player-name">あおら</span><span class="player-val">8</span></li>
+                    <li class="ranking-item"><span class="rank-num">3</span><span class="player-name">こうた</span><span class="player-val">3</span></li>
+                    <li class="ranking-item"><span class="rank-num">3</span><span class="player-name">こうう</span><span class="player-val">3</span></li>
+                    <li class="ranking-item"><span class="rank-num">5</span><span class="player-name">たくま</span><span class="player-val">2</span></li>
+                </ul>
+            </div>
+            <!-- 打点 -->
+            <div class="ranking-card">
+                <div class="ranking-title">打点</div>
+                <ul class="ranking-list">
+                    <li class="ranking-item"><span class="rank-num">1</span><span class="player-name">こうだい</span><span class="player-val">114</span></li>
+                    <li class="ranking-item"><span class="rank-num">2</span><span class="player-name">あおら</span><span class="player-val">63</span></li>
+                    <li class="ranking-item"><span class="rank-num">3</span><span class="player-name">こうた</span><span class="player-val">37</span></li>
+                    <li class="ranking-item"><span class="rank-num">3</span><span class="player-name">あらた</span><span class="player-val">37</span></li>
+                    <li class="ranking-item"><span class="rank-num">3</span><span class="player-name">もりと</span><span class="player-val">37</span></li>
+                </ul>
+            </div>
+            <!-- 安打 -->
+            <div class="ranking-card">
+                <div class="ranking-title">安打</div>
+                <ul class="ranking-list">
+                    <li class="ranking-item"><span class="rank-num">1</span><span class="player-name">こうだい</span><span class="player-val">117</span></li>
+                    <li class="ranking-item"><span class="rank-num">2</span><span class="player-name">あおら</span><span class="player-val">72</span></li>
+                    <li class="ranking-item"><span class="rank-num">3</span><span class="player-name">もりと</span><span class="player-val">50</span></li>
+                    <li class="ranking-item"><span class="rank-num">4</span><span class="player-name">こうすけ</span><span class="player-val">43</span></li>
+                    <li class="ranking-item"><span class="rank-num">5</span><span class="player-name">あらた</span><span class="player-val">38</span></li>
+                </ul>
+            </div>
+            <!-- OPS -->
+            <div class="ranking-card">
+                <div class="ranking-title">OPS</div>
+                <ul class="ranking-list">
+                    <li class="ranking-item"><span class="rank-num">1</span><span class="player-name">こうだい</span><span class="player-val">1.972</span></li>
+                    <li class="ranking-item"><span class="rank-num">2</span><span class="player-name">あおら</span><span class="player-val">1.249</span></li>
+                    <li class="ranking-item"><span class="rank-num">3</span><span class="player-name">たくま</span><span class="player-val">.830</span></li>
+                    <li class="ranking-item"><span class="rank-num">4</span><span class="player-name">たくみ</span><span class="player-val">.828</span></li>
+                    <li class="ranking-item"><span class="rank-num">5</span><span class="player-name">こうた</span><span class="player-val">.810</span></li>
+                </ul>
+            </div>
+            <!-- 盗塁 -->
+            <div class="ranking-card">
+                <div class="ranking-title">盗塁</div>
+                <ul class="ranking-list">
+                    <li class="ranking-item"><span class="rank-num">1</span><span class="player-name">あおら</span><span class="player-val">131</span></li>
+                    <li class="ranking-item"><span class="rank-num">2</span><span class="player-name">こうだい</span><span class="player-val">113</span></li>
+                    <li class="ranking-item"><span class="rank-num">3</span><span class="player-name">たくま</span><span class="player-val">104</span></li>
+                    <li class="ranking-item"><span class="rank-num">4</span><span class="player-name">あらた</span><span class="player-val">103</span></li>
+                    <li class="ranking-item"><span class="rank-num">5</span><span class="player-name">もりと</span><span class="player-val">88</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. 投手ランキングタブ -->
+    <div id="pitching-tab" class="tab-content">
+        <div class="ranking-grid">
+            <!-- 防御率 -->
+            <div class="ranking-card">
+                <div class="ranking-title">防御率</div>
+                <ul class="ranking-list">
+                    <li class="ranking-item"><span class="rank-num">1</span><span class="player-name">あおら</span><span class="player-val">1.87</span></li>
+                    <li class="ranking-item"><span class="rank-num">2</span><span class="player-name">こうだい</span><span class="player-val">2.24</span></li>
+                </ul>
+            </div>
+            <!-- 投球回 -->
+            <div class="ranking-card">
+                <div class="ranking-title">投球回</div>
+                <ul class="ranking-list">
+                    <li class="ranking-item"><span class="rank-num">1</span><span class="player-name">こうだい</span><span class="player-val">236</span></li>
+                    <li class="ranking-item"><span class="rank-num">2</span><span class="player-name">あおら</span><span class="player-val">135</span></li>
+                    <li class="ranking-item"><span class="rank-num">3</span><span class="player-name">こうすけ</span><span class="player-val">49</span></li>
+                    <li class="ranking-item"><span class="rank-num">4</span><span class="player-name">はるひと</span><span class="player-val">30</span></li>
+                    <li class="ranking-item"><span class="rank-num">5</span><span class="player-name">たくみ</span><span class="player-val">20.1</span></li>
+                </ul>
+            </div>
+            <!-- 奪三振 -->
+            <div class="ranking-card">
+                <div class="ranking-title">奪三振</div>
+                <ul class="ranking-list">
+                    <li class="ranking-item"><span class="rank-num">1</span><span class="player-name">こうだい</span><span class="player-val">225</span></li>
+                    <li class="ranking-item"><span class="rank-num">2</span><span class="player-name">あおら</span><span class="player-val">121</span></li>
+                    <li class="ranking-item"><span class="rank-num">3</span><span class="player-name">こうすけ</span><span class="player-val">35</span></li>
+                    <li class="ranking-item"><span class="rank-num">4</span><span class="player-name">はるひと</span><span class="player-val">22</span></li>
+                    <li class="ranking-item"><span class="rank-num">5</span><span class="player-name">たくみ</span><span class="player-val">18</span></li>
+                </ul>
+            </div>
+            <!-- WHIP -->
+            <div class="ranking-card">
+                <div class="ranking-title">WHIP</div>
+                <ul class="ranking-list">
+                    <li class="ranking-item"><span class="rank-num">1</span><span class="player-name">こうだい</span><span class="player-val">1.08</span></li>
+                    <li class="ranking-item"><span class="rank-num">2</span><span class="player-name">あおら</span><span class="player-val">1.42</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. 守備ランキングタブ -->
+    <div id="fielding-tab" class="tab-content">
+        <div class="ranking-grid">
+            <!-- 守備率 -->
+            <div class="ranking-card">
+                <div class="ranking-title">守備率</div>
+                <ul class="ranking-list">
+                    <li class="ranking-item"><span class="rank-num">1</span><span class="player-name">たくみ</span><span class="player-val">.970</span></li>
+                    <li class="ranking-item"><span class="rank-num">2</span><span class="player-name">あおら</span><span class="player-val">.938</span></li>
+                    <li class="ranking-item"><span class="rank-num">3</span><span class="player-name">こうだい</span><span class="player-val">.936</span></li>
+                    <li class="ranking-item"><span class="rank-num">4</span><span class="player-name">たくま</span><span class="player-val">.931</span></li>
+                    <li class="ranking-item"><span class="rank-num">5</span><span class="player-name">こうせい</span><span class="player-val">.877</span></li>
+                </ul>
+            </div>
+            <!-- 盗塁阻止数 -->
+            <div class="ranking-card">
+                <div class="ranking-title">盗塁阻止数</div>
+                <ul class="ranking-list">
+                    <li class="ranking-item"><span class="rank-num">1</span><span class="player-name">たくま</span><span class="player-val">20</span></li>
+                    <li class="ranking-item"><span class="rank-num">2</span><span class="player-name">こうだい</span><span class="player-val">13</span></li>
+                    <li class="ranking-item"><span class="rank-num">3</span><span class="player-name">たくみ</span><span class="player-val">12</span></li>
+                    <li class="ranking-item"><span class="rank-num">4</span><span class="player-name">あらた</span><span class="player-val">3</span></li>
+                    <li class="ranking-item"><span class="rank-num">5</span><span class="player-name">はるひと</span><span class="player-val">1</span></li>
+                </ul>
+            </div>
+            <!-- エラー数（注意項目） -->
+            <div class="ranking-card">
+                <div class="ranking-title">失策（ワースト）</div>
+                <ul class="ranking-list">
+                    <li class="ranking-item"><span class="rank-num" style="color:var(--accent-color)">1</span><span class="player-name">あらた</span><span class="player-val">46</span></li>
+                    <li class="ranking-item"><span class="rank-num">2</span><span class="player-name">もりと</span><span class="player-val">27</span></li>
+                    <li class="ranking-item"><span class="rank-num">3</span><span class="player-name">そうた</span><span class="player-val">25</span></li>
+                    <li class="ranking-item"><span class="rank-num">4</span><span class="player-name">はるひと</span><span class="player-val">21</span></li>
+                    <li class="ranking-item"><span class="rank-num">5</span><span class="player-name">たくま</span><span class="player-val">18</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
