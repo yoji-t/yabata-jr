@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aora-baseball 活動分析ダッシュボード</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <pre id="raw-data" class="hidden">
+20220807練習試合vs豊島クラブ
+20220904赤羽大会vs飛鳥ジュニア20220904
+20220910練習試合vs城東ベースボールクラブ20220910
+20220911スポーツ少年団城北ブロック大会
+20220923赤羽大会vs飛鳥ジュニア
+20220925志茂大会vs王子ドルフィンズ
+20221001浮間リーグvs高島平セブンスターズ
+20221008浮間リーグvs長後ベアーズ
+20221009浮間リーグvsBBC
+20221016浮間リーグvsマッハブレーブス
+20221127滝野川大会新人戦vs王子ドルフィンズ
+20221217ヴァージンリーグvsブルースカイズ
+20221217ヴァージンリーグvs王子ドルフィンズ
+20221224ヴァージンリーグvsBBC
+20230115ほほえみ育成大会vsBBC
+20230223練習試合vs西浮間イーグルス
+20230223練習試合vs西浮間イーグルス_2
+20230305北区少年野球選手権春季大会vs王子ドルフィンズ
+20230312北区少年野球選手権春季大会vs諏訪クラブ
+20230401北区少年野球選手権春季大会vsマッハブレーブス
+20230401浮間リーグvsBBC
+20230402北区少年野球選手権春季大会vs西浮間イーグルス
+20230408浮間リーグvs西浮間イーグルスⅡ
+20230409スポーツ少年団大会vs赤西ナイン
+20230429北区滝野川少年野球春季大会vsBBC
+20230503北区滝野川少年野球春季大会vs稲田クラブ
+20230506浮間リーグvs長後ベアーズ
+20230514赤羽少年野球連盟春季大会vs赤西ナイン
+20230520北区志茂春季大会vsマッハブレーブス
+20230521浮間リーグvs戸二小ジャガーズ
+20230527浮間リーグvs豊島堀船
+20230625 北区志茂少年野球大会ワンモア戦vs赤西ナイン 1試合目
+20230625 北区志茂少年野球大会ワンモア戦vs赤西ナイン 2試合目
+20230715練習試合vs駒込ベアーズ20230715
+20230716北区少年野球大会vs諏訪クラブ20230716
+20230730親子ナイター20230730
+20230806桐ヶ丘地区少年野球大会VS諏訪クラブ20230806
+20230819練習試合vs神栖ブルーウェーブ20230819
+20230826練習試合vs赤西ナイン20230826
+20230827スポーツ少年団城北ブロック大会vs舎人スポーツ少年団20230827
+20230903スポーツ少年団城北ブロック大会vsトータスⅡ決勝20230903
+20230910北区少年野球選手権大会vs城北メッツ20230910
+20230918浮間リーグvs西浮間イーグルス20230918
+20230924赤羽大会秋季大会vs城北メッツ20230924
+20230930浮間リーグvs若木ベースボールクラブ20230930
+20231007浮間リーグvs稲田クラブ20231007
+20231008志茂大会秋季大会vsマッハブレーブス20231008
+20231105練習試合vs飛鳥ジュニア20231105
+20231123練習試合vs白山サンデーボーイズ20231123
+20231126滝野川大会新人戦vs赤西稲田東神20231126
+20231217滝野川大会新人戦vs豊島堀船
+2023夏おばあちゃんち
+2023運動会
+2023野球教室
+20240204真中満杯vsジュニアファイターズ20240204
+20240212真中満杯vs鷺ノ宮スタージョーズ20240212
+20240218真中満杯vs中野セネタース20240218
+20240224真中満杯vs東部連合20240224
+20240303真中満杯vs高輪台ファイターズ20240303
+20240309練習試合vs梶山レッドスターズ20240309
+#梶山レッドスターズ
+#練習試合
+20240310北区大会vs諏訪クラブ20240310
+#諏訪クラブ
+20240407浮間リーグvs戸二小ジャガーズ20240407
+#戸二小ジャガーズ
+20240413浮間リーグvs西浮間イーグルス20240413
+#西浮間イーグルス
+#浮間リーグ
+20240414北区大会vs王子ドルフィンズ20240414
+#王子ドルフィンズ
+20240421スポーツ少年団北区大会vs赤西東神20240421
+#赤西ナイン
+#東神ユニバース
+20240421北区大会vs豊島堀船20240421
+#豊島堀船
+20240428北区大会vs城北メッツ20240428
+20240429滝野川大会vs城北メッツ20240429
+#城北メッツ
+20240504浮間リーグvsBBC20240504
+#BBC
+#浮間リーグ
+20240504浮間リーグvs十条イーグルス20240504
+20240505志茂大会vs諏訪クラブ20240505
+#諏訪クラブ
+20240511浮間リーグvsマッハブレーブス20240511
+#マッハブレーブス
+#浮間リーグ
+20240512志茂大会vs赤西東神20240512
+#赤西ナイン
+#東神ユニバース
+20240518志茂大会vs王子ドルフィンズ20240518
+#王子ドルフィンズ
+20240519赤羽大会vs飛鳥ジュニア20240519
+#飛鳥ジュニア
+20240526志茂少年野球大会vs豊島堀船20240526
+#豊島堀船
+20240615練習試合1試合目vs豊島ブレイズ20240615
+20240615練習試合2試合目vs豊島ブレイズ20240615
+#豊島ブレイズ
+20240616練習試合vs向島ビーバーズ20240616
+#向島ビーバーズ
+20240629練習試合vsリトルモンキーズ20240629
+#リトルモンキーズ
+20240707練習試合2試合目vsレッドサンズ20240707
+#レッドサンズ
+#練習試合
+20240707練習試合vsレッドサンズ20240707
+#レッドサンズ
+#練習試合
+20240720北区大会vs十条イーグルス20240720
+#十条イーグルス
+#北区大会
+20240721北区大会vs西浮間イーグルス20240721
+#西浮間イーグルス
+20240727ミサワホーム杯vs仲宿ファイターズ20240727
+20240728ミサワホーム杯vs国分寺ジュニアキング20240728
+国分寺ジュニアキング
+#ミサワホーム杯
+20240803(対象外)北区新人戦vsブルースカイズ20240803
+20240804北区新人戦vsブルースカイズ20240804
+20240804北区新人戦vs城北メッツ20240804
+#城北メッツ
+20240818親子ナイター20240818
+#親子ナイター
+https://youtube.com/playlist?list=PLn2WecEfPfSI1xIQ3eRpyyUXFp2Ngz4kA&si=TIN13AONQwIoPFdh
+20240824練習試合vs神川少年野球(混合)20240824
+#神川少年野球
+#練習試合
+20240825夏合宿 紅白戦 20240825
+20240901浮間リーグvs豊島堀船20240901
+#豊島堀船
+20240914練習試合vs荒川ジャンプ20240914
+#荒川ジャンプ
+#練習試合
+あおらショート守備：02 2:06 16:20
+20240915スポ少城北ブロック大会vsトータスⅡ20240915
+20240915北区大会vs諏訪クラブ20240915
+20240916北区大会（秋季）vs豊島堀船20240916
+#豊島堀船
+あおら守備：4:50
+20240921赤羽大会vs赤西東神20240921
+#赤西ナイン
+#東神ユニバース
+20240923志茂大会vsBBC20240923
+#BBC
+#志茂大会
+見るところなし。
+あおらに対してBBCが走塁妨害を実施。
+20240923赤羽大会vs豊島堀船20240923
+20240929北区大会vs城北メッツ20240929
+20240929赤羽大会vsBBC20240929（途中まで）
+20241012志茂大会vs諏訪クラブ20241012
+#諏訪クラブ
+#志茂大会
+20241012志茂大会vs赤西東神20241012
+#志茂大会
+#赤西東神
+20241013スポーツ少年団東京都大会vs高輪クラブ20241013
+20241019浮間リーグvs美女木ボーイズ20241019
+20241020志茂大会準決勝vs豊島堀船20241020
+20241026浮間リーグvs諏訪クラブ20241026
+20241027志茂大会決勝vs飛鳥ジュニア20241027
+20241027浮間リーグvs赤西東神20241027
+20241103 23区大会vs山野レッドイーグルス20241103
+20241130紅白戦20241130
+20241201(対象外)滝野川大会vs豊島堀船20241201
+20241201紅白戦20241201
+20241201紅白戦20241201 DJI
+20241201練習試合vs東金町ライナーズ20241201
+20241208(対象外)滝野川大会vsBBC20241208
+20241208クリスマスカップvsレッドサンズ20241208
+20241208練習試合vs葛飾アニマルズ20241208
+20241214滝野川大会新人戦vs東神ユニバース20241214
+20241215滝野川大会新人戦vsマッハブレーブス20241215
+20241217(対象外)東京都城北少年野球大会vs東京ジョーカーズ
+20241217(対象外)東京都城北少年野球大会vs竹仲
+20241217(対象外)東京都城北少年野球大会vs高円寺メイト
+20241222紅白戦(こども対こども)20241222
+20241222紅白戦(こども対大人)20241222
+2024新年顔合わせ
+2024滝野川大会新人戦開会式
+2024運動会
+20250111ピッチング練習20250111
+20250111練習試合①vs駒込ベアーズ20250111
+20250111練習試合②vs駒込ベアーズ20250111
+20250113中野区少年軟式野球交流大会vs中野ユニオンズ20250113
+20250113練習試合①vs戸塚エコーチャイルド20250113
+20250113練習試合②vs戸塚エコーチャイルド20250113
+20250119中野区少年軟式野球交流大会vsジュニアファイターズ20250119
+20250119練習試合vs練馬ペガサス20250119
+20250126中野区少年軟式野球交流大会vs池雪ジュニアストロング20250126
+20250126（対象外）練習試合vs高島平ブラザーズ20250126
+20250201練習試合①vsブルースカイ20250201
+20250201練習試合②vsブルースカイ20250201
+20250209練習試合①vs葛飾アニマルズ20250209
+20250209練習試合②vs葛飾アニマルズ20250209
+20250211練習試合①vs巣鴨ジュニアポニーズ20250211
+20250211練習試合②vs巣鴨ジュニアポニーズ20250211
+20250211走塁練習20250211
+20250216練習試合vs練馬レッドサンズ20250216
+20250216練習試合①vs高輪台ファイターズ20250216
+20250216練習試合②vs高輪台ファイターズ20250216
+20250224くりくり少年野球選手権大会北区代表決定大会vsブルースカイズ20250224
+20250224練習試合①vs竹仲20250224
+20250224練習試合②vs竹仲20250224
+20250302練習試合①vs城東ベースボールクラブ20250302
+20250302練習試合②vs城東ベースボールクラブ20250302
+20250308ミズノドリームカップvs日新グリーンボーイズ20250308
+20250308練習試合vs日新グリーンボーイズ20250308
+20250309北区春季大会vsブルースカイズ20250309
+20250315年中夢球杯vs梶山レッドスターズ20250315
+20250315練習試合vs梶山レッドスターズ20250315
+20250320ミズノベースボールドリームカップvs東金町ライナーズ20250320
+20250322東京都城北少年野球大会vs北町ファイヤーズ20250322
+20250323北区春季大会vs諏訪クラブ20250323
+20250330北区春季大会vs東神ユニバース２０２５０３３０
+20250330練習試合vs豊島堀船２０２５０３３０
+20250405宮本慎也杯vs千駄ヶ谷イーグルス20250405
+20250405年中夢球杯vs道塚ジュニアーズ20250405
+20250412ミズノベースボールドリームカップvs小平ドリームス20250412
+20250412浮間リーグvsマッハブレーブス20250412
+20250413北区スポーツ少年団春季大会vs赤西ナイン20250413
+20250420北区滝野川少年野球春季大会vs飛鳥ジュニア20250420
+20250420東京都都知事杯北区代表決定大会vs飛鳥ジュニア20250420
+20250426浮間リーグvs長後ベアーズ20250426
+20250427北区滝野川少年野球春季大会vs城北メッツ20250427
+20250427練習試合1試合目vs大塚ミスギホープ20250427
+20250427練習試合2試合目vs大塚ミスギホープ20250427
+20250429東京都都知事杯北区代表決定大会vsマッハブレーブス20250429
+20250503浮間リーグvsBBC20250503
+20250503浮間リーグvs西浮間イーグルス20250503
+20250504浮間リーグvs戸二小ジャガーズ20250504
+20250505北区滝野川少年野球春季大会vs諏訪クラブ20250505
+20250511ジャビットカップ北区代表決定大会vsブロッサムベースボールクラブ20250511
+20250511スポーツ少年団城北ブロック大会vs舎人スポーツ少年団20250511
+20250518ジャビットカップ北区代表決定大会vs西浮間イーグルス20250518
+20250518スポーツ少年団城北ブロック大会vs城東ベースボールクラブ20250518
+20250524浮間リーグvsオール中台20250524
+20250524浮間リーグvs西浮間イーグルス20250524
+20250525ジャビットカップ北区代表決定大会vs豊島堀船20250525
+20250601くら寿司トーナメントvs船堀ダックスクラブ20250601
+20250601志茂大会vs稲田クラブ20250601
+20250607くら寿司トーナメントvs山中ビーバーズ20250607
+20250608年中夢球杯vs小金井三小メッツ20250608
+20250608志茂大会vs赤西ナイン20250608
+20250614くら寿司トーナメントvs下條レッズ20250614
+20250615北区新人戦vs赤西ナイン20250615
+20250621赤羽大会vs 稲田クラブ20250621
+20250621赤羽大会vsブルースカイズ20250621
+20250622スポーツ少年団東京都大会vs菊坂ファイヤーズ20250622
+20250622北区新人戦vsBBC20250622
+20250628ジャビットカップ北区代表決定大会vs城北メッツ20250628
+20250628北区新人戦vs城北メッツ20250628
+20250629スポーツ少年団東京都大会vs小金井三小メッツ20250629
+20250629スポーツ少年団東京都大会vs東久留米ハッピーズ20250629
+202506びあん運動会
+20250705志茂大会vs諏訪クラブ20250705
+20250706東京都城北大会vs城山少年野球クラブ20250706
+20250706浮間大会vs赤西ナイン20250706
+20250712北区少年野球大会vsマッハブレーブス20250712
+20250712年中夢球杯vsグレートベアー20250712
+20250713くら寿司トーナメントvsマッハブレーブス20250713
+20250719東京都城北少年野球大会vs堀小スワローズ20250719
+20250720東京都城北少年野球大会vs八成野球クラブ20250720
+20250721オールジャパンベースボールリーグvs旭町野球クラブ20250721
+20250726オールジャパンベースボールリーグvs北原少年野球クラブ20250726
+20250727くら寿司トーナメントvs高輪クラブ20250727
+20250809ジャビットカップチャンピオン大会vs小平フレンズ20250809
+20250823宮本慎也杯vs山友スターズ20250823
+20250823浮間リーグvs高島平セブンスターズ20250823
+20250824練習試合vs横瀬武甲20250824
+20250824練習試合vs熊谷ウィングス20250824
+20250830浮間リーグvs諏訪クラブ20250830
+20250907スポーツ少年団城北ブロック大会vs舎人スポーツ少年団20250907
+20250914スポーツ少年団城北ブロック大会vs城東ベースボールクラブ20250914
+20250914北区大会vs豊島堀船20250914
+20250915北区大会vs城北メッツ20250915
+20250921宮本慎也杯vs高円寺メイト20250921
+20250921赤羽大会vs王子ドルフィンズ20250921
+20250923志茂大会vs王子ドルフィンズ20250923
+20251004浮間リーグvs豊島堀船20251004
+20251005赤羽大会vsブルースカイズ20251005
+20251011赤羽大会vs赤西ナイン20251011
+20251012志茂大会vs十条イーグルス
+20251013赤羽大会vs諏訪クラブ20251013
+20251019志茂大会vsマッハブレーブス20251019
+20251025浮間リーグvs若木ベースボールクラブ20251025
+20251102ジュニア大会vs諏訪クラブ20251102
+20251103東京都城北少年野球大会vsリトルフィッシュ20251103
+20251108浮間大会vs赤西ナイン20251108
+20251115東京都城北少年野球大会vs若木ベースボールクラブ20251115
+20251116練習試合vs南千住ペガサス20251116
+20251123浮間大会vs東神ユニバース20251123
+20251124滝野川大会新人戦vs豊島堀船20251124
+20251126練習試合vs下馬ジュニアクラブ
+20251129東京都城北少年野球大会vs高円寺メイト20251129
+20251130練習試合vs豊島堀船20251130
+20251206滝野川大会新人戦vs新田ファイヤーズ20251206
+20251207滝野川大会新人戦vsBBC20251207
+20251221クリスマスカップvs深川ジャイアンツ20251221
+20251227紅白戦20251227
+2025卒団式
+https://www.canva.com/design/DAG4lchJv-4/x0ezDkRXGXkHqUEgI3kQxA/edit?utm_content=DAG4lchJv-4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+https://86.gigafile.nu/1206-g32e2cd21e5bacfa7c20927b8fb18e970
+2025谷端ジュニア納会・卒団式
+2025運動会あおら
+20260111練習試合vs駒込ベアーズ20260111
+20260112練習試合vs台東ジャニーズ20260112
+20260118練習試合①vs成増第二ライオンズ20260118
+20260118練習試合②vs成増第二ライオンズ20260118
+20260124ナガセケンコー杯vs高島エイト20260124
+20260125練習試合vs中村ウィンズ20260125
+20260131練習試合①vs西千タイガース20260131
+20260131練習試合②vs西千タイガース20260131
+20260201練習試合①vsジュニアヤンガース20260201
+20260201練習試合②vsジュニアヤンガース20260201
+20260207練習試合①vs扇ターキーズ20260207
+20260207練習試合②vs扇ターキーズ20260207
+20260214練習試合vs東京ウイング20260214
+20260215練習試合①vsフェニックス20260215
+20260215練習試合②vsフェニックス20260215
+20260221東京都城北少年野球大会vs成増第二ライオンズ20260221
+20260222くりくり少年野球大会vs王子ドルフィンズ20260222
+20260222ナガセケンコー杯VS鷺宮スタージョーズ20260222
+20260307ミズノベースボールドリームカップvs玉川ラプターズ20260307
+20260307練習試合vs玉川ラプターズ20260307
+20260308北区大会vs豊島堀船20260308
+20260314年中夢球杯vs青梅ドラゴンズ20260314
+20260314練習試合vs青梅ドラゴンズ20260314
+20260315練習試合①vs大塚ミスギホープ20260315
+20260315練習試合②vs大塚ミスギホープ20260315
+20260320北区大会vs城北メッツB20260320
+20260320練習試合vs仲宿ファイターズ20260320
+20260321東京都城北少年野球大会vs大泉桜ファイターズ20260321
+20260322北区大会vs城北メッツ2026322
+20260329ミズノベースボールドリームカップvs清瀬レッドライオンズ20260329
+20260329東京都知事杯北区代表決定大会vs開かクラブ20260329
+20260404年中夢球杯vs船堀ダックスクラブ20260404
+20260405スポーツ少年団北区春季大会vs十条イーグルス20260405
+20260405東京都知事杯vs西浮間イーグルス20260405
+20260411東京都城北少年野球大会vsリトルフィッシュ20260411
+20260412くりくり少年野球大会北区代表決定大会vs城北メッツ20260412
+20260412スポーツ少年団北区春季大会vs赤西ナイン20260412
+20260418浮間リーグvs諏訪クラブ20260418
+20260419東京都知事杯北区代表決定大会vs城北メッツ20260419
+20260426東京都知事杯北区代表決定大会vsBBC20260426
+20260429ジャビットカップ北区代表決定大会vs西浮間イーグルス20260429
+20260502宮本慎也杯vs旗の台クラブ20260502
+20260502練習試合vs旗の台クラブ20260502
+20260503浮間リーグvs桜川ドリームス20260503
+20260503浮間リーグvs若木ベースボールクラブ20260503
+20260506志茂大会vs王子ドルフィンズ20260506
+20260509年中夢球杯vs百草台フェニックス20260509
+20260509東京都城北少年野球大会vs西千タイガース20260509
+20260510スポーツ少年団城北ブロック大会vs舎人スポーツ少年団20260510
+    </pre>
+
+    <nav class="bg-indigo-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-emerald-500 text-white p-2 rounded-full flex items-center justify-center w-10 h-10 shadow-inner">
+                        <i class="fa-solid fa-baseball-bat-ball text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-xl tracking-wider block">aora-baseball</span>
+                        <span class="text-xs text-indigo-200 block -mt-1">Activity Dashboard</span>
+                    </div>
+                </div>
+                <div class="text-sm bg-indigo-800 px-3 py-1.5 rounded-md text-indigo-100 font-mono hidden sm:block">
+                    <i class="fa-regular fa-calendar-check mr-1"></i> 2022 - 2026 Data
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-white rounded-xl shadow-xs border border-slate-100 p-5 flex items-center space-x-4">
+                <div class="p-3 bg-indigo-50 text-indigo-600 rounded-lg"><i class="fa-solid fa-layer-group text-2xl"></i></div>
+                <div>
+                    <p class="text-sm text-slate-400 font-medium">総アクティビティ</p>
+                    <h3 id="kpi-total" class="text-2xl font-bold text-slate-800">0</h3>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-xs border border-slate-100 p-5 flex items-center space-x-4">
+                <div class="p-3 bg-emerald-50 text-emerald-600 rounded-lg"><i class="fa-solid fa-trophy text-2xl"></i></div>
+                <div>
+                    <p class="text-sm text-slate-400 font-medium">公式戦・大会</p>
+                    <h3 id="kpi-official" class="text-2xl font-bold text-slate-800">0</h3>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-xs border border-slate-100 p-5 flex items-center space-x-4">
+                <div class="p-3 bg-amber-50 text-amber-600 rounded-lg"><i class="fa-solid fa-handshake text-2xl"></i></div>
+                <div>
+                    <p class="text-sm text-slate-400 font-medium">練習試合</p>
+                    <h3 id="kpi-practice" class="text-2xl font-bold text-slate-800">0</h3>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-xs border border-slate-100 p-5 flex items-center space-x-4">
+                <div class="p-3 bg-sky-50 text-sky-600 rounded-lg"><i class="fa-solid fa-flag text-2xl"></i></div>
+                <div>
+                    <p class="text-sm text-slate-400 font-medium">その他・イベント</p>
+                    <h3 id="kpi-events" class="text-2xl font-bold text-slate-800">0</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-xs border border-slate-100 lg:col-span-1">
+                <h3 class="text-md font-bold mb-4 flex items-center text-slate-700">
+                    <i class="fa-solid fa-chart-bar mr-2 text-indigo-500"></i>年別活動数
+                </h3>
+                <div class="h-64 flex items-center justify-center">
+                    <canvas id="yearChart"></canvas>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-xs border border-slate-100 lg:col-span-2">
+                <h3 class="text-md font-bold mb-4 flex items-center text-slate-700">
+                    <i class="fa-solid fa-chart-line mr-2 text-emerald-500"></i>対戦相手ランキング（Top 10）
+                </h3>
+                <div class="h-64 flex items-center justify-center">
+                    <canvas id="opponentChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-xs border border-slate-100 overflow-hidden">
+            <div class="p-5 border-b border-slate-100 bg-slate-50/50 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div class="flex flex-wrap items-center gap-3">
+                    <select id="filter-year" class="bg-white border border-slate-200 text-sm rounded-lg px-3 py-2 shadow-xs focus:ring-2 focus:ring-indigo-500 outline-none">
+                        <option value="all">すべての年度</option>
+                        <option value="2026">2026年</option>
+                        <option value="2025">2025年</option>
+                        <option value="2024">2024年</option>
+                        <option value="2023">2023年</option>
+                        <option value="2022">2022年</option>
+                    </select>
+
+                    <select id="filter-type" class="bg-white border border-slate-200 text-sm rounded-lg px-3 py-2 shadow-xs focus:ring-2 focus:ring-indigo-500 outline-none">
+                        <option value="all">すべての種別</option>
+                        <option value="公式戦">公式戦</option>
+                        <option value="練習試合">練習試合</option>
+                        <option value="練習・紅白戦">練習・紅白戦</option>
+                        <option value="イベント">イベント</option>
+                    </select>
+                </div>
+
+                <div class="relative w-full md:w-72">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                    <input type="text" id="search-input" placeholder="対戦相手、大会、タグで検索..." 
+                        class="w-full bg-white border border-slate-200 text-sm rounded-lg pl-9 pr-4 py-2 shadow-xs focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-500 text-xs font-semibold uppercase tracking-wider border-b border-slate-100">
+                            <th class="py-3.5 px-6 w-32">日付</th>
+                            <th class="py-3.5 px-6 w-28">種別</th>
+                            <th class="py-3.5 px-6">活動イベント内容 / 対戦相手</th>
+                            <th class="py-3.5 px-6 w-48">タグ・備考・リンク</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body" class="divide-y divide-slate-100 text-sm">
+                        </tbody>
+                </table>
+            </div>
+
+            <div id="no-data" class="hidden p-12 text-center text-slate-400">
+                <i class="fa-regular fa-folder-open text-4xl mb-3 block"></i>
+                条件に一致するデータが見つかりませんでした。
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center py-8 text-xs text-slate-400 border-t border-slate-100 mt-12 bg-white">
+        &copy; aora-baseball ダッシュボード
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const rawText = document.getElementById('raw-data').textContent;
+            const events = parseBaseballData(rawText);
+            
+            // グローバル状態
+            let charts = {};
+            
+            // 初回表示・更新
+            updateDashboard(events);
+
+            // フィルターイベントの紐付け
+            document.getElementById('filter-year').addEventListener('change', () => filterAndRender(events));
+            document.getElementById('filter-type').addEventListener('change', () => filterAndRender(events));
+            document.getElementById('search-input').addEventListener('input', () => filterAndRender(events));
+
+            // データ解析関数
+            function parseBaseballData(text) {
+                const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+                const parsedEvents = [];
+                let current = null;
+
+                for (let line of lines) {
+                    // 日付（8桁、または4桁）の切り出しを試みる
+                    const dateMatch = line.match(/^(\d{8})/) || line.match(/^(\d{4})/);
+                    
+                    if (dateMatch) {
+                        if (current) parsedEvents.push(current);
+
+                        const dateStr = dateMatch[0];
+                        const year = dateStr.substring(0, 4);
+                        let formattedDate = year;
+                        
+                        if (dateStr.length === 8) {
+                            formattedDate = `${year}/${dateStr.substring(4, 6)}/${dateStr.substring(6, 8)}`;
+                        } else {
+                            // 日付特定できないイベント（「2023夏おばあちゃんち」等）
+                            formattedDate = `${year}年 (イベント)`;
+                        }
+
+                        // タイトルから冒頭の日付数字を除去
+                        let title = line.replace(/^\d+/, '').trim();
+                        
+                        // 末尾の重複日付やタイポ日付(2026322等)を除去
+                        title = title.replace(/\d{4,8}$/, '').trim();
+
+                        // (対象外)の検出
+                        let isExcluded = false;
+                        if (title.includes('(対象外)') || title.includes('（対象外）')) {
+                            isExcluded = true;
+                            title = title.replace(/\(対象外\)|（対象外）/g, '').trim();
+                        }
+
+                        // 種別の類推
+                        let type = '公式戦';
+                        if (title.includes('練習試合')) type = '練習試合';
+                        else if (title.includes('紅白戦') || title.includes('練習') || title.includes('顔合わせ')) type = '練習・紅白戦';
+                        else if (title.includes('運動会') || title.includes('卒団式') || title.includes('納会') || title.includes('教室') || title.includes('おばあちゃんち')) type = 'イベント';
+
+                        // 対戦相手の抽出
+                        let opponent = '—';
+                        const oppMatch = title.match(/vs\s*([^\s#①②\d]+)/i) || title.match(/VS\s*([^\s#①②\d]+)/i);
+                        if (oppMatch) {
+                            opponent = oppMatch[1].trim();
+                        }
+
+                        current = {
+                            date: formattedDate,
+                            year: year,
+                            title: title,
+                            type: type,
+                            opponent: opponent,
+                            excluded: isExcluded,
+                            tags: [],
+                            notes: [],
+                            links: []
+                        };
+                    } else {
+                        // 追記情報（ハッシュタグ、URL、追加コメント）
+                        if (current) {
+                            if (line.startsWith('#')) {
+                                current.tags.push(line.replace('#', ''));
+                            } else if (line.startsWith('http')) {
+                                current.links.push(line);
+                            } else {
+                                current.notes.push(line);
+                            }
+                        }
+                    }
+                }
+                if (current) parsedEvents.push(current);
+                return parsedEvents;
+            }
+
+            // フィルター＆描画のコア処理
+            function filterAndRender(allEvents) {
+                const yearFilter = document.getElementById('filter-year').value;
+                const typeFilter = document.getElementById('filter-type').value;
+                const searchQuery = document.getElementById('search-input').value.toLowerCase();
+
+                const filtered = allEvents.filter(ev => {
+                    const matchYear = (yearFilter === 'all' || ev.year === yearFilter);
+                    const matchType = (typeFilter === 'all' || ev.type === typeFilter);
+                    
+                    const textContent = `${ev.title} ${ev.opponent} ${ev.tags.join(' ')} ${ev.notes.join(' ')}`.toLowerCase();
+                    const matchSearch = (!searchQuery || textContent.includes(searchQuery));
+
+                    return matchYear && matchType && matchSearch;
+                });
+
+                renderTable(filtered);
+                updateCharts(filtered);
+                
+                // KPIは常に全体の統計か、フィルター時の統計か。ここでは直感的にフィルター連動にします
+                updateKPI(filtered); 
+            }
+
+            function updateDashboard(allEvents) {
+                filterAndRender(allEvents);
+            }
+
+            // KPIカードの更新
+            function updateKPI(data) {
+                document.getElementById('kpi-total').textContent = data.length;
+                document.getElementById('kpi-official').textContent = data.filter(e => e.type === '公式戦').length;
+                document.getElementById('kpi-practice').textContent = data.filter(e => e.type === '練習試合').length;
+                document.getElementById('kpi-events').textContent = data.filter(e => e.type === 'イベント' || e.type === '練習・紅白戦').length;
+            }
+
+            // テーブルレンダリング
+            function renderTable(data) {
+                const tbody = document.getElementById('table-body');
+                const noData = document.getElementById('no-data');
+                tbody.innerHTML = '';
+
+                if (data.length === 0) {
+                    noData.classList.remove('hidden');
+                    return;
+                }
+                noData.classList.add('hidden');
+
+                data.forEach(ev => {
+                    const row = document.createElement('tr');
+                    row.className = "hover:bg-slate-50/70 transition-colors";
+
+                    // 種別バッジの色判定
+                    let typeBadgeClass = "bg-indigo-50 text-indigo-700 border-indigo-100";
+                    if (ev.type === '練習試合') typeBadgeClass = "bg-amber-50 text-amber-700 border-amber-100";
+                    if (ev.type === '練習・紅白戦') typeBadgeClass = "bg-emerald-50 text-emerald-700 border-emerald-100";
+                    if (ev.type === 'イベント') typeBadgeClass = "bg-sky-50 text-sky-700 border-sky-100";
+
+                    // 対象外バッジ
+                    const excBadge = ev.excluded ? `<span class="bg-rose-50 text-rose-600 text-xs px-1.5 py-0.5 rounded border border-rose-200 font-medium ml-1">対象外</span>` : '';
+
+                    // タグ、メモ、リンクの構築
+                    let metaHTML = '';
+                    if (ev.tags.length > 0) {
+                        metaHTML += `<div class="flex flex-wrap gap-1 mb-1">` + 
+                            ev.tags.map(t => `<span class="text-xs bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded">#${t}</span>`).join('') + 
+                            `</div>`;
+                    }
+                    if (ev.notes.length > 0) {
+                        metaHTML += `<div class="text-xs text-slate-500 space-y-0.5 mb-1">` + 
+                            ev.notes.map(n => `<p><i class="fa-solid fa-memo text-slate-400 mr-1"></i>${n}</p>`).join('') + 
+                            `</div>`;
+                    }
+                    if (ev.links.length > 0) {
+                        metaHTML += `<div class="flex flex-col gap-1 mt-1.5">` + 
+                            ev.links.map(l => {
+                                let icon = '<i class="fa-solid fa-link mr-1"></i>外部リンク';
+                                if (l.includes('youtube')) icon = '<i class="fa-brands fa-youtube mr-1 text-rose-600"></i>動画プレイリスト';
+                                if (l.includes('canva')) icon = '<i class="fa-solid fa-palette mr-1 text-teal-500"></i>アルバム・デザイン';
+                                if (l.includes('gigafile')) icon = '<i class="fa-solid fa-file-arrow-up mr-1 text-orange-500"></i>ギガファイル共有';
+                                return `<a href="${l}" target="_blank" class="inline-flex items-center text-xs text-indigo-600 hover:underline font-medium">${icon}</a>`;
+                            }).join('') + `</div>`;
+                    }
+
+                    row.innerHTML = `
+                        <td class="py-3 px-6 text-slate-500 font-mono font-medium">${ev.date}</td>
+                        <td class="py-3 px-6">
+                            <span class="px-2.5 py-0.5 text-xs rounded-full border font-medium ${typeBadgeClass}">
+                                ${ev.type}
+                            </span>
+                        </td>
+                        <td class="py-3 px-6">
+                            <div class="font-medium text-slate-800 flex items-center">
+                                ${ev.title} ${excBadge}
+                            </div>
+                            ${ev.opponent !== '—' ? `<div class="text-xs text-slate-400 mt-0.5">対戦相手: <span class="text-slate-600 font-medium">${ev.opponent}</span></div>` : ''}
+                        </td>
+                        <td class="py-3 px-6">${metaHTML}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            }
+
+            // グラフの動的初期化・アップデート
+            function updateCharts(data) {
+                // 1. 年別集計
+                const yearsCount = { '2022': 0, '2023': 0, '2024': 0, '2025': 0, '2026': 0 };
+                data.forEach(e => { if (yearsCount[e.year] !== undefined) yearsCount[e.year]++; });
+
+                // 2. 対戦相手Top10
+                const oppCount = {};
+                data.forEach(e => {
+                    if (e.opponent && e.opponent !== '—') {
+                        oppCount[e.opponent] = (oppCount[e.opponent] || 0) + 1;
+                    }
+                });
+                const sortedOpponents = Object.entries(oppCount)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 10);
+
+                // --- 年別グラフの描画 ---
+                if (charts.year) charts.year.destroy();
+                const ctxYear = document.getElementById('yearChart').getContext('2d');
+                charts.year = new Chart(ctxYear, {
+                    type: 'bar',
+                    data: {
+                        labels: Object.keys(yearsCount).map(y => y + '年'),
+                        datasets: [{
+                            label: '活動数',
+                            data: Object.values(yearsCount),
+                            backgroundColor: '#6366f1',
+                            borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: { y: { beginAtZero: true, ticks: { stepSize: 5 } } }
+                    }
+                });
+
+                // --- 対戦相手グラフの描画 ---
+                if (charts.opponent) charts.opponent.destroy();
+                const ctxOpp = document.getElementById('opponentChart').getContext('2d');
+                charts.opponent = new Chart(ctxOpp, {
+                    type: 'bar',
+                    data: {
+                        labels: sortedOpponents.map(o => o[0]),
+                        datasets: [{
+                            label: '試合回数',
+                            data: sortedOpponents.map(o => o[1]),
+                            backgroundColor: '#10b981',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: { x: { beginAtZero: true, ticks: { stepSize: 1 } } }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
