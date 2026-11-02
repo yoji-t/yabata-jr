@@ -1,1 +1,605 @@
-<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>谷端ジュニア2026高学年ダッシュボード</title><style>body{font:15px/1.5 Arial,sans-serif;background:#f3f6fa;color:#172337;margin:0}header{background:#142c45;color:white;padding:24px} .home-link{display:inline-block;margin-bottom:12px;padding:8px 14px;background:#fff;color:#142c45;text-decoration:none;font-weight:bold;border-radius:8px;border:1px solid #d6e0eb;transition:background .2s} .home-link:hover{background:#eaf1f8} .home-link:focus-visible{outline:3px solid #8fc7ff;outline-offset:3px}main{max-width:1100px;margin:auto;padding:15px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.card{background:white;border:1px solid #ddd;border-radius:12px;padding:16px;margin:10px 0}.n{font-size:27px;font-weight:bold}input,select{padding:9px;margin:5px 4px 10px 0;border:1px solid #ccc;border-radius:7px}table{width:100%;border-collapse:collapse;font-size:12px}td,th{text-align:left;padding:8px;border-bottom:1px solid #ddd}th{background:#eef2f7;position:sticky;top:0}.scroll{overflow:auto;max-height:650px}.muted{color:#68778a;font-size:12px}.win{color:#167344}.loss{color:#b32e3d}@media(max-width:650px){.grid{grid-template-columns:1fr 1fr}}</style><header><a class="home-link" href="https://yoji-t.github.io/yabata-jr/">← ホームに戻る</a><h1>⚾ 谷端ジュニア｜2026年 高学年 試合分析</h1>Notion登録全101試合を集計</header><main><div class="grid" id="stats"></div><section class="card"><h2>月別成績</h2><div id="months"></div></section><section class="card"><h2>全試合一覧</h2><input id="q" placeholder="大会名・対戦相手を検索"><select id="w"><option value="">勝敗すべて</option><option>勝ち</option><option>負け</option></select><select id="m"><option value="">月すべて</option></select><div class="muted" id="count"></div><div class="scroll"><table><thead><tr><th>日付</th><th>大会・試合</th><th>対戦相手</th><th>点数</th><th>勝敗</th><th>球場</th><th>Notion</th></tr></thead><tbody id="body"></tbody></table></div></section><p class="muted">2025年11〜12月の新人戦を含む登録全件。スコアの括弧内タイブレークは通常得点に加算せず、先頭の得点のみを集計。</p></main><script>const G=[{"date":"2025-11-24","title":"20251124滝野川大会新人戦vs豊島堀船","opp":"豊島堀船","score":"6-0","result":"勝ち","place":"北区中央公園","url":"https://app.notion.com/2a74483132d380b99f41cc5a0f4b53c6"},{"date":"2025-11-30","title":"20251130練習試合vs豊島堀船","opp":"豊島堀船","score":"12-0","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/2bc4483132d380289d11c8fa6aa3239b"},{"date":"2025-12-06","title":"20251206滝野川大会新人戦vs新田ファイヤーズ","opp":"新田ファイヤーズ","score":"9-2","result":"勝ち","place":"北区中央公園","url":"https://app.notion.com/2c24483132d3807f9942c6741c59eabd"},{"date":"2025-12-07","title":"20251207滝野川大会新人戦vsBBC","opp":"BBC","score":"10-3","result":"勝ち","place":"北区中央公園","url":"https://app.notion.com/2c24483132d3807f9903e802f0b2af52"},{"date":"2025-12-21","title":"20251221クリスマスカップvs深川ジャイアンツ","opp":"深川ジャイアンツ","score":"0−3","result":"負け","place":"新荒川大橋野球場","url":"https://app.notion.com/2d14483132d38081b908d2b605a796bd"},{"date":"2026-01-11","title":"20260111練習試合vs駒込ベアーズ","opp":"駒込ベアーズ","score":"23-3","result":"勝ち","place":"西新井緑地野球場","url":"https://app.notion.com/2f64483132d38075a04dc4d1bb79afd8"},{"date":"2026-01-12","title":"20260112練習試合①vs台東ジャニーズ","opp":"台東ジャニーズ","score":"9-3","result":"勝ち","place":"東白髭公園野球場","url":"https://app.notion.com/2f64483132d380aaa7fde7fdba1fefd2"},{"date":"2026-01-12","title":"20260112練習試合②vs台東ジャニーズ","opp":"台東ジャニーズ","score":"5-2","result":"勝ち","place":"東白髭公園野球場","url":"https://app.notion.com/2f64483132d380bd99e4d8ef443b151c"},{"date":"2026-01-18","title":"20260118練習試合①vs成増第二ライオンズ","opp":"成増第二ライオンズ","score":"6-1","result":"勝ち","place":"戸田橋野球場","url":"https://app.notion.com/2f64483132d380c197d0c4f173053f89"},{"date":"2026-01-18","title":"20260118練習試合②vs成増第二ライオンズ","opp":"成増第二ライオンズ","score":"5-2","result":"勝ち","place":"戸田橋野球場","url":"https://app.notion.com/2f64483132d380079abaca6e205151f0"},{"date":"2026-01-24","title":"20260124ナガセケンコー杯vs高島エイト","opp":"高島エイト","score":"4-3","result":"勝ち","place":"多摩川緑地野球場","url":"https://app.notion.com/2f64483132d38092ad09d1f270ba1d03"},{"date":"2026-01-25","title":"20260125練習試合vs中村ウィンズ","opp":"中村ウィンズ","score":"4-1","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/2f64483132d38020bbe4c18378772167"},{"date":"2026-01-31","title":"20260131練習試合①vs西千タイガース","opp":"西千タイガース","score":"7-0","result":"勝ち","place":"西新井緑地野球場","url":"https://app.notion.com/2f94483132d380d0990fe275d7143647"},{"date":"2026-01-31","title":"20260131練習試合②vs西千タイガース","opp":"西千タイガース","score":"5-1","result":"勝ち","place":"西新井緑地野球場","url":"https://app.notion.com/2f94483132d380988900ed5148224db1"},{"date":"2026-02-01","title":"20260201練習試合①vsジュニアヤンガース","opp":"ジュニアヤンガース","score":"6-5","result":"勝ち","place":"豊島五丁目グリーンスポーツ広場","url":"https://app.notion.com/2fa4483132d38096bed2f77911945c46"},{"date":"2026-02-01","title":"20260201練習試合②vsジュニアヤンガース","opp":"ジュニアヤンガース","score":"3-2","result":"勝ち","place":"豊島五丁目グリーンスポーツ広場","url":"https://app.notion.com/2fa4483132d3803ca3a9c5c54b74c291"},{"date":"2026-02-07","title":"20260207練習試合①vs扇ターキーズ","opp":"扇ターキーズ","score":"3-2","result":"勝ち","place":"川口市東スポーツセンター","url":"https://app.notion.com/3004483132d380b3a8f8dd176baf1737"},{"date":"2026-02-07","title":"20260207練習試合②vs扇ターキーズ","opp":"扇ターキーズ","score":"14-0","result":"勝ち","place":"川口市東スポーツセンター","url":"https://app.notion.com/3004483132d3800aaf0be2f14e6238de"},{"date":"2026-02-14","title":"20260214練習試合vs東京ウイング","opp":"東京ウイング","score":"4-5","result":"負け","place":"多摩川緑地野球場","url":"https://app.notion.com/3094483132d3806f86acdee55af0bc1b"},{"date":"2026-02-15","title":"20260215練習試合①vsフェニックス","opp":"フェニックス","score":"8-0","result":"勝ち","place":"西新井緑地野球場","url":"https://app.notion.com/3094483132d38077b08ec154150911f0"},{"date":"2026-02-15","title":"20260215練習試合②vsフェニックス","opp":"フェニックス","score":"6-0","result":"勝ち","place":"西新井緑地野球場","url":"https://app.notion.com/3094483132d380f58ee7d7b1ccb2b17a"},{"date":"2026-02-21","title":"20260221東京都城北少年野球大会vs成増第二ライオンズ","opp":"成増第二ライオンズ","score":"8-0","result":"勝ち","place":"戸田橋野球場","url":"https://app.notion.com/30e4483132d38083a593f42b0b0185c6"},{"date":"2026-02-22","title":"20260222くりくり少年野球大会vs王子ドルフィンズ","opp":"王子ドルフィンズ","score":"9-0","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/3114483132d3801ea76bdc1a9ad76daf"},{"date":"2026-02-22","title":"20260222ナガセケンコー杯vs鷺宮スタージョーズ","opp":"鷺宮スタージョーズ","score":"3-10","result":"負け","place":"多摩川緑地野球場","url":"https://app.notion.com/3114483132d38054810bc08fe91c7467"},{"date":"2026-03-07","title":"20260307ミズノベースボールドリームカップvs玉川ラプターズ","opp":"玉川ラプターズ","score":"9-1","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/31f4483132d3805b8ee4e31ca25ea12a"},{"date":"2026-03-07","title":"20260307練習試合vs玉川ラプターズ","opp":"玉川ラプターズ","score":"13-2","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/31f4483132d380fe9efbfefbf08d56bb"},{"date":"2026-03-08","title":"20260308北区大会vs豊島堀船","opp":"豊島堀船","score":"5-3","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/31f4483132d380d1a80ae3ac2af7c231"},{"date":"2026-03-14","title":"20260314年中夢球杯vs青梅ドラゴンズ","opp":"青梅ドラゴンズ","score":"7-3","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/33b4483132d3804699b9e9c36e8e2acb"},{"date":"2026-03-14","title":"20260314練習試合vs青梅ドラゴンズ","opp":"青梅ドラゴンズ","score":"11-8","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/33b4483132d380eaa33bc21a690a44b3"},{"date":"2026-03-15","title":"20260315練習試合①vs大塚ミスギホープ","opp":"大塚ミスギホープ","score":"8-0","result":"勝ち","place":"文京区立第一中学校","url":"https://app.notion.com/33b4483132d38061a8d8d6fd2f9d8e05"},{"date":"2026-03-15","title":"20260315練習試合②大塚ミスギホープ","opp":"大塚ミスギホープ","score":"3-1","result":"勝ち","place":"文京区立第一中学校","url":"https://app.notion.com/33b4483132d38035b45fe3092b45e0b6"},{"date":"2026-03-20","title":"20260320北区大会vs城北メッツ","opp":"城北メッツ","score":"9-2","result":"勝ち","place":"浮間子どもスポーツ広場","url":"https://app.notion.com/33b4483132d38059a210efad22ffb9df"},{"date":"2026-03-20","title":"20260320練習試合vs仲宿ファイターズ","opp":"仲宿ファイターズ","score":"15-6","result":"勝ち","place":"戸田橋野球場","url":"https://app.notion.com/33c4483132d380c8b0aae98ef82107df"},{"date":"2026-03-21","title":"20260321東京都城北少年野球大会vs大泉ファイターズ","opp":"大泉ファイターズ","score":"10-0","result":"勝ち","place":"戸田橋野球場","url":"https://app.notion.com/33c4483132d380dd9db1d110181872eb"},{"date":"2026-03-22","title":"20260322北区大会vs城北メッツ","opp":"城北メッツ","score":"4-3","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/33c4483132d380a194edc5726d8d6bcf"},{"date":"2026-03-29","title":"20260329東京都知事杯北区代表決定大会vs諏訪クラブ","opp":"諏訪クラブ","score":"16−5","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/33c4483132d38079af38c9e941e5bbd7"},{"date":"2026-03-29","title":"20260329ミズノベースボールドリームカップvs清瀬レッドライオンズ","opp":"清瀬レッドライオンズ","score":"1−8","result":"負け","place":"豊島五丁目グリーンスポーツ広場","url":"https://app.notion.com/33c4483132d380ac92fcc82a283e3ffb"},{"date":"2026-04-04","title":"20260404年中夢球杯vs船堀ダックスクラブ","opp":"船堀ダックスクラブ","score":"11−0","result":"勝ち","place":"江戸川区臨海野球場","url":"https://app.notion.com/33c4483132d380349b0ccda6214ccbe4"},{"date":"2026-04-05","title":"20260405スポーツ少年団北区春季大会vs十条イーグルス","opp":"十条イーグルス","score":"9−0","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/33c4483132d380858638da14ffaeaaef"},{"date":"2026-04-05","title":"20260405東京都知事杯北区代表決定大会vs西浮間イーグルス","opp":"西浮間イーグルス","score":"15−1","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/33c4483132d3801f8061d9464de1a569"},{"date":"2026-04-11","title":"20260411東京都城北少年野球大会vsリトルフィッシュ","opp":"リトルフィッシュ","score":"4-3","result":"勝ち","place":"戸田橋野球場","url":"https://app.notion.com/33f4483132d380bdbc1ddf14e1929e04"},{"date":"2026-04-12","title":"20260412くりくり少年野球大会北区代表決定大会vs城北メッツ","opp":"城北メッツ","score":"2-3","result":"負け","place":"新荒川大橋野球場","url":"https://app.notion.com/3414483132d3802f902cc5dba17fb2c3"},{"date":"2026-04-12","title":"20260412スポーツ少年団北区春季大会vs赤西ナイン","opp":"赤西ナイン","score":"13-2","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/3414483132d3805ca46fd269844fade0"},{"date":"2026-04-18","title":"20260418浮間リーグvs諏訪クラブ","opp":"諏訪クラブ","score":"8-1","result":"勝ち","place":"浮間子どもスポーツ広場","url":"https://app.notion.com/3474483132d3809aaaafe3e9ca9c5a5a"},{"date":"2026-04-19","title":"20260419東京都知事杯北区代表決定大会vs城北メッツ","opp":"城北メッツ","score":"7-2","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/3474483132d3807c8f86d36890ad26fc"},{"date":"2026-04-26","title":"20260426東京都知事杯北区代表決定大会vsBBC","opp":"BBC","score":"9-2","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/3514483132d3806386cbf76ed3eefcdb"},{"date":"2026-04-29","title":"20260429ジャビットカップ北区代表決定大会vs西浮間イーグルス","opp":"西浮間イーグルス","score":"12-6","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/3514483132d3808eaf27e4d1f4d721db"},{"date":"2026-05-02","title":"20260502宮本慎也杯vs旗の台クラブ","opp":"旗の台クラブ","score":"0-6","result":"負け","place":"大井埠頭海浜公園野球場","url":"https://app.notion.com/3594483132d3805494a3fd044f0f6208"},{"date":"2026-05-02","title":"20260502練習試合vs旗の台クラブ","opp":"旗の台クラブ","score":"3-5","result":"負け","place":"大井埠頭海浜公園野球場","url":"https://app.notion.com/3594483132d380f59c0ff40ee882cdd5"},{"date":"2026-05-03","title":"20260503浮間リーグvs若木ベースボールクラブ","opp":"若木ベースボールクラブ","score":"11-2","result":"勝ち","place":"浮間子どもスポーツ広場","url":"https://app.notion.com/3594483132d38022809ddbc70766d781"},{"date":"2026-05-03","title":"20260503浮間リーグvs桜川ドリームス","opp":"桜川ドリームス","score":"9-6","result":"勝ち","place":"浮間子どもスポーツ広場","url":"https://app.notion.com/3594483132d380da8006e5a8f30d1854"},{"date":"2026-05-06","title":"20260506志茂大会vs王子ドルフィンズ","opp":"王子ドルフィンズ","score":"10-0","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/3594483132d380c1ba54f5cc5bf4f5b6"},{"date":"2026-05-09","title":"20260509年中夢球杯vs百草台フェニックス","opp":"百草台フェニックス","score":"1-3","result":"負け","place":"百草台運動広場","url":"https://app.notion.com/35d4483132d38077ad50d3fda5fa021b"},{"date":"2026-05-09","title":"20260509東京都城北少年野球大会vs西千タイガース","opp":"西千タイガース","score":"4-1","result":"勝ち","place":"戸田橋野球場","url":"https://app.notion.com/35d4483132d380b996e9ca46969cacea"},{"date":"2026-05-10","title":"20260510スポーツ少年団城北ブロック大会vs舎人スポーツ少年団","opp":"舎人スポーツ少年団","score":"20-0","result":"勝ち","place":"江北橋右岸野球場","url":"https://app.notion.com/35d4483132d380b88aede8ebf51b189e"},{"date":"2026-05-17","title":"20260517マクドナルド・トーナメントvs四谷スワローズ","opp":"四谷スワローズ","score":"8-6","result":"勝ち","place":"郷土の森野球場","url":"https://app.notion.com/3634483132d3808fb580e594b7fd25e2"},{"date":"2026-05-23","title":"20260523浮間リーグvs長後ベアーズ","opp":"長後ベアーズ","score":"10-1","result":"勝ち","place":"浮間子どもスポーツ広場","url":"https://app.notion.com/36a4483132d380c183addb3601358746"},{"date":"2026-05-23","title":"20260523浮間リーグvsオール中台","opp":"オール中台","score":"9-0","result":"勝ち","place":"浮間子どもスポーツ広場","url":"https://app.notion.com/36a4483132d380d8b546d343fb5efb66"},{"date":"2026-05-24","title":"20260524マクドナルドトーナメントvs清瀬レッドライオンズ","opp":"清瀬レッドライオンズ","score":"6-0","result":"勝ち","place":"郷土の森野球場","url":"https://app.notion.com/36a4483132d380deab55cd90d3df4277"},{"date":"2026-05-30","title":"20260530志茂大会vs西浮間イーグルス","opp":"西浮間イーグルス","score":"5-4","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/3734483132d380b09b65c836614b6c8f"},{"date":"2026-05-31","title":"20260531マクドナルドトーナメントvs国立シャークス","opp":"国立シャークス","score":"12-11","result":"負け","place":"郷土の森野球場","url":"https://app.notion.com/3734483132d380b6af6be9b4074ef4e7"},{"date":"2026-06-06","title":"20260606志茂大会vsBBC","opp":"BBC","score":"14-0","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/3784483132d3803bb1a4f4151e1cf98d"},{"date":"2026-06-07","title":"20260607ジャビットカップ北区代表決定大会vs諏訪クラブ","opp":"諏訪クラブ","score":"7-0","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/3784483132d38001ba43d456e2addc25"},{"date":"2026-06-14","title":"20260614東京都知事杯vs十八軒アトムズ","opp":"十八軒アトムズ","score":"7-4","result":"勝ち","place":"八王子滝ガ原野球場","url":"https://app.notion.com/37f4483132d3807893eefe6f4ed71206"},{"date":"2026-06-21","title":"20260621東京都知事杯vsいずみスワローズ","opp":"いずみスワローズ","score":"4-5","result":"負け","place":"八王子滝ガ原野球場","url":"https://app.notion.com/38e4483132d380919f01df1755de2a26"},{"date":"2026-06-28","title":"20260628ジャビットカップ北区代表決定大会vsマッハブレーブス","opp":"マッハブレーブス","score":"3-1","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/38e4483132d380c69558f6b1e49a8230"},{"date":"2026-06-28","title":"20260628浮間大会vsBBC","opp":"BBC","score":"8-3","result":"勝ち","place":"浮間子どもスポーツ広場","url":"https://app.notion.com/38e4483132d3802c994df5555c9c0e15"},{"date":"2026-07-04","title":"20260704志茂大会vs豊島堀船","opp":"豊島堀船","score":"3-2","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/3934483132d380219dcad517a8b040ae"},{"date":"2026-07-04","title":"20260704滝野川大会vs稲田クラブ","opp":"稲田クラブ","score":"19-1","result":"勝ち","place":"北区中央公園","url":"https://app.notion.com/3934483132d3800981c8cec933094099"},{"date":"2026-07-05","title":"20260705ジャビットカップ北区代表決定大会vs豊島堀船","opp":"豊島堀船","score":"2-1","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/3944483132d380d580c6cc96031e4cc6"},{"date":"2026-07-05","title":"20260705滝野川大会vs城北メッツ","opp":"城北メッツ","score":"5-6","result":"負け","place":"北区中央公園","url":"https://app.notion.com/3944483132d380db8d84c164642586f3"},{"date":"2026-07-11","title":"20260711東京都城北少年野球大会vs旭町野球クラブ","opp":"旭町野球クラブ","score":"3−4","result":"負け","place":"戸田橋野球場","url":"https://app.notion.com/39f4483132d3808f88c3d40998fc3c99"},{"date":"2026-07-11","title":"20260711東京都城北少年野球大会vs竹仲","opp":"竹仲","score":"3−9","result":"負け","place":"戸田橋野球場","url":"https://app.notion.com/39f4483132d380cbba54f9936ee3bc97"},{"date":"2026-07-12","title":"20260712東京都学童選抜野球大会vs墨田選抜","opp":"墨田選抜","score":"1−1(2−1)","result":"勝ち","place":"錦糸公園野球場","url":"https://app.notion.com/39f4483132d3803f82fee14977a032b3"},{"date":"2026-07-19","title":"20260719東京都学童選抜野球大会vs世田谷選抜","opp":"世田谷選抜","score":"6-4","result":"勝ち","place":"錦糸公園野球場","url":"https://app.notion.com/3a54483132d3804e9385d5ba4022a557"},{"date":"2026-07-19","title":"20260719東京都学童選抜野球大会vs中央選抜","opp":"中央選抜","score":"7-0","result":"勝ち","place":"錦糸公園野球場","url":"https://app.notion.com/3a54483132d380c99f70e41657e01988"},{"date":"2026-07-20","title":"20260720東京都学童選抜野球大会vs江東選抜","opp":"江東選抜","score":"10-2","result":"勝ち","place":"東白髭公園野球場","url":"https://app.notion.com/3a54483132d38083bdecff3bdb3654ae"},{"date":"2026-07-20","title":"20260720東京都学童選抜野球大会vs江戸川選抜","opp":"江戸川選抜","score":"1-2","result":"負け","place":"東白髭公園野球場","url":"https://app.notion.com/3a54483132d380488402e4049a1a633d"},{"date":"2026-07-25","title":"20260725オールジャパンベースボールリーグvsマッハブレーブス","opp":"マッハブレーブス","score":"9-5","result":"勝ち","place":"戸田橋野球場","url":"https://app.notion.com/3ad4483132d380dfb860ef3b720c2137"},{"date":"2026-07-26","title":"20260726オールジャパンベースボールリーグvs新田ファイヤーズ","opp":"新田ファイヤーズ","score":"16-2","result":"勝ち","place":"鹿浜橋右岸","url":"https://app.notion.com/3ad4483132d380a281d2f5bff386ed91"},{"date":"2026-08-08","title":"20260808ジャビットカップvs中野島あけぼの","opp":"中野島あけぼの","score":"9-6","result":"勝ち","place":"三鷹大沢総合グラウンド","url":"https://app.notion.com/3b94483132d380fbb769da2bf2b5963a"},{"date":"2026-08-09","title":"20260809ジャビットカップvs下麻岡少年野球部","opp":"下麻岡少年野球部","score":"9-8","result":"勝ち","place":"三鷹大沢総合グラウンド","url":"https://app.notion.com/3b94483132d380779a54ce56b6dde3d1"},{"date":"2026-08-14","title":"20260814練習試合vs東桂少年野球部","opp":"東桂少年野球部","score":"14-3","result":"勝ち","place":"住吉球場","url":"https://app.notion.com/3c84483132d380a683a5d9e8fd20b2a7"},{"date":"2026-08-22","title":"20260822ジャビットカップチャンピオン大会vsつくしシャークス","opp":"つくしシャークス","score":"2-3","result":"負け","place":"夢の島野球場","url":"https://app.notion.com/3c84483132d38049a9a8c30fbf3dc505"},{"date":"2026-08-23","title":"20260823練習試合vs中台クラブ","opp":"中台クラブ","score":"8-3","result":"勝ち","place":"板橋城北野球場","url":"https://app.notion.com/3c84483132d380d187d6efa03e20ecaa"},{"date":"2026-08-29","title":"20260829浮間リーグvs豊島堀船","opp":"豊島堀船","score":"18-0","result":"勝ち","place":"浮間子どもスポーツ広場","url":"https://app.notion.com/3cd4483132d380d6a827ca310ea97255"},{"date":"2026-08-30","title":"20260830浮間リーグvsBBC","opp":"BBC","score":"8-1","result":"勝ち","place":"浮間子どもスポーツ広場","url":"https://app.notion.com/3cd4483132d3805e8b82d2d3cf49473c"},{"date":"2026-08-30","title":"20260830浮間リーグvs赤西ナイン","opp":"赤西ナイン","score":"7-1","result":"勝ち","place":"浮間子どもスポーツ広場","url":"https://app.notion.com/3cd4483132d380eeafebccf32d53610d"},{"date":"2026-09-22","title":"20260922北区秋季大会vs西浮間イーグルス","opp":"西浮間イーグルス","score":"9-2","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/3ed4483132d380f59cc4ee55a411eae1"},{"date":"2026-09-22","title":"20260922浮間リーグvs戸二小ジャガース","opp":"戸ニ小ジャガース","score":"6-0","result":"勝ち","place":"浮間子どもスポーツ広場","url":"https://app.notion.com/3ed4483132d380ad8d61d87d72930919"},{"date":"2026-09-23","title":"20260923志茂大会vs稲田クラブ","opp":"稲田クラブ","score":"7-0","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/3ed4483132d38041a4c2e6a09e260dbd"},{"date":"2026-09-27","title":"20260927北区秋季大会vs豊島堀船","opp":"豊島堀船","score":"0-4","result":"負け","place":"新荒川大橋野球場","url":"https://app.notion.com/3ed4483132d3800bbd70fbdb58e0fde8"},{"date":"2026-10-03","title":"20261003志茂大会vs飛鳥ジュニア","opp":"飛鳥ジュニア","score":"9-0","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/3f94483132d3809695aace82bdae90aa"},{"date":"2026-10-04","title":"20261004北区秋季大会vsブルースカイズ","opp":"ブルースカイズ","score":"3-1","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/3ef4483132d3806a9ca5ef9c50109ae4"},{"date":"2026-10-04","title":"20261004浮間リーグvs高島平セブンスターズ","opp":"高島平セブンスターズ","score":"6-1","result":"勝ち","place":"浮間子どもスポーツ広場","url":"https://app.notion.com/3f94483132d380a69108ee200c637d17"},{"date":"2026-10-10","title":"20261010赤羽大会vsマッハブレーブス","opp":"マッハブレーブス","score":"9-8","result":"勝ち","place":"赤羽自然観察公園","url":"https://app.notion.com/3f94483132d380c68a09f1ad8e26f872"},{"date":"2026-10-10","title":"20261010志茂大会vsBBC","opp":"BBC","score":"10-1","result":"勝ち","place":"新荒川大橋野球場","url":"https://app.notion.com/3f94483132d380af8123e5971ba8e98f"},{"date":"2026-10-11","title":"20261011赤羽大会vs豊島堀船","opp":"豊島堀船","score":"6-7","result":"負け","place":"赤羽自然観察公園","url":"https://app.notion.com/3f94483132d3806ba032fdb91c72ae11"},{"date":"2026-10-12","title":"20261012練習試合vs中台クラブ","opp":"中台クラブ","score":"5-3","result":"勝ち","place":"板橋城北野球場","url":"https://app.notion.com/3f94483132d380a4b68bc337e69569b1"},{"date":"2026-10-18","title":"20261018東京都スポーツ少年団大会vs高円寺メイト","opp":"高円寺メイト","score":"2-9","result":"負け","place":"篠崎公園野球場","url":"https://app.notion.com/3fe4483132d38058ab83f0c285acbebc"},{"date":"2026-10-18","title":"20261018東京都城北少年野球大会vs梶山レッドスターズ","opp":"梶山レッドスターズ","score":"10-3","result":"勝ち","place":"戸田橋野球場","url":"https://app.notion.com/3fe4483132d380d19cbef25be6027926"}];const sc=g=>{let m=String(g.score||"").replace(/[−ー―]/g,"-").match(/^(\d+)-(\d+)/);return m?[+m[1],+m[2]]:null};const P=G.map(g=>({...g,s:sc(g)})),W=G.filter(g=>g.result==="勝ち").length,L=G.filter(g=>g.result==="負け").length,S=P.filter(g=>g.s),a=S.reduce((n,g)=>n+g.s[0],0),b=S.reduce((n,g)=>n+g.s[1],0);document.getElementById("stats").innerHTML=[["試合数",G.length],["勝敗",W+"勝 "+L+"敗"],["勝率",Math.round(100*W/(W+L))+"%"],["得失点",a+"-"+b+"（"+(a-b>=0?"+":"")+(a-b)+"）"]].map(x=>'<div class="card"><div class="muted">'+x[0]+'</div><div class="n">'+x[1]+'</div></div>').join("");const months=[...new Set(G.map(g=>g.date.slice(0,7)))].sort(),sel=document.getElementById("m");months.forEach(m=>sel.add(new Option(m,m)));document.getElementById("months").innerHTML=months.map(m=>{let z=G.filter(g=>g.date.startsWith(m)),w=z.filter(g=>g.result==="勝ち").length,l=z.filter(g=>g.result==="負け").length;return '<p>'+m+'：'+w+'勝 '+l+'敗（'+z.length+'試合）</p>'}).join("");function render(){let q=document.getElementById("q").value.toLowerCase(),w=document.getElementById("w").value,m=sel.value,z=G.filter(g=>(!q||(g.title+g.opp).toLowerCase().includes(q))&&(!w||g.result===w)&&(!m||g.date.startsWith(m)));document.getElementById("count").textContent=z.length+" / "+G.length+"試合";document.getElementById("body").innerHTML=z.map(g=>'<tr><td>'+g.date+'</td><td>'+g.title.replace(/^\d{8}/,"")+'</td><td>'+g.opp+'</td><td><b>'+g.score+'</b></td><td class="'+(g.result==="勝ち"?"win":"loss")+'">'+g.result+'</td><td>'+g.place+'</td><td><a href="'+g.url+'" target="_blank">開く ↗</a></td></tr>').join("")}["q","w","m"].forEach(id=>document.getElementById(id).addEventListener(id==="q"?"input":"change",render));render();</script></html>
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>試合結果 | 谷端ジュニア 高学年</title>
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f6f3;
+      --surface: #fff;
+      --text: #202b29;
+      --muted: #596963;
+      --line: #dbe2dc;
+      --brand: #194e3e;
+      --win: #245c45;
+      --winbg: #e5f2e9;
+      --lose: #8d433e;
+      --losebg: #faeae7;
+      --control: #fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    }
+
+    a { color: inherit; }
+    button, input, select { font: inherit; }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 3px solid #d79535;
+      outline-offset: 3px;
+    }
+
+    .wrap {
+      width: min(1100px, calc(100% - 48px));
+      margin: auto;
+    }
+
+    .top {
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .top .wrap {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      text-decoration: none;
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    .home:hover { text-decoration: underline; }
+
+    .top-label {
+      font-size: 14px;
+      font-weight: 650;
+      letter-spacing: .07em;
+      color: var(--muted);
+    }
+
+    main { padding: 32px 0 64px; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      min-height: 276px;
+      display: flex;
+      align-items: end;
+      background: #1d4136 url('./field.webp') center 56% / cover no-repeat;
+      color: #fff;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(9, 33, 26, .89),
+        rgba(9, 33, 26, .51) 62%,
+        rgba(9, 33, 26, .18)
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      padding: 36px 40px;
+      max-width: 740px;
+    }
+
+    .eyebrow {
+      font-size: 14px;
+      letter-spacing: .13em;
+      font-weight: 700;
+      margin: 0 0 8px;
+      color: #dbeade;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.25;
+      letter-spacing: .01em;
+      margin: 0 0 12px;
+    }
+
+    .hero p:last-child {
+      margin: 0;
+      color: #f3f6f3;
+    }
+
+    .summary {
+      margin: 24px 0 8px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .stat {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px 22px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: 750;
+      line-height: 1.3;
+      margin-top: 5px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0 0 40px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      font-size: 24px;
+      line-height: 1.3;
+      margin: 0 0 3px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .filters {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr auto;
+      gap: 12px;
+      align-items: end;
+    }
+
+    .field label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      height: 46px;
+      padding: 0 12px;
+      border: 1px solid #9aa9a0;
+      border-radius: 6px;
+      color: var(--text);
+      background: var(--control);
+    }
+
+    .reset {
+      height: 46px;
+      border: 1px solid #9aa9a0;
+      border-radius: 6px;
+      background: var(--control);
+      color: var(--text);
+      padding: 0 16px;
+      cursor: pointer;
+    }
+
+    .reset:hover { border-color: var(--brand); }
+
+    .list-head {
+      padding: 22px 2px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .results {
+      display: grid;
+      gap: 8px;
+    }
+
+    .game {
+      display: grid;
+      grid-template-columns: 105px 70px minmax(200px, 1fr) 115px minmax(155px, .8fr);
+      gap: 16px;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 17px 20px;
+    }
+
+    .date {
+      font-size: 14px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .badge {
+      display: inline-block;
+      text-align: center;
+      border-radius: 5px;
+      padding: 4px 9px;
+      font-size: 14px;
+      font-weight: 750;
+      background: var(--winbg);
+      color: var(--win);
+    }
+
+    .badge.loss {
+      background: var(--losebg);
+      color: var(--lose);
+    }
+
+    .badge.other {
+      background: var(--bg);
+      color: var(--muted);
+    }
+
+    .opponent {
+      font-weight: 750;
+      line-height: 1.4;
+    }
+
+    .match {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-top: 3px;
+      overflow-wrap: anywhere;
+    }
+
+    .score {
+      font-size: 22px;
+      font-weight: 750;
+      letter-spacing: .02em;
+      font-variant-numeric: tabular-nums;
+      overflow-wrap: anywhere;
+    }
+
+    .venue {
+      color: var(--muted);
+      font-size: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    .empty {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 32px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid var(--line);
+      padding: 24px 0 0;
+      margin-top: 40px;
+    }
+
+    footer p { margin: 4px 0; }
+
+    @media (max-width: 760px) {
+      .wrap { width: calc(100% - 32px); }
+      .top-label { font-size: 12px; }
+      main { padding-top: 16px; }
+      .hero { min-height: 240px; }
+      .hero-content { padding: 28px 24px; }
+      .summary { grid-template-columns: repeat(2, 1fr); }
+      .stat { padding: 16px; }
+      .stat-value { font-size: 28px; }
+      .note { margin-bottom: 32px; }
+      .filters { grid-template-columns: 1fr 1fr; }
+      .field.search { grid-column: 1 / -1; }
+      .reset { grid-column: 1 / -1; }
+
+      .game {
+        grid-template-columns: 1fr auto;
+        gap: 8px 16px;
+        padding: 16px;
+      }
+
+      .date { grid-column: 1; grid-row: 1; }
+      .badge { grid-column: 2; grid-row: 1; justify-self: end; }
+      .game-main { grid-column: 1; grid-row: 2; }
+      .score {
+        grid-column: 2;
+        grid-row: 2;
+        align-self: center;
+        text-align: right;
+      }
+      .venue { grid-column: 1 / -1; grid-row: 3; }
+      .list-head { gap: 8px; }
+      .section-head { align-items: start; flex-direction: column; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --bg: #171d1b;
+        --surface: #202a26;
+        --text: #f1f6f2;
+        --muted: #bccbc1;
+        --line: #46554b;
+        --brand: #add8ba;
+        --win: #b5e4c0;
+        --winbg: #244c34;
+        --lose: #ffcbc3;
+        --losebg: #573631;
+        --control: #202a26;
+      }
+
+      .hero::before {
+        background: linear-gradient(
+          90deg,
+          rgba(9, 33, 26, .9),
+          rgba(9, 33, 26, .58) 62%,
+          rgba(9, 33, 26, .22)
+        );
+      }
+
+      .field input,
+      .field select,
+      .reset {
+        border-color: #83968a;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="wrap">
+      <a class="home" href="https://yoji-t.github.io/yabata-jr/">
+        ← ホームへ戻る
+      </a>
+      <span class="top-label">YABATA JUNIOR / RESULTS</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" aria-label="試合結果の紹介">
+      <div class="hero-content">
+        <p class="eyebrow">2026 SEASON · GAME RESULTS</p>
+        <h1>谷端ジュニア<br>高学年の試合結果</h1>
+        <p>4〜6年生の戦いの記録を、ここに。</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="summary-heading">
+      <div class="section-head" style="margin-top: 32px; margin-bottom: 0">
+        <div>
+          <h2 id="summary-heading">シーズン成績</h2>
+          <p>収録試合すべての集計</p>
+        </div>
+      </div>
+
+      <div class="summary">
+        <div class="stat">
+          <div class="stat-label">試合数</div>
+          <div class="stat-value" id="total">—</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">勝ち</div>
+          <div class="stat-value" id="wins">—</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">負け</div>
+          <div class="stat-value" id="losses">—</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">勝率</div>
+          <div class="stat-value" id="rate">—</div>
+        </div>
+      </div>
+
+      <p class="note">
+        2025年の新人戦・練習試合も含みます。勝率は勝ち数 ÷（勝ち数＋負け数）。
+      </p>
+    </section>
+
+    <section aria-labelledby="games-heading">
+      <div class="section-head">
+        <div>
+          <h2 id="games-heading">試合一覧</h2>
+          <p>新しい試合から表示しています。</p>
+        </div>
+      </div>
+
+      <div class="filters">
+        <div class="field search">
+          <label for="search">キーワード</label>
+          <input id="search" type="search" placeholder="対戦相手・大会・場所を検索">
+        </div>
+
+        <div class="field">
+          <label for="year">年</label>
+          <select id="year">
+            <option value="">すべての年</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="result">勝敗</label>
+          <select id="result">
+            <option value="">すべて</option>
+            <option value="勝ち">勝ち</option>
+            <option value="負け">負け</option>
+          </select>
+        </div>
+
+        <button class="reset" type="button" id="reset">条件をクリア</button>
+      </div>
+
+      <div class="list-head">
+        <span id="count" role="status" aria-live="polite"></span>
+        <span>スコアは原記録の表記</span>
+      </div>
+
+      <div id="results" class="results"></div>
+    </section>
+
+    <footer>
+      <p>データ取得時点：2026年11月2日（日本時間）</p>
+      <p>このページは取得時点の記録です。Notionの更新は自動反映されません。</p>
+      <p>勝敗・スコアは元の記録をそのまま表示しています。写真はイメージです。</p>
+    </footer>
+  </main>
+
+  <script>
+    // Notionから取得した試合結果を圧縮して格納しています。
+    async function init() {
+      const data = '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';
+
+      const bytes = Uint8Array.from(atob(data), c => c.charCodeAt(0));
+      const text = await new Response(
+        new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))
+      ).text();
+
+      const games = JSON.parse(text);
+      const $ = id => document.getElementById(id);
+      const results = $('results');
+
+      function add(parent, tag, className, text) {
+        const element = document.createElement(tag);
+        if (className) element.className = className;
+        element.textContent = text ?? '';
+        parent.appendChild(element);
+        return element;
+      }
+
+      const wins = games.filter(game => game.result === '勝ち').length;
+      const losses = games.filter(game => game.result === '負け').length;
+
+      $('total').textContent = games.length + ' 試合';
+      $('wins').textContent = wins + ' 勝';
+      $('losses').textContent = losses + ' 敗';
+      $('rate').textContent = wins + losses
+        ? (wins / (wins + losses) * 100).toFixed(1) + '%'
+        : '—';
+
+      [...new Set(games.map(game => game.date?.slice(0, 4)).filter(Boolean))]
+        .sort()
+        .reverse()
+        .forEach(year => {
+          const option = document.createElement('option');
+          option.value = year;
+          option.textContent = year + '年';
+          $('year').appendChild(option);
+        });
+
+      function render() {
+        const term = $('search').value.trim().toLocaleLowerCase();
+        const year = $('year').value;
+        const result = $('result').value;
+
+        const filtered = games.filter(game =>
+          (!year || game.date?.startsWith(year)) &&
+          (!result || game.result === result) &&
+          (!term || [game.title, game.opponent, game.venue, game.score]
+            .some(value => (value || '').toLocaleLowerCase().includes(term)))
+        );
+
+        $('count').textContent =
+          filtered.length + ' 件を表示（全 ' + games.length + ' 件）';
+
+        results.replaceChildren();
+
+        if (!filtered.length) {
+          add(results, 'div', 'empty',
+            '該当する試合がありません。検索条件を変更してください。');
+          return;
+        }
+
+        for (const game of filtered) {
+          const card = add(results, 'article', 'game', '');
+
+          add(
+            card, 'div', 'date',
+            game.date ? game.date.replaceAll('-', '.') : '日付未設定'
+          );
+
+          const badgeClass = game.result === '負け'
+            ? 'loss'
+            : game.result === '勝ち' ? '' : 'other';
+
+          add(card, 'span', 'badge ' + badgeClass, game.result || '勝敗未設定');
+
+          const main = add(card, 'div', 'game-main', '');
+          add(main, 'div', 'opponent',
+            game.opponent ? 'vs ' + game.opponent : '対戦相手未設定');
+          add(main, 'div', 'match',
+            (game.title || '試合名未設定').replace(/^\d{8}/, ''));
+
+          add(card, 'div', 'score', game.score || '—');
+          add(card, 'div', 'venue', game.venue || '場所未設定');
+        }
+      }
+
+      for (const id of ['search', 'year', 'result']) {
+        $(id).addEventListener('input', render);
+      }
+
+      $('reset').addEventListener('click', () => {
+        $('search').value = '';
+        $('year').value = '';
+        $('result').value = '';
+        render();
+        $('search').focus();
+      });
+
+      render();
+    }
+
+    init().catch(() => {
+      document.getElementById('results').textContent =
+        '試合データを読み込めませんでした。最新のブラウザでお試しください。';
+    });
+  </script>
+</body>
+</html>
