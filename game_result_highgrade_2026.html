@@ -1,605 +1,603 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
-  <title>試合結果 | 谷端ジュニア 高学年</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>谷端ジュニア 高学年（4〜6年生）試合結果 | 2026</title>
+<meta name="description" content="谷端ジュニア高学年（4〜6年生）の試合結果ダッシュボード。2025年11月〜2026年11月の全105試合の勝敗・スコア・会場を一覧できます。">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --text:#2C2C2B;--text2:#6E6B66;--canvas:#FFFFFF;--soft:#F9F8F7;--surface2:#F0EFED;--border:#E6E5E3;
+  --win:#2F7A54;--win-bg:#E8F1EC;--loss:#B4433A;--loss-bg:#FCE9E7;
+  --accent:#2783DE;--radius:12px;
+}
+@media (prefers-color-scheme:dark){
+  :root{--text:#FFFFFF;--text2:rgba(255,255,255,.68);--canvas:#191919;--soft:#202020;--surface2:#2A2A28;
+  --border:rgba(255,255,255,.20);--win:#72BC8F;--win-bg:rgba(114,188,143,.15);--loss:#E97366;--loss-bg:rgba(233,115,102,.15);
+  --accent:#5E9FE8;}
+}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--canvas);color:var(--text);font-size:16px;line-height:1.5;
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:24px}
+@media (min-width:768px){.wrap{padding:40px 40px 64px}}
 
-  <style>
-    :root {
-      color-scheme: light;
-      --bg: #f5f6f3;
-      --surface: #fff;
-      --text: #202b29;
-      --muted: #596963;
-      --line: #dbe2dc;
-      --brand: #194e3e;
-      --win: #245c45;
-      --winbg: #e5f2e9;
-      --lose: #8d433e;
-      --losebg: #faeae7;
-      --control: #fff;
-    }
+/* top bar */
+.topbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:32px}
+.home{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:1px solid var(--border);
+  border-radius:999px;background:var(--soft);color:var(--text);text-decoration:none;font-size:15px;font-weight:550}
+.home:hover{background:var(--surface2)}
+.home svg{flex:none}
+.updated{font-size:14px;color:var(--text2)}
 
-    * { box-sizing: border-box; }
+/* header */
+.eyebrow{margin:0 0 8px;font-size:14px;letter-spacing:.08em;color:var(--text2);font-variant-numeric:tabular-nums}
+h1{margin:0;font-size:30px;line-height:1.25;font-weight:700;letter-spacing:-.01em}
+@media (min-width:768px){h1{font-size:38px}}
+h1 .sub{display:block;font-size:.62em;font-weight:600;color:var(--text2);margin-top:6px;letter-spacing:0}
+.lede{margin:16px 0 0;font-size:16px;color:var(--text2);max-width:46em}
 
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font: 16px/1.6 system-ui, -apple-system, BlinkMacSystemFont,
-        "Segoe UI", sans-serif;
-    }
+/* kpi */
+.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:32px 0 0}
+@media (min-width:600px){.kpis{grid-template-columns:repeat(3,1fr);gap:16px}}
+@media (min-width:900px){.kpis{grid-template-columns:repeat(6,1fr)}}
+.kpi{margin:0;padding:16px;background:var(--soft);border:1px solid var(--border);border-radius:var(--radius)}
+.kpi-label{margin:0 0 4px;font-size:14px;color:var(--text2)}
+.kpi-value{margin:0;font-size:28px;line-height:1.2;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.kpi-value .unit{font-size:15px;font-weight:600;margin-left:2px}
+.kpi.win .kpi-value{color:var(--win)}
+.kpi.loss .kpi-value{color:var(--loss)}
 
-    a { color: inherit; }
-    button, input, select { font: inherit; }
+/* panels */
+.panels{display:grid;gap:16px;margin-top:32px}
+.panels>*{min-width:0}
+@media (min-width:900px){.panels{grid-template-columns:1fr 1fr;gap:24px}}
+.panel{min-width:0;margin:0;padding:20px;background:var(--soft);border:1px solid var(--border);border-radius:var(--radius)}
+.panel-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:4px}
+.panel h2{margin:0;font-size:17px;font-weight:650;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.panel-kpi{font-size:17px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.panel .figure-note{margin:0 0 20px;font-size:14px;color:var(--text2)}
 
-    a:focus-visible,
-    button:focus-visible,
-    input:focus-visible,
-    select:focus-visible {
-      outline: 3px solid #d79535;
-      outline-offset: 3px;
-    }
+/* monthly bars */
+.mrows{display:flex;flex-direction:column;gap:2px}
+.mrow{display:grid;grid-template-columns:52px 1fr 46px 50px;align-items:center;gap:8px;padding:2px 0}
+.mrow-lab{font-size:14px;color:var(--text2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.mrow-track{position:relative;display:block;height:12px;border-radius:3px;background:var(--surface2)}
+.mrow-track::after{content:"";position:absolute;left:50%;top:-2px;bottom:-2px;border-left:1px dashed var(--text2);opacity:.55}
+.mrow-bar{display:block;height:100%;border-radius:3px;background:var(--accent)}
+.mrow-val{font-size:14px;font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+.mrow-sub{font-size:14px;color:var(--text2);text-align:right;font-variant-numeric:tabular-nums}
+.empty-note{margin:0;padding:24px 0;font-size:15px;color:var(--text2)}
 
-    .wrap {
-      width: min(1100px, calc(100% - 48px));
-      margin: auto;
-    }
+/* cumulative */
+.cum{width:100%;min-width:0}
+.cum svg{display:block;width:100%;height:auto;overflow:visible}
+.cum-grid{stroke:var(--border);stroke-width:1}
+.cum-zero{stroke:var(--border);stroke-width:1}
+.cum-area{fill:var(--accent);opacity:.10}
+.cum-line{fill:none;stroke:var(--accent);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.cum-dot{fill:var(--accent)}
+.cum-tick{fill:var(--text2);font-size:14px;font-variant-numeric:tabular-nums}
+.cum-end{fill:var(--text);font-size:15px;font-weight:650;font-variant-numeric:tabular-nums}
 
-    .top {
-      background: var(--surface);
-      border-bottom: 1px solid var(--line);
-    }
+/* filters + table */
+.tablecard{margin-top:32px;background:var(--soft);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.filters{display:grid;gap:12px}
+@media (min-width:768px){.filters{grid-template-columns:auto 1fr 1fr 1fr}}
+.seg{display:inline-flex;padding:4px;gap:4px;background:var(--canvas);border:1px solid var(--border);border-radius:999px}
+.seg button{min-height:44px;min-width:72px;padding:0 16px;border:0;border-radius:999px;background:none;color:var(--text2);
+  font:inherit;font-size:15px;font-weight:550;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--text);color:var(--canvas)}
+.field{display:flex;flex-direction:column;gap:4px}
+.field label{font-size:14px;color:var(--text2)}
+select,input[type=search]{min-height:44px;width:100%;padding:0 12px;border:1px solid var(--border);border-radius:8px;
+  background:var(--canvas);color:var(--text);font:inherit;font-size:16px}
+input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
+.filterbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin:16px 0 12px;
+  padding-top:16px;border-top:1px solid var(--border)}
+.count{margin:0;font-size:15px;color:var(--text2)}
+.count b{color:var(--text);font-variant-numeric:tabular-nums}
+.reset{min-height:44px;padding:0 16px;border:1px solid var(--border);border-radius:8px;background:var(--canvas);
+  color:var(--text);font:inherit;font-size:15px;cursor:pointer}
+.reset:hover{background:var(--surface2)}
 
-    .top .wrap {
-      min-height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
+.tablewrap{display:none;overflow:auto;max-height:min(72vh,760px);border:1px solid var(--border);border-radius:8px;background:var(--canvas)}
+@media (min-width:768px){.tablewrap{display:block}}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
+thead th{position:sticky;top:0;z-index:1;background:var(--canvas);font-size:14px;font-weight:600;color:var(--text2);
+  border-bottom:1px solid var(--border)}
+tbody tr:hover{background:var(--soft)}
+tbody tr:last-child td{border-bottom:0}
+th button{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0;border:0;background:none;
+  color:inherit;font:inherit;font-weight:600;cursor:pointer}
+td.c-date{font-variant-numeric:tabular-nums}
+td.c-date .wd{font-size:14px;color:var(--text2);margin-left:4px}
+td.c-opp{font-weight:600}
+td.c-score{font-variant-numeric:tabular-nums;font-weight:700;font-size:17px}
+td.c-score .s-dash{font-weight:400;color:var(--text2);margin:0 6px}
+td.c-score .s-opp{font-weight:600;color:var(--text2)}
+td.c-score .s-note{font-size:14px;font-weight:400;color:var(--text2);margin-left:6px}
+td.c-venue,td.c-tour{color:var(--text2);white-space:normal}
+td.c-venue{color:var(--text)}
+td.c-tour{min-width:120px}
+td.c-venue{min-width:120px}
+.badge{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:26px;padding:0 10px;
+  border-radius:6px;font-size:14px;font-weight:700;line-height:1}
+.badge.win{background:var(--win-bg);color:var(--win)}
+.badge.loss{background:var(--loss-bg);color:var(--loss)}
+td.empty{text-align:center;color:var(--text2);padding:40px 14px;white-space:normal}
 
-    .home {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      min-height: 44px;
-      text-decoration: none;
-      font-weight: 700;
-      color: var(--brand);
-    }
+/* mobile cards */
+.cards{display:none;gap:12px;margin:0;padding:0;list-style:none}
+@media (max-width:767px){.cards{display:grid}}
+.card{background:var(--canvas);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.card-date{font-size:14px;color:var(--text2);font-variant-numeric:tabular-nums}
+.card-opp{margin:8px 0 2px;font-size:18px;font-weight:650;line-height:1.3}
+.card-meta{margin:0;font-size:14px;color:var(--text2)}
+.card-score{margin:8px 0 0;font-size:17px;font-weight:700;font-variant-numeric:tabular-nums}
+.card-score .s-dash{font-weight:400;color:var(--text2);margin:0 6px}
+.card-score .s-opp{font-weight:600;color:var(--text2)}
+.card-score .s-note{font-size:14px;font-weight:400;color:var(--text2);margin-left:6px}
 
-    .home:hover { text-decoration: underline; }
-
-    .top-label {
-      font-size: 14px;
-      font-weight: 650;
-      letter-spacing: .07em;
-      color: var(--muted);
-    }
-
-    main { padding: 32px 0 64px; }
-
-    .hero {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      min-height: 276px;
-      display: flex;
-      align-items: end;
-      background: #1d4136 url('./field.webp') center 56% / cover no-repeat;
-      color: #fff;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        rgba(9, 33, 26, .89),
-        rgba(9, 33, 26, .51) 62%,
-        rgba(9, 33, 26, .18)
-      );
-    }
-
-    .hero-content {
-      position: relative;
-      padding: 36px 40px;
-      max-width: 740px;
-    }
-
-    .eyebrow {
-      font-size: 14px;
-      letter-spacing: .13em;
-      font-weight: 700;
-      margin: 0 0 8px;
-      color: #dbeade;
-    }
-
-    .hero h1 {
-      font-size: clamp(28px, 4vw, 40px);
-      line-height: 1.25;
-      letter-spacing: .01em;
-      margin: 0 0 12px;
-    }
-
-    .hero p:last-child {
-      margin: 0;
-      color: #f3f6f3;
-    }
-
-    .summary {
-      margin: 24px 0 8px;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .stat {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 20px 22px;
-    }
-
-    .stat-label {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 650;
-    }
-
-    .stat-value {
-      font-size: 32px;
-      font-weight: 750;
-      line-height: 1.3;
-      margin-top: 5px;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .note {
-      color: var(--muted);
-      font-size: 14px;
-      margin: 0 0 40px;
-    }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 18px;
-    }
-
-    .section-head h2 {
-      font-size: 24px;
-      line-height: 1.3;
-      margin: 0 0 3px;
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .filters {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 20px;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr auto;
-      gap: 12px;
-      align-items: end;
-    }
-
-    .field label {
-      display: block;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-
-    .field input,
-    .field select {
-      width: 100%;
-      height: 46px;
-      padding: 0 12px;
-      border: 1px solid #9aa9a0;
-      border-radius: 6px;
-      color: var(--text);
-      background: var(--control);
-    }
-
-    .reset {
-      height: 46px;
-      border: 1px solid #9aa9a0;
-      border-radius: 6px;
-      background: var(--control);
-      color: var(--text);
-      padding: 0 16px;
-      cursor: pointer;
-    }
-
-    .reset:hover { border-color: var(--brand); }
-
-    .list-head {
-      padding: 22px 2px 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .results {
-      display: grid;
-      gap: 8px;
-    }
-
-    .game {
-      display: grid;
-      grid-template-columns: 105px 70px minmax(200px, 1fr) 115px minmax(155px, .8fr);
-      gap: 16px;
-      align-items: center;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 17px 20px;
-    }
-
-    .date {
-      font-size: 14px;
-      color: var(--muted);
-      font-variant-numeric: tabular-nums;
-    }
-
-    .badge {
-      display: inline-block;
-      text-align: center;
-      border-radius: 5px;
-      padding: 4px 9px;
-      font-size: 14px;
-      font-weight: 750;
-      background: var(--winbg);
-      color: var(--win);
-    }
-
-    .badge.loss {
-      background: var(--losebg);
-      color: var(--lose);
-    }
-
-    .badge.other {
-      background: var(--bg);
-      color: var(--muted);
-    }
-
-    .opponent {
-      font-weight: 750;
-      line-height: 1.4;
-    }
-
-    .match {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-      margin-top: 3px;
-      overflow-wrap: anywhere;
-    }
-
-    .score {
-      font-size: 22px;
-      font-weight: 750;
-      letter-spacing: .02em;
-      font-variant-numeric: tabular-nums;
-      overflow-wrap: anywhere;
-    }
-
-    .venue {
-      color: var(--muted);
-      font-size: 14px;
-      overflow-wrap: anywhere;
-    }
-
-    .empty {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--surface);
-      padding: 32px;
-      text-align: center;
-      color: var(--muted);
-    }
-
-    footer {
-      color: var(--muted);
-      font-size: 14px;
-      border-top: 1px solid var(--line);
-      padding: 24px 0 0;
-      margin-top: 40px;
-    }
-
-    footer p { margin: 4px 0; }
-
-    @media (max-width: 760px) {
-      .wrap { width: calc(100% - 32px); }
-      .top-label { font-size: 12px; }
-      main { padding-top: 16px; }
-      .hero { min-height: 240px; }
-      .hero-content { padding: 28px 24px; }
-      .summary { grid-template-columns: repeat(2, 1fr); }
-      .stat { padding: 16px; }
-      .stat-value { font-size: 28px; }
-      .note { margin-bottom: 32px; }
-      .filters { grid-template-columns: 1fr 1fr; }
-      .field.search { grid-column: 1 / -1; }
-      .reset { grid-column: 1 / -1; }
-
-      .game {
-        grid-template-columns: 1fr auto;
-        gap: 8px 16px;
-        padding: 16px;
-      }
-
-      .date { grid-column: 1; grid-row: 1; }
-      .badge { grid-column: 2; grid-row: 1; justify-self: end; }
-      .game-main { grid-column: 1; grid-row: 2; }
-      .score {
-        grid-column: 2;
-        grid-row: 2;
-        align-self: center;
-        text-align: right;
-      }
-      .venue { grid-column: 1 / -1; grid-row: 3; }
-      .list-head { gap: 8px; }
-      .section-head { align-items: start; flex-direction: column; }
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        color-scheme: dark;
-        --bg: #171d1b;
-        --surface: #202a26;
-        --text: #f1f6f2;
-        --muted: #bccbc1;
-        --line: #46554b;
-        --brand: #add8ba;
-        --win: #b5e4c0;
-        --winbg: #244c34;
-        --lose: #ffcbc3;
-        --losebg: #573631;
-        --control: #202a26;
-      }
-
-      .hero::before {
-        background: linear-gradient(
-          90deg,
-          rgba(9, 33, 26, .9),
-          rgba(9, 33, 26, .58) 62%,
-          rgba(9, 33, 26, .22)
-        );
-      }
-
-      .field input,
-      .field select,
-      .reset {
-        border-color: #83968a;
-      }
-    }
-  </style>
+footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);font-size:14px;color:var(--text2)}
+footer p{margin:0 0 4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
 </head>
-
 <body>
-  <header class="top">
-    <div class="wrap">
-      <a class="home" href="https://yoji-t.github.io/yabata-jr/">
-        ← ホームへ戻る
-      </a>
-      <span class="top-label">YABATA JUNIOR / RESULTS</span>
-    </div>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="home" href="https://yoji-t.github.io/yabata-jr/">
+      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 2 4 8l6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      ホームへ戻る
+    </a>
+    <span class="updated">最終更新 2026.11.07</span>
+  </div>
+
+  <header>
+    <p class="eyebrow">2025.11 — 2026.11</p>
+    <h1>谷端ジュニア 高学年（4〜6年生）<span class="sub">試合結果ダッシュボード</span></h1>
+    <p class="lede">全105試合の勝敗・スコア・会場をまとめました。大会・対戦相手・会場で絞り込めます。</p>
   </header>
 
-  <main class="wrap">
-    <section class="hero" aria-label="試合結果の紹介">
-      <div class="hero-content">
-        <p class="eyebrow">2026 SEASON · GAME RESULTS</p>
-        <h1>谷端ジュニア<br>高学年の試合結果</h1>
-        <p>4〜6年生の戦いの記録を、ここに。</p>
+  <section class="kpis" aria-label="成績サマリー">
+    <div class="kpi"><p class="kpi-label">試合数</p><p class="kpi-value" id="k-n">–</p></div>
+    <div class="kpi win"><p class="kpi-label">勝ち</p><p class="kpi-value" id="k-w">–</p></div>
+    <div class="kpi loss"><p class="kpi-label">負け</p><p class="kpi-value" id="k-l">–</p></div>
+    <div class="kpi"><p class="kpi-label">勝率</p><p class="kpi-value" id="k-rate">–</p></div>
+    <div class="kpi"><p class="kpi-label">平均得点</p><p class="kpi-value" id="k-own">–</p></div>
+    <div class="kpi"><p class="kpi-label">平均失点</p><p class="kpi-value" id="k-opp">–</p></div>
+  </section>
+
+  <section class="panels" aria-label="推移グラフ">
+    <figure class="panel">
+      <div class="panel-head">
+        <h2>月別の勝率</h2>
       </div>
-    </section>
+      <p class="figure-note">各月の勝率。縦の破線が5割。</p>
+      <div id="mchart" role="img" aria-label="月別の勝率グラフ"></div>
+    </figure>
 
-    <section aria-labelledby="summary-heading">
-      <div class="section-head" style="margin-top: 32px; margin-bottom: 0">
-        <div>
-          <h2 id="summary-heading">シーズン成績</h2>
-          <p>収録試合すべての集計</p>
-        </div>
+    <figure class="panel">
+      <div class="panel-head">
+        <h2>得失点差の累積 <span class="panel-kpi" id="cum-total">–</span></h2>
       </div>
+      <p class="figure-note">1試合ごとの（得点 − 失点）を積み上げた推移。</p>
+      <div class="cum" id="cum" role="img" aria-label="得失点差の累積グラフ"></div>
+    </figure>
+  </section>
 
-      <div class="summary">
-        <div class="stat">
-          <div class="stat-label">試合数</div>
-          <div class="stat-value" id="total">—</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">勝ち</div>
-          <div class="stat-value" id="wins">—</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">負け</div>
-          <div class="stat-value" id="losses">—</div>
-        </div>
-        <div class="stat">
-          <div class="stat-label">勝率</div>
-          <div class="stat-value" id="rate">—</div>
-        </div>
+  <section class="tablecard" aria-label="試合一覧">
+    <div class="filters">
+      <div class="seg" role="group" aria-label="勝敗で絞り込む">
+        <button type="button" data-res="all" aria-pressed="true">すべて</button>
+        <button type="button" data-res="勝" aria-pressed="false">勝ち</button>
+        <button type="button" data-res="負" aria-pressed="false">負け</button>
       </div>
+      <div class="field"><label for="f-tour">大会</label><select id="f-tour"></select></div>
+      <div class="field"><label for="f-opp">対戦相手</label><select id="f-opp"></select></div>
+      <div class="field"><label for="f-venue">会場</label><select id="f-venue"></select></div>
+    </div>
 
-      <p class="note">
-        2025年の新人戦・練習試合も含みます。勝率は勝ち数 ÷（勝ち数＋負け数）。
-      </p>
-    </section>
+    <div class="filterbar">
+      <p class="count" id="count" aria-live="polite">–</p>
+      <button type="button" class="reset" id="reset">条件をクリア</button>
+    </div>
 
-    <section aria-labelledby="games-heading">
-      <div class="section-head">
-        <div>
-          <h2 id="games-heading">試合一覧</h2>
-          <p>新しい試合から表示しています。</p>
-        </div>
-      </div>
+    <div class="tablewrap">
+      <table>
+        <caption class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">試合一覧</caption>
+        <thead>
+          <tr>
+            <th scope="col"><button type="button" id="sort-btn" aria-label="日付で並べ替え">日付 <span id="sort-icon" aria-hidden="true">↓</span></button></th>
+            <th scope="col">大会</th>
+            <th scope="col">対戦相手</th>
+            <th scope="col">スコア</th>
+            <th scope="col">結果</th>
+            <th scope="col">会場</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
 
-      <div class="filters">
-        <div class="field search">
-          <label for="search">キーワード</label>
-          <input id="search" type="search" placeholder="対戦相手・大会・場所を検索">
-        </div>
+    <ul class="cards" id="cards"></ul>
+  </section>
 
-        <div class="field">
-          <label for="year">年</label>
-          <select id="year">
-            <option value="">すべての年</option>
-          </select>
-        </div>
+  <footer>
+    <p>データ元：Notion「2026年谷端ジュニア高学年（4〜6年生）の試合結果」</p>
+    <p>スコアは自チーム − 相手チームの順で表示しています。</p>
+  </footer>
+</div>
 
-        <div class="field">
-          <label for="result">勝敗</label>
-          <select id="result">
-            <option value="">すべて</option>
-            <option value="勝ち">勝ち</option>
-            <option value="負け">負け</option>
-          </select>
-        </div>
+<script>
+const RAW=[
+["2025-11-24","滝野川大会新人戦","豊島堀船","勝","6-0","北区中央公園"],
+["2025-11-30","練習試合","豊島堀船","勝","12-0","新荒川大橋野球場"],
+["2025-12-06","滝野川大会新人戦","新田ファイヤーズ","勝","9-2","北区中央公園"],
+["2025-12-07","滝野川大会新人戦","BBC","勝","10-3","北区中央公園"],
+["2025-12-21","クリスマスカップ","深川ジャイアンツ","負","0-3","新荒川大橋野球場"],
+["2026-01-11","練習試合","駒込ベアーズ","勝","23-3","西新井緑地野球場"],
+["2026-01-12","練習試合①","台東ジャニーズ","勝","9-3","東白髭公園野球場"],
+["2026-01-12","練習試合②","台東ジャニーズ","勝","5-2","東白髭公園野球場"],
+["2026-01-18","練習試合①","成増第二ライオンズ","勝","6-1","戸田橋野球場"],
+["2026-01-18","練習試合②","成増第二ライオンズ","勝","5-2","戸田橋野球場"],
+["2026-01-24","ナガセケンコー杯","高島エイト","勝","4-3","多摩川緑地野球場"],
+["2026-01-25","練習試合","中村ウィンズ","勝","4-1","新荒川大橋野球場"],
+["2026-01-31","練習試合①","西千タイガース","勝","7-0","西新井緑地野球場"],
+["2026-01-31","練習試合②","西千タイガース","勝","5-1","西新井緑地野球場"],
+["2026-02-01","練習試合①","ジュニアヤンガース","勝","6-5","豊島五丁目グリーンスポーツ広場"],
+["2026-02-01","練習試合②","ジュニアヤンガース","勝","3-2","豊島五丁目グリーンスポーツ広場"],
+["2026-02-07","練習試合①","扇ターキーズ","勝","3-2","川口市東スポーツセンター"],
+["2026-02-07","練習試合②","扇ターキーズ","勝","14-0","川口市東スポーツセンター"],
+["2026-02-14","練習試合","東京ウイング","負","4-5","多摩川緑地野球場"],
+["2026-02-15","練習試合①","フェニックス","勝","8-0","西新井緑地野球場"],
+["2026-02-15","練習試合②","フェニックス","勝","6-0","西新井緑地野球場"],
+["2026-02-21","東京都城北少年野球大会","成増第二ライオンズ","勝","8-0","戸田橋野球場"],
+["2026-02-22","くりくり少年野球大会","王子ドルフィンズ","勝","9-0","新荒川大橋野球場"],
+["2026-02-22","ナガセケンコー杯","鷺宮スタージョーズ","負","3-10","多摩川緑地野球場"],
+["2026-03-07","ミズノベースボールドリームカップ","玉川ラプターズ","勝","9-1","新荒川大橋野球場"],
+["2026-03-07","練習試合","玉川ラプターズ","勝","13-2","新荒川大橋野球場"],
+["2026-03-08","北区大会","豊島堀船","勝","5-3","新荒川大橋野球場"],
+["2026-03-14","年中夢球杯","青梅ドラゴンズ","勝","7-3","新荒川大橋野球場"],
+["2026-03-14","練習試合","青梅ドラゴンズ","勝","11-8","新荒川大橋野球場"],
+["2026-03-15","練習試合①","大塚ミスギホープ","勝","8-0","文京区立第一中学校"],
+["2026-03-15","練習試合②","大塚ミスギホープ","勝","3-1","文京区立第一中学校"],
+["2026-03-20","北区大会","城北メッツ","勝","9-2","浮間子どもスポーツ広場"],
+["2026-03-20","練習試合","仲宿ファイターズ","勝","15-6","戸田橋野球場"],
+["2026-03-21","東京都城北少年野球大会","大泉ファイターズ","勝","10-0","戸田橋野球場"],
+["2026-03-22","北区大会","城北メッツ","勝","4-3","新荒川大橋野球場"],
+["2026-03-29","東京都知事杯北区代表決定大会","諏訪クラブ","勝","16-5","新荒川大橋野球場"],
+["2026-03-29","ミズノベースボールドリームカップ","清瀬レッドライオンズ","負","1-8","豊島五丁目グリーンスポーツ広場"],
+["2026-04-04","年中夢球杯","船堀ダックスクラブ","勝","11-0","江戸川区臨海野球場"],
+["2026-04-05","スポーツ少年団北区春季大会","十条イーグルス","勝","9-0","新荒川大橋野球場"],
+["2026-04-05","東京都知事杯北区代表決定大会","西浮間イーグルス","勝","15-1","新荒川大橋野球場"],
+["2026-04-11","東京都城北少年野球大会","リトルフィッシュ","勝","4-3","戸田橋野球場"],
+["2026-04-12","くりくり少年野球大会北区代表決定大会","城北メッツ","負","2-3","新荒川大橋野球場"],
+["2026-04-12","スポーツ少年団北区春季大会","赤西ナイン","勝","13-2","新荒川大橋野球場"],
+["2026-04-18","浮間リーグ","諏訪クラブ","勝","8-1","浮間子どもスポーツ広場"],
+["2026-04-19","東京都知事杯北区代表決定大会","城北メッツ","勝","7-2","新荒川大橋野球場"],
+["2026-04-26","東京都知事杯北区代表決定大会","BBC","勝","9-2","新荒川大橋野球場"],
+["2026-04-29","ジャビットカップ北区代表決定大会","西浮間イーグルス","勝","12-6","新荒川大橋野球場"],
+["2026-05-02","宮本慎也杯","旗の台クラブ","負","0-6","大井埠頭海浜公園野球場"],
+["2026-05-02","練習試合","旗の台クラブ","負","3-5","大井埠頭海浜公園野球場"],
+["2026-05-03","浮間リーグ","若木ベースボールクラブ","勝","11-2","浮間子どもスポーツ広場"],
+["2026-05-03","浮間リーグ","桜川ドリームス","勝","9-6","浮間子どもスポーツ広場"],
+["2026-05-06","志茂大会","王子ドルフィンズ","勝","10-0","新荒川大橋野球場"],
+["2026-05-09","年中夢球杯","百草台フェニックス","負","1-3","百草台運動広場"],
+["2026-05-09","東京都城北少年野球大会","西千タイガース","勝","4-1","戸田橋野球場"],
+["2026-05-10","スポーツ少年団城北ブロック大会","舎人スポーツ少年団","勝","20-0","江北橋右岸野球場"],
+["2026-05-17","マクドナルド・トーナメント","四谷スワローズ","勝","8-6","郷土の森野球場"],
+["2026-05-23","浮間リーグ","長後ベアーズ","勝","10-1","浮間子どもスポーツ広場"],
+["2026-05-23","浮間リーグ","オール中台","勝","9-0","浮間子どもスポーツ広場"],
+["2026-05-24","マクドナルドトーナメント","清瀬レッドライオンズ","勝","6-0","郷土の森野球場"],
+["2026-05-30","志茂大会","西浮間イーグルス","勝","5-4","新荒川大橋野球場"],
+["2026-05-31","マクドナルドトーナメント","国立シャークス","負","11-12","郷土の森野球場"],
+["2026-06-06","志茂大会","BBC","勝","14-0","新荒川大橋野球場"],
+["2026-06-07","ジャビットカップ北区代表決定大会","諏訪クラブ","勝","7-0","新荒川大橋野球場"],
+["2026-06-14","東京都知事杯","十八軒アトムズ","勝","7-4","八王子滝ガ原野球場"],
+["2026-06-21","東京都知事杯","いずみスワローズ","負","4-5","八王子滝ガ原野球場"],
+["2026-06-28","ジャビットカップ北区代表決定大会","マッハブレーブス","勝","3-1","新荒川大橋野球場"],
+["2026-06-28","浮間大会","BBC","勝","8-3","浮間子どもスポーツ広場"],
+["2026-07-04","志茂大会","豊島堀船","勝","3-2","新荒川大橋野球場"],
+["2026-07-04","滝野川大会","稲田クラブ","勝","19-1","北区中央公園"],
+["2026-07-05","ジャビットカップ北区代表決定大会","豊島堀船","勝","2-1","新荒川大橋野球場"],
+["2026-07-05","滝野川大会","城北メッツ","負","5-6","北区中央公園"],
+["2026-07-11","東京都城北少年野球大会","旭町野球クラブ","負","3-4","戸田橋野球場"],
+["2026-07-11","東京都城北少年野球大会","竹仲","負","3-9","戸田橋野球場"],
+["2026-07-12","東京都学童選抜野球大会","墨田選抜","勝","1-1(2-1)","錦糸公園野球場"],
+["2026-07-19","東京都学童選抜野球大会","世田谷選抜","勝","6-4","錦糸公園野球場"],
+["2026-07-19","東京都学童選抜野球大会","中央選抜","勝","7-0","錦糸公園野球場"],
+["2026-07-20","東京都学童選抜野球大会","江東選抜","勝","10-2","東白髭公園野球場"],
+["2026-07-20","東京都学童選抜野球大会","江戸川選抜","負","1-2","東白髭公園野球場"],
+["2026-07-25","オールジャパンベースボールリーグ","マッハブレーブス","勝","9-5","戸田橋野球場"],
+["2026-07-26","オールジャパンベースボールリーグ","新田ファイヤーズ","勝","16-2","鹿浜橋右岸"],
+["2026-08-08","ジャビットカップ","中野島あけぼの","勝","9-6","三鷹大沢総合グラウンド"],
+["2026-08-09","ジャビットカップ","下麻岡少年野球部","勝","9-8","三鷹大沢総合グラウンド"],
+["2026-08-14","練習試合","東桂少年野球部","勝","14-3","住吉球場"],
+["2026-08-22","ジャビットカップチャンピオン大会","つくしシャークス","負","2-3","夢の島野球場"],
+["2026-08-23","練習試合","中台クラブ","勝","8-3","板橋城北野球場"],
+["2026-08-29","浮間リーグ","豊島堀船","勝","18-0","浮間子どもスポーツ広場"],
+["2026-08-30","浮間リーグ","BBC","勝","8-1","浮間子どもスポーツ広場"],
+["2026-08-30","浮間リーグ","赤西ナイン","勝","7-1","浮間子どもスポーツ広場"],
+["2026-09-22","北区秋季大会","西浮間イーグルス","勝","9-2","新荒川大橋野球場"],
+["2026-09-22","浮間リーグ","戸ニ小ジャガース","勝","6-0","浮間子どもスポーツ広場"],
+["2026-09-23","志茂大会","稲田クラブ","勝","7-0","新荒川大橋野球場"],
+["2026-09-27","北区秋季大会","豊島堀船","負","0-4","新荒川大橋野球場"],
+["2026-10-03","志茂大会","飛鳥ジュニア","勝","9-0","新荒川大橋野球場"],
+["2026-10-04","北区秋季大会","ブルースカイズ","勝","3-1","新荒川大橋野球場"],
+["2026-10-04","浮間リーグ","高島平セブンスターズ","勝","6-1","浮間子どもスポーツ広場"],
+["2026-10-10","赤羽大会","マッハブレーブス","勝","9-8","赤羽自然観察公園"],
+["2026-10-10","志茂大会","BBC","勝","10-1","新荒川大橋野球場"],
+["2026-10-11","赤羽大会","豊島堀船","負","6-7","赤羽自然観察公園"],
+["2026-10-12","練習試合","中台クラブ","勝","5-3","板橋城北野球場"],
+["2026-10-18","東京都スポーツ少年団大会","高円寺メイト","負","2-9","篠崎公園野球場"],
+["2026-10-18","東京都城北少年野球大会","梶山レッドスターズ","勝","10-3","戸田橋野球場"],
+["2026-11-01","ジュニア大会","飛鳥ジュニア","勝","7-0","新荒川大橋野球場"],
+["2026-11-01","練習試合","豊島堀船","勝","5-4","新荒川大橋野球場"],
+["2026-11-03","志茂大会","マッハブレーブス","勝","4-0","新荒川大橋野球場"],
+["2026-11-07","練習試合","元加賀","勝","7-6","夢の島野球場"]
+];
 
-        <button class="reset" type="button" id="reset">条件をクリア</button>
-      </div>
+const WD = ['日','月','火','水','木','金','土'];
+const DATA = RAW.map(function (r, i) {
+  var m = /(\d+)\s*[-−–ー]\s*(\d+)/.exec(r[4]) || [];
+  return {
+    seq: i, date: r[0], tournament: r[1], opponent: r[2], result: r[3], score: r[4], venue: r[5],
+    own: m[1] ? +m[1] : 0, opp: m[2] ? +m[2] : 0,
+    note: (/(\([^)]*\))/.exec(r[4]) || [''])[0]
+  };
+});
 
-      <div class="list-head">
-        <span id="count" role="status" aria-live="polite"></span>
-        <span>スコアは原記録の表記</span>
-      </div>
+const state = { res: 'all', tour: 'all', opp: 'all', venue: 'all', desc: true };
 
-      <div id="results" class="results"></div>
-    </section>
+const $ = function (id) { return document.getElementById(id); };
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); }
+function dp(iso) {
+  var p = iso.split('-').map(Number);
+  return { y: p[0], m: p[1], d: p[2], wd: WD[new Date(p[0], p[1] - 1, p[2]).getDay()] };
+}
+function dateLabel(iso) {
+  var p = dp(iso);
+  return p.y + '.' + String(p.m).padStart(2, '0') + '.' + String(p.d).padStart(2, '0');
+}
 
-    <footer>
-      <p>データ取得時点：2026年11月2日（日本時間）</p>
-      <p>このページは取得時点の記録です。Notionの更新は自動反映されません。</p>
-      <p>勝敗・スコアは元の記録をそのまま表示しています。写真はイメージです。</p>
-    </footer>
-  </main>
+/* ---------- filtering ---------- */
+function current() {
+  return DATA.filter(function (g) {
+    if (state.res !== 'all' && g.result !== state.res) return false;
+    if (state.tour !== 'all' && g.tournament !== state.tour) return false;
+    if (state.opp !== 'all' && g.opponent !== state.opp) return false;
+    if (state.venue !== 'all' && g.venue !== state.venue) return false;
+    return true;
+  });
+}
 
-  <script>
-    // Notionから取得した試合結果を圧縮して格納しています。
-    async function init() {
-      const data = 'H4sIAEfi52oC/7Vc224TSRp+l1ztSliqqj64ey5nH2O1F6sdLlYawQgYbkYrYTcMDg4JyUAykHjiHEnIgSQG7DiBvAvtbttvsVXl2O7uv6qrXE6EFJGD//6+qv9cf/U/f5t59N9HP9+d+WGGIOJijHC3+al7tdTb341eVR4/7J2+iBpfovqTXuV85s7M/Qc/3X0w8wNG1p2Zn/79aPi5AsYFhOnvH9x9+OvPj+hPo2otLG2wT/zyy/17d++xn2VkPfzP/QdMgFOw6XeP7977lX0XL5/0Xi5FzVq0/T7er/afz3dfBVH908z/7kCsYbkVBjthUA3Lm/TvO5fvHj/sb632GzvJ3yRxEwPcQolD9MUCMkKPsBfXTjvtw37wNVqfj+ZWopPF6PzT9UeuycSbX6LT0zA4DIMgDGbD8nlYvgqDy7DcTrLCGVaogD0Vq3zRQ3pUlJXkV2l1X5/oM2NSgxqTGjwd8ItWt0Y7dfBn9Pvv0cd2GGyE5e0wqCQ5IQWn3lk9LC1mdkokcUiFFPwEk+7HevRpPnp2GK0t5ZIhaYPotI6ihZOw/DEM9sNgeYzY9yFgotoEKG1sFal1r13RRR/oSS5a3Pu83f32dbjEYvP1PQgVq9ZWYr1uoZjAOXh67/mH7tMvvd1G9HF9sMIiqCi6WunNlYdQf/zxHwmERYgQqRZzICGhudjQMlF6EcPgL24jC3SHuL1csv+UkwvqGsDNETvk4Bc8s8VFdvz5uL/8Rxh84CZ9MrA2un/njbB8wZ/YEHsT3wFckK10kSrhY3VJbQoHGR29Ckv7Ybmc8hZtye4gm/nKuXb3fTU62hrvEX3oAX8cfe4BM/4UKduAlEzmkItlqmDISqt+XsjyLYjcmipi+WYRC/mkKFp5iYvJBFrkF0jR0MUgswSBAs6sc3fvjEYvke/GEK1ykaG0KXMCCpgAs6URt9Oei04W+G5uheXDgUImwCMIXhl4qFiqGEKxY1NFU5kqoyNUmJ2ra5YsQjOWzMqSjDzfgFGO2LHmE6N98SwE9oU6Y/rEMHjBH9dIgM8EV+QVLGUsgNLGujSdwxSCT8Var2gAOB1rvalBEh+usNCxeC5AS3zDygN706q4RyzN9NBzIG7LPD30DNJDipZcm3vwB089Kiyssf+shEGJ/7wRBq/DMt2DxiiylrbD0kJYWgnLTf4nlwxPylxtSI2ofH2O2HHCnuQYbW+GpWO6jXkEsZ3eDlqIxBvlZGXVD/YSyC2AHCvTApnMkVbZKdydrwvRq1kpYuTLtoQpU7XfvojONuQECCCAfLVWScWKE89Oa7bfPGdu8myz26R0Kty7UiPZ5RozK+Ll5fE6og+lWxmWylQxwtIl3dkEKQxJeRqmIpQ5ZuROx6hIXG4YlzysDKgt8j9+e50iBmvXv01E7+UTliMEb8LyoCDdzqbbXjZ6FwvEVaqgXOxIC91UsOuf0+i4xpzEQiM6a4noOZPTU1dGRR/Sc26kMnIma0tQgmjccDna7R7s9Eut+MVapuFyuk6F0aRg8MsEEQ8SQSonB6WNtieditROu2+/9g+OVP2ICVjUTgGFooKCUNXSohLVtSEB7GsQYIFv+xgQcAEB7OvE0IQocY7en9vtNlo3Bn6ZamPvpAnwO0b4s9LGCbptQoFoUIg29+hDAX4b4lfm5RlRIwX6XlnCfyPs699NWGCN7mn34LxzcZbAb0H8yr7XSMio7KeY/UmdjxbeeOWo+7o9+JkghSwSA/gymUk29qRskBNf1Fi45cXTQGM4K9Z3ZZ77aQI1BqiRo0INpY37osk4PqgvByYuaYYxtLJU5PrjF1u9jb34tB0dv8vvahSRgssExQcx6x5ROjZYfGljw4XhV933kjc2sJ8Crbf6droJI15Z1zMAKllZy7DMd4l3XQKKWtJuNnrSBMubtEy2pis3KcLJVVmdpLmuATWNJM2wQUppjr1ld32n067GtY+sEn0alt6FpSu+VFQ7j7LJtOtAIlhdiUrFDonYqWwzenbQna/SjaN2GJYPo/n1PC7YFnGJXpaomN7FUljeZNsY1NNEbEBEXZjKZI5THtuYBSoa+NCDhd7eB5FXsgA7VFQaO5A2bbuV/ss5gnIJBOlOeARlGyJzLMzMi3GdZU1BVnTN8i295N9u8MKsQtVo9Wv3oCrtzLjZ2OsULKU9yGSOWJFB2jFK2YJmtLZOq+146ziXU+bAT90HdhGEj26gD2w4cYAcYuttS9x61n1yOD5bZ42F7UFbLWXmjg8IEnX/SSVc3MDX3SZigU7sqDEw6Ecm8HsQv7KpCaVJTqYmj48i8P03zejbHGtjMK+YjhdO0QC/UKDs1NmAAy6KlOxCbP6rtDCUhkPHBfSw0s/KZI6TGNdAqzASj4Jc5/nL/EmsQBl5h8p8p90WfihB0IEE1Q4iV/IoPUdpZTxdp0BH/bM8qsjXKPWol4peBuyEnNkuONNzbEBM3deVyRxnMXjCQo9yoch5gr9J/4ZnLt2333ovZ9mxBGs/vmfHy3zj0vgtBX5hpZ0redw5SybRo8/0S9Wo+kZqVNlQP0h9uGUd8MdtAd9MIAVl/M8Rm/AQhkkBgs4t3lijH+XPGzjVenobYPxXDw/IZIo76SYeTkCkV92J1/YEzWaYPTrIgJSO/NEOZZqzJgwzU2Pxygo7vBKeDNowCUBE3dYRCBzXXalyhap8+020Xu/Xj+LPzfjzmrK9RvFHx8fx2mH8bL5zvs7tPpeCd9MUULrNMzkFm/gGFYsyJbWzGYOtc/ysTklpUu0aeQWbuLC+lDNMlTi2C8lMWOKYjlTYiU66Bmxpd9F2AAV1S13eXSwa0/GgS5OVv7YNMXvm5e/Uwxc2JuLkjG9H/OdOcnhHNvZiW5AUMR97wZbxThA2V1B+MfgKcy8TJSMKbpO1sNNzDZNQ0zlE4BpYSeQfAS/ldxJ0MKSD1e0+qdhxfjnhqDiykTOJF9BwzwhQ02jQa7hnhx1Ume0aO37QtK7oZSmubUjZWb4BO5nMkQenzJAhMxtUB73KeVR/EgZPRqm7wAFaHuShbvbnSh7nblk6wyN4uti953s0e8hhZNGkIVin+XoYzIsGH5Ip8WiaRbfZY2VTByuTOgiTJN1mD+OdGhbnZyOd9utOq9RdPeY7P8De0IkJdCUmskxZrLNcBenJYh12KU3HSFut4TSq0t1bDsRMzHMK29DdW0TH3TMxjdnxKBAc6LdsSEfp7nPEygpZDX9vEZQZl7w4i46vctFbEL2yxZMjduzR0wm3HnpdDSIGoOUa5E9bj1rYSa7798UNSiHaeMedHfWjx2GwyiWsJDhgwAE7GmojEys7FHxONZzNiB9Uu4eHndYTFk+OduP6hgaNOtd/FRF0O0Qyw8OTEcnMqfZrS/Hms6GD/5QNHcSHFNR3ciQyE20Oz8wxYRj3VQS8WyBQNHWsyEvbsXgkgcB4rR5Dld5xNYVaTCtKd36WN+f22cw29JYEhlv1yapM5tS1GEU/eTqlYujcAkPfcFCBEMKL10N27a18yjW0QaUPTKJJM6TjxD24Vhi8B3SywZlozM7nS044WpTqob2LF/cpq25zMVo7UbDKLaF12ufEUhAzbJ+b3l4jWtlUXHkVba4w/92ekybyhEBqWH3hKk+yJKZoJCUEhHbWApCfzBAMwGONgeycA5n0MTMrppdPOu03ajUTRPNc5OimkXvGyOE1E6pZ7PIA72PRYitxk92HsG1l2ScSKJlG0rfrdDDhqhLPPh86EXB8jD2AXO1qhQIlAzHMbhe2olaZ0k2msfwScWMgRoNGXUGjeNM00vHQlAWGdpu4sMvvdDQER8PYhXTU3btcyWJeU3YQAMG6LkHn1gi6KcuZkiC24A4qjvVxNtrjzDyWybG+k0pe9L0YwF9X47duAX/R0Atj4oC7l3FtkTtNkI5gApCr7yEJBUqmKbQTEcyGyKQ5I3+PQljeA+9DwRC/5lsZktLEPSn9EIKxB0OITs6EEcCv8YoarZzJSVcnGjkTYFHXZOHfGgl34tkcnH4zDd+KaOGEB6HBuXcV3DWE8NV9TYlIyepr3wMD8OtK+MVbgO9n7lHrw8+8KKv/fqn37VI8ZuhC4OqXTonkjU4QrRRsXZ/pYFoF8bb6Bx7g/rp+scnwIKN5yqrk6xdCbPMHN1J9zVRkpnGHaIzX50gdDXt8ryyZ9EcoH1TMXIbhC9GOK7vZWQcAXZ0EghcKWRNdfmHwXDk89d1gC2K+iavB6XayDg9sIZ3XwpEMXqwzri15NQMxqvMpVGLLl1zyNjsAm5hePUrXwqKl/df/ASVoUrdzTwAA';
+/* ---------- kpi ---------- */
+function renderKpi(gs) {
+  var n = gs.length;
+  var w = gs.filter(function (g) { return g.result === '勝'; }).length;
+  var l = n - w;
+  var own = 0, opp = 0;
+  gs.forEach(function (g) { own += g.own; opp += g.opp; });
+  $('k-n').textContent = n;
+  $('k-w').textContent = w;
+  $('k-l').textContent = l;
+  $('k-rate').innerHTML = (w + l ? (w / (w + l) * 100).toFixed(1) : '0.0') + '<span class="unit">%</span>';
+  $('k-own').innerHTML = (n ? own / n : 0).toFixed(1) + '<span class="unit">点</span>';
+  $('k-opp').innerHTML = (n ? opp / n : 0).toFixed(1) + '<span class="unit">点</span>';
+  $('count').innerHTML = '全 <b>' + DATA.length + '</b> 試合中 <b>' + n + '</b> 試合を表示';
+}
 
-      const bytes = Uint8Array.from(atob(data), c => c.charCodeAt(0));
-      const text = await new Response(
-        new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))
-      ).text();
+/* ---------- monthly win-rate rows ---------- */
+function renderMonthly(gs) {
+  var host = $('mchart');
+  var map = new Map();
+  gs.forEach(function (g) {
+    var k = g.date.slice(0, 7);
+    var o = map.get(k) || { w: 0, l: 0 };
+    if (g.result === '勝') o.w++; else o.l++;
+    map.set(k, o);
+  });
+  var keys = Array.from(map.keys()).sort();
+  if (!keys.length) {
+    host.innerHTML = '<p class="empty-note">該当する試合がありません。</p>';
+    host.setAttribute('aria-label', '該当する試合がありません');
+    return;
+  }
+  var html = '<div class="mrows">';
+  var spoken = [];
+  keys.forEach(function (k, i) {
+    var o = map.get(k), tot = o.w + o.l;
+    var rate = tot ? o.w / tot : 0;
+    var pct = Math.round(rate * 100);
+    var mm = +k.slice(5, 7), yy = k.slice(2, 4);
+    var label = (i === 0 || mm === 1) ? yy + '/' + mm : mm + '月';
+    html += '<div class="mrow">' +
+      '<span class="mrow-lab">' + label + '</span>' +
+      '<span class="mrow-track"><span class="mrow-bar" style="width:' + Math.max(pct, pct > 0 ? 1 : 0) + '%"></span></span>' +
+      '<span class="mrow-val">' + pct + '%</span>' +
+      '<span class="mrow-sub">' + tot + '試合</span>' +
+      '</div>';
+    spoken.push(dp(k + '-01').y + '年' + mm + '月 ' + pct + 'パーセント（' + o.w + '勝' + o.l + '敗）');
+  });
+  html += '</div>';
+  host.innerHTML = html;
+  host.setAttribute('aria-label', '月別の勝率。' + spoken.join('、') + '。');
+}
 
-      const games = JSON.parse(text);
-      const $ = id => document.getElementById(id);
-      const results = $('results');
+/* ---------- cumulative run differential ---------- */
+function niceStep(max, target) {
+  var raw = max / target;
+  var pow = Math.pow(10, Math.floor(Math.log10(raw || 1)));
+  var c = [1, 2, 2.5, 5, 10];
+  for (var i = 0; i < c.length; i++) if (c[i] * pow >= raw) return c[i] * pow;
+  return 10 * pow;
+}
+function renderCum(gs) {
+  var host = $('cum');
+  var cum = [], acc = 0;
+  gs.forEach(function (g) { acc += g.own - g.opp; cum.push(acc); });
+  var n = cum.length;
+  $('cum-total').textContent = (acc > 0 ? '+' : '') + acc;
 
-      function add(parent, tag, className, text) {
-        const element = document.createElement(tag);
-        if (className) element.className = className;
-        element.textContent = text ?? '';
-        parent.appendChild(element);
-        return element;
-      }
+  var W = Math.max(280, host.clientWidth || 480);
+  var H = 330, pad = { t: 18, r: 56, b: 32, l: 48 };
+  var pw = W - pad.l - pad.r, ph = H - pad.t - pad.b;
 
-      const wins = games.filter(game => game.result === '勝ち').length;
-      const losses = games.filter(game => game.result === '負け').length;
+  if (!n) {
+    host.innerHTML = '<p class="empty-note">該当する試合がありません。</p>';
+    host.setAttribute('aria-label', '該当する試合がありません');
+    return;
+  }
 
-      $('total').textContent = games.length + ' 試合';
-      $('wins').textContent = wins + ' 勝';
-      $('losses').textContent = losses + ' 敗';
-      $('rate').textContent = wins + losses
-        ? (wins / (wins + losses) * 100).toFixed(1) + '%'
-        : '—';
+  var top = Math.max.apply(null, cum);
+  var bottom = Math.min.apply(null, cum);
+  var step = niceStep(Math.max(top, 1) - Math.min(bottom, 0), 4);
+  var yMax = top > 0 ? Math.ceil(top / step) * step : 0;
+  var yMin = bottom < 0 ? Math.floor(bottom / step) * step : 0;
+  if (yMax === yMin) yMax = yMin + step;
+  var yFor = function (v) { return pad.t + ph * (1 - (v - yMin) / (yMax - yMin)); };
+  var xFor = function (i) { return pad.l + (n > 1 ? pw * i / (n - 1) : pw / 2); };
 
-      [...new Set(games.map(game => game.date?.slice(0, 4)).filter(Boolean))]
-        .sort()
-        .reverse()
-        .forEach(year => {
-          const option = document.createElement('option');
-          option.value = year;
-          option.textContent = year + '年';
-          $('year').appendChild(option);
-        });
+  var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" role="img" aria-label="' +
+    '得失点差の累積。' + n + '試合で' + (acc >= 0 ? 'プラス' : 'マイナス') + Math.abs(acc) + '点。">';
 
-      function render() {
-        const term = $('search').value.trim().toLocaleLowerCase();
-        const year = $('year').value;
-        const result = $('result').value;
+  for (var v = yMin; v <= yMax + 0.001; v += step) {
+    var y = yFor(v);
+    s += '<line class="' + (v === 0 ? 'cum-zero' : 'cum-grid') + '" x1="' + pad.l + '" y1="' + y + '" x2="' + (pad.l + pw) + '" y2="' + y + '"/>';
+    s += '<text class="cum-tick" x="' + (pad.l - 10) + '" y="' + (y + 5) + '" text-anchor="end">' + v + '</text>';
+  }
 
-        const filtered = games.filter(game =>
-          (!year || game.date?.startsWith(year)) &&
-          (!result || game.result === result) &&
-          (!term || [game.title, game.opponent, game.venue, game.score]
-            .some(value => (value || '').toLocaleLowerCase().includes(term)))
-        );
+  var d = '';
+  cum.forEach(function (val, i) { d += (i ? 'L' : 'M') + xFor(i).toFixed(1) + ' ' + yFor(val).toFixed(1); });
+  var base = yFor(0);
+  s += '<path class="cum-area" d="' + d + 'L' + xFor(n - 1).toFixed(1) + ' ' + base + 'L' + xFor(0).toFixed(1) + ' ' + base + 'Z"/>';
+  s += '<path class="cum-line" d="' + d + '"/>';
 
-        $('count').textContent =
-          filtered.length + ' 件を表示（全 ' + games.length + ' 件）';
+  /* month ticks */
+  var seen = {}, positions = [];
+  gs.forEach(function (g, i) {
+    var k = g.date.slice(0, 7);
+    if (!seen[k]) { seen[k] = 1; positions.push({ i: i, k: k }); }
+  });
+  var placed = [];
+  positions.forEach(function (p) {
+    var x = xFor(p.i), mm = +p.k.slice(5, 7);
+    var lab = (p.i === 0 || mm === 1) ? p.k.slice(2, 4) + '/' + mm : mm + '月';
+    var half = (lab.length * 8 + 10) / 2;
+    var prev = placed[placed.length - 1];
+    if (prev && x - prev.x < prev.half + half) return;
+    if (x + half > pad.l + pw) return;
+    placed.push({ x: x, half: half });
+    s += '<text class="cum-tick" x="' + x.toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle">' + lab + '</text>';
+  });
 
-        results.replaceChildren();
+  var ex = xFor(n - 1), ey = yFor(cum[n - 1]);
+  s += '<circle class="cum-dot" cx="' + ex.toFixed(1) + '" cy="' + ey.toFixed(1) + '" r="3.5"/>';
+  s += '<text class="cum-end" x="' + (ex + 10).toFixed(1) + '" y="' + (ey + 5).toFixed(1) + '">' + (acc > 0 ? '+' : '') + acc + '</text>';
+  s += '</svg>';
+  host.innerHTML = s;
+}
 
-        if (!filtered.length) {
-          add(results, 'div', 'empty',
-            '該当する試合がありません。検索条件を変更してください。');
-          return;
-        }
+/* ---------- table ---------- */
+function scoreCell(g, cls) {
+  var note = g.note ? '<span class="s-note">' + esc(g.note) + '</span>' : '';
+  return '<span class="s-own">' + g.own + '</span><span class="s-dash">-</span><span class="s-opp">' + g.opp + '</span>' + note;
+}
+function renderTable(gs) {
+  var rows = gs.slice().sort(function (a, b) {
+    var c = a.date.localeCompare(b.date);
+    if (c === 0) return a.seq - b.seq;
+    return state.desc ? -c : c;
+  });
+  var tb = $('tbody'), cards = $('cards');
+  if (!rows.length) {
+    tb.innerHTML = '<tr><td class="empty" colspan="6">条件に一致する試合がありません。</td></tr>';
+    cards.innerHTML = '<li class="card"><p class="card-meta">条件に一致する試合がありません。</p></li>';
+    return;
+  }
+  var th = '', ch = '';
+  rows.forEach(function (g) {
+    var p = dp(g.date);
+    var badge = '<span class="badge ' + (g.result === '勝' ? 'win' : 'loss') + '">' + g.result + '</span>';
+    th += '<tr><td class="c-date">' + dateLabel(g.date) + '<span class="wd">(' + p.wd + ')</span></td>' +
+      '<td class="c-tour">' + esc(g.tournament) + '</td>' +
+      '<td class="c-opp">' + esc(g.opponent) + '</td>' +
+      '<td class="c-score">' + scoreCell(g) + '</td>' +
+      '<td class="c-res">' + badge + '</td>' +
+      '<td class="c-venue">' + esc(g.venue) + '</td></tr>';
+    ch += '<li class="card"><div class="card-top">' + badge + '<span class="card-date">' + dateLabel(g.date) + ' (' + p.wd + ')</span></div>' +
+      '<p class="card-opp">' + esc(g.opponent) + '</p>' +
+      '<p class="card-meta">' + esc(g.tournament) + ' ・ ' + esc(g.venue) + '</p>' +
+      '<p class="card-score">' + scoreCell(g) + '</p></li>';
+  });
+  tb.innerHTML = th;
+  cards.innerHTML = ch;
+}
 
-        for (const game of filtered) {
-          const card = add(results, 'article', 'game', '');
+function render() {
+  var gs = current();
+  renderKpi(gs);
+  renderMonthly(gs);
+  renderCum(gs);
+  renderTable(gs);
+}
 
-          add(
-            card, 'div', 'date',
-            game.date ? game.date.replaceAll('-', '.') : '日付未設定'
-          );
+/* ---------- controls ---------- */
+function fillSelect(sel, values, allLabel) {
+  var counts = {};
+  values.forEach(function (v) { counts[v] = (counts[v] || 0) + 1; });
+  var opts = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b, 'ja'); });
+  sel.innerHTML = '<option value="all">' + allLabel + '</option>' +
+    opts.map(function (v) { return '<option value="' + esc(v) + '">' + esc(v) + '（' + counts[v] + '）</option>'; }).join('');
+}
+fillSelect($('f-tour'), DATA.map(function (g) { return g.tournament; }), 'すべての大会');
+fillSelect($('f-opp'), DATA.map(function (g) { return g.opponent; }), 'すべての相手');
+fillSelect($('f-venue'), DATA.map(function (g) { return g.venue; }), 'すべての会場');
 
-          const badgeClass = game.result === '負け'
-            ? 'loss'
-            : game.result === '勝ち' ? '' : 'other';
+document.querySelectorAll('.seg button').forEach(function (b) {
+  b.addEventListener('click', function () {
+    document.querySelectorAll('.seg button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+    b.setAttribute('aria-pressed', 'true');
+    state.res = b.dataset.res;
+    render();
+  });
+});
+$('f-tour').addEventListener('change', function (e) { state.tour = e.target.value; render(); });
+$('f-opp').addEventListener('change', function (e) { state.opp = e.target.value; render(); });
+$('f-venue').addEventListener('change', function (e) { state.venue = e.target.value; render(); });
 
-          add(card, 'span', 'badge ' + badgeClass, game.result || '勝敗未設定');
+$('sort-btn').addEventListener('click', function () {
+  state.desc = !state.desc;
+  $('sort-icon').textContent = state.desc ? '↓' : '↑';
+  $('sort-btn').setAttribute('aria-label', '日付で並べ替え（現在' + (state.desc ? '新しい順' : '古い順') + '）');
+  renderTable(current());
+});
 
-          const main = add(card, 'div', 'game-main', '');
-          add(main, 'div', 'opponent',
-            game.opponent ? 'vs ' + game.opponent : '対戦相手未設定');
-          add(main, 'div', 'match',
-            (game.title || '試合名未設定').replace(/^\d{8}/, ''));
+$('reset').addEventListener('click', function () {
+  state.res = 'all'; state.tour = 'all'; state.opp = 'all'; state.venue = 'all';
+  document.querySelectorAll('.seg button').forEach(function (x) {
+    x.setAttribute('aria-pressed', x.dataset.res === 'all' ? 'true' : 'false');
+  });
+  $('f-tour').value = 'all'; $('f-opp').value = 'all'; $('f-venue').value = 'all';
+  render();
+});
 
-          add(card, 'div', 'score', game.score || '—');
-          add(card, 'div', 'venue', game.venue || '場所未設定');
-        }
-      }
+var raf = 0;
+window.addEventListener('resize', function () {
+  cancelAnimationFrame(raf);
+  raf = requestAnimationFrame(function () { renderCum(current()); });
+});
 
-      for (const id of ['search', 'year', 'result']) {
-        $(id).addEventListener('input', render);
-      }
-
-      $('reset').addEventListener('click', () => {
-        $('search').value = '';
-        $('year').value = '';
-        $('result').value = '';
-        render();
-        $('search').focus();
-      });
-
-      render();
-    }
-
-    init().catch(() => {
-      document.getElementById('results').textContent =
-        '試合データを読み込めませんでした。最新のブラウザでお試しください。';
-    });
-  </script>
+render();
+</script>
 </body>
 </html>
