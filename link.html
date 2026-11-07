@@ -1,770 +1,604 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>大会リンク</title><style>
-/* cspell:disable-file */
-/* webkit printing magic: print all background colors */
-html {
-	-webkit-print-color-adjust: exact;
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="東京都北区の少年野球チーム、谷端ジュニアが参加する大会・少年野球連盟のリンク集です。">
+<title>大会リンク | 谷端ジュニア</title>
+
+<style>
+:root {
+  --navy: #102b50;
+  --blue: #1769aa;
+  --light-blue: #eaf4fc;
+  --accent: #f3b632;
+  --bg: #f3f6fa;
+  --text: #25364a;
+  --muted: #718096;
+  --white: #fff;
 }
+
 * {
-	box-sizing: border-box;
-	-webkit-print-color-adjust: exact;
-}
-
-html,
-body {
-	margin: 0;
-	padding: 0;
-}
-@media only screen {
-	body {
-		margin: 2em auto;
-		max-width: 900px;
-		color: rgb(55, 53, 47);
-	}
+  box-sizing: border-box;
 }
 
 body {
-	line-height: 1.5;
-	white-space: pre-wrap;
+  margin: 0;
+  font-family: "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
 }
 
-a,
-a.visited {
-	color: inherit;
-	text-decoration: underline;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-.pdf-relative-link-path {
-	font-size: 80%;
-	color: #444;
+.container {
+  width: min(1080px, 92%);
+  margin: auto;
 }
 
-h1,
-h2,
-h3 {
-	letter-spacing: -0.01em;
-	line-height: 1.2;
-	font-weight: 600;
-	margin-bottom: 0;
+/* ヘッダー */
+header {
+  background: var(--navy);
+  color: white;
+  padding: 17px 0;
+  border-bottom: 4px solid var(--accent);
 }
 
-/* Override strong tags inside headings to maintain consistent weight */
-h1 strong,
-h2 strong,
-h3 strong {
-	font-weight: 600;
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
 }
 
-.page-title {
-	font-size: 2.5rem;
-	font-weight: 700;
-	margin-top: 0;
-	margin-bottom: 0.75em;
+.brand {
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: 1px;
 }
 
-h1 {
-	font-size: 1.875rem;
-	margin-top: 1.875rem;
+.brand span {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  color: #c6d8eb;
+  letter-spacing: 2px;
 }
 
-h2 {
-	font-size: 1.5rem;
-	margin-top: 1.5rem;
+.home-link {
+  display: inline-block;
+  padding: 8px 17px;
+  border: 1px solid rgba(255,255,255,.5);
+  border-radius: 30px;
+  font-size: 13px;
+  transition: .2s;
 }
 
-h3 {
-	font-size: 1.25rem;
-	margin-top: 1.25rem;
+.home-link:hover {
+  background: white;
+  color: var(--navy);
 }
 
-.source {
-	border: 1px solid #ddd;
-	border-radius: 3px;
-	padding: 1.5em;
-	word-break: break-all;
+/* メインビジュアル */
+.hero {
+  background:
+    linear-gradient(120deg, rgba(9,31,59,.96), rgba(23,91,151,.86)),
+    url("https://i.gyazo.com/a315cbeaf5cd4a5829665c245c4202a7.png")
+    center/cover;
+  color: white;
+  padding: 65px 20px 60px;
+  text-align: center;
 }
 
-.callout {
-	border-radius: 10px;
-	padding: 1rem;
+.hero-label {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 30px;
+  padding: 5px 17px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
 }
 
-/* For default-background callouts, render the border outline. */
-.callout.block-color-default_background {
-	border: 1px solid rgba(55, 53, 47, 0.09);
+.hero h1 {
+  font-size: clamp(28px, 5vw, 43px);
+  line-height: 1.4;
+  margin: 0 0 14px;
+  font-weight: 900;
 }
 
-figure,
-aside,
-details {
-	margin: 1.25em 0;
-	page-break-inside: avoid;
+.hero p {
+  color: #e2edf8;
+  font-size: 14px;
+  margin: 0;
 }
 
-figcaption {
-	opacity: 0.5;
-	font-size: 85%;
-	margin-top: 0.5em;
+/* ナビゲーション */
+.quick-nav {
+  background: white;
+  padding: 15px 0;
+  box-shadow: 0 3px 12px rgba(0,0,0,.05);
 }
 
-mark {
-	background-color: transparent;
+.nav-inner {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.indented {
-	padding-left: 1.5em;
+.nav-inner a {
+  background: var(--light-blue);
+  color: var(--navy);
+  border-radius: 30px;
+  padding: 7px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: .2s;
 }
-
-hr {
-	background: transparent;
-	display: block;
-	width: 100%;
-	height: 1px;
-	visibility: visible;
-	border: none;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-img {
-	max-width: 100%;
-}
-
-@media only print {
-	img {
-		max-height: 100vh;
-		object-fit: contain;
-	}
-
-	table.collection-content {
-		width: 100%;
-		table-layout: fixed;
-	}
-
-	table.collection-content th,
-	table.collection-content td {
-		overflow-wrap: anywhere;
-	}
-
-	table.collection-content td > .user,
-	table.collection-content td > time {
-		white-space: pre-wrap;
-	}
-}
-
-@page {
-	margin: 1in;
-}
-
-.collection-content-wrapper {
-	overflow-x: auto;
-}
-
-@media only print {
-	.collection-content-wrapper {
-		overflow-x: visible;
-	}
-}
-
-.collection-content {
-	font-size: 0.875rem;
-}
-
-.collection-content td {
-	white-space: pre-wrap;
-	word-break: break-word;
-}
-
-.column-list {
-	display: flex;
-	gap: 46px;
-}
-
-.column {
-	min-width: 0;
-	overflow: hidden;
-}
-
-.column > *:first-child {
-	margin-top: 0;
-}
-
-.table_of_contents-item {
-	display: block;
-	font-size: 0.875rem;
-	line-height: 1.3;
-	padding-inline: 0.125rem;
-	padding-block: 0.375rem;
-}
-
-.table_of_contents-indent-1 {
-	margin-left: 1.5rem;
-}
-
-.table_of_contents-indent-2 {
-	margin-left: 3rem;
-}
-
-.table_of_contents-indent-3 {
-	margin-left: 4.5rem;
-}
-
-.table_of_contents-link {
-	text-decoration: none;
-	opacity: 0.7;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-}
-
-table,
-th,
-td {
-	border: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-table {
-	border-collapse: collapse;
-	border-left: none;
-	border-right: none;
-}
-
-th,
-td {
-	font-weight: normal;
-	padding: 0.25em 0.5em;
-	line-height: 1.5;
-	min-height: 1.5em;
-	text-align: left;
-}
-
-th {
-	color: rgba(55, 53, 47, 0.6);
-}
-
-ol,
-ul {
-	margin: 0;
-	margin-block-start: 0.6em;
-	margin-block-end: 0.6em;
-}
-
-li > ol:first-child,
-li > ul:first-child {
-	margin-block-start: 0.6em;
-}
-
-ul > li {
-	list-style: disc;
-}
-
-ul.to-do-list {
-	padding-inline-start: 0;
-}
-
-ul.to-do-list > li {
-	list-style: none;
-}
-
-.to-do-children-checked {
-	text-decoration: line-through;
-	opacity: 0.375;
-}
-
-ul.toggle > li {
-	list-style: none;
-}
-
-ul {
-	padding-inline-start: 1.7em;
-}
-
-ul > li {
-	padding-left: 0.1em;
-}
-
-ol {
-	padding-inline-start: 1.6em;
-}
-
-ol.numbered-list.numbered-list-digits-2 {
-	padding-inline-start: 2em;
-}
-
-ol.numbered-list.numbered-list-digits-3plus {
-	padding-inline-start: 2.4em;
-}
-
-ol > li {
-	padding-left: 0.2em;
-}
-
-.mono ol {
-	padding-inline-start: 2em;
-}
-
-.mono ol > li {
-	text-indent: -0.4em;
-}
-
-.toggle {
-	padding-inline-start: 0em;
-	list-style-type: none;
-}
-
-/* Indent toggle children */
-.toggle > li > details {
-	padding-left: 1.7em;
-}
-
-.toggle > li > details > summary {
-	margin-left: -1.1em;
-}
-
-.selected-value {
-	display: inline-block;
-	padding: 0 0.5em;
-	background: rgba(206, 205, 202, 0.5);
-	border-radius: 3px;
-	margin-right: 0.5em;
-	margin-top: 0.3em;
-	margin-bottom: 0.3em;
-	white-space: nowrap;
-}
-
-.collection-title {
-	display: inline-block;
-	margin-right: 1em;
-}
-
-.page-description {
-	margin-bottom: 2em;
-}
-
-.simple-table {
-	margin-top: 1em;
-	font-size: 0.875rem;
-	empty-cells: show;
-}
-.simple-table td {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table th {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table-header-color {
-	background: rgb(247, 246, 243);
-	color: black;
-}
-.simple-table-header {
-	font-weight: 500;
-}
-
-time {
-	opacity: 0.5;
-}
-
-.icon {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	max-width: 1.2em;
-	max-height: 1.2em;
-	text-decoration: none;
-	vertical-align: text-bottom;
-	margin-right: 0.5em;
-}
-
-/*
- * Render emoji icons using a ::before pseudo-element to keep the glyph
- * out of the DOM textContent traversal. This avoids double-rendering icons
- * in callouts and page titles.
- * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
- * flag as a duplicate tag after codegen.
- */
-.icon[data-emoji]::before {
-	content: attr(data-emoji);
-}
-
-img.icon {
-	border-radius: 3px;
-}
-
-.callout img.notion-static-icon {
-	width: 1em;
-	height: 1em;
-}
-
-.callout p {
-	margin: 0;
-}
-
-.callout h1,
-.callout h2,
-.callout h3 {
-	margin: 0 0 0.6rem;
-}
-
-.user-icon {
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 100%;
-	margin-right: 0.5rem;
-}
-
-.user-icon-inner {
-	font-size: 0.8em;
-}
-
-.text-icon {
-	border: 1px solid #000;
-	text-align: center;
-}
-
-.page-cover-image {
-	display: block;
-	object-fit: cover;
-	width: 100%;
-	max-height: 30vh;
-}
-
-.page-header-icon {
-	font-size: 3rem;
-	margin-bottom: 1rem;
-}
-
-.page-header-icon-with-cover {
-	margin-top: -0.72em;
-	margin-left: 0.07em;
-}
-
-.page-header-icon img {
-	border-radius: 3px;
-}
-
-.link-to-page {
-	margin: 1em 0;
-	padding: 0;
-	border: none;
-	font-weight: 500;
-}
-
-p > .user {
-	opacity: 0.5;
-}
-
-td > .user,
-td > time {
-	white-space: nowrap;
-}
-
-input[type="checkbox"] {
-	margin-right: 0.4em;
-	vertical-align: middle;
+
+.nav-inner a:hover {
+  background: var(--blue);
+  color: white;
 }
 
-p {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
+/* 説明 */
+.intro {
+  text-align: center;
+  padding: 40px 15px 20px;
 }
 
-.image {
-	border: none;
-	margin: 1.5em 0;
-	padding: 0;
-	border-radius: 0;
-	text-align: center;
+.intro h2 {
+  font-size: 22px;
+  color: var(--navy);
+  margin: 0 0 10px;
 }
 
-.code,
-code {
-	background: rgba(135, 131, 120, 0.15);
-	border-radius: 3px;
-	padding: 0.2em 0.4em;
-	border-radius: 3px;
-	font-size: 85%;
-	tab-size: 2;
+.intro p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
 }
 
-code {
-	color: #eb5757;
+/* セクション */
+.section {
+  padding: 25px 0 35px;
 }
 
-.code {
-	padding: 1.5em 1em;
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--navy);
+  font-size: 21px;
+  font-weight: 900;
+  margin: 0 0 20px;
+  padding-bottom: 11px;
+  border-bottom: 2px solid #dce7f2;
 }
 
-.code-wrap {
-	white-space: pre-wrap;
-	word-break: break-all;
+.section-title .icon {
+  width: 39px;
+  height: 39px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: var(--navy);
+  color: white;
+  font-size: 19px;
 }
 
-.code > code {
-	background: none;
-	padding: 0;
-	font-size: 100%;
-	color: inherit;
+/* カード */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 
-blockquote {
-	font-size: 1em;
-	margin: 1em 0;
-	padding-left: 1em;
-	border-left: 3px solid rgb(55, 53, 47);
+.card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border: 1px solid #e5ebf2;
+  border-radius: 13px;
+  padding: 19px;
+  box-shadow: 0 4px 12px rgba(16,43,80,.045);
+  transition: transform .2s, box-shadow .2s;
 }
 
-blockquote.quote-large {
-	font-size: 1.25em;
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 9px 22px rgba(16,43,80,.12);
+  border-color: #b9d5ee;
 }
 
-.bookmark {
-	text-decoration: none;
-	max-height: 8em;
-	padding: 0;
-	display: flex;
-	width: 100%;
-	align-items: stretch;
+.card h3 {
+  color: var(--navy);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 9px;
+  font-weight: 800;
 }
 
-.bookmark-title {
-	font-size: 0.85em;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	height: 1.75em;
-	white-space: nowrap;
+.card p {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0 0 14px;
+  line-height: 1.7;
+  flex: 1;
 }
 
-.bookmark-text {
-	display: flex;
-	flex-direction: column;
+.card-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 800;
+  border-top: 1px solid #edf1f5;
+  padding-top: 11px;
 }
 
-.bookmark-info {
-	flex: 4 1 180px;
-	padding: 12px 14px 14px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+.card-link span {
+  font-size: 18px;
+  transition: transform .2s;
 }
 
-.bookmark-image {
-	width: 33%;
-	flex: 1 1 180px;
-	display: block;
-	position: relative;
-	object-fit: cover;
-	border-radius: 1px;
+.card:hover .card-link span {
+  transform: translateX(4px);
 }
 
-.bookmark-description {
-	color: rgba(55, 53, 47, 0.6);
-	font-size: 0.75em;
-	overflow: hidden;
-	max-height: 4.5em;
-	word-break: break-word;
+/* 特別リンク */
+.special {
+  background: linear-gradient(135deg, #102b50, #1c5e99);
+  border-radius: 16px;
+  padding: 27px;
+  color: white;
+  margin: 15px 0 35px;
 }
 
-.bookmark-href {
-	font-size: 0.75em;
-	margin-top: 0.25em;
+.special h2 {
+  margin: 0 0 7px;
+  font-size: 20px;
 }
 
-.tab {
-	margin: 1.25em 0;
-	padding-inline: 1rem;
-	border: 1px solid rgba(55, 53, 47, 0.09);
+.special p {
+  color: #d9e8f7;
+  font-size: 13px;
+  margin: 0 0 15px;
 }
 
-.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
-.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
-.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
-.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
-.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
-.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
-.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
-.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.highlight-default {
-	color: rgba(44, 44, 43, 1);
-}
-.highlight-gray {
-	color: rgba(125, 122, 117, 1);
-	fill: rgba(125, 122, 117, 1);
-}
-.highlight-brown {
-	color: rgba(159, 118, 90, 1);
-	fill: rgba(159, 118, 90, 1);
-}
-.highlight-orange {
-	color: rgba(210, 123, 45, 1);
-	fill: rgba(210, 123, 45, 1);
-}
-.highlight-yellow {
-	color: rgba(203, 148, 52, 1);
-	fill: rgba(203, 148, 52, 1);
-}
-.highlight-teal {
-	color: rgba(80, 148, 110, 1);
-	fill: rgba(80, 148, 110, 1);
-}
-.highlight-blue {
-	color: rgba(56, 125, 201, 1);
-	fill: rgba(56, 125, 201, 1);
-}
-.highlight-purple {
-	color: rgba(154, 107, 180, 1);
-	fill: rgba(154, 107, 180, 1);
-}
-.highlight-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.highlight-red {
-	color: rgba(207, 81, 72, 1);
-	fill: rgba(207, 81, 72, 1);
-}
-.highlight-default_background {
-	color: rgba(44, 44, 43, 1);
-}
-.highlight-gray_background {
-	background: rgba(42, 28, 0, 0.07);
-}
-.highlight-brown_background {
-	background: rgba(139, 46, 0, 0.086);
-}
-.highlight-orange_background {
-	background: rgba(224, 101, 1, 0.129);
-}
-.highlight-yellow_background {
-	background: rgba(211, 168, 0, 0.137);
-}
-.highlight-teal_background {
-	background: rgba(0, 100, 45, 0.09);
-}
-.highlight-blue_background {
-	background: rgba(0, 124, 215, 0.094);
-}
-.highlight-purple_background {
-	background: rgba(102, 0, 178, 0.078);
-}
-.highlight-pink_background {
-	background: rgba(197, 0, 93, 0.086);
-}
-.highlight-red_background {
-	background: rgba(223, 22, 0, 0.094);
-}
-.block-color-default {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray {
-	color: rgba(125, 122, 117, 1);
-	fill: rgba(125, 122, 117, 1);
-}
-.block-color-brown {
-	color: rgba(159, 118, 90, 1);
-	fill: rgba(159, 118, 90, 1);
-}
-.block-color-orange {
-	color: rgba(210, 123, 45, 1);
-	fill: rgba(210, 123, 45, 1);
-}
-.block-color-yellow {
-	color: rgba(203, 148, 52, 1);
-	fill: rgba(203, 148, 52, 1);
-}
-.block-color-teal {
-	color: rgba(80, 148, 110, 1);
-	fill: rgba(80, 148, 110, 1);
-}
-.block-color-blue {
-	color: rgba(56, 125, 201, 1);
-	fill: rgba(56, 125, 201, 1);
-}
-.block-color-purple {
-	color: rgba(154, 107, 180, 1);
-	fill: rgba(154, 107, 180, 1);
-}
-.block-color-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.block-color-red {
-	color: rgba(207, 81, 72, 1);
-	fill: rgba(207, 81, 72, 1);
-}
-.block-color-default_background {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray_background {
-	background: rgba(240, 239, 237, 1);
-}
-.block-color-brown_background {
-	background: rgba(245, 237, 233, 1);
-}
-.block-color-orange_background {
-	background: rgba(251, 235, 222, 1);
-}
-.block-color-yellow_background {
-	background: rgba(249, 243, 220, 1);
-}
-.block-color-teal_background {
-	background: rgba(232, 241, 236, 1);
-}
-.block-color-blue_background {
-	background: rgba(229, 242, 252, 1);
-}
-.block-color-purple_background {
-	background: rgba(243, 235, 249, 1);
-}
-.block-color-pink_background {
-	background: rgba(250, 233, 241, 1);
-}
-.block-color-red_background {
-	background: rgba(252, 233, 231, 1);
+.special a {
+  display: inline-block;
+  background: white;
+  color: var(--navy);
+  padding: 9px 18px;
+  border-radius: 25px;
+  font-size: 13px;
+  font-weight: 800;
 }
-.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
-.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
-.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
-.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
-.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
-.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
-.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
-.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
-.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
-.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
 
-.checkbox {
-	display: inline-flex;
-	vertical-align: text-bottom;
-	width: 16;
-	height: 16;
-	background-size: 16px;
-	margin-left: 2px;
-	margin-right: 5px;
+/* フッター */
+footer {
+  background: #0b203b;
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+  margin-top: 25px;
 }
 
-.checkbox-on {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+footer .footer-brand {
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: 2px;
 }
 
-.checkbox-off {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+footer p {
+  font-size: 11px;
+  color: #b9c9db;
+  margin: 7px 0 15px;
+}
+
+footer a {
+  color: white;
+  font-size: 12px;
+  text-decoration: underline;
 }
-	
-</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="666a3606-bad6-4fbf-955e-4b28662af63f" class="page sans"><header><h1 class="page-title" dir="auto">大会リンク</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><p id="34744831-32d3-805d-9c4c-cc9ee5af9da0" class="" dir="auto"><a href="https://yoji-t.github.io/yabata-jr/index.html">ホームへ戻る</a></p><figure id="39744831-32d3-8027-81ea-fcac4919182f" class="image" data-notion-image="https://i.gyazo.com/a315cbeaf5cd4a5829665c245c4202a7.png" dir="ltr"><a href="https://i.gyazo.com/a315cbeaf5cd4a5829665c245c4202a7.png"><img style="width:288px" src="https://i.gyazo.com/a315cbeaf5cd4a5829665c245c4202a7.png"/></a></figure><h2 id="13715170-6cf6-44c8-8cbf-4a09d62a87b0" class="" dir="auto">北区少年野球連盟</h2><figure id="34744831-32d3-80ae-9575-d9ab7a110d2d" dir="ltr"><a href="https://kitakubb.blogspot.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">北区少年野球連盟</div><div class="bookmark-description">北区少年野球連盟の公式サイトです。本連盟が主催する大会情報を掲載しております。</div></div><div class="bookmark-href"><img src="https://kitakubb.blogspot.com/favicon.ico" class="icon bookmark-icon"/>https://kitakubb.blogspot.com/</div></div></a></figure><p id="34744831-32d3-80b0-bc59-f57971a4aed2" class="" dir="auto">北区大会、新人戦、東京都知事杯北区代表決定大会、くりくり少年野球大会北区代表決定大会、ジャビットカップ北区代表決定大会など</p><h2 id="34844831-32d3-80c4-aed7-c51e39804ebe" class="" dir="auto">北区滝野川少年野球連盟</h2><p id="37c44831-32d3-80a2-8674-ef6f60bcaca6" class="" dir="auto"><a href="https://tacky-y.notion.site/takinogawa">https://tacky-y.notion.site/takinogawa</a></p><figure id="34844831-32d3-8022-bf97-f378716e8311" dir="ltr"><a href="https://k-matida.wixsite.com/website" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">ホーム | 北区滝野川少年野球連盟</div></div><div class="bookmark-href"><img src="https://www.wix.com/favicon.ico" class="icon bookmark-icon"/>https://k-matida.wixsite.com/website</div></div></a></figure><h2 id="34844831-32d3-80d9-a5b1-c531dc51ce04" class="" dir="auto">北区赤羽少年野球連盟</h2><figure id="34844831-32d3-8003-a8d2-e9f08aea2ada" dir="ltr"><a href="https://www.facebook.com/AkabaneJuniorBaseball/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">北区赤羽少年野球連盟</div><div class="bookmark-description">北区赤羽少年野球連盟. 367 likes. 北区赤羽少年野球連盟の公式ページとして活動報告、大会情報を掲載して�</div></div><div class="bookmark-href"><img src="https://z-m-static.xx.fbcdn.net/rsrc.php/y4/r/M6oWJ5INQpg.webp" class="icon bookmark-icon"/>https://www.facebook.com/AkabaneJuniorBaseball/</div></div><img src="https://scontent-iad3-1.xx.fbcdn.net/v/t39.30808-1/291971800_531953621960163_9181850590259143844_n.jpg?stp=cp0_dst-jpg_e15_fr_q65_tt6&amp;cstp=mx500x500&amp;ctp=s500x500&amp;_nc_cat=108&amp;ccb=1-7&amp;_nc_sid=3ab345&amp;_nc_ohc=OeMFkvEphFgQ7kNvwEvr5qd&amp;_nc_oc=AdqovmJySj_Dd7CltVCBAky40CM-ICPu9QipOhZqOT4VIX4gR7zaKr8XqSxNUJ-dRaE&amp;_nc_ad=z-m&amp;_nc_cid=0&amp;_nc_zt=24&amp;_nc_rml=0&amp;_nc_ht=scontent-iad3-1.xx&amp;_nc_gid=95d_HqBLRztPy8hr9pXMPA&amp;_nc_ss=7a389&amp;oh=00_Af08Vp06pFJoZYElcizeyh5YczotwvtX0FN2J_jVe80rUQ&amp;oe=69EBA528" class="bookmark-image"/></a></figure><h2 id="34844831-32d3-803d-813b-c34caa198557" class="" dir="auto">北区志茂少年野球連盟</h2><figure id="34844831-32d3-804c-8092-c775393b8515" dir="ltr"><a href="https://shimoshonenyakyu.wixsite.com/sbba" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">志茂少年野球連盟｜志茂大会｜志茂連盟</div><div class="bookmark-description">北区志茂少年野球大会の情報をご案内いたします</div></div><div class="bookmark-href"><img src="https://www.wix.com/favicon.ico" class="icon bookmark-icon"/>https://shimoshonenyakyu.wixsite.com/sbba</div></div></a></figure><h2 id="34844831-32d3-8093-8f35-c624112e2007" class="" dir="auto">北区軟式野球連盟</h2><figure id="34844831-32d3-80dc-90af-f52deae4a885" dir="ltr"><a href="https://knbb.az2.jp//" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">北区軟式野球連盟・試合情報</div><div class="bookmark-description">北区軟式野球連盟・試合情報公式サイトです。試合予定・結果検索やトーナメント表などがあります。</div></div><div class="bookmark-href">https://knbb.az2.jp//</div></div></a></figure><h2 id="34844831-32d3-8033-a1b6-e61660ac8fe0" class="" dir="auto">浮間リーグ</h2><figure id="34844831-32d3-8059-b8bf-cae92985d49b" dir="ltr"><a href="https://ukima-league.blogspot.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">浮間リーグ</div><div class="bookmark-description">浮間リーグの日程および試合結果をご案内いたします。</div></div><div class="bookmark-href"><img src="https://ukima-league.blogspot.com/favicon.ico" class="icon bookmark-icon"/>https://ukima-league.blogspot.com/</div></div></a></figure><h2 id="34844831-32d3-80ed-9de7-c7f18f82dd76" class="" dir="auto">浮間少年野球連盟</h2><figure id="34844831-32d3-80eb-8a71-d5df2214dc2a" dir="ltr"><a href="https://ubba-info.blogspot.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">浮間少年野球連盟</div><div class="bookmark-description">浮間少年野球連盟が主催する大会の試合予定および結果をお知らせいたします。</div></div><div class="bookmark-href"><img src="https://ubba-info.blogspot.com/favicon.ico" class="icon bookmark-icon"/>https://ubba-info.blogspot.com/</div></div></a></figure><h2 id="34844831-32d3-8065-b2d8-f13ef2fcdcfa" class="" dir="auto">東京都城北少年野球大会</h2><figure id="34844831-32d3-8099-bc19-c6f9f8b5bf53" dir="ltr"><a href="https://3jj2.childstar-sp.net/tokyo-johoku/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">東京都城北少年野球大会情報 - 【写真の窓口】チャイルドスターSP</div><div class="bookmark-description">最新の試合予定・試合結果は【最近の投稿】【スマホは⇩　⇩　⇩】【PCは➡　➡　➡】 【2026年度 第36回 春季 東京都城北少年野球大会のご案内】・大会参加：60チーム 対戦トーナメント決定・大会期間：2026年2月下...</div></div><div class="bookmark-href"><img src="https://3jj2.childstar-sp.net/favicon.ico" class="icon bookmark-icon"/>https://3jj2.childstar-sp.net/tokyo-johoku/</div></div><img src="https://www15.a8.net/0.gif?a8mat=45BREW+9U8YHM+2UOE+3H2QRL" class="bookmark-image"/></a></figure><h2 id="34844831-32d3-8004-a75a-de6aa7ce36b7" class="" dir="auto">All Japan東京リーグ</h2><figure id="34844831-32d3-8029-a3b5-c83c688f7815" dir="ltr"><a href="https://alljapanbaseball.net/tokyo1/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">alljapanbaseball.net</div></div><div class="bookmark-href"><img src="https://alljapanbaseball.net/favicon.ico" class="icon bookmark-icon"/>https://alljapanbaseball.net/tokyo1/</div></div></a></figure><h2 id="34844831-32d3-8049-8a9b-c6b929cb48fa" class="" dir="auto">ポップアスリートカップ</h2><figure id="34844831-32d3-80ed-bfa4-d190444adabc" dir="ltr"><a href="http://www.pop.co.jp/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">http://www.pop.co.jp/</div></div></a></figure><h2 id="34844831-32d3-80a7-a514-f25bbff56dd0" class="" dir="auto">ベイサイドカップ</h2><figure id="34844831-32d3-807a-9828-db3b1f09ac94" dir="ltr"><a href="https://baseball.daiwacorporation.co.jp/bayside-cup/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">トップページ</div><div class="bookmark-description">ベイサイドカップ少年野球大会は、株式会社ダイワコーポレーションの野球部による同社主催の少年野球大会です。2021年4月に始まって以降、毎年数多くの少年野球チームにご参加いただいております。
-          2026年からは、新たに新4年生以下限定のジュニア大会も新設。今後もより大勢の子どもたちに、活躍と交流の機会を提供したいと考えています。</div></div><div class="bookmark-href"><img src="https://baseball.daiwacorporation.co.jp/bayside-cup/wp-content/themes/bayside_cup/assets/img/common/favicon.svg" class="icon bookmark-icon"/>https://baseball.daiwacorporation.co.jp/bayside-cup/</div></div></a></figure><h2 id="34844831-32d3-8009-b71e-cb97efd4134d" class="" dir="auto">年中夢球杯</h2><figure id="34844831-32d3-80b7-8835-dd70af3d217f" dir="ltr"><a href="https://alljapanbaseball.net/honma1/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">第3回年中夢球杯2026全国学童軟式野球大会</div><div class="bookmark-description">1.チーム参加資格
-							（１）学童軟式野球チームであれば、どのチームでも参加可能（オープン参加型）
-							（２）大会規約にのっとり、マナーを遵守したフェアプレーができること</div></div><div class="bookmark-href"><img src="https://alljapanbaseball.net/favicon.ico" class="icon bookmark-icon"/>https://alljapanbaseball.net/honma1/</div></div></a></figure><h2 id="34844831-32d3-8071-9ddd-f458fc48a604" class="" dir="auto">宮本慎也杯</h2><figure id="34844831-32d3-808f-9430-dedcc676ccb8" dir="ltr"><a href="http://miyamoto-cup.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">アルパインプレゼンツ 宮本慎也杯 学童軟式野球大会</div><div class="bookmark-description">東京ヤクルトスワローズ 元ヘッドコーチの宮本慎也氏が大会長を務める学童軟式野球大会です。「正々堂々楽しもう！」を大会キャッチコピーとして、2016年に第1回大会を開催。</div></div><div class="bookmark-href">http://miyamoto-cup.com/</div></div></a></figure><h2 id="34844831-32d3-801c-9792-e377b743ea84" class="" dir="auto">ミズノベースボールドリームカップ</h2><figure id="34844831-32d3-80bc-899f-d0354297a4d0" dir="ltr"><a href="https://pridejapan.net/mizunodream-cup/jr-tournament/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">MIZUNO BASEBALL DREAM CUP Jr. Tournament2022~Supported by Brand Ambassador~</div><div class="bookmark-description">MIZUNO BASEBALL DREAM CUP Jr. Tournament2022~Supported by Brand Ambassador~公式サイト</div></div><div class="bookmark-href"><img src="https://pridejapan.net/mizunodream-cup/jr-tournament/wp-content/uploads/fbrfg/apple-touch-icon.png" class="icon bookmark-icon"/>https://pridejapan.net/mizunodream-cup/jr-tournament/</div></div><img src="https://pridejapan.net/mizunodream-cup/jr-tournament/main-img.png" class="bookmark-image"/></a></figure><h2 id="34844831-32d3-80df-80bf-d12a6aab5592" class="" dir="auto">東京都軟式野球連盟</h2><figure id="34844831-32d3-8080-b69a-e9c4ee27e6f9" dir="ltr"><a href="https://www.tnbb.or.jp/msrc/100_sumaho_menu.php?USER=tokyo&amp;USERNO=100&amp;kirikae=SUMAHO&amp;Gamen=2nd&amp;Gsub=osirase" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">（公財）東京都軟式野球連盟</div></div><div class="bookmark-href">https://www.tnbb.or.jp/msrc/100_sumaho_menu.php?USER=tokyo&amp;USERNO=100&amp;kirikae=SUMAHO&amp;Gamen=2nd&amp;Gsub=osirase</div></div></a></figure><h2 id="34844831-32d3-804f-92a4-eee535c5c540" class="" dir="auto">ヴァージンリーグ</h2><figure id="34844831-32d3-80c0-959b-dcb015d24db6" dir="ltr"><a href="http://virgin89.919homepage.com/user/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title"></div></div><div class="bookmark-href">http://virgin89.919homepage.com/user/</div></div></a></figure><h2 id="34844831-32d3-80c2-9b19-c5e659014ff6" class="" dir="auto">東京都スポーツ協会</h2><figure id="34844831-32d3-8078-a09e-e48c020f4c8e" dir="ltr"><a href="https://www.tokyo-sports.or.jp/juniorsport2.html" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">事業概要</div></div><div class="bookmark-href"><img src="https://www.tokyo-sports.or.jp/favicon.ico" class="icon bookmark-icon"/>https://www.tokyo-sports.or.jp/juniorsport2.html</div></div></a></figure><h2 id="34844831-32d3-80d8-915c-d4d802d65f04" class="" dir="auto">墨田区少年野球連盟</h2><figure id="34844831-32d3-80f5-a8cd-f0713a103295" dir="ltr"><a href="https://sumida-sbb.org/competition-information/tokyo-metropolitan-school-baseball-tournament" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">東京都学童選抜野球大会 | 墨田区少年野球連盟</div></div><div class="bookmark-href"><img src="https://i0.wp.com/sumida-sbb.org/wp-content/uploads/2016/03/cropped-favicon.png?fit=192%2C192&amp;ssl=1" class="icon bookmark-icon"/>https://sumida-sbb.org/competition-information/tokyo-metropolitan-school-baseball-tournament</div></div><img src="https://sumida-sbb.org/wp-content/uploads/2020/09/FB-phot-01.png" class="bookmark-image"/></a></figure><h2 id="34844831-32d3-80d7-b922-faf1baa370a0" class="" dir="auto">学童選抜交流軟式野球大会</h2><figure id="34844831-32d3-8033-a0d2-e79a3976af52" dir="ltr"><a href="https://www.edogawabb.org/?page_id=5327" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">令和７年度</div></div><div class="bookmark-href"><img src="https://www.edogawabb.org/wp-content/uploads/2020/10/cropped-b3fb8636e8f1f5dce08516114689e66e-192x192.jpg" class="icon bookmark-icon"/>https://www.edogawabb.org/?page_id=5327</div></div></a></figure><h2 id="39c44831-32d3-80a5-a3b7-c76ec04dcad0" class="" dir="auto"><strong>荒川クリエーション杯学童少年野球大会</strong></h2><figure id="39c44831-32d3-8026-bb60-e366365871ed" dir="ltr"><a href="https://arakawacreation.blogspot.com/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">荒川クリエーション杯学童少年野球大会</div><div class="bookmark-description">この度、皆様へ大会に関する情報をより迅速かつ正確にお届けするため、公式ホームページを開設いたしました。今後の大会スケジュールや試合結果、各種お知らせはこちらのページを通じて発信してまいりますので、定期的にご確認いただけますようお願い申し上げます。</div></div><div class="bookmark-href"><img src="https://arakawacreation.blogspot.com/favicon.ico" class="icon bookmark-icon"/>https://arakawacreation.blogspot.com/</div></div></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+
+@media (max-width: 760px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 11px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .card h3 {
+    font-size: 14px;
+  }
+
+  .hero {
+    padding: 52px 15px;
+  }
+
+  .section-title {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-inner {
+    flex-direction: column;
+  }
+
+  .brand {
+    text-align: center;
+  }
+
+  .nav-inner {
+    gap: 7px;
+  }
+
+  .nav-inner a {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="brand">
+      ⚾ YABATA JUNIOR
+      <span>東京都北区の少年野球チーム</span>
+    </div>
+    <a class="home-link"
+       href="https://yoji-t.github.io/yabata-jr/index.html">
+      ← ホームへ戻る
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-label">TOURNAMENT & LEAGUE</div>
+  <h1>大会・連盟リンク集</h1>
+  <p>谷端ジュニアが参加する大会や少年野球連盟の公式サイトをご紹介します。</p>
+</section>
+
+<nav class="quick-nav">
+  <div class="container nav-inner">
+    <a href="#kita">北区の大会・連盟</a>
+    <a href="#tokyo">東京都の大会・連盟</a>
+    <a href="#wide">広域・各種大会</a>
+    <a href="#other">その他の大会情報</a>
+  </div>
+</nav>
+
+<main class="container">
+
+  <div class="intro">
+    <h2>大会情報をチェックしよう！</h2>
+    <p>
+      大会日程・組み合わせ・試合結果などは、各大会の公式サイトをご確認ください。
+    </p>
+  </div>
+
+  <!-- 北区 -->
+  <section class="section" id="kita">
+    <h2 class="section-title">
+      <span class="icon">🏆</span>
+      北区の大会・少年野球連盟
+    </h2>
+
+    <div class="card-grid">
+
+      <a class="card" href="https://kitakubb.blogspot.com/" target="_blank" rel="noopener noreferrer">
+        <h3>北区少年野球連盟</h3>
+        <p>北区大会、新人戦、東京都知事杯北区代表決定大会、くりくり少年野球大会北区代表決定大会、ジャビットカップ北区代表決定大会など。</p>
+        <div class="card-link">公式サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="https://k-matida.wixsite.com/website" target="_blank" rel="noopener noreferrer">
+        <h3>北区滝野川少年野球連盟</h3>
+        <p>滝野川地区の少年野球に関する大会・連盟情報。</p>
+        <div class="card-link">公式サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="https://www.facebook.com/AkabaneJuniorBaseball/" target="_blank" rel="noopener noreferrer">
+        <h3>北区赤羽少年野球連盟</h3>
+        <p>赤羽地区の少年野球に関する情報。</p>
+        <div class="card-link">Facebookを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="https://shimoshonenyakyu.wixsite.com/sbba" target="_blank" rel="noopener noreferrer">
+        <h3>北区志茂少年野球連盟</h3>
+        <p>志茂地区の少年野球大会・連盟情報。</p>
+        <div class="card-link">公式サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="https://knbb.az2.jp//" target="_blank" rel="noopener noreferrer">
+        <h3>北区軟式野球連盟</h3>
+        <p>北区の軟式野球に関する連盟情報。</p>
+        <div class="card-link">公式サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="https://ukima-league.blogspot.com/" target="_blank" rel="noopener noreferrer">
+        <h3>浮間リーグ</h3>
+        <p>浮間地区の少年野球リーグ情報。</p>
+        <div class="card-link">公式サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="https://ubba-info.blogspot.com/" target="_blank" rel="noopener noreferrer">
+        <h3>浮間少年野球連盟</h3>
+        <p>浮間地区の少年野球連盟情報。</p>
+        <div class="card-link">公式サイトを見る <span>›</span></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- 東京都 -->
+  <section class="section" id="tokyo">
+    <h2 class="section-title">
+      <span class="icon">🗼</span>
+      東京都の大会・連盟
+    </h2>
+
+    <div class="card-grid">
+
+      <a class="card" href="https://3jj2.childstar-sp.net/tokyo-johoku/" target="_blank" rel="noopener noreferrer">
+        <h3>東京都城北少年野球大会</h3>
+        <p>東京都城北地区の少年野球大会情報。</p>
+        <div class="card-link">大会サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="https://www.giants.jp/column/school/tournament1/" target="_blank" rel="noopener noreferrer">
+        <h3>ジャビットカップ</h3>
+        <p>読売ジャイアンツが関連する少年野球大会の情報。</p>
+        <div class="card-link">大会サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="https://www.tnbb.or.jp/msrc/100_sumaho_menu.php?USER=tokyo&USERNO=100&kirikae=SUMAHO&Gamen=2nd&Gsub=osirase" target="_blank" rel="noopener noreferrer">
+        <h3>東京都軟式野球連盟</h3>
+        <p>東京都の軟式野球に関する大会・連盟情報。</p>
+        <div class="card-link">公式サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="https://www.tokyo-sports.or.jp/juniorsport2.html" target="_blank" rel="noopener noreferrer">
+        <h3>東京都スポーツ協会</h3>
+        <p>ジュニアスポーツに関する情報。</p>
+        <div class="card-link">公式サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="https://sumida-sbb.org/competition-information/tokyo-metropolitan-school-baseball-tournament" target="_blank" rel="noopener noreferrer">
+        <h3>墨田区少年野球連盟</h3>
+        <p>東京都学童大会などの大会関連情報。</p>
+        <div class="card-link">公式サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="https://www.edogawabb.org/?page_id=5327" target="_blank" rel="noopener noreferrer">
+        <h3>学童選抜交流軟式野球大会</h3>
+        <p>学童選抜チームによる交流大会の情報。</p>
+        <div class="card-link">大会サイトを見る <span>›</span></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- 広域 -->
+  <section class="section" id="wide">
+    <h2 class="section-title">
+      <span class="icon">⚾</span>
+      広域・各種少年野球大会
+    </h2>
+
+    <div class="card-grid">
+
+      <a class="card" href="https://alljapanbaseball.net/tokyo1/" target="_blank" rel="noopener noreferrer">
+        <h3>All Japan東京リーグ</h3>
+        <p>東京地区の少年野球リーグ情報。</p>
+        <div class="card-link">大会サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="https://www.pop.co.jp/" target="_blank" rel="noopener noreferrer">
+        <h3>ポップアスリートカップ</h3>
+        <p>全国規模で開催される学童軟式野球大会。</p>
+        <div class="card-link">大会サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="https://baseball.daiwacorporation.co.jp/bayside-cup/" target="_blank" rel="noopener noreferrer">
+        <h3>ベイサイドカップ</h3>
+        <p>少年野球の大会情報・試合情報。</p>
+        <div class="card-link">大会サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="https://alljapanbaseball.net/honma1/" target="_blank" rel="noopener noreferrer">
+        <h3>年中夢球杯</h3>
+        <p>年中夢球杯の大会情報。</p>
+        <div class="card-link">大会サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="http://miyamoto-cup.com/" target="_blank" rel="noopener noreferrer">
+        <h3>宮本慎也杯</h3>
+        <p>宮本慎也杯少年野球大会の情報。</p>
+        <div class="card-link">大会サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="https://pridejapan.net/mizunodream-cup/jr-tournament/" target="_blank" rel="noopener noreferrer">
+        <h3>ミズノベースボールドリームカップ</h3>
+        <p>ミズノが関連するジュニア野球大会の情報。</p>
+        <div class="card-link">大会サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="http://virgin89.919homepage.com/user/" target="_blank" rel="noopener noreferrer">
+        <h3>ヴァージンリーグ</h3>
+        <p>ヴァージンリーグの大会情報。</p>
+        <div class="card-link">大会サイトを見る <span>›</span></div>
+      </a>
+
+      <a class="card" href="https://arakawacreation.blogspot.com/" target="_blank" rel="noopener noreferrer">
+        <h3>荒川クリエーション杯学童少年野球大会</h3>
+        <p>荒川クリエーション杯の大会情報。</p>
+        <div class="card-link">大会サイトを見る <span>›</span></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- その他 -->
+  <section class="section" id="other">
+    <h2 class="section-title">
+      <span class="icon">📍</span>
+      その他の大会情報
+    </h2>
+
+    <div class="card-grid">
+
+      <a class="card" href="https://tochiji2023.seesaa.net/" target="_blank" rel="noopener noreferrer">
+        <h3>台東区都知事杯少年野球大会</h3>
+        <p>台東区都知事杯少年野球大会の情報ページ。</p>
+        <div class="card-link">大会サイトを見る <span>›</span></div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- 滝野川少年野球連盟 -->
+  <div class="special">
+    <h2>⚾ 北区滝野川少年野球連盟</h2>
+    <p>
+      滝野川地区の少年野球に関する情報はこちらから。
+    </p>
+    <a href="https://tacky-y.notion.site/takinogawa"
+       target="_blank" rel="noopener noreferrer">
+      滝野川少年野球連盟のページを見る →
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-brand">⚾ YABATA JUNIOR</div>
+  <p>東京都北区の少年野球チーム 谷端ジュニア</p>
+  <a href="https://yoji-t.github.io/yabata-jr/index.html">
+    谷端ジュニア ホームページへ戻る
+  </a>
+  <p>© YABATA JUNIOR</p>
+</footer>
+
+</body>
+</html>
