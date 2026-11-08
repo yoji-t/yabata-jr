@@ -1,602 +1,519 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>谷端ジュニア 高学年（4〜6年生）試合結果 | 2026</title>
-<meta name="description" content="谷端ジュニア高学年（4〜6年生）の試合結果ダッシュボード。2025年11月〜2026年11月の全105試合の勝敗・スコア・会場を一覧できます。">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="東京都北区の少年野球チーム 谷端ジュニアの2026年高学年試合結果。試合成績、勝率、対戦結果を掲載しています。">
+<title>谷端ジュニア｜2026年 試合結果</title>
 <style>
-*,*::before,*::after{box-sizing:border-box}
-:root{
-  --text:#2C2C2B;--text2:#6E6B66;--canvas:#FFFFFF;--soft:#F9F8F7;--surface2:#F0EFED;--border:#E6E5E3;
-  --win:#2F7A54;--win-bg:#E8F1EC;--loss:#B4433A;--loss-bg:#FCE9E7;
-  --accent:#2783DE;--radius:12px;
+:root {
+  --navy:#102b49;
+  --blue:#174d79;
+  --red:#d84b4b;
+  --gold:#e9b84e;
+  --bg:#f3f6fa;
+  --white:#fff;
+  --text:#243449;
+  --muted:#718096;
 }
-@media (prefers-color-scheme:dark){
-  :root{--text:#FFFFFF;--text2:rgba(255,255,255,.68);--canvas:#191919;--soft:#202020;--surface2:#2A2A28;
-  --border:rgba(255,255,255,.20);--win:#72BC8F;--win-bg:rgba(114,188,143,.15);--loss:#E97366;--loss-bg:rgba(233,115,102,.15);
-  --accent:#5E9FE8;}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
+  "Noto Sans JP",sans-serif;
 }
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--canvas);color:var(--text);font-size:16px;line-height:1.5;
-  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,system-ui,sans-serif;
-  -webkit-font-smoothing:antialiased}
-a{color:var(--accent)}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
-.wrap{max-width:1080px;margin:0 auto;padding:24px}
-@media (min-width:768px){.wrap{padding:40px 40px 64px}}
-
-/* top bar */
-.topbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:32px}
-.home{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:1px solid var(--border);
-  border-radius:999px;background:var(--soft);color:var(--text);text-decoration:none;font-size:15px;font-weight:550}
-.home:hover{background:var(--surface2)}
-.home svg{flex:none}
-.updated{font-size:14px;color:var(--text2)}
-
-/* header */
-.eyebrow{margin:0 0 8px;font-size:14px;letter-spacing:.08em;color:var(--text2);font-variant-numeric:tabular-nums}
-h1{margin:0;font-size:30px;line-height:1.25;font-weight:700;letter-spacing:-.01em}
-@media (min-width:768px){h1{font-size:38px}}
-h1 .sub{display:block;font-size:.62em;font-weight:600;color:var(--text2);margin-top:6px;letter-spacing:0}
-.lede{margin:16px 0 0;font-size:16px;color:var(--text2);max-width:46em}
-
-/* kpi */
-.kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:32px 0 0}
-@media (min-width:600px){.kpis{grid-template-columns:repeat(3,1fr);gap:16px}}
-@media (min-width:900px){.kpis{grid-template-columns:repeat(6,1fr)}}
-.kpi{margin:0;padding:16px;background:var(--soft);border:1px solid var(--border);border-radius:var(--radius)}
-.kpi-label{margin:0 0 4px;font-size:14px;color:var(--text2)}
-.kpi-value{margin:0;font-size:28px;line-height:1.2;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-.kpi-value .unit{font-size:15px;font-weight:600;margin-left:2px}
-.kpi.win .kpi-value{color:var(--win)}
-.kpi.loss .kpi-value{color:var(--loss)}
-
-/* panels */
-.panels{display:grid;gap:16px;margin-top:32px}
-.panels>*{min-width:0}
-@media (min-width:900px){.panels{grid-template-columns:1fr 1fr;gap:24px}}
-.panel{min-width:0;margin:0;padding:20px;background:var(--soft);border:1px solid var(--border);border-radius:var(--radius)}
-.panel-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:4px}
-.panel h2{margin:0;font-size:17px;font-weight:650;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
-.panel-kpi{font-size:17px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
-.panel .figure-note{margin:0 0 20px;font-size:14px;color:var(--text2)}
-
-/* monthly bars */
-.mrows{display:flex;flex-direction:column;gap:2px}
-.mrow{display:grid;grid-template-columns:52px 1fr 46px 50px;align-items:center;gap:8px;padding:2px 0}
-.mrow-lab{font-size:14px;color:var(--text2);font-variant-numeric:tabular-nums;white-space:nowrap}
-.mrow-track{position:relative;display:block;height:12px;border-radius:3px;background:var(--surface2)}
-.mrow-track::after{content:"";position:absolute;left:50%;top:-2px;bottom:-2px;border-left:1px dashed var(--text2);opacity:.55}
-.mrow-bar{display:block;height:100%;border-radius:3px;background:var(--accent)}
-.mrow-val{font-size:14px;font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
-.mrow-sub{font-size:14px;color:var(--text2);text-align:right;font-variant-numeric:tabular-nums}
-.empty-note{margin:0;padding:24px 0;font-size:15px;color:var(--text2)}
-
-/* cumulative */
-.cum{width:100%;min-width:0}
-.cum svg{display:block;width:100%;height:auto;overflow:visible}
-.cum-grid{stroke:var(--border);stroke-width:1}
-.cum-zero{stroke:var(--border);stroke-width:1}
-.cum-area{fill:var(--accent);opacity:.10}
-.cum-line{fill:none;stroke:var(--accent);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
-.cum-dot{fill:var(--accent)}
-.cum-tick{fill:var(--text2);font-size:14px;font-variant-numeric:tabular-nums}
-.cum-end{fill:var(--text);font-size:15px;font-weight:650;font-variant-numeric:tabular-nums}
-
-/* filters + table */
-.tablecard{margin-top:32px;background:var(--soft);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
-.filters{display:grid;gap:12px}
-@media (min-width:768px){.filters{grid-template-columns:auto 1fr 1fr 1fr}}
-.seg{display:inline-flex;padding:4px;gap:4px;background:var(--canvas);border:1px solid var(--border);border-radius:999px}
-.seg button{min-height:44px;min-width:72px;padding:0 16px;border:0;border-radius:999px;background:none;color:var(--text2);
-  font:inherit;font-size:15px;font-weight:550;cursor:pointer}
-.seg button[aria-pressed="true"]{background:var(--text);color:var(--canvas)}
-.field{display:flex;flex-direction:column;gap:4px}
-.field label{font-size:14px;color:var(--text2)}
-select,input[type=search]{min-height:44px;width:100%;padding:0 12px;border:1px solid var(--border);border-radius:8px;
-  background:var(--canvas);color:var(--text);font:inherit;font-size:16px}
-input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}
-.filterbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin:16px 0 12px;
-  padding-top:16px;border-top:1px solid var(--border)}
-.count{margin:0;font-size:15px;color:var(--text2)}
-.count b{color:var(--text);font-variant-numeric:tabular-nums}
-.reset{min-height:44px;padding:0 16px;border:1px solid var(--border);border-radius:8px;background:var(--canvas);
-  color:var(--text);font:inherit;font-size:15px;cursor:pointer}
-.reset:hover{background:var(--surface2)}
-
-.tablewrap{display:none;overflow:auto;max-height:min(72vh,760px);border:1px solid var(--border);border-radius:8px;background:var(--canvas)}
-@media (min-width:768px){.tablewrap{display:block}}
-table{width:100%;border-collapse:collapse;font-size:15px}
-th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--border);white-space:nowrap}
-thead th{position:sticky;top:0;z-index:1;background:var(--canvas);font-size:14px;font-weight:600;color:var(--text2);
-  border-bottom:1px solid var(--border)}
-tbody tr:hover{background:var(--soft)}
-tbody tr:last-child td{border-bottom:0}
-th button{display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0;border:0;background:none;
-  color:inherit;font:inherit;font-weight:600;cursor:pointer}
-td.c-date{font-variant-numeric:tabular-nums}
-td.c-date .wd{font-size:14px;color:var(--text2);margin-left:4px}
-td.c-opp{font-weight:600}
-td.c-score{font-variant-numeric:tabular-nums;font-weight:700;font-size:17px}
-td.c-score .s-dash{font-weight:400;color:var(--text2);margin:0 6px}
-td.c-score .s-opp{font-weight:600;color:var(--text2)}
-td.c-score .s-note{font-size:14px;font-weight:400;color:var(--text2);margin-left:6px}
-td.c-venue,td.c-tour{color:var(--text2);white-space:normal}
-td.c-venue{color:var(--text)}
-td.c-tour{min-width:120px}
-td.c-venue{min-width:120px}
-.badge{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:26px;padding:0 10px;
-  border-radius:6px;font-size:14px;font-weight:700;line-height:1}
-.badge.win{background:var(--win-bg);color:var(--win)}
-.badge.loss{background:var(--loss-bg);color:var(--loss)}
-td.empty{text-align:center;color:var(--text2);padding:40px 14px;white-space:normal}
-
-/* mobile cards */
-.cards{display:none;gap:12px;margin:0;padding:0;list-style:none}
-@media (max-width:767px){.cards{display:grid}}
-.card{background:var(--canvas);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
-.card-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.card-date{font-size:14px;color:var(--text2);font-variant-numeric:tabular-nums}
-.card-opp{margin:8px 0 2px;font-size:18px;font-weight:650;line-height:1.3}
-.card-meta{margin:0;font-size:14px;color:var(--text2)}
-.card-score{margin:8px 0 0;font-size:17px;font-weight:700;font-variant-numeric:tabular-nums}
-.card-score .s-dash{font-weight:400;color:var(--text2);margin:0 6px}
-.card-score .s-opp{font-weight:600;color:var(--text2)}
-.card-score .s-note{font-size:14px;font-weight:400;color:var(--text2);margin-left:6px}
-
-footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--border);font-size:14px;color:var(--text2)}
-footer p{margin:0 0 4px}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+a {color:inherit}
+.home {
+  display:block;
+  background:var(--navy);
+  color:white;
+  padding:13px 20px;
+  text-decoration:none;
+  font-weight:bold;
+  font-size:14px;
+}
+.home:hover {background:var(--blue)}
+.hero {
+  background:linear-gradient(135deg,#102b49,#205d8b);
+  color:white;
+  padding:48px 20px 42px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero:after {
+  content:"BASEBALL";
+  position:absolute;
+  font-size:100px;
+  font-weight:900;
+  color:rgba(255,255,255,.045);
+  right:-10px;
+  bottom:-15px;
+  transform:rotate(-8deg);
+}
+.hero .tag {
+  color:var(--gold);
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:3px;
+}
+.hero h1 {
+  font-size:clamp(27px,5vw,43px);
+  margin:12px 0;
+  font-weight:900;
+}
+.hero p {
+  margin:0;
+  color:#d8e6f4;
+  font-size:14px;
+}
+.container {
+  max-width:1100px;
+  margin:0 auto;
+  padding:25px 18px 55px;
+}
+.section-title {
+  font-size:19px;
+  font-weight:900;
+  margin:32px 0 16px;
+  border-left:5px solid var(--gold);
+  padding-left:12px;
+}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+.card {
+  background:white;
+  border-radius:12px;
+  padding:19px 12px;
+  text-align:center;
+  box-shadow:0 3px 12px rgba(20,40,70,.06);
+}
+.card small {
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:bold;
+}
+.card strong {
+  display:block;
+  font-size:32px;
+  margin-top:7px;
+  font-weight:900;
+  color:var(--navy);
+}
+.card .unit {font-size:13px}
+.card.win strong {color:#23966b}
+.card.loss strong {color:var(--red)}
+.card.draw strong {color:#c18b24}
+.rate {
+  background:white;
+  border-radius:12px;
+  padding:20px;
+  margin-top:14px;
+  box-shadow:0 3px 12px rgba(20,40,70,.05);
+}
+.rate-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  font-weight:bold;
+}
+.rate-head strong {
+  font-size:27px;
+  color:#23966b;
+}
+.bar {
+  height:13px;
+  background:#e8edf2;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:13px;
+}
+.bar span {
+  display:block;
+  height:100%;
+  background:#23966b;
+  border-radius:20px;
+}
+.controls {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:15px;
+}
+.controls input,.controls select {
+  border:1px solid #d9e1e9;
+  background:white;
+  border-radius:8px;
+  padding:12px;
+  font-size:14px;
+  min-width:0;
+}
+.controls input {flex:1;min-width:180px}
+.controls select {min-width:130px}
+.results {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+.game {
+  background:white;
+  border-radius:11px;
+  padding:15px;
+  box-shadow:0 2px 8px rgba(20,40,70,.045);
+  border:1px solid #e8edf2;
+}
+.game-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+}
+.date {
+  font-size:12px;
+  color:var(--muted);
+  font-weight:bold;
+}
+.badge {
+  font-size:11px;
+  font-weight:900;
+  padding:5px 11px;
+  border-radius:20px;
+}
+.badge.win {background:#e2f5ec;color:#168454}
+.badge.loss {background:#ffebeb;color:#c63d3d}
+.badge.draw {background:#fff3d8;color:#a87815}
+.tournament {
+  font-size:12px;
+  color:#65778a;
+  margin-top:12px;
+}
+.match {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  margin:11px 0;
+}
+.team {
+  font-weight:800;
+  font-size:14px;
+  line-height:1.5;
+}
+.score {
+  font-size:25px;
+  font-weight:900;
+  color:var(--navy);
+  white-space:nowrap;
+}
+.score small {
+  font-size:12px;
+  color:var(--muted);
+  font-weight:normal;
+}
+.place {
+  border-top:1px solid #edf0f4;
+  padding-top:10px;
+  font-size:11px;
+  color:var(--muted);
+}
+.empty {
+  grid-column:1/-1;
+  text-align:center;
+  padding:35px;
+  color:var(--muted);
+  background:white;
+  border-radius:12px;
+}
+.count {
+  color:var(--muted);
+  font-size:13px;
+  margin:0 0 12px;
+}
+footer {
+  background:var(--navy);
+  color:#c8d6e5;
+  text-align:center;
+  padding:25px 15px;
+  font-size:12px;
+}
+footer a {color:white}
+@media(max-width:650px) {
+  .cards {grid-template-columns:repeat(2,1fr)}
+  .results {grid-template-columns:1fr}
+  .hero {padding:38px 15px}
+  .container {padding:18px 13px 40px}
+  .card strong {font-size:28px}
+}
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <div class="topbar">
-    <a class="home" href="https://yoji-t.github.io/yabata-jr/">
-      <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 2 4 8l6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      ホームへ戻る
-    </a>
-    <span class="updated">最終更新 2026.11.07</span>
+<a class="home" href="https://yoji-t.github.io/yabata-jr/">
+  ← ホームへ戻る
+</a>
+
+<header class="hero">
+  <div class="tag">YABATA JUNIOR BASEBALL CLUB</div>
+  <h1>2026 SEASON<br>GAME RESULTS</h1>
+  <p>谷端ジュニア 高学年（4〜6年生）試合結果</p>
+</header>
+
+<main class="container">
+
+  <h2 class="section-title">SEASON RECORD｜シーズン成績</h2>
+
+  <section class="cards">
+    <div class="card">
+      <small>TOTAL GAMES</small>
+      <strong id="total">108</strong>
+      <small>試合数</small>
+    </div>
+    <div class="card win">
+      <small>WINS</small>
+      <strong id="wins">87</strong>
+      <small>勝利</small>
+    </div>
+    <div class="card loss">
+      <small>LOSSES</small>
+      <strong id="losses">20</strong>
+      <small>敗戦</small>
+    </div>
+    <div class="card draw">
+      <small>DRAWS</small>
+      <strong id="draws">1</strong>
+      <small>引き分け</small>
+    </div>
+  </section>
+
+  <section class="rate">
+    <div class="rate-head">
+      <span>WINNING PERCENTAGE｜勝率</span>
+      <strong id="rate">81.3%</strong>
+    </div>
+    <div class="bar">
+      <span id="ratebar" style="width:81.3%"></span>
+    </div>
+  </section>
+
+  <h2 class="section-title">GAME HISTORY｜試合一覧</h2>
+
+  <div class="controls">
+    <input id="search" type="search"
+      placeholder="対戦相手・大会名・球場を検索">
+    <select id="filter">
+      <option value="all">すべての試合</option>
+      <option value="勝ち">勝利</option>
+      <option value="負け">敗戦</option>
+      <option value="引き分け">引き分け</option>
+    </select>
+    <select id="year">
+      <option value="all">すべての年度</option>
+      <option value="2026">2026年</option>
+      <option value="2025">2025年</option>
+    </select>
   </div>
 
-  <header>
-    <p class="eyebrow">2025.11 — 2026.11</p>
-    <h1>谷端ジュニア 高学年（4〜6年生）<span class="sub">試合結果ダッシュボード</span></h1>
-    <p class="lede">全105試合の勝敗・スコア・会場をまとめました。大会・対戦相手・会場で絞り込めます。</p>
-  </header>
+  <p class="count" id="count"></p>
+  <div class="results" id="results"></div>
 
-  <section class="kpis" aria-label="成績サマリー">
-    <div class="kpi"><p class="kpi-label">試合数</p><p class="kpi-value" id="k-n">–</p></div>
-    <div class="kpi win"><p class="kpi-label">勝ち</p><p class="kpi-value" id="k-w">–</p></div>
-    <div class="kpi loss"><p class="kpi-label">負け</p><p class="kpi-value" id="k-l">–</p></div>
-    <div class="kpi"><p class="kpi-label">勝率</p><p class="kpi-value" id="k-rate">–</p></div>
-    <div class="kpi"><p class="kpi-label">平均得点</p><p class="kpi-value" id="k-own">–</p></div>
-    <div class="kpi"><p class="kpi-label">平均失点</p><p class="kpi-value" id="k-opp">–</p></div>
-  </section>
+</main>
 
-  <section class="panels" aria-label="推移グラフ">
-    <figure class="panel">
-      <div class="panel-head">
-        <h2>月別の勝率</h2>
-      </div>
-      <p class="figure-note">各月の勝率。縦の破線が5割。</p>
-      <div id="mchart" role="img" aria-label="月別の勝率グラフ"></div>
-    </figure>
-
-    <figure class="panel">
-      <div class="panel-head">
-        <h2>得失点差の累積 <span class="panel-kpi" id="cum-total">–</span></h2>
-      </div>
-      <p class="figure-note">1試合ごとの（得点 − 失点）を積み上げた推移。</p>
-      <div class="cum" id="cum" role="img" aria-label="得失点差の累積グラフ"></div>
-    </figure>
-  </section>
-
-  <section class="tablecard" aria-label="試合一覧">
-    <div class="filters">
-      <div class="seg" role="group" aria-label="勝敗で絞り込む">
-        <button type="button" data-res="all" aria-pressed="true">すべて</button>
-        <button type="button" data-res="勝" aria-pressed="false">勝ち</button>
-        <button type="button" data-res="負" aria-pressed="false">負け</button>
-      </div>
-      <div class="field"><label for="f-tour">大会</label><select id="f-tour"></select></div>
-      <div class="field"><label for="f-opp">対戦相手</label><select id="f-opp"></select></div>
-      <div class="field"><label for="f-venue">会場</label><select id="f-venue"></select></div>
-    </div>
-
-    <div class="filterbar">
-      <p class="count" id="count" aria-live="polite">–</p>
-      <button type="button" class="reset" id="reset">条件をクリア</button>
-    </div>
-
-    <div class="tablewrap">
-      <table>
-        <caption class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">試合一覧</caption>
-        <thead>
-          <tr>
-            <th scope="col"><button type="button" id="sort-btn" aria-label="日付で並べ替え">日付 <span id="sort-icon" aria-hidden="true">↓</span></button></th>
-            <th scope="col">大会</th>
-            <th scope="col">対戦相手</th>
-            <th scope="col">スコア</th>
-            <th scope="col">結果</th>
-            <th scope="col">会場</th>
-          </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
-    </div>
-
-    <ul class="cards" id="cards"></ul>
-  </section>
-
-  <footer>
-    <p>データ元：Notion「2026年谷端ジュニア高学年（4〜6年生）の試合結果」</p>
-    <p>スコアは自チーム − 相手チームの順で表示しています。</p>
-  </footer>
-</div>
+<footer>
+  <strong>YABATA JUNIOR BASEBALL CLUB</strong>
+  <p>谷端ジュニア｜東京都北区 少年野球チーム</p>
+  <a href="https://yoji-t.github.io/yabata-jr/">ホームページへ戻る</a>
+</footer>
 
 <script>
-const RAW=[
-["2025-11-24","滝野川大会新人戦","豊島堀船","勝","6-0","北区中央公園"],
-["2025-11-30","練習試合","豊島堀船","勝","12-0","新荒川大橋野球場"],
-["2025-12-06","滝野川大会新人戦","新田ファイヤーズ","勝","9-2","北区中央公園"],
-["2025-12-07","滝野川大会新人戦","BBC","勝","10-3","北区中央公園"],
-["2025-12-21","クリスマスカップ","深川ジャイアンツ","負","0-3","新荒川大橋野球場"],
-["2026-01-11","練習試合","駒込ベアーズ","勝","23-3","西新井緑地野球場"],
-["2026-01-12","練習試合①","台東ジャニーズ","勝","9-3","東白髭公園野球場"],
-["2026-01-12","練習試合②","台東ジャニーズ","勝","5-2","東白髭公園野球場"],
-["2026-01-18","練習試合①","成増第二ライオンズ","勝","6-1","戸田橋野球場"],
-["2026-01-18","練習試合②","成増第二ライオンズ","勝","5-2","戸田橋野球場"],
-["2026-01-24","ナガセケンコー杯","高島エイト","勝","4-3","多摩川緑地野球場"],
-["2026-01-25","練習試合","中村ウィンズ","勝","4-1","新荒川大橋野球場"],
-["2026-01-31","練習試合①","西千タイガース","勝","7-0","西新井緑地野球場"],
-["2026-01-31","練習試合②","西千タイガース","勝","5-1","西新井緑地野球場"],
-["2026-02-01","練習試合①","ジュニアヤンガース","勝","6-5","豊島五丁目グリーンスポーツ広場"],
-["2026-02-01","練習試合②","ジュニアヤンガース","勝","3-2","豊島五丁目グリーンスポーツ広場"],
-["2026-02-07","練習試合①","扇ターキーズ","勝","3-2","川口市東スポーツセンター"],
-["2026-02-07","練習試合②","扇ターキーズ","勝","14-0","川口市東スポーツセンター"],
-["2026-02-14","練習試合","東京ウイング","負","4-5","多摩川緑地野球場"],
-["2026-02-15","練習試合①","フェニックス","勝","8-0","西新井緑地野球場"],
-["2026-02-15","練習試合②","フェニックス","勝","6-0","西新井緑地野球場"],
-["2026-02-21","東京都城北少年野球大会","成増第二ライオンズ","勝","8-0","戸田橋野球場"],
-["2026-02-22","くりくり少年野球大会","王子ドルフィンズ","勝","9-0","新荒川大橋野球場"],
-["2026-02-22","ナガセケンコー杯","鷺宮スタージョーズ","負","3-10","多摩川緑地野球場"],
-["2026-03-07","ミズノベースボールドリームカップ","玉川ラプターズ","勝","9-1","新荒川大橋野球場"],
-["2026-03-07","練習試合","玉川ラプターズ","勝","13-2","新荒川大橋野球場"],
-["2026-03-08","北区大会","豊島堀船","勝","5-3","新荒川大橋野球場"],
-["2026-03-14","年中夢球杯","青梅ドラゴンズ","勝","7-3","新荒川大橋野球場"],
-["2026-03-14","練習試合","青梅ドラゴンズ","勝","11-8","新荒川大橋野球場"],
-["2026-03-15","練習試合①","大塚ミスギホープ","勝","8-0","文京区立第一中学校"],
-["2026-03-15","練習試合②","大塚ミスギホープ","勝","3-1","文京区立第一中学校"],
-["2026-03-20","北区大会","城北メッツ","勝","9-2","浮間子どもスポーツ広場"],
-["2026-03-20","練習試合","仲宿ファイターズ","勝","15-6","戸田橋野球場"],
-["2026-03-21","東京都城北少年野球大会","大泉ファイターズ","勝","10-0","戸田橋野球場"],
-["2026-03-22","北区大会","城北メッツ","勝","4-3","新荒川大橋野球場"],
-["2026-03-29","東京都知事杯北区代表決定大会","諏訪クラブ","勝","16-5","新荒川大橋野球場"],
-["2026-03-29","ミズノベースボールドリームカップ","清瀬レッドライオンズ","負","1-8","豊島五丁目グリーンスポーツ広場"],
-["2026-04-04","年中夢球杯","船堀ダックスクラブ","勝","11-0","江戸川区臨海野球場"],
-["2026-04-05","スポーツ少年団北区春季大会","十条イーグルス","勝","9-0","新荒川大橋野球場"],
-["2026-04-05","東京都知事杯北区代表決定大会","西浮間イーグルス","勝","15-1","新荒川大橋野球場"],
-["2026-04-11","東京都城北少年野球大会","リトルフィッシュ","勝","4-3","戸田橋野球場"],
-["2026-04-12","くりくり少年野球大会北区代表決定大会","城北メッツ","負","2-3","新荒川大橋野球場"],
-["2026-04-12","スポーツ少年団北区春季大会","赤西ナイン","勝","13-2","新荒川大橋野球場"],
-["2026-04-18","浮間リーグ","諏訪クラブ","勝","8-1","浮間子どもスポーツ広場"],
-["2026-04-19","東京都知事杯北区代表決定大会","城北メッツ","勝","7-2","新荒川大橋野球場"],
-["2026-04-26","東京都知事杯北区代表決定大会","BBC","勝","9-2","新荒川大橋野球場"],
-["2026-04-29","ジャビットカップ北区代表決定大会","西浮間イーグルス","勝","12-6","新荒川大橋野球場"],
-["2026-05-02","宮本慎也杯","旗の台クラブ","負","0-6","大井埠頭海浜公園野球場"],
-["2026-05-02","練習試合","旗の台クラブ","負","3-5","大井埠頭海浜公園野球場"],
-["2026-05-03","浮間リーグ","若木ベースボールクラブ","勝","11-2","浮間子どもスポーツ広場"],
-["2026-05-03","浮間リーグ","桜川ドリームス","勝","9-6","浮間子どもスポーツ広場"],
-["2026-05-06","志茂大会","王子ドルフィンズ","勝","10-0","新荒川大橋野球場"],
-["2026-05-09","年中夢球杯","百草台フェニックス","負","1-3","百草台運動広場"],
-["2026-05-09","東京都城北少年野球大会","西千タイガース","勝","4-1","戸田橋野球場"],
-["2026-05-10","スポーツ少年団城北ブロック大会","舎人スポーツ少年団","勝","20-0","江北橋右岸野球場"],
-["2026-05-17","マクドナルド・トーナメント","四谷スワローズ","勝","8-6","郷土の森野球場"],
-["2026-05-23","浮間リーグ","長後ベアーズ","勝","10-1","浮間子どもスポーツ広場"],
-["2026-05-23","浮間リーグ","オール中台","勝","9-0","浮間子どもスポーツ広場"],
-["2026-05-24","マクドナルドトーナメント","清瀬レッドライオンズ","勝","6-0","郷土の森野球場"],
-["2026-05-30","志茂大会","西浮間イーグルス","勝","5-4","新荒川大橋野球場"],
-["2026-05-31","マクドナルドトーナメント","国立シャークス","負","11-12","郷土の森野球場"],
-["2026-06-06","志茂大会","BBC","勝","14-0","新荒川大橋野球場"],
-["2026-06-07","ジャビットカップ北区代表決定大会","諏訪クラブ","勝","7-0","新荒川大橋野球場"],
-["2026-06-14","東京都知事杯","十八軒アトムズ","勝","7-4","八王子滝ガ原野球場"],
-["2026-06-21","東京都知事杯","いずみスワローズ","負","4-5","八王子滝ガ原野球場"],
-["2026-06-28","ジャビットカップ北区代表決定大会","マッハブレーブス","勝","3-1","新荒川大橋野球場"],
-["2026-06-28","浮間大会","BBC","勝","8-3","浮間子どもスポーツ広場"],
-["2026-07-04","志茂大会","豊島堀船","勝","3-2","新荒川大橋野球場"],
-["2026-07-04","滝野川大会","稲田クラブ","勝","19-1","北区中央公園"],
-["2026-07-05","ジャビットカップ北区代表決定大会","豊島堀船","勝","2-1","新荒川大橋野球場"],
-["2026-07-05","滝野川大会","城北メッツ","負","5-6","北区中央公園"],
-["2026-07-11","東京都城北少年野球大会","旭町野球クラブ","負","3-4","戸田橋野球場"],
-["2026-07-11","東京都城北少年野球大会","竹仲","負","3-9","戸田橋野球場"],
-["2026-07-12","東京都学童選抜野球大会","墨田選抜","勝","1-1(2-1)","錦糸公園野球場"],
-["2026-07-19","東京都学童選抜野球大会","世田谷選抜","勝","6-4","錦糸公園野球場"],
-["2026-07-19","東京都学童選抜野球大会","中央選抜","勝","7-0","錦糸公園野球場"],
-["2026-07-20","東京都学童選抜野球大会","江東選抜","勝","10-2","東白髭公園野球場"],
-["2026-07-20","東京都学童選抜野球大会","江戸川選抜","負","1-2","東白髭公園野球場"],
-["2026-07-25","オールジャパンベースボールリーグ","マッハブレーブス","勝","9-5","戸田橋野球場"],
-["2026-07-26","オールジャパンベースボールリーグ","新田ファイヤーズ","勝","16-2","鹿浜橋右岸"],
-["2026-08-08","ジャビットカップ","中野島あけぼの","勝","9-6","三鷹大沢総合グラウンド"],
-["2026-08-09","ジャビットカップ","下麻岡少年野球部","勝","9-8","三鷹大沢総合グラウンド"],
-["2026-08-14","練習試合","東桂少年野球部","勝","14-3","住吉球場"],
-["2026-08-22","ジャビットカップチャンピオン大会","つくしシャークス","負","2-3","夢の島野球場"],
-["2026-08-23","練習試合","中台クラブ","勝","8-3","板橋城北野球場"],
-["2026-08-29","浮間リーグ","豊島堀船","勝","18-0","浮間子どもスポーツ広場"],
-["2026-08-30","浮間リーグ","BBC","勝","8-1","浮間子どもスポーツ広場"],
-["2026-08-30","浮間リーグ","赤西ナイン","勝","7-1","浮間子どもスポーツ広場"],
-["2026-09-22","北区秋季大会","西浮間イーグルス","勝","9-2","新荒川大橋野球場"],
-["2026-09-22","浮間リーグ","戸ニ小ジャガース","勝","6-0","浮間子どもスポーツ広場"],
-["2026-09-23","志茂大会","稲田クラブ","勝","7-0","新荒川大橋野球場"],
-["2026-09-27","北区秋季大会","豊島堀船","負","0-4","新荒川大橋野球場"],
-["2026-10-03","志茂大会","飛鳥ジュニア","勝","9-0","新荒川大橋野球場"],
-["2026-10-04","北区秋季大会","ブルースカイズ","勝","3-1","新荒川大橋野球場"],
-["2026-10-04","浮間リーグ","高島平セブンスターズ","勝","6-1","浮間子どもスポーツ広場"],
-["2026-10-10","赤羽大会","マッハブレーブス","勝","9-8","赤羽自然観察公園"],
-["2026-10-10","志茂大会","BBC","勝","10-1","新荒川大橋野球場"],
-["2026-10-11","赤羽大会","豊島堀船","負","6-7","赤羽自然観察公園"],
-["2026-10-12","練習試合","中台クラブ","勝","5-3","板橋城北野球場"],
-["2026-10-18","東京都スポーツ少年団大会","高円寺メイト","負","2-9","篠崎公園野球場"],
-["2026-10-18","東京都城北少年野球大会","梶山レッドスターズ","勝","10-3","戸田橋野球場"],
-["2026-11-01","ジュニア大会","飛鳥ジュニア","勝","7-0","新荒川大橋野球場"],
-["2026-11-01","練習試合","豊島堀船","勝","5-4","新荒川大橋野球場"],
-["2026-11-03","志茂大会","マッハブレーブス","勝","4-0","新荒川大橋野球場"],
-["2026-11-07","練習試合","元加賀","勝","7-6","夢の島野球場"]
+// Notionの試合データ
+// [日付, 試合名, 対戦相手, 点数, 勝敗, 球場]
+
+const games = [
+["2025-11-24","滝野川大会新人戦","豊島堀船","6-0","勝ち","北区中央公園"],
+["2025-11-30","練習試合","豊島堀船","12-0","勝ち","新荒川大橋野球場"],
+["2025-12-06","滝野川大会新人戦","新田ファイヤーズ","9-2","勝ち","北区中央公園"],
+["2025-12-07","滝野川大会新人戦","BBC","10-3","勝ち","北区中央公園"],
+["2025-12-21","クリスマスカップ","深川ジャイアンツ","0−3","負け","新荒川大橋野球場"],
+["2026-01-11","練習試合","駒込ベアーズ","23-3","勝ち","西新井緑地野球場"],
+["2026-01-12","練習試合①","台東ジャニーズ","9-3","勝ち","東白髭公園野球場"],
+["2026-01-12","練習試合②","台東ジャニーズ","5-2","勝ち","東白髭公園野球場"],
+["2026-01-18","練習試合①","成増第二ライオンズ","6-1","勝ち","戸田橋野球場"],
+["2026-01-18","練習試合②","成増第二ライオンズ","5-2","勝ち","戸田橋野球場"],
+["2026-01-24","ナガセケンコー杯","高島エイト","4-3","勝ち","多摩川緑地野球場"],
+["2026-01-25","練習試合","中村ウィンズ","4-1","勝ち","新荒川大橋野球場"],
+["2026-01-31","練習試合①","西千タイガース","7-0","勝ち","西新井緑地野球場"],
+["2026-01-31","練習試合②","西千タイガース","5-1","勝ち","西新井緑地野球場"],
+["2026-02-01","練習試合①","ジュニアヤンガース","6-5","勝ち","豊島五丁目グリーンスポーツ広場"],
+["2026-02-01","練習試合②","ジュニアヤンガース","3-2","勝ち","豊島五丁目グリーンスポーツ広場"],
+["2026-02-07","練習試合①","扇ターキーズ","3-2","勝ち","川口市東スポーツセンター"],
+["2026-02-07","練習試合②","扇ターキーズ","14-0","勝ち","川口市東スポーツセンター"],
+["2026-02-14","練習試合","東京ウイング","4-5","負け","多摩川緑地野球場"],
+["2026-02-15","練習試合①","フェニックス","8-0","勝ち","西新井緑地野球場"],
+["2026-02-15","練習試合②","フェニックス","6-0","勝ち","西新井緑地野球場"],
+["2026-02-21","東京都城北少年野球大会","成増第二ライオンズ","8-0","勝ち","戸田橋野球場"],
+["2026-02-22","くりくり少年野球大会","王子ドルフィンズ","9-0","勝ち","新荒川大橋野球場"],
+["2026-02-22","ナガセケンコー杯","鷺宮スタージョーズ","3-10","負け","多摩川緑地野球場"],
+["2026-03-07","ミズノベースボールドリームカップ","玉川ラプターズ","9-1","勝ち","新荒川大橋野球場"],
+["2026-03-07","練習試合","玉川ラプターズ","13-2","勝ち","新荒川大橋野球場"],
+["2026-03-08","北区大会","豊島堀船","5-3","勝ち","新荒川大橋野球場"],
+["2026-03-14","年中夢球杯","青梅ドラゴンズ","7-3","勝ち","新荒川大橋野球場"],
+["2026-03-14","練習試合","青梅ドラゴンズ","11-8","勝ち","新荒川大橋野球場"],
+["2026-03-15","練習試合①","大塚ミスギホープ","8-0","勝ち","文京区立第一中学校"],
+["2026-03-15","練習試合②","大塚ミスギホープ","3-1","勝ち","文京区立第一中学校"],
+["2026-03-20","北区大会","城北メッツ","9-2","勝ち","浮間子どもスポーツ広場"],
+["2026-03-20","練習試合","仲宿ファイターズ","15-6","勝ち","戸田橋野球場"],
+["2026-03-21","東京都城北少年野球大会","大泉ファイターズ","10-0","勝ち","戸田橋野球場"],
+["2026-03-22","北区大会","城北メッツ","4-3","勝ち","新荒川大橋野球場"],
+["2026-03-29","東京都知事杯北区代表決定大会","諏訪クラブ","16−5","勝ち","新荒川大橋野球場"],
+["2026-03-29","ミズノベースボールドリームカップ","清瀬レッドライオンズ","1−8","負け","豊島五丁目グリーンスポーツ広場"],
+["2026-04-04","年中夢球杯","船堀ダックスクラブ","11−0","勝ち","江戸川区臨海野球場"],
+["2026-04-05","スポーツ少年団北区春季大会","十条イーグルス","9−0","勝ち","新荒川大橋野球場"],
+["2026-04-05","東京都知事杯北区代表決定大会","西浮間イーグルス","15−1","勝ち","新荒川大橋野球場"],
+["2026-04-11","東京都城北少年野球大会","リトルフィッシュ","4-3","勝ち","戸田橋野球場"],
+["2026-04-12","くりくり少年野球大会北区代表決定大会","城北メッツ","2-3","負け","新荒川大橋野球場"],
+["2026-04-12","スポーツ少年団北区春季大会","赤西ナイン","13-2","勝ち","新荒川大橋野球場"],
+["2026-04-18","浮間リーグ","諏訪クラブ","8-1","勝ち","浮間子どもスポーツ広場"],
+["2026-04-19","東京都知事杯北区代表決定大会","城北メッツ","7-2","勝ち","新荒川大橋野球場"],
+["2026-04-26","東京都知事杯北区代表決定大会","BBC","9-2","勝ち","新荒川大橋野球場"],
+["2026-04-29","ジャビットカップ北区代表決定大会","西浮間イーグルス","12-6","勝ち","新荒川大橋野球場"],
+["2026-05-02","宮本慎也杯","旗の台クラブ","0-6","負け","大井埠頭海浜公園野球場"],
+["2026-05-02","練習試合","旗の台クラブ","3-5","負け","大井埠頭海浜公園野球場"],
+["2026-05-03","浮間リーグ","若木ベースボールクラブ","11-2","勝ち","浮間子どもスポーツ広場"],
+["2026-05-03","浮間リーグ","桜川ドリームス","9-6","勝ち","浮間子どもスポーツ広場"],
+["2026-05-06","志茂大会","王子ドルフィンズ","10-0","勝ち","新荒川大橋野球場"],
+["2026-05-09","年中夢球杯","百草台フェニックス","1-3","負け","百草台運動広場"],
+["2026-05-09","東京都城北少年野球大会","西千タイガース","4-1","勝ち","戸田橋野球場"],
+["2026-05-10","スポーツ少年団城北ブロック大会","舎人スポーツ少年団","20-0","勝ち","江北橋右岸野球場"],
+["2026-05-17","マクドナルド・トーナメント","四谷スワローズ","8-6","勝ち","郷土の森野球場"],
+["2026-05-23","浮間リーグ","長後ベアーズ","10-1","勝ち","浮間子どもスポーツ広場"],
+["2026-05-23","浮間リーグ","オール中台","9-0","勝ち","浮間子どもスポーツ広場"],
+["2026-05-24","マクドナルドトーナメント","清瀬レッドライオンズ","6-0","勝ち","郷土の森野球場"],
+["2026-05-30","志茂大会","西浮間イーグルス","5-4","勝ち","新荒川大橋野球場"],
+["2026-05-31","マクドナルドトーナメント","国立シャークス","11-12","負け","郷土の森野球場"],
+["2026-06-06","志茂大会","BBC","14-0","勝ち","新荒川大橋野球場"],
+["2026-06-07","ジャビットカップ北区代表決定大会","諏訪クラブ","7-0","勝ち","新荒川大橋野球場"],
+["2026-06-14","東京都知事杯","十八軒アトムズ","7-4","勝ち","八王子滝ガ原野球場"],
+["2026-06-21","東京都知事杯","いずみスワローズ","4-5","負け","八王子滝ガ原野球場"],
+["2026-06-28","ジャビットカップ北区代表決定大会","マッハブレーブス","3-1","勝ち","新荒川大橋野球場"],
+["2026-06-28","浮間大会","BBC","8-3","勝ち","浮間子どもスポーツ広場"],
+["2026-07-04","志茂大会","豊島堀船","3-2","勝ち","新荒川大橋野球場"],
+["2026-07-04","滝野川大会","稲田クラブ","19-1","勝ち","北区中央公園"],
+["2026-07-05","ジャビットカップ北区代表決定大会","豊島堀船","2-1","勝ち","新荒川大橋野球場"],
+["2026-07-05","滝野川大会","城北メッツ","5-6","負け","北区中央公園"],
+["2026-07-11","東京都城北少年野球大会","旭町野球クラブ","3−4","負け","戸田橋野球場"],
+["2026-07-11","東京都城北少年野球大会","竹仲","3−9","負け","戸田橋野球場"],
+["2026-07-12","東京都学童選抜野球大会","墨田選抜","1−1(2−1)","勝ち","錦糸公園野球場"],
+["2026-07-19","東京都学童選抜野球大会","世田谷選抜","6-4","勝ち","錦糸公園野球場"],
+["2026-07-19","東京都学童選抜野球大会","中央選抜","7-0","勝ち","錦糸公園野球場"],
+["2026-07-20","東京都学童選抜野球大会","江東選抜","10-2","勝ち","東白髭公園野球場"],
+["2026-07-20","東京都学童選抜野球大会","江戸川選抜","1-2","負け","東白髭公園野球場"],
+["2026-07-25","オールジャパンベースボールリーグ","マッハブレーブス","9-5","勝ち","戸田橋野球場"],
+["2026-07-26","オールジャパンベースボールリーグ","新田ファイヤーズ","16-2","勝ち","鹿浜橋右岸"],
+["2026-08-08","ジャビットカップ","中野島あけぼの","9-6","勝ち","三鷹大沢総合グラウンド"],
+["2026-08-09","ジャビットカップ","下麻岡少年野球部","9-8","勝ち","三鷹大沢総合グラウンド"],
+["2026-08-14","練習試合","東桂少年野球部","14-3","勝ち","住吉球場"],
+["2026-08-22","ジャビットカップチャンピオン大会","つくしシャークス","2-3","負け","夢の島野球場"],
+["2026-08-23","練習試合","中台クラブ","8-3","勝ち","板橋城北野球場"],
+["2026-08-29","浮間リーグ","豊島堀船","18-0","勝ち","浮間子どもスポーツ広場"],
+["2026-08-30","浮間リーグ","BBC","8-1","勝ち","浮間子どもスポーツ広場"],
+["2026-08-30","浮間リーグ","赤西ナイン","7-1","勝ち","浮間子どもスポーツ広場"],
+["2026-09-22","北区秋季大会","西浮間イーグルス","9-2","勝ち","新荒川大橋野球場"],
+["2026-09-22","浮間リーグ","戸ニ小ジャガース","6-0","勝ち","浮間子どもスポーツ広場"],
+["2026-09-23","志茂大会","稲田クラブ","7-0","勝ち","新荒川大橋野球場"],
+["2026-09-27","北区秋季大会","豊島堀船","0-4","負け","新荒川大橋野球場"],
+["2026-10-03","志茂大会","飛鳥ジュニア","9-0","勝ち","新荒川大橋野球場"],
+["2026-10-04","北区秋季大会","ブルースカイズ","3-1","勝ち","新荒川大橋野球場"],
+["2026-10-04","浮間リーグ","高島平セブンスターズ","6-1","勝ち","浮間子どもスポーツ広場"],
+["2026-10-10","赤羽大会","マッハブレーブス","9-8","勝ち","赤羽自然観察公園"],
+["2026-10-10","志茂大会","BBC","10-1","勝ち","新荒川大橋野球場"],
+["2026-10-11","赤羽大会","豊島堀船","6-7","負け","赤羽自然観察公園"],
+["2026-10-12","練習試合","中台クラブ","5-3","勝ち","板橋城北野球場"],
+["2026-10-18","東京都スポーツ少年団大会","高円寺メイト","2-9","負け","篠崎公園野球場"],
+["2026-10-18","東京都城北少年野球大会","梶山レッドスターズ","10-3","勝ち","戸田橋野球場"],
+["2026-11-01","ジュニア大会","飛鳥ジュニア","7-0","勝ち","新荒川大橋野球場"],
+["2026-11-01","練習試合","豊島堀船","5-4","勝ち","新荒川大橋野球場"],
+["2026-11-03","志茂大会","マッハブレーブス","4-0","勝ち","新荒川大橋野球場"],
+["2026-11-07","練習試合①","元加賀","7-6","勝ち","夢の島野球場"],
+["2026-11-07","練習試合②","元加賀","5-5","引き分け","夢の島野球場"],
+["2026-11-08","練習試合①","小松フェニックス","4-5","負け","四ツ木橋野球場"],
+["2026-11-08","練習試合②","小松フェニックス","2-7","負け","四ツ木橋野球場"]
 ];
 
-const WD = ['日','月','火','水','木','金','土'];
-const DATA = RAW.map(function (r, i) {
-  var m = /(\d+)\s*[-−–ー]\s*(\d+)/.exec(r[4]) || [];
-  return {
-    seq: i, date: r[0], tournament: r[1], opponent: r[2], result: r[3], score: r[4], venue: r[5],
-    own: m[1] ? +m[1] : 0, opp: m[2] ? +m[2] : 0,
-    note: (/(\([^)]*\))/.exec(r[4]) || [''])[0]
-  };
-});
+// 勝敗の集計
+function updateStats() {
+  const wins = games.filter(g => g[4] === "勝ち").length;
+  const losses = games.filter(g => g[4] === "負け").length;
+  const draws = games.filter(g => g[4] === "引き分け").length;
+  const rate = wins + losses ? wins / (wins + losses) * 100 : 0;
 
-const state = { res: 'all', tour: 'all', opp: 'all', venue: 'all', desc: true };
-
-const $ = function (id) { return document.getElementById(id); };
-function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); }
-function dp(iso) {
-  var p = iso.split('-').map(Number);
-  return { y: p[0], m: p[1], d: p[2], wd: WD[new Date(p[0], p[1] - 1, p[2]).getDay()] };
-}
-function dateLabel(iso) {
-  var p = dp(iso);
-  return p.y + '.' + String(p.m).padStart(2, '0') + '.' + String(p.d).padStart(2, '0');
+  document.getElementById("total").textContent = games.length;
+  document.getElementById("wins").textContent = wins;
+  document.getElementById("losses").textContent = losses;
+  document.getElementById("draws").textContent = draws;
+  document.getElementById("rate").textContent = rate.toFixed(1) + "%";
+  document.getElementById("ratebar").style.width = rate + "%";
 }
 
-/* ---------- filtering ---------- */
-function current() {
-  return DATA.filter(function (g) {
-    if (state.res !== 'all' && g.result !== state.res) return false;
-    if (state.tour !== 'all' && g.tournament !== state.tour) return false;
-    if (state.opp !== 'all' && g.opponent !== state.opp) return false;
-    if (state.venue !== 'all' && g.venue !== state.venue) return false;
-    return true;
-  });
-}
-
-/* ---------- kpi ---------- */
-function renderKpi(gs) {
-  var n = gs.length;
-  var w = gs.filter(function (g) { return g.result === '勝'; }).length;
-  var l = n - w;
-  var own = 0, opp = 0;
-  gs.forEach(function (g) { own += g.own; opp += g.opp; });
-  $('k-n').textContent = n;
-  $('k-w').textContent = w;
-  $('k-l').textContent = l;
-  $('k-rate').innerHTML = (w + l ? (w / (w + l) * 100).toFixed(1) : '0.0') + '<span class="unit">%</span>';
-  $('k-own').innerHTML = (n ? own / n : 0).toFixed(1) + '<span class="unit">点</span>';
-  $('k-opp').innerHTML = (n ? opp / n : 0).toFixed(1) + '<span class="unit">点</span>';
-  $('count').innerHTML = '全 <b>' + DATA.length + '</b> 試合中 <b>' + n + '</b> 試合を表示';
-}
-
-/* ---------- monthly win-rate rows ---------- */
-function renderMonthly(gs) {
-  var host = $('mchart');
-  var map = new Map();
-  gs.forEach(function (g) {
-    var k = g.date.slice(0, 7);
-    var o = map.get(k) || { w: 0, l: 0 };
-    if (g.result === '勝') o.w++; else o.l++;
-    map.set(k, o);
-  });
-  var keys = Array.from(map.keys()).sort();
-  if (!keys.length) {
-    host.innerHTML = '<p class="empty-note">該当する試合がありません。</p>';
-    host.setAttribute('aria-label', '該当する試合がありません');
-    return;
-  }
-  var html = '<div class="mrows">';
-  var spoken = [];
-  keys.forEach(function (k, i) {
-    var o = map.get(k), tot = o.w + o.l;
-    var rate = tot ? o.w / tot : 0;
-    var pct = Math.round(rate * 100);
-    var mm = +k.slice(5, 7), yy = k.slice(2, 4);
-    var label = (i === 0 || mm === 1) ? yy + '/' + mm : mm + '月';
-    html += '<div class="mrow">' +
-      '<span class="mrow-lab">' + label + '</span>' +
-      '<span class="mrow-track"><span class="mrow-bar" style="width:' + Math.max(pct, pct > 0 ? 1 : 0) + '%"></span></span>' +
-      '<span class="mrow-val">' + pct + '%</span>' +
-      '<span class="mrow-sub">' + tot + '試合</span>' +
-      '</div>';
-    spoken.push(dp(k + '-01').y + '年' + mm + '月 ' + pct + 'パーセント（' + o.w + '勝' + o.l + '敗）');
-  });
-  html += '</div>';
-  host.innerHTML = html;
-  host.setAttribute('aria-label', '月別の勝率。' + spoken.join('、') + '。');
-}
-
-/* ---------- cumulative run differential ---------- */
-function niceStep(max, target) {
-  var raw = max / target;
-  var pow = Math.pow(10, Math.floor(Math.log10(raw || 1)));
-  var c = [1, 2, 2.5, 5, 10];
-  for (var i = 0; i < c.length; i++) if (c[i] * pow >= raw) return c[i] * pow;
-  return 10 * pow;
-}
-function renderCum(gs) {
-  var host = $('cum');
-  var cum = [], acc = 0;
-  gs.forEach(function (g) { acc += g.own - g.opp; cum.push(acc); });
-  var n = cum.length;
-  $('cum-total').textContent = (acc > 0 ? '+' : '') + acc;
-
-  var W = Math.max(280, host.clientWidth || 480);
-  var H = 330, pad = { t: 18, r: 56, b: 32, l: 48 };
-  var pw = W - pad.l - pad.r, ph = H - pad.t - pad.b;
-
-  if (!n) {
-    host.innerHTML = '<p class="empty-note">該当する試合がありません。</p>';
-    host.setAttribute('aria-label', '該当する試合がありません');
-    return;
-  }
-
-  var top = Math.max.apply(null, cum);
-  var bottom = Math.min.apply(null, cum);
-  var step = niceStep(Math.max(top, 1) - Math.min(bottom, 0), 4);
-  var yMax = top > 0 ? Math.ceil(top / step) * step : 0;
-  var yMin = bottom < 0 ? Math.floor(bottom / step) * step : 0;
-  if (yMax === yMin) yMax = yMin + step;
-  var yFor = function (v) { return pad.t + ph * (1 - (v - yMin) / (yMax - yMin)); };
-  var xFor = function (i) { return pad.l + (n > 1 ? pw * i / (n - 1) : pw / 2); };
-
-  var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" role="img" aria-label="' +
-    '得失点差の累積。' + n + '試合で' + (acc >= 0 ? 'プラス' : 'マイナス') + Math.abs(acc) + '点。">';
-
-  for (var v = yMin; v <= yMax + 0.001; v += step) {
-    var y = yFor(v);
-    s += '<line class="' + (v === 0 ? 'cum-zero' : 'cum-grid') + '" x1="' + pad.l + '" y1="' + y + '" x2="' + (pad.l + pw) + '" y2="' + y + '"/>';
-    s += '<text class="cum-tick" x="' + (pad.l - 10) + '" y="' + (y + 5) + '" text-anchor="end">' + v + '</text>';
-  }
-
-  var d = '';
-  cum.forEach(function (val, i) { d += (i ? 'L' : 'M') + xFor(i).toFixed(1) + ' ' + yFor(val).toFixed(1); });
-  var base = yFor(0);
-  s += '<path class="cum-area" d="' + d + 'L' + xFor(n - 1).toFixed(1) + ' ' + base + 'L' + xFor(0).toFixed(1) + ' ' + base + 'Z"/>';
-  s += '<path class="cum-line" d="' + d + '"/>';
-
-  /* month ticks */
-  var seen = {}, positions = [];
-  gs.forEach(function (g, i) {
-    var k = g.date.slice(0, 7);
-    if (!seen[k]) { seen[k] = 1; positions.push({ i: i, k: k }); }
-  });
-  var placed = [];
-  positions.forEach(function (p) {
-    var x = xFor(p.i), mm = +p.k.slice(5, 7);
-    var lab = (p.i === 0 || mm === 1) ? p.k.slice(2, 4) + '/' + mm : mm + '月';
-    var half = (lab.length * 8 + 10) / 2;
-    var prev = placed[placed.length - 1];
-    if (prev && x - prev.x < prev.half + half) return;
-    if (x + half > pad.l + pw) return;
-    placed.push({ x: x, half: half });
-    s += '<text class="cum-tick" x="' + x.toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle">' + lab + '</text>';
-  });
-
-  var ex = xFor(n - 1), ey = yFor(cum[n - 1]);
-  s += '<circle class="cum-dot" cx="' + ex.toFixed(1) + '" cy="' + ey.toFixed(1) + '" r="3.5"/>';
-  s += '<text class="cum-end" x="' + (ex + 10).toFixed(1) + '" y="' + (ey + 5).toFixed(1) + '">' + (acc > 0 ? '+' : '') + acc + '</text>';
-  s += '</svg>';
-  host.innerHTML = s;
-}
-
-/* ---------- table ---------- */
-function scoreCell(g, cls) {
-  var note = g.note ? '<span class="s-note">' + esc(g.note) + '</span>' : '';
-  return '<span class="s-own">' + g.own + '</span><span class="s-dash">-</span><span class="s-opp">' + g.opp + '</span>' + note;
-}
-function renderTable(gs) {
-  var rows = gs.slice().sort(function (a, b) {
-    var c = a.date.localeCompare(b.date);
-    if (c === 0) return a.seq - b.seq;
-    return state.desc ? -c : c;
-  });
-  var tb = $('tbody'), cards = $('cards');
-  if (!rows.length) {
-    tb.innerHTML = '<tr><td class="empty" colspan="6">条件に一致する試合がありません。</td></tr>';
-    cards.innerHTML = '<li class="card"><p class="card-meta">条件に一致する試合がありません。</p></li>';
-    return;
-  }
-  var th = '', ch = '';
-  rows.forEach(function (g) {
-    var p = dp(g.date);
-    var badge = '<span class="badge ' + (g.result === '勝' ? 'win' : 'loss') + '">' + g.result + '</span>';
-    th += '<tr><td class="c-date">' + dateLabel(g.date) + '<span class="wd">(' + p.wd + ')</span></td>' +
-      '<td class="c-tour">' + esc(g.tournament) + '</td>' +
-      '<td class="c-opp">' + esc(g.opponent) + '</td>' +
-      '<td class="c-score">' + scoreCell(g) + '</td>' +
-      '<td class="c-res">' + badge + '</td>' +
-      '<td class="c-venue">' + esc(g.venue) + '</td></tr>';
-    ch += '<li class="card"><div class="card-top">' + badge + '<span class="card-date">' + dateLabel(g.date) + ' (' + p.wd + ')</span></div>' +
-      '<p class="card-opp">' + esc(g.opponent) + '</p>' +
-      '<p class="card-meta">' + esc(g.tournament) + ' ・ ' + esc(g.venue) + '</p>' +
-      '<p class="card-score">' + scoreCell(g) + '</p></li>';
-  });
-  tb.innerHTML = th;
-  cards.innerHTML = ch;
-}
-
+// 試合一覧の表示
 function render() {
-  var gs = current();
-  renderKpi(gs);
-  renderMonthly(gs);
-  renderCum(gs);
-  renderTable(gs);
+  const keyword = document.getElementById("search").value.toLowerCase();
+  const filter = document.getElementById("filter").value;
+  const year = document.getElementById("year").value;
+
+  const filtered = games.filter(g => {
+    const text = g.join(" ").toLowerCase();
+    return text.includes(keyword) &&
+      (filter === "all" || g[4] === filter) &&
+      (year === "all" || g[0].startsWith(year));
+  }).slice().reverse();
+
+  document.getElementById("count").textContent =
+    "表示中：" + filtered.length + "試合";
+
+  const html = filtered.map(g => {
+    const [date,event,opponent,score,result,place] = g;
+    const cls = result === "勝ち" ? "win" :
+                result === "負け" ? "loss" : "draw";
+
+    const d = new Date(date + "T00:00:00");
+    const formatted =
+      d.getFullYear() + "年" +
+      (d.getMonth()+1) + "月" +
+      d.getDate() + "日";
+
+    return `
+      <article class="game">
+        <div class="game-top">
+          <span class="date">${formatted}</span>
+          <span class="badge ${cls}">${result}</span>
+        </div>
+        <div class="tournament">${event}</div>
+        <div class="match">
+          <span class="team">谷端ジュニア<br>VS ${opponent}</span>
+          <span class="score">${score}</span>
+        </div>
+        <div class="place">📍 ${place}</div>
+      </article>
+    `;
+  }).join("");
+
+  document.getElementById("results").innerHTML =
+    html || '<div class="empty">該当する試合はありません。</div>';
 }
 
-/* ---------- controls ---------- */
-function fillSelect(sel, values, allLabel) {
-  var counts = {};
-  values.forEach(function (v) { counts[v] = (counts[v] || 0) + 1; });
-  var opts = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a] || a.localeCompare(b, 'ja'); });
-  sel.innerHTML = '<option value="all">' + allLabel + '</option>' +
-    opts.map(function (v) { return '<option value="' + esc(v) + '">' + esc(v) + '（' + counts[v] + '）</option>'; }).join('');
-}
-fillSelect($('f-tour'), DATA.map(function (g) { return g.tournament; }), 'すべての大会');
-fillSelect($('f-opp'), DATA.map(function (g) { return g.opponent; }), 'すべての相手');
-fillSelect($('f-venue'), DATA.map(function (g) { return g.venue; }), 'すべての会場');
+document.getElementById("search").addEventListener("input",render);
+document.getElementById("filter").addEventListener("change",render);
+document.getElementById("year").addEventListener("change",render);
 
-document.querySelectorAll('.seg button').forEach(function (b) {
-  b.addEventListener('click', function () {
-    document.querySelectorAll('.seg button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
-    b.setAttribute('aria-pressed', 'true');
-    state.res = b.dataset.res;
-    render();
-  });
-});
-$('f-tour').addEventListener('change', function (e) { state.tour = e.target.value; render(); });
-$('f-opp').addEventListener('change', function (e) { state.opp = e.target.value; render(); });
-$('f-venue').addEventListener('change', function (e) { state.venue = e.target.value; render(); });
-
-$('sort-btn').addEventListener('click', function () {
-  state.desc = !state.desc;
-  $('sort-icon').textContent = state.desc ? '↓' : '↑';
-  $('sort-btn').setAttribute('aria-label', '日付で並べ替え（現在' + (state.desc ? '新しい順' : '古い順') + '）');
-  renderTable(current());
-});
-
-$('reset').addEventListener('click', function () {
-  state.res = 'all'; state.tour = 'all'; state.opp = 'all'; state.venue = 'all';
-  document.querySelectorAll('.seg button').forEach(function (x) {
-    x.setAttribute('aria-pressed', x.dataset.res === 'all' ? 'true' : 'false');
-  });
-  $('f-tour').value = 'all'; $('f-opp').value = 'all'; $('f-venue').value = 'all';
-  render();
-});
-
-var raf = 0;
-window.addEventListener('resize', function () {
-  cancelAnimationFrame(raf);
-  raf = requestAnimationFrame(function () { renderCum(current()); });
-});
-
+updateStats();
 render();
 </script>
 </body>
