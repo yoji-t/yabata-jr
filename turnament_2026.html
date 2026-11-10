@@ -1,797 +1,615 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>2026年トーナメント表</title><style>
-/* cspell:disable-file */
-/* webkit printing magic: print all background colors */
-html {
-	-webkit-print-color-adjust: exact;
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="東京都北区の少年野球チーム、谷端ジュニアが参加した2026年の大会トーナメント表・大会結果を掲載しています。">
+<title>2026年大会トーナメント表｜谷端ジュニア</title>
+
+<style>
+:root {
+  --navy: #102b50;
+  --blue: #194c80;
+  --red: #d92f35;
+  --gold: #d7a936;
+  --bg: #f2f5f9;
+  --text: #263548;
 }
+
 * {
-	box-sizing: border-box;
-	-webkit-print-color-adjust: exact;
-}
-
-html,
-body {
-	margin: 0;
-	padding: 0;
-}
-@media only screen {
-	body {
-		margin: 2em auto;
-		max-width: 900px;
-		color: rgb(55, 53, 47);
-	}
+  box-sizing: border-box;
 }
 
 body {
-	line-height: 1.5;
-	white-space: pre-wrap;
+  margin: 0;
+  font-family: "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
 }
 
-a,
-a.visited {
-	color: inherit;
-	text-decoration: underline;
+a {
+  color: inherit;
 }
 
-.pdf-relative-link-path {
-	font-size: 80%;
-	color: #444;
+.home-bar {
+  background: var(--navy);
+  padding: 13px 20px;
 }
 
-h1,
-h2,
-h3 {
-	letter-spacing: -0.01em;
-	line-height: 1.2;
-	font-weight: 600;
-	margin-bottom: 0;
+.home-link {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  border: 1px solid rgba(255,255,255,.5);
+  border-radius: 30px;
+  padding: 7px 17px;
+  transition: .2s;
 }
 
-/* Override strong tags inside headings to maintain consistent weight */
-h1 strong,
-h2 strong,
-h3 strong {
-	font-weight: 600;
+.home-link:hover {
+  background: white;
+  color: var(--navy);
 }
 
-.page-title {
-	font-size: 2.5rem;
-	font-weight: 700;
-	margin-top: 0;
-	margin-bottom: 0.75em;
+.hero {
+  background: linear-gradient(135deg, #102b50, #235c91);
+  color: white;
+  text-align: center;
+  padding: 55px 20px 60px;
+  border-bottom: 6px solid var(--red);
 }
 
-h1 {
-	font-size: 1.875rem;
-	margin-top: 1.875rem;
+.hero-label {
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,.5);
+  padding: 4px 16px;
+  border-radius: 30px;
+  font-size: 12px;
+  letter-spacing: 2px;
 }
 
-h2 {
-	font-size: 1.5rem;
-	margin-top: 1.5rem;
+.hero h1 {
+  font-size: clamp(27px, 5vw, 43px);
+  margin: 13px 0 5px;
+  letter-spacing: 2px;
 }
 
-h3 {
-	font-size: 1.25rem;
-	margin-top: 1.25rem;
+.hero p {
+  margin: 0;
+  color: #dce8f5;
+  font-size: 14px;
 }
 
-.source {
-	border: 1px solid #ddd;
-	border-radius: 3px;
-	padding: 1.5em;
-	word-break: break-all;
+.container {
+  max-width: 1050px;
+  margin: 35px auto 70px;
+  padding: 0 18px;
 }
 
-.callout {
-	border-radius: 10px;
-	padding: 1rem;
+.intro {
+  text-align: center;
+  margin-bottom: 35px;
 }
 
-/* For default-background callouts, render the border outline. */
-.callout.block-color-default_background {
-	border: 1px solid rgba(55, 53, 47, 0.09);
+.intro h2 {
+  color: var(--navy);
+  font-size: 22px;
+  margin-bottom: 8px;
 }
 
-figure {
-	margin: 1.25em 0;
-	page-break-inside: avoid;
+.intro p {
+  color: #64748b;
+  font-size: 14px;
+  margin: 0;
 }
 
-/*
- * Toggles and callouts hold arbitrary content, so they can easily be taller
- * than a page. They must stay breakable: avoiding breaks inside them makes
- * Chromium push the whole block onto the next page, which leaves the previous
- * page mostly empty before every long toggle.
- */
-details,
-aside {
-	margin: 1.25em 0;
+.toc {
+  background: white;
+  border-radius: 12px;
+  padding: 22px 25px;
+  margin-bottom: 35px;
+  box-shadow: 0 3px 12px rgba(20,40,70,.06);
 }
 
-/* Keep a toggle's title on the same page as the start of its content. */
-summary {
-	page-break-after: avoid;
-	break-after: avoid;
+.toc h3 {
+  margin: 0 0 12px;
+  color: var(--navy);
+  font-size: 17px;
 }
 
-/*
- * Toggle headings render as <h1/h2/h3 style="display:inline-block"> inside
- * <summary>. Without this reset, the heading's margin-top pushes it below the
- * ::marker (▼), so the triangle and the title appear on separate lines.
- */
-summary h1,
-summary h2,
-summary h3,
-summary h4 {
-	margin-top: 0;
+.toc-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-figcaption {
-	opacity: 0.5;
-	font-size: 85%;
-	margin-top: 0.5em;
+.toc-links a {
+  background: #edf3f9;
+  color: var(--navy);
+  text-decoration: none;
+  padding: 5px 11px;
+  border-radius: 5px;
+  font-size: 12px;
+  transition: .2s;
 }
 
-mark {
-	background-color: transparent;
+.toc-links a:hover {
+  background: var(--navy);
+  color: white;
 }
 
-.indented {
-	padding-left: 1.5em;
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 42px 0 20px;
+  color: var(--navy);
+  font-size: 22px;
 }
 
-hr {
-	background: transparent;
-	display: block;
-	width: 100%;
-	height: 1px;
-	visibility: visible;
-	border: none;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+.section-title::before {
+  content: "";
+  width: 6px;
+  height: 27px;
+  background: var(--red);
+  border-radius: 4px;
 }
 
-img {
-	max-width: 100%;
+.tournament {
+  background: white;
+  border-radius: 13px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(20,40,70,.07);
+  scroll-margin-top: 20px;
 }
 
-@media only print {
-	img {
-		max-height: 100vh;
-		object-fit: contain;
-	}
-
-	table.collection-content {
-		width: 100%;
-		table-layout: fixed;
-	}
-
-	table.collection-content th,
-	table.collection-content td {
-		overflow-wrap: anywhere;
-	}
-
-	table.collection-content td > .user,
-	table.collection-content td > time {
-		white-space: pre-wrap;
-	}
-}
-
-@page {
-	margin: 1in;
-}
-
-.collection-content-wrapper {
-	overflow-x: auto;
-}
-
-@media only print {
-	.collection-content-wrapper {
-		overflow-x: visible;
-	}
-}
-
-.collection-content {
-	font-size: 0.875rem;
-}
-
-.collection-content td {
-	white-space: pre-wrap;
-	word-break: break-word;
-}
-
-.column-list {
-	display: flex;
-	gap: 46px;
-}
-
-.column {
-	min-width: 0;
-	overflow: hidden;
-}
-
-.column > *:first-child {
-	margin-top: 0;
-}
-
-.table_of_contents-item {
-	display: block;
-	font-size: 0.875rem;
-	line-height: 1.3;
-	padding-inline: 0.125rem;
-	padding-block: 0.375rem;
-}
-
-.table_of_contents-indent-1 {
-	margin-left: 1.5rem;
-}
-
-.table_of_contents-indent-2 {
-	margin-left: 3rem;
-}
-
-.table_of_contents-indent-3 {
-	margin-left: 4.5rem;
-}
-
-.table_of_contents-link {
-	text-decoration: none;
-	opacity: 0.7;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-}
-
-table,
-th,
-td {
-	border: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-table {
-	border-collapse: collapse;
-	border-left: none;
-	border-right: none;
-}
-
-th,
-td {
-	font-weight: normal;
-	padding: 0.25em 0.5em;
-	line-height: 1.5;
-	min-height: 1.5em;
-	text-align: left;
-}
-
-th {
-	color: rgba(55, 53, 47, 0.6);
-}
-
-ol,
-ul {
-	margin: 0;
-	margin-block-start: 0.6em;
-	margin-block-end: 0.6em;
-}
-
-li > ol:first-child,
-li > ul:first-child {
-	margin-block-start: 0.6em;
-}
-
-ul > li {
-	list-style: disc;
-}
-
-ul.to-do-list {
-	padding-inline-start: 0;
-}
-
-ul.to-do-list > li {
-	list-style: none;
-}
-
-.to-do-children-checked {
-	text-decoration: line-through;
-	opacity: 0.375;
-}
-
-ul.toggle > li {
-	list-style: none;
-}
-
-ul {
-	padding-inline-start: 1.7em;
-}
-
-ul > li {
-	padding-left: 0.1em;
-}
-
-ol {
-	padding-inline-start: 1.6em;
-}
-
-ol.numbered-list.numbered-list-digits-2 {
-	padding-inline-start: 2em;
-}
-
-ol.numbered-list.numbered-list-digits-3plus {
-	padding-inline-start: 2.4em;
-}
-
-ol > li {
-	padding-left: 0.2em;
-}
-
-.mono ol {
-	padding-inline-start: 2em;
-}
-
-.mono ol > li {
-	text-indent: -0.4em;
-}
-
-.toggle {
-	padding-inline-start: 0em;
-	list-style-type: none;
-}
-
-/* Indent toggle children */
-.toggle > li > details {
-	padding-left: 1.7em;
-}
-
-.toggle > li > details > summary {
-	margin-left: -1.1em;
-}
-
-.selected-value {
-	display: inline-block;
-	padding: 0 0.5em;
-	background: rgba(206, 205, 202, 0.5);
-	border-radius: 3px;
-	margin-right: 0.5em;
-	margin-top: 0.3em;
-	margin-bottom: 0.3em;
-	white-space: nowrap;
-}
-
-.collection-title {
-	display: inline-block;
-	margin-right: 1em;
-}
-
-.page-description {
-	margin-bottom: 2em;
-}
-
-.simple-table {
-	margin-top: 1em;
-	font-size: 0.875rem;
-	empty-cells: show;
-}
-.simple-table td {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table th {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table-header-color {
-	background: rgb(247, 246, 243);
-	color: black;
-}
-.simple-table-header {
-	font-weight: 500;
-}
-
-time {
-	opacity: 0.5;
-}
-
-.icon {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	max-width: 1.2em;
-	max-height: 1.2em;
-	text-decoration: none;
-	vertical-align: text-bottom;
-	margin-right: 0.5em;
-}
-
-/*
- * Render emoji icons using a ::before pseudo-element to keep the glyph
- * out of the DOM textContent traversal. This avoids double-rendering icons
- * in callouts and page titles.
- * NOTE(slim/html-export-pseudo-icons): I can't tagref this because it will
- * flag as a duplicate tag after codegen.
- */
-.icon[data-emoji]::before {
-	content: attr(data-emoji);
-}
-
-img.icon {
-	border-radius: 3px;
-}
-
-.callout img.notion-static-icon {
-	width: 1em;
-	height: 1em;
-}
-
-.callout p {
-	margin: 0;
-}
-
-.callout h1,
-.callout h2,
-.callout h3 {
-	margin: 0 0 0.6rem;
-}
-
-.user-icon {
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 100%;
-	margin-right: 0.5rem;
-}
-
-.user-icon-inner {
-	font-size: 0.8em;
-}
-
-.text-icon {
-	border: 1px solid #000;
-	text-align: center;
-}
-
-.page-cover-image {
-	display: block;
-	object-fit: cover;
-	width: 100%;
-	max-height: 30vh;
-}
-
-.page-header-icon {
-	font-size: 3rem;
-	margin-bottom: 1rem;
-}
-
-.page-header-icon-with-cover {
-	margin-top: -0.72em;
-	margin-left: 0.07em;
-}
-
-.page-header-icon img {
-	border-radius: 3px;
-}
-
-.link-to-page {
-	margin: 1em 0;
-	padding: 0;
-	border: none;
-	font-weight: 500;
-}
-
-p > .user {
-	opacity: 0.5;
-}
-
-td > .user,
-td > time {
-	white-space: nowrap;
-}
-
-input[type="checkbox"] {
-	margin-right: 0.4em;
-	vertical-align: middle;
-}
-
-p {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
+.tournament-header {
+  padding: 17px 22px;
+  border-bottom: 1px solid #e8edf3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.image {
-	border: none;
-	margin: 1.5em 0;
-	padding: 0;
-	border-radius: 0;
-	text-align: center;
+.tournament-header h3 {
+  font-size: 17px;
+  color: var(--navy);
+  margin: 0;
 }
 
-.code,
-code {
-	background: rgba(135, 131, 120, 0.15);
-	border-radius: 3px;
-	padding: 0.2em 0.4em;
-	border-radius: 3px;
-	font-size: 85%;
-	tab-size: 2;
+.number {
+  color: #91a3b8;
+  font-size: 12px;
+  font-weight: bold;
 }
 
-code {
-	color: #eb5757;
+.tournament-body {
+  padding: 20px 22px 25px;
 }
 
-.code {
-	padding: 1.5em 1em;
+.result {
+  font-size: 14px;
+  color: #475569;
+  margin: 0 0 18px;
+  white-space: pre-line;
 }
 
-.code-wrap {
-	white-space: pre-wrap;
-	word-break: break-all;
+.result.highlight {
+  color: #bd2730;
+  font-weight: bold;
+  background: #fff5f4;
+  border-left: 4px solid var(--red);
+  padding: 12px 15px;
+  border-radius: 4px;
 }
 
-.code > code {
-	background: none;
-	padding: 0;
-	font-size: 100%;
-	color: inherit;
+.tournament.champion {
+  border: 2px solid #e5c36d;
 }
 
-blockquote {
-	font-size: 1em;
-	margin: 1em 0;
-	padding-left: 1em;
-	border-left: 3px solid rgb(55, 53, 47);
+.tournament.champion .tournament-header {
+  background: #fffaf0;
 }
 
-blockquote.quote-large {
-	font-size: 1.25em;
+.tournament.champion .tournament-header h3 {
+  color: #876015;
 }
 
-.bookmark {
-	text-decoration: none;
-	max-height: 8em;
-	padding: 0;
-	display: flex;
-	width: 100%;
-	align-items: stretch;
+.crown {
+  color: #c39324;
+  font-size: 18px;
 }
 
-.bookmark-title {
-	font-size: 0.85em;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	height: 1.75em;
-	white-space: nowrap;
+.bracket {
+  margin-top: 15px;
+  text-align: center;
+  background: #f7f9fc;
+  border-radius: 8px;
+  padding: 12px;
 }
 
-.bookmark-text {
-	display: flex;
-	flex-direction: column;
+.bracket a {
+  display: block;
+  cursor: zoom-in;
 }
 
-.bookmark-info {
-	flex: 4 1 180px;
-	padding: 12px 14px 14px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+.bracket img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 750px;
+  object-fit: contain;
+  margin: auto;
+  border-radius: 4px;
 }
 
-.bookmark-image {
-	width: 33%;
-	flex: 1 1 180px;
-	display: block;
-	position: relative;
-	object-fit: cover;
-	border-radius: 1px;
+.image-caption {
+  font-size: 11px;
+  color: #8492a6;
+  margin-top: 8px;
 }
 
-.bookmark-description {
-	color: rgba(55, 53, 47, 0.6);
-	font-size: 0.75em;
-	overflow: hidden;
-	max-height: 4.5em;
-	word-break: break-word;
+.no-result {
+  color: #8794a6;
+  font-size: 13px;
+  font-style: italic;
 }
 
-.bookmark-href {
-	font-size: 0.75em;
-	margin-top: 0.25em;
+.footer {
+  background: var(--navy);
+  color: white;
+  text-align: center;
+  padding: 35px 20px;
 }
 
-.tab {
-	margin: 1.25em 0;
-	padding-inline: 1rem;
-	border: 1px solid rgba(55, 53, 47, 0.09);
+.footer strong {
+  font-size: 20px;
+  letter-spacing: 2px;
 }
 
-.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
-.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
-.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
-.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
-.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
-.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
-.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
-.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.highlight-default {
-	color: rgba(44, 44, 43, 1);
-}
-.highlight-gray {
-	color: rgba(125, 122, 117, 1);
-	fill: rgba(125, 122, 117, 1);
-}
-.highlight-brown {
-	color: rgba(159, 118, 90, 1);
-	fill: rgba(159, 118, 90, 1);
-}
-.highlight-orange {
-	color: rgba(210, 123, 45, 1);
-	fill: rgba(210, 123, 45, 1);
-}
-.highlight-yellow {
-	color: rgba(203, 148, 52, 1);
-	fill: rgba(203, 148, 52, 1);
-}
-.highlight-teal {
-	color: rgba(80, 148, 110, 1);
-	fill: rgba(80, 148, 110, 1);
-}
-.highlight-blue {
-	color: rgba(56, 125, 201, 1);
-	fill: rgba(56, 125, 201, 1);
-}
-.highlight-purple {
-	color: rgba(154, 107, 180, 1);
-	fill: rgba(154, 107, 180, 1);
-}
-.highlight-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.highlight-red {
-	color: rgba(207, 81, 72, 1);
-	fill: rgba(207, 81, 72, 1);
-}
-.highlight-default_background {
-	color: rgba(44, 44, 43, 1);
-}
-.highlight-gray_background {
-	background: rgba(42, 28, 0, 0.07);
-}
-.highlight-brown_background {
-	background: rgba(139, 46, 0, 0.086);
-}
-.highlight-orange_background {
-	background: rgba(224, 101, 1, 0.129);
-}
-.highlight-yellow_background {
-	background: rgba(211, 168, 0, 0.137);
-}
-.highlight-teal_background {
-	background: rgba(0, 100, 45, 0.09);
-}
-.highlight-blue_background {
-	background: rgba(0, 124, 215, 0.094);
-}
-.highlight-purple_background {
-	background: rgba(102, 0, 178, 0.078);
-}
-.highlight-pink_background {
-	background: rgba(197, 0, 93, 0.086);
-}
-.highlight-red_background {
-	background: rgba(223, 22, 0, 0.094);
-}
-.block-color-default {
-	color: inherit;
-	fill: inherit;
+.footer p {
+  font-size: 12px;
+  color: #bdcde0;
 }
-.block-color-gray {
-	color: rgba(125, 122, 117, 1);
-	fill: rgba(125, 122, 117, 1);
-}
-.block-color-brown {
-	color: rgba(159, 118, 90, 1);
-	fill: rgba(159, 118, 90, 1);
-}
-.block-color-orange {
-	color: rgba(210, 123, 45, 1);
-	fill: rgba(210, 123, 45, 1);
-}
-.block-color-yellow {
-	color: rgba(203, 148, 52, 1);
-	fill: rgba(203, 148, 52, 1);
-}
-.block-color-teal {
-	color: rgba(80, 148, 110, 1);
-	fill: rgba(80, 148, 110, 1);
-}
-.block-color-blue {
-	color: rgba(56, 125, 201, 1);
-	fill: rgba(56, 125, 201, 1);
-}
-.block-color-purple {
-	color: rgba(154, 107, 180, 1);
-	fill: rgba(154, 107, 180, 1);
-}
-.block-color-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.block-color-red {
-	color: rgba(207, 81, 72, 1);
-	fill: rgba(207, 81, 72, 1);
-}
-.block-color-default_background {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray_background {
-	background: rgba(240, 239, 237, 1);
-}
-.block-color-brown_background {
-	background: rgba(245, 237, 233, 1);
-}
-.block-color-orange_background {
-	background: rgba(251, 235, 222, 1);
-}
-.block-color-yellow_background {
-	background: rgba(249, 243, 220, 1);
-}
-.block-color-teal_background {
-	background: rgba(232, 241, 236, 1);
-}
-.block-color-blue_background {
-	background: rgba(229, 242, 252, 1);
-}
-.block-color-purple_background {
-	background: rgba(243, 235, 249, 1);
-}
-.block-color-pink_background {
-	background: rgba(250, 233, 241, 1);
-}
-.block-color-red_background {
-	background: rgba(252, 233, 231, 1);
-}
-.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
-.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
-.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
-.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
-.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
-.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
-.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
-.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
-.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
-.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
 
-.checkbox {
-	display: inline-flex;
-	vertical-align: text-bottom;
-	width: 16;
-	height: 16;
-	background-size: 16px;
-	margin-left: 2px;
-	margin-right: 5px;
+.footer a {
+  display: inline-block;
+  color: white;
+  border: 1px solid rgba(255,255,255,.6);
+  padding: 8px 22px;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-top: 8px;
+  font-size: 13px;
 }
 
-.checkbox-on {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
-}
+@media(max-width:600px) {
+  .hero {
+    padding: 40px 15px 45px;
+  }
 
-.checkbox-off {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-	
-</style><style>@import url('https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex-swap.min.css')</style></head><body><article id="2a744831-32d3-8097-9ea7-d43b5ac79f58" class="page sans"><header><h1 class="page-title" dir="auto">2026年トーナメント表</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><p id="35144831-32d3-809a-a882-e29a03312d09" class="" dir="auto"><a href="https://yoji-t.github.io/yabata-jr">ホームに戻る</a></p><h1 id="2a744831-32d3-80c5-a527-d01f2e749eca" class="" dir="auto">北区滝野川大会少年野球大会新人戦</h1><p id="2c344831-32d3-8006-85c8-e4b148bfbed6" class="" dir="auto"><mark class="highlight-red" data-notion-highlight="red">谷端ジュニア：優勝！！ナガセケンコー杯への出場決定！</mark></p><figure id="2c344831-32d3-80b1-b744-d6a5b471e546" class="image" data-notion-image="https://i.gyazo.com/c87b8fef5f857ae180995fd57036c9aa.png" dir="ltr"><a href="https://i.gyazo.com/c87b8fef5f857ae180995fd57036c9aa.png"><img src="https://i.gyazo.com/c87b8fef5f857ae180995fd57036c9aa.png"/></a></figure><p id="2bc44831-32d3-8002-ae1a-cedba992377b" class="" dir="auto">
-</p><h1 id="2bf44831-32d3-80d5-8484-db430d8ce442" class="" dir="auto">城北城南学童交流野球大会・クリスマスカップ</h1><p id="2e344831-32d3-8063-ae93-c7fa80f898d4" class="" dir="auto">谷端ジュニア：初戦敗退　強豪チームの深川ジャイアンツに対して、十分に戦える感触を得て、これからの強豪との戦いに自信を持った大会でした。</p><figure id="33e44831-32d3-8042-8b9f-cd3c58fdcc7c" class="image" data-notion-image="https://i.gyazo.com/f5e4134ab947817ebd9e0f0db874439b.png" dir="ltr"><a href="https://i.gyazo.com/f5e4134ab947817ebd9e0f0db874439b.png"><img src="https://i.gyazo.com/f5e4134ab947817ebd9e0f0db874439b.png"/></a></figure><h1 id="2ef44831-32d3-8096-bafa-f30ba2b34398" class="" dir="auto">ナガセケンコー杯</h1><p id="33b44831-32d3-8078-847b-ff4caffc55c6" class="" dir="auto">谷端ジュニア：２回戦敗退。強豪の高島エイトに１回戦で勝利したのはすごかった。</p><figure id="33e44831-32d3-80cd-92db-de13834344ea" class="image" data-notion-image="https://i.gyazo.com/2494f7fab100f25f62a09393b687c122.jpg" dir="ltr"><a href="https://i.gyazo.com/2494f7fab100f25f62a09393b687c122.jpg"><img src="https://i.gyazo.com/2494f7fab100f25f62a09393b687c122.jpg"/></a></figure><h1 id="2ef44831-32d3-8066-8e62-edaf396ec120" class="" dir="auto">北区選手権春季大会・区長杯大会</h1><h4 id="33b44831-32d3-80ad-9eaf-f16cbf2163e1" class="block-color-red" data-notion-highlight="red" dir="auto">谷端ジュニア優勝！全日本学童軟式野球大会（マクドナルドトーナメント）東京都予選出場決定！</h4><figure id="33e44831-32d3-80cb-8662-e2904ae1037e" class="image" data-notion-image="https://i.gyazo.com/aab04a8001dd8590f71bf5c39431fa53.png" dir="ltr"><a href="https://i.gyazo.com/aab04a8001dd8590f71bf5c39431fa53.png"><img src="https://i.gyazo.com/aab04a8001dd8590f71bf5c39431fa53.png"/></a></figure><h1 id="2fd44831-32d3-8075-a1c0-f167a608abdb" class="" dir="auto">くりくり少年野球選手権大会北区代表決定大会</h1><p id="34444831-32d3-80c9-9b57-d1c0866b311c" class="" dir="auto">谷端ジュニア準決勝敗退。北区のライバルである城北メッツにサヨナラで負けてしまいました。</p><figure id="38044831-32d3-80d9-b031-ef8c72e0f932" class="image" data-notion-image="https://i.gyazo.com/a5a03ce165884790fb2b426cb8708006.png" dir="ltr"><a href="https://i.gyazo.com/a5a03ce165884790fb2b426cb8708006.png"><img src="https://i.gyazo.com/a5a03ce165884790fb2b426cb8708006.png"/></a></figure><h1 id="2fd44831-32d3-8004-9053-dfb4f9dfab4c" class="" dir="auto">東京都都知事杯学童軟式野球大会北区代表決定大会</h1><h4 id="34f44831-32d3-8004-ad7f-cbfe23e4beb4" class="block-color-red" data-notion-highlight="red" dir="auto">谷端ジュニア　優勝！！　東京都都知事杯学童軟式野球大会出場決定！！</h4><figure id="34f44831-32d3-80aa-9c05-f70e3ff9fa3c" class="image" data-notion-image="https://i.gyazo.com/ec8a58385c10bb3e46dedf4590fc93c6.png" dir="ltr"><a href="https://i.gyazo.com/ec8a58385c10bb3e46dedf4590fc93c6.png"><img src="https://i.gyazo.com/ec8a58385c10bb3e46dedf4590fc93c6.png"/></a></figure><h1 id="2fd44831-32d3-808b-8b60-cc157148f2c9" class="" dir="auto">ジャビットカップチャンピオン大会北区代表決定大会</h1><p id="39544831-32d3-809e-a5ff-cabac4816304" class="block-color-red" data-notion-highlight="red" dir="auto">谷端ジュニア優勝！！北区大会、東京都知事杯北区代表決定大会に続いて、３冠を達成！！ジャビットカップチャンピオン大会への出場決定！</p><figure id="39544831-32d3-80f9-a27e-efe66f8c128b" class="image" data-notion-image="https://i.gyazo.com/6a70d58c96a8efaf0c8e9ab017513149.png" dir="ltr"><a href="https://i.gyazo.com/6a70d58c96a8efaf0c8e9ab017513149.png"><img src="https://i.gyazo.com/6a70d58c96a8efaf0c8e9ab017513149.png"/></a></figure><h1 id="33b44831-32d3-80f0-b20c-d32afcb12ac8" class="" dir="auto">東京都城北少年野球大会（春季）</h1><p id="3a044831-32d3-8097-9e84-f254b241f989" class="" dir="auto">谷端ジュニア：ベスト４！ただ、最後の準決勝、決勝の運が悪かった…</p><figure id="3a044831-32d3-80db-a1d0-d243423147d5" class="image" data-notion-image="https://i.gyazo.com/7972b82d4a7716b8dbb3e00e039973b1.png" dir="ltr"><a href="https://i.gyazo.com/7972b82d4a7716b8dbb3e00e039973b1.png"><img src="https://i.gyazo.com/7972b82d4a7716b8dbb3e00e039973b1.png"/></a></figure><h1 id="33b44831-32d3-8098-8ec5-c613454823cf" class="" dir="auto"><strong>ミズノドリームカップ</strong></h1><p id="33b44831-32d3-80e2-ad37-f812ba16e669" class="" dir="auto">谷端ジュニア Aブロック2回戦敗退</p><figure id="37644831-32d3-80be-ae77-cc981e9c62c6" class="image" data-notion-image="https://i.gyazo.com/dc6dda95827c76915b0296f1dc568563.jpg" dir="ltr"><a href="https://i.gyazo.com/dc6dda95827c76915b0296f1dc568563.jpg"><img src="https://i.gyazo.com/dc6dda95827c76915b0296f1dc568563.jpg"/></a></figure><h1 id="33b44831-32d3-80e9-b3a4-d249b4edecf8" class="" dir="auto">年中夢球杯</h1><p id="35d44831-32d3-8093-973f-ec81d1674cae" class="" dir="auto">3回戦で敗戦。チームの雰囲気が良くなく、大事な場面場面でミスが重なったのが痛かった…</p><figure id="38044831-32d3-8067-9df6-df92f233832e" class="image" data-notion-image="https://i.gyazo.com/834486417fbe5359aa84cdf3903b0934.jpg" dir="ltr"><a href="https://i.gyazo.com/834486417fbe5359aa84cdf3903b0934.jpg"><img src="https://i.gyazo.com/834486417fbe5359aa84cdf3903b0934.jpg"/></a></figure><h1 id="33b44831-32d3-801c-88b1-e4d40f389f2c" class="" dir="auto">宮本慎也杯</h1><p id="35d44831-32d3-804f-b3c4-fa20e454735c" class="" dir="auto">初戦敗退。強豪の旗の台さんと戦えたのは良い経験になりました。</p><figure id="33e44831-32d3-80c2-ac26-f6d32010bedd" class="image" data-notion-image="https://i.gyazo.com/55648a8d289711cfe9933eefbce7c58e.jpg" dir="ltr"><a href="https://i.gyazo.com/55648a8d289711cfe9933eefbce7c58e.jpg"><img src="https://i.gyazo.com/55648a8d289711cfe9933eefbce7c58e.jpg"/></a></figure><h1 id="33b44831-32d3-80b9-b747-df3b09b2ff90" class="" dir="auto">ベイサイドカップ</h1><figure id="39144831-32d3-8050-9124-df2bae098cba" class="image" data-notion-image="https://i.gyazo.com/67da616ccc6fffaced719c8d5bc1de3a.png" dir="ltr"><a href="https://i.gyazo.com/67da616ccc6fffaced719c8d5bc1de3a.png"><img src="https://i.gyazo.com/67da616ccc6fffaced719c8d5bc1de3a.png"/></a></figure><h1 id="33b44831-32d3-80b2-bf5e-f12ecc38a54a" class="" dir="auto">オールジャパンベースボールリーグ</h1><figure id="39144831-32d3-80db-8a9c-f9c961d30581" class="image" data-notion-image="https://i.gyazo.com/c445f02073306df1039141ba9c20eb07.png" dir="ltr"><a href="https://i.gyazo.com/c445f02073306df1039141ba9c20eb07.png"><img src="https://i.gyazo.com/c445f02073306df1039141ba9c20eb07.png"/></a></figure><h1 id="33b44831-32d3-8090-b4d2-f3d26cfae7e4" class="" dir="auto">スポーツ少年団北区春季大会</h1><h3 id="34444831-32d3-8014-b1dc-db15b37b1fee" class="block-color-red" data-notion-highlight="red" dir="auto">谷端ジュニア優勝！！城北ブロック大会出場決定。</h3><figure id="33e44831-32d3-802c-9fbc-c0299180df5d" class="image" data-notion-image="https://i.gyazo.com/d2cbefdcc3e1bc2d0ff7f0547f781377.jpg" dir="ltr"><a href="https://i.gyazo.com/d2cbefdcc3e1bc2d0ff7f0547f781377.jpg"><img src="https://i.gyazo.com/d2cbefdcc3e1bc2d0ff7f0547f781377.jpg"/></a></figure><h1 id="34444831-32d3-805c-9e79-f66a8d0783ca" class="" dir="auto">北区志茂少年野球大会（春）</h1><p id="39544831-32d3-8031-83d7-d43824a0c9a8" class="block-color-red" data-notion-highlight="red" dir="auto">谷端ジュニア優勝！！</p><figure id="39544831-32d3-8096-ba92-fbcabe27f6c5" class="image" data-notion-image="https://i.gyazo.com/6a5555070ab4654106514a3dfa2b34e3.png" dir="ltr"><a href="https://i.gyazo.com/6a5555070ab4654106514a3dfa2b34e3.png"><img src="https://i.gyazo.com/6a5555070ab4654106514a3dfa2b34e3.png"/></a></figure><h1 id="34944831-32d3-8093-8782-cc4802ae4e53" class="" dir="auto">北区少年野球大会（旧教育委員会大会）</h1><p id="35d44831-32d3-8003-9304-d82e1a8ea9ba" class="" dir="auto">全日本学童軟式野球大会 マクドナルド・トーナメントと重なったため棄権。参加できないのは残念。</p><figure id="37544831-32d3-8047-a7e3-d1c57377dd45" class="image" data-notion-image="https://i.gyazo.com/0c20911c217f0a0786759933955c3000.png" dir="ltr"><a href="https://i.gyazo.com/0c20911c217f0a0786759933955c3000.png"><img src="https://i.gyazo.com/0c20911c217f0a0786759933955c3000.png"/></a></figure><h1 id="35d44831-32d3-80b2-88d5-c9a9b1146776" class="" dir="auto">スポーツ少年団城北ブロック大会</h1><p id="35d44831-32d3-80a6-b7d4-d23309461ed1" class="" dir="auto">1回戦の舎人スポーツ少年団に勝利しましたが、全日本学童軟式野球大会 マクドナルド・トーナメントと重なったため棄権。東京都大会もある大会なので、これも非常に残念。</p><h1 id="35e44831-32d3-80af-bf1d-dce2eed3001b" class="" dir="auto">ポップアスリートカップ</h1><figure id="35e44831-32d3-8040-84cf-ea4445374046" class="image" data-notion-image="https://i.gyazo.com/cd4c3b214823a156481d5c1b3a9d97b7.jpg" dir="ltr"><a href="https://i.gyazo.com/cd4c3b214823a156481d5c1b3a9d97b7.jpg"><img src="https://i.gyazo.com/cd4c3b214823a156481d5c1b3a9d97b7.jpg"/></a></figure><h1 id="35e44831-32d3-80b1-b7ad-c904086cba9b" class="" dir="auto">東京都学童新人戦大会北区代表決定戦</h1><figure id="3ca44831-32d3-8025-ac1a-fa55876f98f4" class="image" data-notion-image="https://i.gyazo.com/4d908f6032becc63b77da27dcfb32e13.png" dir="ltr"><a href="https://i.gyazo.com/4d908f6032becc63b77da27dcfb32e13.png"><img src="https://i.gyazo.com/4d908f6032becc63b77da27dcfb32e13.png"/></a></figure><h1 id="36344831-32d3-8067-92f1-f5ee2b4c9ccb" class="" dir="auto">全日本学童軟式野球大会マクドナルド・トーナメント</h1><p id="38044831-32d3-803f-802a-c09a996b3b02" class="" dir="auto">谷端ジュニアは3回戦敗退。都大会という舞台で見事、2回、勝利しました。</p><figure id="38044831-32d3-8098-85de-de85ab4fa96d" class="image" data-notion-image="https://i.gyazo.com/706b943d5a275d50b3f78f7180a08260.png" dir="ltr"><a href="https://i.gyazo.com/706b943d5a275d50b3f78f7180a08260.png"><img src="https://i.gyazo.com/706b943d5a275d50b3f78f7180a08260.png"/></a></figure><p id="38044831-32d3-809a-a352-e32ef7a52dc9" class="" dir="auto">
-</p><h1 id="37444831-32d3-802a-80c8-d68d0bebe840" class="" dir="auto">都知事杯 東京都学童軟式野球大会フィールドフォーストーナメント</h1><p id="3a444831-32d3-80a0-930c-ec301e4f42d0" class="" dir="auto">2回戦で敗退。最終回、２アウトまで勝っていたので、本当に惜しかった。</p><figure id="3a444831-32d3-80bb-978f-fd808719af96" class="image" data-notion-image="https://i.gyazo.com/f99262f112f622d884121274e645aaf9.png" dir="ltr"><a href="https://i.gyazo.com/f99262f112f622d884121274e645aaf9.png"><img src="https://i.gyazo.com/f99262f112f622d884121274e645aaf9.png"/></a></figure><h1 id="37444831-32d3-80a5-92e6-c37fd460d27b" class="" dir="auto">浮間大会（春）</h1><p id="3a444831-32d3-8026-a719-d2dffbfb7418" class="" dir="auto">他の大会を進める関係から準決勝で棄権。関係者の皆様、すみませんでした。</p><figure id="3a444831-32d3-8077-a433-ed8e788be186" class="image" data-notion-image="https://i.gyazo.com/2ce212c180566c6ca9875c3eaa6fa366.png" dir="ltr"><a href="https://i.gyazo.com/2ce212c180566c6ca9875c3eaa6fa366.png"><img src="https://i.gyazo.com/2ce212c180566c6ca9875c3eaa6fa366.png"/></a></figure><h1 id="38144831-32d3-8028-94c4-f90f5d91f886" class="" dir="auto">東京学童選抜野球大会</h1><p id="3a444831-32d3-8079-b1b1-d22eb87eee3b" class="" dir="auto">なんと北区の選抜チームで過去最高の成績を達成！決勝も1点差までつめより、２アウトながら３塁までランナーを進めて、あと１本！谷端ジュニアは選抜チームに５名選ばれて、準優勝に貢献しました。</p><figure id="3a444831-32d3-80e4-a93f-f993ecc761eb" class="image" data-notion-image="https://i.gyazo.com/d803ff3c6368ae04472b05678edd5bab.png" dir="ltr"><a href="https://i.gyazo.com/d803ff3c6368ae04472b05678edd5bab.png"><img src="https://i.gyazo.com/d803ff3c6368ae04472b05678edd5bab.png"/></a></figure><h1 id="38e44831-32d3-80ad-a3c4-de5cdf55f4b8" class="" dir="auto">北区滝野川少年野球大会（春季）</h1><p id="39544831-32d3-8087-a50c-cf79c11f9bbc" class="" dir="auto">２回戦で敗退。さすがにジャビットカップ北区代表決定大会決勝の後の試合はきつかった…</p><figure id="38e44831-32d3-80d6-8486-c170120aa18f" class="image" data-notion-image="https://i.gyazo.com/cc9b82dbe7a70c578c0dee24b4ac7e94.png" dir="ltr"><a href="https://i.gyazo.com/cc9b82dbe7a70c578c0dee24b4ac7e94.png"><img src="https://i.gyazo.com/cc9b82dbe7a70c578c0dee24b4ac7e94.png"/></a></figure><h1 id="3a444831-32d3-803c-a7a1-ee2d748a7188" class="" dir="auto">ジャビットカップチャンピオン大会</h1><figure id="3b944831-32d3-804f-9209-e94c6d09dea2" class="image" data-notion-image="https://i.gyazo.com/a964b5a26317b797c90a23e434d385c3.jpg" dir="ltr"><a href="https://i.gyazo.com/a964b5a26317b797c90a23e434d385c3.jpg"><img src="https://i.gyazo.com/a964b5a26317b797c90a23e434d385c3.jpg"/></a></figure><h1 id="3ca44831-32d3-80db-a4dd-f02a4c2c93a6" class="" dir="auto">赤羽大会（秋季）</h1><figure id="3ca44831-32d3-80ab-9a20-f7b910a4e753" class="image" data-notion-image="https://i.gyazo.com/e0ca493fc497126de03644cba40f9315.png" dir="ltr"><a href="https://i.gyazo.com/e0ca493fc497126de03644cba40f9315.png"><img src="https://i.gyazo.com/e0ca493fc497126de03644cba40f9315.png"/></a></figure><h1 id="3ca44831-32d3-80a6-88ab-e2b6cb5e60e9" class="" dir="auto">荒川クリエーション杯学童少年野球大会選抜チームトーナメント</h1><figure id="3ca44831-32d3-80ba-802e-cd23b264bffa" class="image" data-notion-image="https://i.gyazo.com/14869046844af3647b09819448302a8b.jpg" dir="ltr"><a href="https://i.gyazo.com/14869046844af3647b09819448302a8b.jpg"><img src="https://i.gyazo.com/14869046844af3647b09819448302a8b.jpg"/></a></figure><h1 id="3ca44831-32d3-80ba-b0c8-df71c9f3123d" class="" dir="auto">東京都城北少年野球大会（秋季）</h1><figure id="3cb44831-32d3-80b9-b660-ceda35dddb56" class="image" data-notion-image="https://i.gyazo.com/ae8666e0d9c0ae47b91171133bd3134f.jpg" dir="ltr"><a href="https://i.gyazo.com/ae8666e0d9c0ae47b91171133bd3134f.jpg"><img src="https://i.gyazo.com/ae8666e0d9c0ae47b91171133bd3134f.jpg"/></a></figure><h1 id="3cb44831-32d3-8058-be58-eceecf1f2b02" class="" dir="auto">北区少年野球選手権大会（秋季）</h1><figure id="3cb44831-32d3-8063-bb9e-ca42fb6e10f1" class="image" data-notion-image="https://i.gyazo.com/ce0a3fa283bd1874c16c2cd3bc562871.png" dir="ltr"><a href="https://i.gyazo.com/ce0a3fa283bd1874c16c2cd3bc562871.png"><img src="https://i.gyazo.com/ce0a3fa283bd1874c16c2cd3bc562871.png"/></a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span><!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "085058b3d5824c399e855b43d6603e8a"}'></script><!-- End Cloudflare Web Analytics -->
-</body></html>
+  .container {
+    padding: 0 12px;
+    margin-top: 22px;
+  }
+
+  .tournament-header {
+    padding: 14px 15px;
+  }
+
+  .tournament-header h3 {
+    font-size: 15px;
+  }
+
+  .tournament-body {
+    padding: 16px 14px 20px;
+  }
+
+  .toc {
+    padding: 18px;
+  }
+
+  .section-title {
+    font-size: 19px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ホームへ戻る -->
+<div class="home-bar">
+  <a class="home-link" href="https://yoji-t.github.io/yabata-jr/">
+    ← ホームへ戻る
+  </a>
+</div>
+
+<!-- メインタイトル -->
+<header class="hero">
+  <span class="hero-label">YABATA JUNIOR BASEBALL</span>
+  <h1>2026年 大会トーナメント表</h1>
+  <p>谷端ジュニア｜大会結果・試合の軌跡</p>
+</header>
+
+<main class="container">
+
+  <div class="intro">
+    <h2>2026 SEASON</h2>
+    <p>
+      谷端ジュニアが参加した大会のトーナメント表と結果を掲載しています。<br>
+      一戦一戦の経験を力に、さらなる高みを目指します！
+    </p>
+  </div>
+
+  <!-- 大会一覧 -->
+  <nav class="toc">
+    <h3>大会一覧</h3>
+    <div class="toc-links" id="tocLinks"></div>
+  </nav>
+
+  <h2 class="section-title">大会結果・トーナメント表</h2>
+
+  <div id="tournamentList"></div>
+
+</main>
+
+<footer class="footer">
+  <strong>谷端ジュニア</strong>
+  <p>東京都北区 少年野球チーム</p>
+  <a href="https://yoji-t.github.io/yabata-jr/">
+    ホームページへ戻る
+  </a>
+</footer>
+
+<script>
+const tournaments = [
+  {
+    title: "北区滝野川大会少年野球大会新人戦",
+    result: "谷端ジュニア：優勝！！ナガセケンコー杯への出場決定！",
+    image: "https://i.gyazo.com/c87b8fef5f857ae180995fd57036c9aa.png",
+    champion: true
+  },
+  {
+    title: "城北城南学童交流野球大会・クリスマスカップ",
+    result: "谷端ジュニア：初戦敗退。強豪チームの深川ジャイアンツに対して、十分に戦える感触を得て、これからの強豪との戦いに自信を持った大会でした。",
+    image: "https://i.gyazo.com/f5e4134ab947817ebd9e0f0db874439b.png"
+  },
+  {
+    title: "ナガセケンコー杯",
+    result: "谷端ジュニア：２回戦敗退。強豪の高島エイトに１回戦で勝利したのはすごかった。",
+    image: "https://i.gyazo.com/2494f7fab100f25f62a09393b687c122.jpg"
+  },
+  {
+    title: "北区選手権春季大会・区長杯大会",
+    result: "谷端ジュニア優勝！全日本学童軟式野球大会（マクドナルドトーナメント）東京都予選出場決定！",
+    image: "https://i.gyazo.com/aab04a8001dd8590f71bf5c39431fa53.png",
+    champion: true
+  },
+  {
+    title: "くりくり少年野球選手権大会北区代表決定大会",
+    result: "谷端ジュニア準決勝敗退。北区のライバルである城北メッツにサヨナラで負けてしまいました。",
+    image: "https://i.gyazo.com/a5a03ce165884790fb2b426cb8708006.png"
+  },
+  {
+    title: "東京都都知事杯学童軟式野球大会北区代表決定大会",
+    result: "谷端ジュニア 優勝！！ 東京都都知事杯学童軟式野球大会出場決定！！",
+    image: "https://i.gyazo.com/ec8a58385c10f25f62a09393b687c122.png",
+    champion: true
+  },
+  {
+    title: "ジャビットカップチャンピオン大会北区代表決定大会",
+    result: "谷端ジュニア優勝！！北区大会、東京都知事杯北区代表決定大会に続いて、３冠を達成！！ジャビットカップチャンピオン大会への出場決定！",
+    image: "https://i.gyazo.com/6a70d58c96a8efaf0c8e9ab017513149.png",
+    champion: true
+  },
+  {
+    title: "東京都城北少年野球大会（春季）",
+    result: "谷端ジュニア：ベスト４！ただ、最後の準決勝、決勝の運が悪かった…",
+    image: "https://i.gyazo.com/7972b82d4a7716b8dbb3e00e039973b1.png"
+  },
+  {
+    title: "ミズノドリームカップ",
+    result: "谷端ジュニア Aブロック2回戦敗退",
+    image: "https://i.gyazo.com/dc6dda95827c76915b0296f1dc568563.jpg"
+  },
+  {
+    title: "年中夢球杯",
+    result: "3回戦で敗戦。チームの雰囲気が良くなく、大事な場面場面でミスが重なったのが痛かった…",
+    image: "https://i.gyazo.com/834486417fbe5359aa84cdf3903b0934.jpg"
+  },
+  {
+    title: "宮本慎也杯",
+    result: "初戦敗退。強豪の旗の台さんと戦えたのは良い経験になりました。",
+    image: "https://i.gyazo.com/55648a8d289711cfe9933eefbce7c58e.jpg"
+  },
+  {
+    title: "ベイサイドカップ",
+    image: "https://i.gyazo.com/67da616ccc6fffaced719c8d5bc1de3a.png"
+  },
+  {
+    title: "オールジャパンベースボールリーグ",
+    image: "https://i.gyazo.com/c445f02073306df1039141ba9c20eb07.png"
+  },
+  {
+    title: "スポーツ少年団北区春季大会",
+    result: "谷端ジュニア優勝！！城北ブロック大会出場決定。",
+    image: "https://i.gyazo.com/d2cbefdcc3e1bc2d0ff7f0547f781377.jpg",
+    champion: true
+  },
+  {
+    title: "北区志茂少年野球大会（春）",
+    result: "谷端ジュニア優勝！！",
+    image: "https://i.gyazo.com/6a5555070ab4654106514a3dfa2b34e3.png",
+    champion: true
+  },
+  {
+    title: "北区少年野球大会（旧教育委員会大会）",
+    result: "全日本学童軟式野球大会 マクドナルド・トーナメントと重なったため棄権。参加できないのは残念。",
+    image: "https://i.gyazo.com/0c20911c217f0a0786759933955c3000.png"
+  },
+  {
+    title: "スポーツ少年団城北ブロック大会",
+    result: "1回戦の舎人スポーツ少年団に勝利しましたが、全日本学童軟式野球大会 マクドナルド・トーナメントと重なったため棄権。東京都大会もある大会なので、これも非常に残念。"
+  },
+  {
+    title: "ポップアスリートカップ",
+    image: "https://i.gyazo.com/cd4c3b214823a156481d5c1b3a9d97b7.jpg"
+  },
+  {
+    title: "東京都学童新人戦大会北区代表決定戦",
+    image: "https://i.gyazo.com/4d908f6032becc63b77da27dcfb32e13.png"
+  },
+  {
+    title: "全日本学童軟式野球大会マクドナルド・トーナメント",
+    result: "谷端ジュニアは3回戦敗退。都大会という舞台で見事、2回、勝利しました。",
+    image: "https://i.gyazo.com/706b943d5a275d50b3f78f7180a08260.png"
+  },
+  {
+    title: "都知事杯 東京都学童軟式野球大会フィールドフォーストーナメント",
+    result: "2回戦で敗退。最終回、２アウトまで勝っていたので、本当に惜しかった。",
+    image: "https://i.gyazo.com/f99262f112f622d884121274e645aaf9.png"
+  },
+  {
+    title: "浮間大会（春）",
+    result: "他の大会を進める関係から準決勝で棄権。関係者の皆様、すみませんでした。",
+    image: "https://i.gyazo.com/2ce212c180566c6ca9875c3eaa6fa366.png"
+  },
+  {
+    title: "東京学童選抜野球大会",
+    result: "なんと北区の選抜チームで過去最高の成績を達成！決勝も1点差までつめより、２アウトながら３塁までランナーを進めて、あと１本！谷端ジュニアは選抜チームに５名選ばれて、準優勝に貢献しました。",
+    image: "https://i.gyazo.com/d803ff3c6368ae04472b05678edd5bab.png"
+  },
+  {
+    title: "北区滝野川少年野球大会（春季）",
+    result: "２回戦で敗退。さすがにジャビットカップ北区代表決定大会決勝の後の試合はきつかった…",
+    image: "https://i.gyazo.com/cc9b82dbe7a70c578c0dee24b4ac7e94.png"
+  },
+  {
+    title: "ジャビットカップチャンピオン大会",
+    image: "https://i.gyazo.com/d20e90d8125ca5f9084cd7e2e6a47cbc.jpg"
+  },
+  {
+    title: "赤羽大会（秋季）",
+    image: "https://i.gyazo.com/e8b696fd32f0638f384134af07174444.png"
+  },
+  {
+    title: "荒川クリエーション杯学童少年野球大会選抜チームトーナメント",
+    image: "https://i.gyazo.com/14869046844af3647b09819448302a8b.jpg"
+  },
+  {
+    title: "東京都城北少年野球大会（秋季）",
+    image: "https://i.gyazo.com/ae8666e0d9c0ae47b91171133bd3134f.jpg"
+  },
+  {
+    title: "北区少年野球選手権大会（秋季）",
+    image: "https://i.gyazo.com/f8fce61ed8ee37bf105a626c8093f943.jpg"
+  },
+  {
+    title: "浮間大会（秋）",
+    image: "https://i.gyazo.com/6d224366a1878e7bc37858f978b5d1c1.png"
+  },
+  {
+    title: "台東区都知事杯争奪少年軟式野球大会",
+    image: "https://i.gyazo.com/2d248ece47a7aadd580095a90830788c.png"
+  },
+  {
+    title: "東京都スポーツ少年団大会",
+    image: "https://i.gyazo.com/0afc6481cccf60fc9697f247861114d3.jpg"
+  },
+  {
+    title: "北区ジュニア大会",
+    image: "https://i.gyazo.com/876095217fb75f2c803a557f6c83acc5.jpg"
+  }
+];
+
+const list = document.getElementById("tournamentList");
+const toc = document.getElementById("tocLinks");
+
+tournaments.forEach((item, index) => {
+  const id = "tournament-" + (index + 1);
+
+  const link = document.createElement("a");
+  link.href = "#" + id;
+  link.textContent = item.title;
+  toc.appendChild(link);
+
+  const article = document.createElement("article");
+  article.className = "tournament" + (item.champion ? " champion" : "");
+  article.id = id;
+
+  const header = document.createElement("div");
+  header.className = "tournament-header";
+
+  const number = document.createElement("span");
+  number.className = "number";
+  number.textContent = String(index + 1).padStart(2, "0");
+
+  const title = document.createElement("h3");
+  title.textContent = item.title;
+
+  header.appendChild(number);
+
+  if (item.champion) {
+    const crown = document.createElement("span");
+    crown.className = "crown";
+    crown.textContent = "★";
+    header.appendChild(crown);
+  }
+
+  header.appendChild(title);
+  article.appendChild(header);
+
+  const body = document.createElement("div");
+  body.className = "tournament-body";
+
+  if (item.result) {
+    const result = document.createElement("p");
+    result.className = "result" + (item.champion ? " highlight" : "");
+    result.textContent = item.result;
+    body.appendChild(result);
+  }
+
+  if (item.image) {
+    const bracket = document.createElement("div");
+    bracket.className = "bracket";
+
+    const imageLink = document.createElement("a");
+    imageLink.href = item.image;
+    imageLink.target = "_blank";
+    imageLink.rel = "noopener noreferrer";
+    imageLink.title = "トーナメント表を拡大して見る";
+
+    const img = document.createElement("img");
+    img.src = item.image;
+    img.alt = item.title + " トーナメント表";
+    img.loading = "lazy";
+
+    imageLink.appendChild(img);
+    bracket.appendChild(imageLink);
+
+    const caption = document.createElement("div");
+    caption.className = "image-caption";
+    caption.textContent = "画像をクリックすると拡大表示できます";
+
+    bracket.appendChild(caption);
+    body.appendChild(bracket);
+  } else {
+    const note = document.createElement("p");
+    note.className = "no-result";
+    note.textContent = "トーナメント表の画像はありません。";
+    body.appendChild(note);
+  }
+
+  article.appendChild(body);
+  list.appendChild(article);
+});
+</script>
+
+</body>
+</html>
