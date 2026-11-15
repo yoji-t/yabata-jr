@@ -3,519 +3,245 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="東京都北区の少年野球チーム 谷端ジュニアの2026年高学年試合結果。試合成績、勝率、対戦結果を掲載しています。">
-<title>谷端ジュニア｜2026年 試合結果</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>谷端ジュニア｜高学年 試合結果</title>
 <style>
-:root {
-  --navy:#102b49;
-  --blue:#174d79;
-  --red:#d84b4b;
-  --gold:#e9b84e;
-  --bg:#f3f6fa;
-  --white:#fff;
-  --text:#243449;
-  --muted:#718096;
-}
-* {box-sizing:border-box}
-body {
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",
-  "Noto Sans JP",sans-serif;
-}
-a {color:inherit}
-.home {
-  display:block;
-  background:var(--navy);
-  color:white;
-  padding:13px 20px;
-  text-decoration:none;
-  font-weight:bold;
-  font-size:14px;
-}
-.home:hover {background:var(--blue)}
-.hero {
-  background:linear-gradient(135deg,#102b49,#205d8b);
-  color:white;
-  padding:48px 20px 42px;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
-.hero:after {
-  content:"BASEBALL";
-  position:absolute;
-  font-size:100px;
-  font-weight:900;
-  color:rgba(255,255,255,.045);
-  right:-10px;
-  bottom:-15px;
-  transform:rotate(-8deg);
-}
-.hero .tag {
-  color:var(--gold);
-  font-size:12px;
-  font-weight:bold;
-  letter-spacing:3px;
-}
-.hero h1 {
-  font-size:clamp(27px,5vw,43px);
-  margin:12px 0;
-  font-weight:900;
-}
-.hero p {
-  margin:0;
-  color:#d8e6f4;
-  font-size:14px;
-}
-.container {
-  max-width:1100px;
-  margin:0 auto;
-  padding:25px 18px 55px;
-}
-.section-title {
-  font-size:19px;
-  font-weight:900;
-  margin:32px 0 16px;
-  border-left:5px solid var(--gold);
-  padding-left:12px;
-}
-.cards {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-}
-.card {
-  background:white;
-  border-radius:12px;
-  padding:19px 12px;
-  text-align:center;
-  box-shadow:0 3px 12px rgba(20,40,70,.06);
-}
-.card small {
-  display:block;
-  color:var(--muted);
-  font-size:12px;
-  font-weight:bold;
-}
-.card strong {
-  display:block;
-  font-size:32px;
-  margin-top:7px;
-  font-weight:900;
-  color:var(--navy);
-}
-.card .unit {font-size:13px}
-.card.win strong {color:#23966b}
-.card.loss strong {color:var(--red)}
-.card.draw strong {color:#c18b24}
-.rate {
-  background:white;
-  border-radius:12px;
-  padding:20px;
-  margin-top:14px;
-  box-shadow:0 3px 12px rgba(20,40,70,.05);
-}
-.rate-head {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  font-weight:bold;
-}
-.rate-head strong {
-  font-size:27px;
-  color:#23966b;
-}
-.bar {
-  height:13px;
-  background:#e8edf2;
-  border-radius:20px;
-  overflow:hidden;
-  margin-top:13px;
-}
-.bar span {
-  display:block;
-  height:100%;
-  background:#23966b;
-  border-radius:20px;
-}
-.controls {
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-bottom:15px;
-}
-.controls input,.controls select {
-  border:1px solid #d9e1e9;
-  background:white;
-  border-radius:8px;
-  padding:12px;
-  font-size:14px;
-  min-width:0;
-}
-.controls input {flex:1;min-width:180px}
-.controls select {min-width:130px}
-.results {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-}
-.game {
-  background:white;
-  border-radius:11px;
-  padding:15px;
-  box-shadow:0 2px 8px rgba(20,40,70,.045);
-  border:1px solid #e8edf2;
-}
-.game-top {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px;
-}
-.date {
-  font-size:12px;
-  color:var(--muted);
-  font-weight:bold;
-}
-.badge {
-  font-size:11px;
-  font-weight:900;
-  padding:5px 11px;
-  border-radius:20px;
-}
-.badge.win {background:#e2f5ec;color:#168454}
-.badge.loss {background:#ffebeb;color:#c63d3d}
-.badge.draw {background:#fff3d8;color:#a87815}
-.tournament {
-  font-size:12px;
-  color:#65778a;
-  margin-top:12px;
-}
-.match {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:8px;
-  margin:11px 0;
-}
-.team {
-  font-weight:800;
-  font-size:14px;
-  line-height:1.5;
-}
-.score {
-  font-size:25px;
-  font-weight:900;
-  color:var(--navy);
-  white-space:nowrap;
-}
-.score small {
-  font-size:12px;
-  color:var(--muted);
-  font-weight:normal;
-}
-.place {
-  border-top:1px solid #edf0f4;
-  padding-top:10px;
-  font-size:11px;
-  color:var(--muted);
-}
-.empty {
-  grid-column:1/-1;
-  text-align:center;
-  padding:35px;
-  color:var(--muted);
-  background:white;
-  border-radius:12px;
-}
-.count {
-  color:var(--muted);
-  font-size:13px;
-  margin:0 0 12px;
-}
-footer {
-  background:var(--navy);
-  color:#c8d6e5;
-  text-align:center;
-  padding:25px 15px;
-  font-size:12px;
-}
-footer a {color:white}
-@media(max-width:650px) {
-  .cards {grid-template-columns:repeat(2,1fr)}
-  .results {grid-template-columns:1fr}
-  .hero {padding:38px 15px}
-  .container {padding:18px 13px 40px}
-  .card strong {font-size:28px}
+:root{--navy:#142d4e;--blue:#2463a6;--red:#d94b4b;--green:#17865b;--gold:#f0b83d;--bg:#f3f6fa}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#263548;font-family:"Noto Sans JP",sans-serif}
+header{background:linear-gradient(130deg,#102b4d,#2463a6);color:white;padding:32px 18px 38px}
+.wrap{max-width:1100px;margin:auto;padding:0 16px}
+.home{color:white;text-decoration:none;font-size:14px;display:inline-block;margin-bottom:22px}
+.home:hover{text-decoration:underline}
+h1{font-size:clamp(24px,5vw,36px);margin:0 0 10px}
+.subtitle{opacity:.85;font-size:14px}
+main{padding:24px 0 50px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+.stat{background:white;border-radius:12px;padding:18px 12px;text-align:center;box-shadow:0 3px 12px #152c4b0c}
+.stat small{display:block;color:#718096;font-size:12px}
+.stat strong{font-size:27px;display:block;margin-top:5px}
+.win{color:var(--green)}.lose{color:var(--red)}.draw{color:#b17b16}
+.panel{background:white;padding:18px;border-radius:12px;margin-bottom:20px;box-shadow:0 3px 12px #152c4b0c}
+.panel h2{font-size:18px;margin:0 0 14px;color:var(--navy)}
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}
+input,select{width:100%;padding:12px;border:1px solid #d8e0e9;border-radius:8px;font-size:14px;background:white}
+.result{display:flex;justify-content:space-between;align-items:center;margin:18px 2px 10px;font-size:13px;color:#68778a}
+.tablebox{background:white;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px #152c4b0c}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{background:#eaf0f7;color:#344b66;padding:13px 10px;text-align:left;white-space:nowrap}
+td{padding:13px 10px;border-bottom:1px solid #edf0f4}
+tr:hover td{background:#f7faff}
+.score{font-weight:800;font-size:16px;white-space:nowrap}
+.badge{display:inline-block;border-radius:20px;padding:4px 10px;font-size:12px;font-weight:bold;white-space:nowrap}
+.badge.win{background:#e2f5ec}.badge.lose{background:#fde9e9}.badge.draw{background:#fff3d7}
+.game a{color:#245c96;text-decoration:none}
+.game a:hover{text-decoration:underline}
+footer{text-align:center;color:#8491a1;font-size:12px;padding:25px}
+@media(max-width:650px){
+ .stats{grid-template-columns:repeat(2,1fr)}
+ .filters{grid-template-columns:1fr}
+ .tablebox{overflow-x:auto}
+ table{min-width:700px}
+ header{padding-top:24px}
 }
 </style>
 </head>
 <body>
-
-<a class="home" href="https://yoji-t.github.io/yabata-jr/">
-  ← ホームへ戻る
-</a>
-
-<header class="hero">
-  <div class="tag">YABATA JUNIOR BASEBALL CLUB</div>
-  <h1>2026 SEASON<br>GAME RESULTS</h1>
-  <p>谷端ジュニア 高学年（4〜6年生）試合結果</p>
+<header>
+<div class="wrap">
+<a class="home" href="https://yoji-t.github.io/yabata-jr/">← ホームへ戻る</a>
+<h1>⚾ 谷端ジュニア 試合結果</h1>
+<div class="subtitle">2026年 高学年（4〜6年生）｜公式戦・練習試合</div>
+</div>
 </header>
-
-<main class="container">
-
-  <h2 class="section-title">SEASON RECORD｜シーズン成績</h2>
-
-  <section class="cards">
-    <div class="card">
-      <small>TOTAL GAMES</small>
-      <strong id="total">108</strong>
-      <small>試合数</small>
-    </div>
-    <div class="card win">
-      <small>WINS</small>
-      <strong id="wins">87</strong>
-      <small>勝利</small>
-    </div>
-    <div class="card loss">
-      <small>LOSSES</small>
-      <strong id="losses">20</strong>
-      <small>敗戦</small>
-    </div>
-    <div class="card draw">
-      <small>DRAWS</small>
-      <strong id="draws">1</strong>
-      <small>引き分け</small>
-    </div>
-  </section>
-
-  <section class="rate">
-    <div class="rate-head">
-      <span>WINNING PERCENTAGE｜勝率</span>
-      <strong id="rate">81.3%</strong>
-    </div>
-    <div class="bar">
-      <span id="ratebar" style="width:81.3%"></span>
-    </div>
-  </section>
-
-  <h2 class="section-title">GAME HISTORY｜試合一覧</h2>
-
-  <div class="controls">
-    <input id="search" type="search"
-      placeholder="対戦相手・大会名・球場を検索">
-    <select id="filter">
-      <option value="all">すべての試合</option>
-      <option value="勝ち">勝利</option>
-      <option value="負け">敗戦</option>
-      <option value="引き分け">引き分け</option>
-    </select>
-    <select id="year">
-      <option value="all">すべての年度</option>
-      <option value="2026">2026年</option>
-      <option value="2025">2025年</option>
-    </select>
-  </div>
-
-  <p class="count" id="count"></p>
-  <div class="results" id="results"></div>
-
+<main class="wrap">
+<section class="stats">
+<div class="stat"><small>試合数</small><strong id="total">0</strong></div>
+<div class="stat"><small>勝利</small><strong class="win" id="wins">0</strong></div>
+<div class="stat"><small>敗戦</small><strong class="lose" id="losses">0</strong></div>
+<div class="stat"><small>勝率</small><strong id="rate">0%</strong></div>
+</section>
+<section class="panel">
+<h2>試合を検索する</h2>
+<div class="filters">
+<input id="keyword" placeholder="対戦相手・大会名・試合名で検索">
+<select id="outcome">
+<option value="">すべての結果</option>
+<option value="勝ち">勝ち</option>
+<option value="負け">負け</option>
+<option value="引き分け">引き分け</option>
+</select>
+<select id="month">
+<option value="">すべての月</option>
+<option value="01">1月</option><option value="02">2月</option>
+<option value="03">3月</option><option value="04">4月</option>
+<option value="05">5月</option><option value="06">6月</option>
+<option value="07">7月</option><option value="08">8月</option>
+<option value="09">9月</option><option value="10">10月</option>
+<option value="11">11月</option><option value="12">12月</option>
+</select>
+</div>
+</section>
+<div class="result">
+<strong id="count">109試合</strong>
+<span>日付順</span>
+</div>
+<div class="tablebox">
+<table>
+<thead><tr><th>日付</th><th>大会・試合</th><th>対戦相手</th><th>スコア</th><th>結果</th><th>試合場所</th></tr></thead>
+<tbody id="games"></tbody>
+</table>
+</div>
 </main>
-
-<footer>
-  <strong>YABATA JUNIOR BASEBALL CLUB</strong>
-  <p>谷端ジュニア｜東京都北区 少年野球チーム</p>
-  <a href="https://yoji-t.github.io/yabata-jr/">ホームページへ戻る</a>
-</footer>
-
+<footer>谷端ジュニア｜2026年 高学年試合結果</footer>
 <script>
-// Notionの試合データ
-// [日付, 試合名, 対戦相手, 点数, 勝敗, 球場]
-
-const games = [
-["2025-11-24","滝野川大会新人戦","豊島堀船","6-0","勝ち","北区中央公園"],
-["2025-11-30","練習試合","豊島堀船","12-0","勝ち","新荒川大橋野球場"],
-["2025-12-06","滝野川大会新人戦","新田ファイヤーズ","9-2","勝ち","北区中央公園"],
-["2025-12-07","滝野川大会新人戦","BBC","10-3","勝ち","北区中央公園"],
-["2025-12-21","クリスマスカップ","深川ジャイアンツ","0−3","負け","新荒川大橋野球場"],
-["2026-01-11","練習試合","駒込ベアーズ","23-3","勝ち","西新井緑地野球場"],
-["2026-01-12","練習試合①","台東ジャニーズ","9-3","勝ち","東白髭公園野球場"],
-["2026-01-12","練習試合②","台東ジャニーズ","5-2","勝ち","東白髭公園野球場"],
-["2026-01-18","練習試合①","成増第二ライオンズ","6-1","勝ち","戸田橋野球場"],
-["2026-01-18","練習試合②","成増第二ライオンズ","5-2","勝ち","戸田橋野球場"],
-["2026-01-24","ナガセケンコー杯","高島エイト","4-3","勝ち","多摩川緑地野球場"],
-["2026-01-25","練習試合","中村ウィンズ","4-1","勝ち","新荒川大橋野球場"],
-["2026-01-31","練習試合①","西千タイガース","7-0","勝ち","西新井緑地野球場"],
-["2026-01-31","練習試合②","西千タイガース","5-1","勝ち","西新井緑地野球場"],
-["2026-02-01","練習試合①","ジュニアヤンガース","6-5","勝ち","豊島五丁目グリーンスポーツ広場"],
-["2026-02-01","練習試合②","ジュニアヤンガース","3-2","勝ち","豊島五丁目グリーンスポーツ広場"],
-["2026-02-07","練習試合①","扇ターキーズ","3-2","勝ち","川口市東スポーツセンター"],
-["2026-02-07","練習試合②","扇ターキーズ","14-0","勝ち","川口市東スポーツセンター"],
-["2026-02-14","練習試合","東京ウイング","4-5","負け","多摩川緑地野球場"],
-["2026-02-15","練習試合①","フェニックス","8-0","勝ち","西新井緑地野球場"],
-["2026-02-15","練習試合②","フェニックス","6-0","勝ち","西新井緑地野球場"],
-["2026-02-21","東京都城北少年野球大会","成増第二ライオンズ","8-0","勝ち","戸田橋野球場"],
-["2026-02-22","くりくり少年野球大会","王子ドルフィンズ","9-0","勝ち","新荒川大橋野球場"],
-["2026-02-22","ナガセケンコー杯","鷺宮スタージョーズ","3-10","負け","多摩川緑地野球場"],
-["2026-03-07","ミズノベースボールドリームカップ","玉川ラプターズ","9-1","勝ち","新荒川大橋野球場"],
-["2026-03-07","練習試合","玉川ラプターズ","13-2","勝ち","新荒川大橋野球場"],
-["2026-03-08","北区大会","豊島堀船","5-3","勝ち","新荒川大橋野球場"],
-["2026-03-14","年中夢球杯","青梅ドラゴンズ","7-3","勝ち","新荒川大橋野球場"],
-["2026-03-14","練習試合","青梅ドラゴンズ","11-8","勝ち","新荒川大橋野球場"],
-["2026-03-15","練習試合①","大塚ミスギホープ","8-0","勝ち","文京区立第一中学校"],
-["2026-03-15","練習試合②","大塚ミスギホープ","3-1","勝ち","文京区立第一中学校"],
-["2026-03-20","北区大会","城北メッツ","9-2","勝ち","浮間子どもスポーツ広場"],
-["2026-03-20","練習試合","仲宿ファイターズ","15-6","勝ち","戸田橋野球場"],
-["2026-03-21","東京都城北少年野球大会","大泉ファイターズ","10-0","勝ち","戸田橋野球場"],
-["2026-03-22","北区大会","城北メッツ","4-3","勝ち","新荒川大橋野球場"],
-["2026-03-29","東京都知事杯北区代表決定大会","諏訪クラブ","16−5","勝ち","新荒川大橋野球場"],
-["2026-03-29","ミズノベースボールドリームカップ","清瀬レッドライオンズ","1−8","負け","豊島五丁目グリーンスポーツ広場"],
-["2026-04-04","年中夢球杯","船堀ダックスクラブ","11−0","勝ち","江戸川区臨海野球場"],
-["2026-04-05","スポーツ少年団北区春季大会","十条イーグルス","9−0","勝ち","新荒川大橋野球場"],
-["2026-04-05","東京都知事杯北区代表決定大会","西浮間イーグルス","15−1","勝ち","新荒川大橋野球場"],
-["2026-04-11","東京都城北少年野球大会","リトルフィッシュ","4-3","勝ち","戸田橋野球場"],
-["2026-04-12","くりくり少年野球大会北区代表決定大会","城北メッツ","2-3","負け","新荒川大橋野球場"],
-["2026-04-12","スポーツ少年団北区春季大会","赤西ナイン","13-2","勝ち","新荒川大橋野球場"],
-["2026-04-18","浮間リーグ","諏訪クラブ","8-1","勝ち","浮間子どもスポーツ広場"],
-["2026-04-19","東京都知事杯北区代表決定大会","城北メッツ","7-2","勝ち","新荒川大橋野球場"],
-["2026-04-26","東京都知事杯北区代表決定大会","BBC","9-2","勝ち","新荒川大橋野球場"],
-["2026-04-29","ジャビットカップ北区代表決定大会","西浮間イーグルス","12-6","勝ち","新荒川大橋野球場"],
-["2026-05-02","宮本慎也杯","旗の台クラブ","0-6","負け","大井埠頭海浜公園野球場"],
-["2026-05-02","練習試合","旗の台クラブ","3-5","負け","大井埠頭海浜公園野球場"],
-["2026-05-03","浮間リーグ","若木ベースボールクラブ","11-2","勝ち","浮間子どもスポーツ広場"],
-["2026-05-03","浮間リーグ","桜川ドリームス","9-6","勝ち","浮間子どもスポーツ広場"],
-["2026-05-06","志茂大会","王子ドルフィンズ","10-0","勝ち","新荒川大橋野球場"],
-["2026-05-09","年中夢球杯","百草台フェニックス","1-3","負け","百草台運動広場"],
-["2026-05-09","東京都城北少年野球大会","西千タイガース","4-1","勝ち","戸田橋野球場"],
-["2026-05-10","スポーツ少年団城北ブロック大会","舎人スポーツ少年団","20-0","勝ち","江北橋右岸野球場"],
-["2026-05-17","マクドナルド・トーナメント","四谷スワローズ","8-6","勝ち","郷土の森野球場"],
-["2026-05-23","浮間リーグ","長後ベアーズ","10-1","勝ち","浮間子どもスポーツ広場"],
-["2026-05-23","浮間リーグ","オール中台","9-0","勝ち","浮間子どもスポーツ広場"],
-["2026-05-24","マクドナルドトーナメント","清瀬レッドライオンズ","6-0","勝ち","郷土の森野球場"],
-["2026-05-30","志茂大会","西浮間イーグルス","5-4","勝ち","新荒川大橋野球場"],
-["2026-05-31","マクドナルドトーナメント","国立シャークス","11-12","負け","郷土の森野球場"],
-["2026-06-06","志茂大会","BBC","14-0","勝ち","新荒川大橋野球場"],
-["2026-06-07","ジャビットカップ北区代表決定大会","諏訪クラブ","7-0","勝ち","新荒川大橋野球場"],
-["2026-06-14","東京都知事杯","十八軒アトムズ","7-4","勝ち","八王子滝ガ原野球場"],
-["2026-06-21","東京都知事杯","いずみスワローズ","4-5","負け","八王子滝ガ原野球場"],
-["2026-06-28","ジャビットカップ北区代表決定大会","マッハブレーブス","3-1","勝ち","新荒川大橋野球場"],
-["2026-06-28","浮間大会","BBC","8-3","勝ち","浮間子どもスポーツ広場"],
-["2026-07-04","志茂大会","豊島堀船","3-2","勝ち","新荒川大橋野球場"],
-["2026-07-04","滝野川大会","稲田クラブ","19-1","勝ち","北区中央公園"],
-["2026-07-05","ジャビットカップ北区代表決定大会","豊島堀船","2-1","勝ち","新荒川大橋野球場"],
-["2026-07-05","滝野川大会","城北メッツ","5-6","負け","北区中央公園"],
-["2026-07-11","東京都城北少年野球大会","旭町野球クラブ","3−4","負け","戸田橋野球場"],
-["2026-07-11","東京都城北少年野球大会","竹仲","3−9","負け","戸田橋野球場"],
-["2026-07-12","東京都学童選抜野球大会","墨田選抜","1−1(2−1)","勝ち","錦糸公園野球場"],
-["2026-07-19","東京都学童選抜野球大会","世田谷選抜","6-4","勝ち","錦糸公園野球場"],
-["2026-07-19","東京都学童選抜野球大会","中央選抜","7-0","勝ち","錦糸公園野球場"],
-["2026-07-20","東京都学童選抜野球大会","江東選抜","10-2","勝ち","東白髭公園野球場"],
-["2026-07-20","東京都学童選抜野球大会","江戸川選抜","1-2","負け","東白髭公園野球場"],
-["2026-07-25","オールジャパンベースボールリーグ","マッハブレーブス","9-5","勝ち","戸田橋野球場"],
-["2026-07-26","オールジャパンベースボールリーグ","新田ファイヤーズ","16-2","勝ち","鹿浜橋右岸"],
-["2026-08-08","ジャビットカップ","中野島あけぼの","9-6","勝ち","三鷹大沢総合グラウンド"],
-["2026-08-09","ジャビットカップ","下麻岡少年野球部","9-8","勝ち","三鷹大沢総合グラウンド"],
-["2026-08-14","練習試合","東桂少年野球部","14-3","勝ち","住吉球場"],
-["2026-08-22","ジャビットカップチャンピオン大会","つくしシャークス","2-3","負け","夢の島野球場"],
-["2026-08-23","練習試合","中台クラブ","8-3","勝ち","板橋城北野球場"],
-["2026-08-29","浮間リーグ","豊島堀船","18-0","勝ち","浮間子どもスポーツ広場"],
-["2026-08-30","浮間リーグ","BBC","8-1","勝ち","浮間子どもスポーツ広場"],
-["2026-08-30","浮間リーグ","赤西ナイン","7-1","勝ち","浮間子どもスポーツ広場"],
-["2026-09-22","北区秋季大会","西浮間イーグルス","9-2","勝ち","新荒川大橋野球場"],
-["2026-09-22","浮間リーグ","戸ニ小ジャガース","6-0","勝ち","浮間子どもスポーツ広場"],
-["2026-09-23","志茂大会","稲田クラブ","7-0","勝ち","新荒川大橋野球場"],
-["2026-09-27","北区秋季大会","豊島堀船","0-4","負け","新荒川大橋野球場"],
-["2026-10-03","志茂大会","飛鳥ジュニア","9-0","勝ち","新荒川大橋野球場"],
-["2026-10-04","北区秋季大会","ブルースカイズ","3-1","勝ち","新荒川大橋野球場"],
-["2026-10-04","浮間リーグ","高島平セブンスターズ","6-1","勝ち","浮間子どもスポーツ広場"],
-["2026-10-10","赤羽大会","マッハブレーブス","9-8","勝ち","赤羽自然観察公園"],
-["2026-10-10","志茂大会","BBC","10-1","勝ち","新荒川大橋野球場"],
-["2026-10-11","赤羽大会","豊島堀船","6-7","負け","赤羽自然観察公園"],
-["2026-10-12","練習試合","中台クラブ","5-3","勝ち","板橋城北野球場"],
-["2026-10-18","東京都スポーツ少年団大会","高円寺メイト","2-9","負け","篠崎公園野球場"],
-["2026-10-18","東京都城北少年野球大会","梶山レッドスターズ","10-3","勝ち","戸田橋野球場"],
-["2026-11-01","ジュニア大会","飛鳥ジュニア","7-0","勝ち","新荒川大橋野球場"],
-["2026-11-01","練習試合","豊島堀船","5-4","勝ち","新荒川大橋野球場"],
-["2026-11-03","志茂大会","マッハブレーブス","4-0","勝ち","新荒川大橋野球場"],
-["2026-11-07","練習試合①","元加賀","7-6","勝ち","夢の島野球場"],
-["2026-11-07","練習試合②","元加賀","5-5","引き分け","夢の島野球場"],
-["2026-11-08","練習試合①","小松フェニックス","4-5","負け","四ツ木橋野球場"],
-["2026-11-08","練習試合②","小松フェニックス","2-7","負け","四ツ木橋野球場"]
+const data = [
+["2025-11-24","滝野川大会新人戦","豊島堀船","6-0","勝ち","北区中央公園","2a74483132d380b99f41cc5a0f4b53c6"],
+["2025-11-30","練習試合","豊島堀船","12-0","勝ち","新荒川大橋野球場","2bc4483132d380289d11c8fa6aa3239b"],
+["2025-12-06","滝野川大会新人戦","新田ファイヤーズ","9-2","勝ち","北区中央公園","2c24483132d3807f9942c6741c59eabd"],
+["2025-12-07","滝野川大会新人戦","BBC","10-3","勝ち","北区中央公園","2c24483132d3807f9903e802f0b2af52"],
+["2025-12-21","クリスマスカップ","深川ジャイアンツ","0-3","負け","新荒川大橋野球場","2d14483132d38081b908d2b605a796bd"],
+["2026-01-11","練習試合","駒込ベアーズ","23-3","勝ち","西新井緑地野球場","2f64483132d38075a04dc4d1bb79afd8"],
+["2026-01-12","練習試合①","台東ジャニーズ","9-3","勝ち","東白髭公園野球場","2f64483132d380aaa7fde7fdba1fefd2"],
+["2026-01-12","練習試合②","台東ジャニーズ","5-2","勝ち","東白髭公園野球場","2f64483132d380bd99e4d8ef443b151c"],
+["2026-01-18","練習試合①","成増第二ライオンズ","6-1","勝ち","戸田橋野球場","2f64483132d380c197d0c4f173053f89"],
+["2026-01-18","練習試合②","成増第二ライオンズ","5-2","勝ち","戸田橋野球場","2f64483132d380079abaca6e205151f0"],
+["2026-01-24","ナガセケンコー杯","高島エイト","4-3","勝ち","多摩川緑地野球場","2f64483132d38092ad09d1f270ba1d03"],
+["2026-01-25","練習試合","中村ウィンズ","4-1","勝ち","新荒川大橋野球場","2f64483132d38020bbe4c18378772167"],
+["2026-01-31","練習試合①","西千タイガース","7-0","勝ち","西新井緑地野球場","2f94483132d380d0990fe275d7143647"],
+["2026-01-31","練習試合②","西千タイガース","5-1","勝ち","西新井緑地野球場","2f94483132d380988900ed5148224db1"],
+["2026-02-01","練習試合①","ジュニアヤンガース","6-5","勝ち","豊島五丁目グリーンスポーツ広場","2fa4483132d38096bed2f77911945c46"],
+["2026-02-01","練習試合②","ジュニアヤンガース","3-2","勝ち","豊島五丁目グリーンスポーツ広場","2fa4483132d3803ca3a9c5c54b74c291"],
+["2026-02-07","練習試合①","扇ターキーズ","3-2","勝ち","川口市東スポーツセンター","3004483132d380b3a8f8dd176baf1737"],
+["2026-02-07","練習試合②","扇ターキーズ","14-0","勝ち","川口市東スポーツセンター","3004483132d3800aaf0be2f14e6238de"],
+["2026-02-14","練習試合","東京ウイング","4-5","負け","多摩川緑地野球場","3094483132d3806f86acdee55af0bc1b"],
+["2026-02-15","練習試合①","フェニックス","8-0","勝ち","西新井緑地野球場","3094483132d38077b08ec154150911f0"],
+["2026-02-15","練習試合②","フェニックス","6-0","勝ち","西新井緑地野球場","3094483132d380f58ee7d7b1ccb2b17a"],
+["2026-02-21","東京都城北少年野球大会","成増第二ライオンズ","8-0","勝ち","戸田橋野球場","30e4483132d38083a593f42b0b0185c6"],
+["2026-02-22","くりくり少年野球大会","王子ドルフィンズ","9-0","勝ち","新荒川大橋野球場","3114483132d3801ea76bdc1a9ad76daf"],
+["2026-02-22","ナガセケンコー杯","鷺宮スタージョーズ","3-10","負け","多摩川緑地野球場","3114483132d38054810bc08fe91c7467"],
+["2026-03-07","ミズノベースボールドリームカップ","玉川ラプターズ","9-1","勝ち","新荒川大橋野球場","31f4483132d3805b8ee4e31ca25ea12a"],
+["2026-03-07","練習試合","玉川ラプターズ","13-2","勝ち","新荒川大橋野球場","31f4483132d380fe9efbfefbf08d56bb"],
+["2026-03-08","北区大会","豊島堀船","5-3","勝ち","新荒川大橋野球場","31f4483132d380d1a80ae3ac2af7c231"],
+["2026-03-14","年中夢球杯","青梅ドラゴンズ","7-3","勝ち","新荒川大橋野球場","33b4483132d3804699b9e9c36e8e2acb"],
+["2026-03-14","練習試合","青梅ドラゴンズ","11-8","勝ち","新荒川大橋野球場","33b4483132d380eaa33bc21a690a44b3"],
+["2026-03-15","練習試合①","大塚ミスギホープ","8-0","勝ち","文京区立第一中学校","33b4483132d38061a8d8d6fd2f9d8e05"],
+["2026-03-15","練習試合②","大塚ミスギホープ","3-1","勝ち","文京区立第一中学校","33b4483132d38035b45fe3092b45e0b6"],
+["2026-03-20","北区大会","城北メッツ","9-2","勝ち","浮間子どもスポーツ広場","33b4483132d38059a210efad22ffb9df"],
+["2026-03-20","練習試合","仲宿ファイターズ","15-6","勝ち","戸田橋野球場","33c4483132d380c8b0aae98ef82107df"],
+["2026-03-21","東京都城北少年野球大会","大泉ファイターズ","10-0","勝ち","戸田橋野球場","33c4483132d380dd9db1d110181872eb"],
+["2026-03-22","北区大会","城北メッツ","4-3","勝ち","新荒川大橋野球場","33c4483132d380a194edc5726d8d6bcf"],
+["2026-03-29","東京都知事杯北区代表決定大会","諏訪クラブ","16−5","勝ち","新荒川大橋野球場","33c4483132d38079af38c9e941e5bbd7"],
+["2026-03-29","ミズノベースボールドリームカップ","清瀬レッドライオンズ","1−8","負け","豊島五丁目グリーンスポーツ広場","33c4483132d380ac92fcc82a283e3ffb"],
+["2026-04-04","年中夢球杯","船堀ダックスクラブ","11−0","勝ち","江戸川区臨海野球場","33c4483132d380349b0ccda6214ccbe4"],
+["2026-04-05","スポーツ少年団北区春季大会","十条イーグルス","9−0","勝ち","新荒川大橋野球場","33c4483132d380858638da14ffaeaaef"],
+["2026-04-05","東京都知事杯北区代表決定大会","西浮間イーグルス","15−1","勝ち","新荒川大橋野球場","33c4483132d3801f8061d9464de1a569"],
+["2026-04-11","東京都城北少年野球大会","リトルフィッシュ","4-3","勝ち","戸田橋野球場","33f4483132d380bdbc1ddf14e1929e04"],
+["2026-04-12","くりくり少年野球大会北区代表決定大会","城北メッツ","2-3","負け","新荒川大橋野球場","3414483132d3802f902cc5dba17fb2c3"],
+["2026-04-12","スポーツ少年団北区春季大会","赤西ナイン","13-2","勝ち","新荒川大橋野球場","3414483132d3805ca46fd269844fade0"],
+["2026-04-18","浮間リーグ","諏訪クラブ","8-1","勝ち","浮間子どもスポーツ広場","3474483132d3809aaaafe3e9ca9c5a5a"],
+["2026-04-19","東京都知事杯北区代表決定大会","城北メッツ","7-2","勝ち","新荒川大橋野球場","3474483132d3807c8f86d36890ad26fc"],
+["2026-04-26","東京都知事杯北区代表決定大会","BBC","9-2","勝ち","新荒川大橋野球場","3514483132d3806386cbf76ed3eefcdb"],
+["2026-04-29","ジャビットカップ北区代表決定大会","西浮間イーグルス","12-6","勝ち","新荒川大橋野球場","3514483132d3808eaf27e4d1f4d721db"],
+["2026-05-02","宮本慎也杯","旗の台クラブ","0-6","負け","大井埠頭海浜公園野球場","3594483132d3805494a3fd044f0f6208"],
+["2026-05-02","練習試合","旗の台クラブ","3-5","負け","大井埠頭海浜公園野球場","3594483132d380f59c0ff40ee882cdd5"],
+["2026-05-03","浮間リーグ","若木ベースボールクラブ","11-2","勝ち","浮間子どもスポーツ広場","3594483132d38022809ddbc70766d781"],
+["2026-05-03","浮間リーグ","桜川ドリームス","9-6","勝ち","浮間子どもスポーツ広場","3594483132d380da8006e5a8f30d1854"],
+["2026-05-06","志茂大会","王子ドルフィンズ","10-0","勝ち","新荒川大橋野球場","3594483132d380c1ba54f5cc5bf4f5b6"],
+["2026-05-09","年中夢球杯","百草台フェニックス","1-3","負け","百草台運動広場","35d4483132d38077ad50d3fda5fa021b"],
+["2026-05-09","東京都城北少年野球大会","西千タイガース","4-1","勝ち","戸田橋野球場","35d4483132d380b996e9ca46969cacea"],
+["2026-05-10","スポーツ少年団城北ブロック大会","舎人スポーツ少年団","20-0","勝ち","江北橋右岸野球場","35d4483132d380b88aede8ebf51b189e"],
+["2026-05-17","マクドナルド・トーナメント","四谷スワローズ","8-6","勝ち","郷土の森野球場","3634483132d3808fb580e594b7fd25e2"],
+["2026-05-23","浮間リーグ","長後ベアーズ","10-1","勝ち","浮間子どもスポーツ広場","36a4483132d380c183addb3601358746"],
+["2026-05-23","浮間リーグ","オール中台","9-0","勝ち","浮間子どもスポーツ広場","36a4483132d380d8b546d343fb5efb66"],
+["2026-05-24","マクドナルドトーナメント","清瀬レッドライオンズ","6-0","勝ち","郷土の森野球場","36a4483132d380deab55cd90d3df4277"],
+["2026-05-30","志茂大会","西浮間イーグルス","5-4","勝ち","新荒川大橋野球場","3734483132d380b09b65c836614b6c8f"],
+["2026-05-31","マクドナルドトーナメント","国立シャークス","11-12","負け","郷土の森野球場","3734483132d380b6af6be9b4074ef4e7"],
+["2026-06-06","志茂大会","BBC","14-0","勝ち","新荒川大橋野球場","3784483132d3803bb1a4f4151e1cf98d"],
+["2026-06-07","ジャビットカップ北区代表決定大会","諏訪クラブ","7-0","勝ち","新荒川大橋野球場","3784483132d38001ba43d456e2addc25"],
+["2026-06-14","東京都知事杯","十八軒アトムズ","7-4","勝ち","八王子滝ガ原野球場","37f4483132d3807893eefe6f4ed71206"],
+["2026-06-21","東京都知事杯","いずみスワローズ","4-5","負け","八王子滝ガ原野球場","38e4483132d380919f01df1755de2a26"],
+["2026-06-28","ジャビットカップ北区代表決定大会","マッハブレーブス","3-1","勝ち","新荒川大橋野球場","38e4483132d380c69558f6b1e49a8230"],
+["2026-06-28","浮間大会","BBC","8-3","勝ち","浮間子どもスポーツ広場","38e4483132d3802c994df5555c9c0e15"],
+["2026-07-04","志茂大会","豊島堀船","3-2","勝ち","新荒川大橋野球場","3934483132d380219dcad517a8b040ae"],
+["2026-07-04","滝野川大会","稲田クラブ","19-1","勝ち","北区中央公園","3934483132d3800981c8cec933094099"],
+["2026-07-05","ジャビットカップ北区代表決定大会","豊島堀船","2-1","勝ち","新荒川大橋野球場","3944483132d380d580c6cc96031e4cc6"],
+["2026-07-05","滝野川大会","城北メッツ","5-6","負け","北区中央公園","3944483132d380db8d84c164642586f3"],
+["2026-07-11","東京都城北少年野球大会","旭町野球クラブ","3−4","負け","戸田橋野球場","39f4483132d3808f88c3d40998fc3c99"],
+["2026-07-11","東京都城北少年野球大会","竹仲","3−9","負け","戸田橋野球場","39f4483132d380cbba54f9936ee3bc97"],
+["2026-07-12","東京都学童選抜野球大会","墨田選抜","1−1(2−1)","勝ち","錦糸公園野球場","39f4483132d3803f82fee14977a032b3"],
+["2026-07-19","東京都学童選抜野球大会","世田谷選抜","6-4","勝ち","錦糸公園野球場","3a54483132d3804e9385d5ba4022a557"],
+["2026-07-19","東京都学童選抜野球大会","中央選抜","7-0","勝ち","錦糸公園野球場","3a54483132d380c99f70e41657e01988"],
+["2026-07-20","東京都学童選抜野球大会","江東選抜","10-2","勝ち","東白髭公園野球場","3a54483132d38083bdecff3bdb3654ae"],
+["2026-07-20","東京都学童選抜野球大会","江戸川選抜","1-2","負け","東白髭公園野球場","3a54483132d380488402e4049a1a633d"],
+["2026-07-25","オールジャパンベースボールリーグ","マッハブレーブス","9-5","勝ち","戸田橋野球場","3ad4483132d380dfb860ef3b720c2137"],
+["2026-07-26","オールジャパンベースボールリーグ","新田ファイヤーズ","16-2","勝ち","鹿浜橋右岸","3ad4483132d380a281d2f5bff386ed91"],
+["2026-08-08","ジャビットカップチャンピオン大会","中野島あけぼの","9-6","勝ち","三鷹大沢総合グラウンド","3b94483132d380fbb769da2bf2b5963a"],
+["2026-08-09","ジャビットカップチャンピオン大会","下麻岡少年野球部","9-8","勝ち","三鷹大沢総合グラウンド","3b94483132d380779a54ce56b6dde3d1"],
+["2026-08-14","練習試合","東桂少年野球部","14-3","勝ち","住吉球場","3c84483132d380a683a5d9e8fd20b2a7"],
+["2026-08-22","ジャビットカップチャンピオン大会","つくしシャークス","2-3","負け","夢の島野球場","3c84483132d38049a9a8c30fbf3dc505"],
+["2026-08-23","練習試合","中台クラブ","8-3","勝ち","板橋城北野球場","3c84483132d380d187d6efa03e20ecaa"],
+["2026-08-29","浮間リーグ","豊島堀船","18-0","勝ち","浮間子どもスポーツ広場","3cd4483132d380d6a827ca310ea97255"],
+["2026-08-30","浮間リーグ","BBC","8-1","勝ち","浮間子どもスポーツ広場","3cd4483132d3805e8b82d2d3cf49473c"],
+["2026-08-30","浮間リーグ","赤西ナイン","7-1","勝ち","浮間子どもスポーツ広場","3cd4483132d380eeafebccf32d53610d"],
+["2026-09-22","北区秋季大会","西浮間イーグルス","9-2","勝ち","新荒川大橋野球場","3ed4483132d380f59cc4ee55a411eae1"],
+["2026-09-22","浮間リーグ","戸ニ小ジャガース","6-0","勝ち","浮間子どもスポーツ広場","3ed4483132d380ad8d61d87d72930919"],
+["2026-09-23","志茂大会","稲田クラブ","7-0","勝ち","新荒川大橋野球場","3ed4483132d38041a4c2e6a09e260dbd"],
+["2026-09-27","北区秋季大会","豊島堀船","0-4","負け","新荒川大橋野球場","3ed4483132d3800bbd70fbdb58e0fde8"],
+["2026-10-03","志茂大会","飛鳥ジュニア","9-0","勝ち","新荒川大橋野球場","3f94483132d3809695aace82bdae90aa"],
+["2026-10-04","北区秋季大会","ブルースカイズ","3-1","勝ち","新荒川大橋野球場","3ef4483132d3806a9ca5ef9c50109ae4"],
+["2026-10-04","浮間リーグ","高島平セブンスターズ","6-1","勝ち","浮間子どもスポーツ広場","3f94483132d380a69108ee200c637d17"],
+["2026-10-10","赤羽大会","マッハブレーブス","9-8","勝ち","赤羽自然観察公園","3f94483132d380c68a09f1ad8e26f872"],
+["2026-10-10","志茂大会","BBC","10-1","勝ち","新荒川大橋野球場","3f94483132d380af8123e5971ba8e98f"],
+["2026-10-11","赤羽大会","豊島堀船","6-7","負け","赤羽自然観察公園","3f94483132d3806ba032fdb91c72ae11"],
+["2026-10-12","練習試合","中台クラブ","5-3","勝ち","板橋城北野球場","3f94483132d380a4b68bc337e69569b1"],
+["2026-10-18","東京都スポーツ少年団大会","高円寺メイト","2-9","負け","篠崎公園野球場","3fe4483132d38058ab83f0c285acbebc"],
+["2026-10-18","東京都城北少年野球大会","梶山レッドスターズ","10-3","勝ち","戸田橋野球場","3fe4483132d380d19cbef25be6027926"],
+["2026-11-01","ジュニア大会","飛鳥ジュニア","7-0","勝ち","新荒川大橋野球場","40b4483132d38055b5d4d874c7385778"],
+["2026-11-01","練習試合","豊島堀船","5-4","勝ち","新荒川大橋野球場","40b4483132d3804a817ce2908a836566"],
+["2026-11-03","志茂大会","マッハブレーブス","4-0","勝ち","新荒川大橋野球場","40e4483132d3806c8a67fd69db251bc1"],
+["2026-11-07","練習試合①","元加賀","7-6","勝ち","夢の島野球場","4114483132d38030af96d21be12b2fd1"],
+["2026-11-07","練習試合②","元加賀","5-5","引き分け","夢の島野球場","4124483132d3804c90e1f83aa6afd38e"],
+["2026-11-08","練習試合①","小松フェニックス","4-5","負け","四ツ木橋野球場","4124483132d380b38594e868c0653c21"],
+["2026-11-08","練習試合②","小松フェニックス","2-7","負け","四ツ木橋野球場","4124483132d38063a674f93a8d0edbb0"],
+["2026-11-15","北区ジュニア大会","稲田クラブ","9-0","勝ち","新荒川大橋野球場","4194483132d380939bdfe25a46f8a07b"]
 ];
 
-// 勝敗の集計
-function updateStats() {
-  const wins = games.filter(g => g[4] === "勝ち").length;
-  const losses = games.filter(g => g[4] === "負け").length;
-  const draws = games.filter(g => g[4] === "引き分け").length;
-  const rate = wins + losses ? wins / (wins + losses) * 100 : 0;
+const tbody=document.getElementById("games");
+const keyword=document.getElementById("keyword");
+const outcome=document.getElementById("outcome");
+const month=document.getElementById("month");
 
-  document.getElementById("total").textContent = games.length;
-  document.getElementById("wins").textContent = wins;
-  document.getElementById("losses").textContent = losses;
-  document.getElementById("draws").textContent = draws;
-  document.getElementById("rate").textContent = rate.toFixed(1) + "%";
-  document.getElementById("ratebar").style.width = rate + "%";
+function render(){
+ const q=keyword.value.toLowerCase();
+ const rows=data.filter(g=>
+  (!q||g.slice(1,3).join(" ").toLowerCase().includes(q))&&
+  (!outcome.value||g[4]===outcome.value)&&
+  (!month.value||g[0].slice(5,7)===month.value)
+ );
+ tbody.innerHTML=rows.map(g=>{
+  const cls=g[4]==="勝ち"?"win":g[4]==="負け"?"lose":"draw";
+  const date=g[0].split("-");
+  return `<tr>
+  <td>${date[0]}/${date[1]}/${date[2]}</td>
+  <td class="game"><a href="https://app.notion.com/p/${g[6]}" target="_blank" rel="noopener">${g[1]}</a></td>
+  <td>${g[2]}</td>
+  <td class="score">${g[3]}</td>
+  <td><span class="badge ${cls}">${g[4]}</span></td>
+  <td>${g[5]}</td></tr>`;
+ }).join("");
+ document.getElementById("count").textContent=rows.length+"試合";
 }
-
-// 試合一覧の表示
-function render() {
-  const keyword = document.getElementById("search").value.toLowerCase();
-  const filter = document.getElementById("filter").value;
-  const year = document.getElementById("year").value;
-
-  const filtered = games.filter(g => {
-    const text = g.join(" ").toLowerCase();
-    return text.includes(keyword) &&
-      (filter === "all" || g[4] === filter) &&
-      (year === "all" || g[0].startsWith(year));
-  }).slice().reverse();
-
-  document.getElementById("count").textContent =
-    "表示中：" + filtered.length + "試合";
-
-  const html = filtered.map(g => {
-    const [date,event,opponent,score,result,place] = g;
-    const cls = result === "勝ち" ? "win" :
-                result === "負け" ? "loss" : "draw";
-
-    const d = new Date(date + "T00:00:00");
-    const formatted =
-      d.getFullYear() + "年" +
-      (d.getMonth()+1) + "月" +
-      d.getDate() + "日";
-
-    return `
-      <article class="game">
-        <div class="game-top">
-          <span class="date">${formatted}</span>
-          <span class="badge ${cls}">${result}</span>
-        </div>
-        <div class="tournament">${event}</div>
-        <div class="match">
-          <span class="team">谷端ジュニア<br>VS ${opponent}</span>
-          <span class="score">${score}</span>
-        </div>
-        <div class="place">📍 ${place}</div>
-      </article>
-    `;
-  }).join("");
-
-  document.getElementById("results").innerHTML =
-    html || '<div class="empty">該当する試合はありません。</div>';
-}
-
-document.getElementById("search").addEventListener("input",render);
-document.getElementById("filter").addEventListener("change",render);
-document.getElementById("year").addEventListener("change",render);
-
-updateStats();
+const wins=data.filter(g=>g[4]==="勝ち").length;
+const losses=data.filter(g=>g[4]==="負け").length;
+const draws=data.filter(g=>g[4]==="引き分け").length;
+document.getElementById("total").textContent=data.length;
+document.getElementById("wins").textContent=wins;
+document.getElementById("losses").textContent=losses;
+document.getElementById("rate").textContent=
+ ((wins/(wins+losses))*100).toFixed(1)+"%";
+[keyword,outcome,month].forEach(el=>el.addEventListener("input",render));
 render();
 </script>
-<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "085058b3d5824c399e855b43d6603e8a"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
